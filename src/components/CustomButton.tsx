@@ -12,9 +12,9 @@ interface ICustomBtn extends TouchableOpacityProps {
   load?: boolean;
 }
 
-const CustomButton: FC<ICustomBtn> = ({label, load, ...props}) => {
+const CustomButton: FC<ICustomBtn> = ({label, load, style, ...props}) => {
   return (
-    <TouchableOpacity style={[styles.mainStyle]} {...props}>
+    <TouchableOpacity style={[styles.mainStyle, style]} {...props}>
       {!load ? (
         <Text style={[styles.lable]}>{label}</Text>
       ) : (

@@ -6,6 +6,7 @@ import {
 import {CMPSvg, EducationSvg, HomeSvg, RiskFinderSvg} from './assets/Svg';
 import Home from './screens/Home';
 import {Text} from 'react-native';
+import Education from './screens/Education';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ export function TabNavigator() {
       />
       <Screen
         name="Education"
-        component={Home}
+        component={Education}
         options={getTabOptions(EducationSvg, 'Education')}
       />
       <Screen

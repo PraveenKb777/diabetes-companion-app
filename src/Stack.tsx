@@ -6,12 +6,15 @@ import Login from './screens/Login';
 import SignUp from './screens/SignUp';
 import ForgotPassword from './screens/ForgotPassword';
 import SplashScreen from './screens/SplashScreen';
+import DiabetesGuide from './screens/DiabetesGuide';
+import Mody from './screens/Mody';
+import ExcerciseGudie from './screens/ExcerciseGudie';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Navigator initialRouteName="SplashScreen">
+    <Navigator initialRouteName="HomeScreen">
       <Screen
         name="SplashScreen"
         options={{
@@ -53,6 +56,27 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={ForgotPassword}
+      />
+      <Screen
+        name="DiabetesGuideScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={DiabetesGuide}
+      />
+      <Screen
+        name="ModyScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={Mody}
+      />
+      <Screen
+        name="ExcerciseGuideScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={ExcerciseGudie}
       />
     </Navigator>
   );

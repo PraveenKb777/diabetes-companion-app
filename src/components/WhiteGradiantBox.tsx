@@ -5,9 +5,14 @@ import LinearGradient from 'react-native-linear-gradient';
 interface IWhiteGradiantBox {
   style?: StyleProp<ViewStyle>;
   direction?: 'left' | 'right' | 'top' | 'bottom';
+  height?: number;
 }
 
-const WhiteGradiantBox: FC<IWhiteGradiantBox> = ({style, direction}) => {
+const WhiteGradiantBox: FC<IWhiteGradiantBox> = ({
+  style,
+  direction,
+  height = 500,
+}) => {
   const deg =
     direction === 'bottom'
       ? 0
@@ -25,6 +30,7 @@ const WhiteGradiantBox: FC<IWhiteGradiantBox> = ({style, direction}) => {
       style={[
         styles.gradient,
         {
+          height,
           transform: [
             {
               rotate: `${deg}deg`,

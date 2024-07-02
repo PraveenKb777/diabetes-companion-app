@@ -5,14 +5,12 @@ import {
   StyleSheet,
   Text,
   ToastAndroid,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import CustomTextinput from '../components/CustomTextinput';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackActions, useNavigation} from '@react-navigation/native';
-import {CheckBoxChecked, CheckBoxUnChecked} from '../assets/Svg';
 import lock from '../assets/icons/lock.png';
 import mail from '../assets/icons/mail.png';
 import person from '../assets/icons/person.png';
@@ -37,13 +35,14 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passVis, setPassVis] = useState(true);
   const [conPassVis, setConPassVis] = useState(true);
-  const [check, setCheck] = useState(false);
+  // const [check, setCheck] = useState(false);
   useEffect(() => {
     clearStorage();
   }, []);
 
   const clearStorage = async () => {
     await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('user');
   };
 
   const [load, setLoad] = useState(false);
@@ -63,12 +62,14 @@ const SignUp = () => {
         secret: 'yyy',
       };
       // const datas = {email, name, password, confirmPassword, age, gender};
-      console.log({email, name, password, confirmPassword, age, gender});
+      // console.log({email, name, password, confirmPassword, age, gender});
       const res = await auth.post('/auth/sign-up', datas);
       // { token, message: "user created successfully", success: true },
-      const {message, token} = await res.data;
+      const {message, token, user} = await res.data;
       ToastAndroid.show(message, ToastAndroid.SHORT);
-      await AsyncStorage.setItem(token, token);
+      await AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('user', JSON.stringify(user));
+
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
       console.log('error', error.response);
@@ -134,7 +135,7 @@ const SignUp = () => {
           suffixIconTap={() => setConPassVis(e => !e)}
           onChangeText={e => setConfirmPassword(e)}
         />
-        <View style={[styles.tcMain]}>
+        {/* <View style={[styles.tcMain]}>
           <TouchableOpacity onPress={() => setCheck(e => !e)}>
             {check ? (
               <CheckBoxChecked style={[styles.checkBoxStyles]} />
@@ -147,7 +148,8 @@ const SignUp = () => {
             <Text style={[styles.tcHighlight]}>Terms and conditions</Text> and{' '}
             <Text style={[styles.tcHighlight]}>Privacy policy.</Text>
           </Text>
-        </View>
+        </View> */}
+        <View style={styles.tcMain} />
         <CustomButton onPress={onPressSignUp} label="SIGNUP" load={load} />
         <Text style={[styles.tcMain]}>
           Do you already have an account?{' '}

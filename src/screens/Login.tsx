@@ -29,6 +29,7 @@ const Login = () => {
 
   const clearStorage = async () => {
     await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('user');
   };
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -37,9 +38,10 @@ const Login = () => {
     setLoad(true);
     try {
       const res = await auth.post('/auth/login', {email, password});
-      const {message, token} = await res.data;
+      const {message, token, user} = await res.data;
       ToastAndroid.show(message, ToastAndroid.SHORT);
-      AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('user', JSON.stringify(user));
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
       console.log(error.response);
