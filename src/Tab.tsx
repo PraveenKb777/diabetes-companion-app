@@ -7,6 +7,7 @@ import {CMPSvg, EducationSvg, HomeSvg, RiskFinderSvg} from './assets/Svg';
 import Home from './screens/Home';
 import {Text} from 'react-native';
 import Education from './screens/Education';
+import RiskFinder from './screens/RiskFinder';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -58,7 +59,7 @@ export function TabNavigator() {
       />
       <Screen
         name="RiskFinder"
-        component={Home}
+        component={RiskFinder}
         options={getTabOptions(RiskFinderSvg, 'Risk Finder')}
       />
       <Screen

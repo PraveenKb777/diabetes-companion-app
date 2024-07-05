@@ -1,0 +1,46 @@
+import {R2_URL} from '@env';
+import React from 'react';
+import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import CustomButton from '../components/CustomButton';
+import {StackActionType, useNavigation} from '@react-navigation/native';
+import {StackNavigation} from '../Stack';
+
+const RiskFinder = () => {
+  const navigation = useNavigation<StackNavigation>();
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={[styles.scrollContent]}>
+        <Image src={`${R2_URL}riskfindermain.png`} style={[styles.mainImg]} />
+        <View style={{height: 40}} />
+        <CustomButton
+          label="Body Mass Index (BMI)"
+          onPress={() => navigation.navigate('BmiCalculatorScreen')}
+        />
+        <View style={{height: 16}} />
+
+        <CustomButton
+          label="Waist to hip ratio (WHR)"
+          onPress={() => navigation.navigate('WhrCalculatorScreen')}
+        />
+        <View style={{height: 16}} />
+        <CustomButton label="Diabetes rick finder" />
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default RiskFinder;
+
+const styles = StyleSheet.create({
+  safeArea: {flex: 1, backgroundColor: '#fff'},
+  mainImg: {
+    width: '100%',
+    aspectRatio: 1,
+  },
+  scrollContent: {
+    padding: 16,
+    height: Dimensions.get('window').height - 50,
+    justifyContent: 'center',
+  },
+});

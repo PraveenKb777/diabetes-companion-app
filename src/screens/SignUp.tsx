@@ -25,7 +25,7 @@ const data = [
   {label: 'Female', value: 'female'},
   {label: 'Others', value: 'other'},
 ];
-type TGender = 'male' | 'female' | 'other';
+export type TGender = 'male' | 'female' | 'other';
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -72,6 +72,8 @@ const SignUp = () => {
 
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
+      ToastAndroid.show(error.response.data.message, ToastAndroid.SHORT);
+
       console.log('error', error.response);
     } finally {
       setLoad(false);

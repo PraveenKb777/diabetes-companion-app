@@ -9,18 +9,70 @@ import SplashScreen from './screens/SplashScreen';
 import DiabetesGuide from './screens/DiabetesGuide';
 import Mody from './screens/Mody';
 import ExcerciseGudie from './screens/ExcerciseGudie';
+import Profile from './screens/Profile';
+import ProfileSetting from './screens/ProfileSetting';
+import ApplicationDisclimar from './screens/ApplicationDisclimar';
+import BmiCalculator from './screens/BmiCalculator';
+import {NavigationProp} from '@react-navigation/native';
+import BMIResult from './screens/BMIResult';
+import WhrCalculator from './screens/WhrCalculator';
+import WHRResult from './screens/WHRResult';
+
+export type ScreenNames = [
+  'SplashScreen',
+  'AppicationDisclimarScreen',
+  'ProfileSettingScreen',
+  'ProfileScreen',
+  'HomeScreen',
+  'FirstTimeScreen',
+  'LoginScreen',
+  'SignUpScreen',
+  'DiabetesGuideScreen',
+  'ModyScreen',
+  'ExcerciseGuideScreen',
+  'BmiCalculatorScreen',
+  'BMIResultScreen',
+  'WhrCalculatorScreen',
+  'WHRResultScreen',
+]; // type these manually
+export type RootStackParamList = Record<
+  ScreenNames[number],
+  {[key: string]: [value: any]} | undefined
+>;
+export type StackNavigation = NavigationProp<RootStackParamList>;
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Navigator initialRouteName="HomeScreen">
+    <Navigator initialRouteName="SplashScreen">
       <Screen
         name="SplashScreen"
         options={{
           headerShown: false,
         }}
         component={SplashScreen}
+      />
+      <Screen
+        name="AppicationDisclimarScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={ApplicationDisclimar}
+      />
+      <Screen
+        name="ProfileSettingScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={ProfileSetting}
+      />
+      <Screen
+        name="ProfileScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={Profile}
       />
       <Screen
         name="HomeScreen"
@@ -77,6 +129,34 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={ExcerciseGudie}
+      />
+      <Screen
+        name="BmiCalculatorScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={BmiCalculator}
+      />
+      <Screen
+        name="BMIResultScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={BMIResult}
+      />
+      <Screen
+        name="WhrCalculatorScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={WhrCalculator}
+      />
+      <Screen
+        name="WHRResultScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={WHRResult}
       />
     </Navigator>
   );

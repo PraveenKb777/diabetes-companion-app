@@ -21,6 +21,7 @@ import ExcersiseImgCard from '../components/ExcersiseImgCard';
 import popUpContent from '../popUpContent';
 import YoutubeIframe from 'react-native-youtube-iframe';
 import {R2_URL} from '@env';
+import ImportanceOfExeCarousal from '../components/ImportanceOfExeCarousal';
 
 const streachingList: {head: string; img: string; key: string}[] = [
   {
@@ -84,7 +85,7 @@ const streachingList: {head: string; img: string; key: string}[] = [
     img: 'AnkleRotateStretch.png',
   },
 ];
-interface IEGList {
+export interface IEGList {
   img: string;
   head: string;
   desc?: string;
@@ -312,245 +313,250 @@ const ExcerciseGudie = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Exercise Guide" />
-      <ScrollView style={{flex: 1, padding: 16}}>
-        <DGHeading
-          head={'Move and Conquer: Your Guide to\nExercise with Diabetes'}
-        />
-        <Text>
-          Exercise on a regular basis improves stamina and strength, raises
-          “Good” cholesterol, aids in glycemic control, and keep the body fit
-          and healthy. Let’s dive into the key aspects of an effective exercise
-          routine for individuals with diabetes.
-        </Text>
-        <DGHeading head="Exercise guidelines" />
-        <FlatList
-          data={EGList}
-          horizontal
-          nestedScrollEnabled
-          renderItem={e => (
-            <EGCard
-              img={e.item.img}
-              label={e.item.head}
-              key={e.index + e.item.head}
+      <ScrollView style={{flex: 1}}>
+        <View style={{padding: 16}}>
+          <DGHeading
+            head={'Move and Conquer: Your Guide to\nExercise with Diabetes'}
+          />
+          <Text>
+            Exercise on a regular basis improves stamina and strength, raises
+            “Good” cholesterol, aids in glycemic control, and keep the body fit
+            and healthy. Let’s dive into the key aspects of an effective
+            exercise routine for individuals with diabetes.
+          </Text>
+          <DGHeading head="Exercise guidelines" />
+          <FlatList
+            data={EGList}
+            horizontal
+            nestedScrollEnabled
+            renderItem={e => (
+              <EGCard
+                img={e.item.img}
+                label={e.item.head}
+                key={e.index + e.item.head}
+              />
+            )}
+          />
+          <DGHeading head="Types of exercise" />
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: 'rgba(0, 0, 0, 0.20)',
+              borderRadius: 10,
+            }}>
+            <Image
+              source={excerciseflow}
+              style={[{width: '100%', height: 300, objectFit: 'fill'}]}
             />
-          )}
-        />
-        <DGHeading head="Types of exercise" />
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: 'rgba(0, 0, 0, 0.20)',
-            borderRadius: 10,
-          }}>
+          </View>
+
+          <DGHeading head="Flexibility Exercise" />
+          <Text style={{color: '#000'}}>
+            Flexibility exercises are aimed at improving the muscle tone and
+            motion at joints.{' '}
+          </Text>
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              desc: 'It loosens the muscle and reduces muscle cramps.',
+              head: 'Benefits',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              desc: 'Stretching, Yoga',
+              head: 'Examples',
+            }}
+          />
+          <DGHeading head="Stretching" />
+          <Text>
+            {
+              'Stretching the muscles and joints helps with the smooth motion of the body.\naaIt also improves the physical activity of the body and increases blood flow.'
+            }
+          </Text>
+          <Text style={{fontWeight: '700', color: '#000', fontSize: 16}}>
+            A single stretch can be held for 15 to 20 seconds, and then repeated
+            two to four times.
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              marginTop: 20,
+            }}>
+            {streachingList.map((e, i) => (
+              <ExcersiseImgCard
+                img={e.img}
+                label={e.head}
+                key={e.head + e.img + i}
+                onClick={() => {
+                  openBottomSheet(popUpContent[e.key]);
+                }}
+              />
+            ))}
+          </View>
+          <NoteComponent />
+          <View style={{height: 20}} />
+          <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
+          <DGHeading head="Yoga" />
+          <Text style={{color: '#000'}}>
+            Ancient wisdom meets modern medicine: Yoga, simple and accessible,
+            complements diabetes management by:
+          </Text>
+          <View style={{height: 10}} />
+
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Boosting insulin',
+              desc: 'Specific poses stimulate pancreas and improve insulin sensitivity.',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Balancing blood sugar',
+              desc: 'Practice helps control glucose levels and enhances metabolism.',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Enhancing wellbeing',
+              desc: 'Yoga reduces stress, improves quality of life, and manages complications.',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Main strays of Yoga',
+              desc: 'Simple physical exercises (asanas), breathing exercises (pranayama), and relaxation techniques (savasana) or meditation.',
+            }}
+          />
+          <DGHeading head="Featured poses" />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Abdominal & forward bends',
+              desc: ' Stimulate pancreas for insulin release.',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Dhanurasana, matsyendrasana, vajrasana, bhujangasana, setubhandhasana, and pavanamuktasan',
+              desc: 'Increase insulin utilization for glucose absorption. ',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Sitting postures (ardhamatsyendrasan, yoga mudra, and mandukasan) & body twists (vakrasan and ardhamatsyendrasan)',
+              desc: 'Optimize pancreatic function & digestion.',
+            }}
+          />
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              head: 'Surya namaskar or Sun salutation',
+              desc: 'Practicing 30 minutes of suya namaskar helps powerful flow for metabolic balance & pre-diabetic support.',
+            }}
+          />
+          <DGHeading head="Featured poses" />
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              marginTop: 20,
+            }}>
+            {featuredPosesList.map((e, i) => (
+              <ExcersiseImgCard
+                img={e.img}
+                label={e.head}
+                desc={e.desc}
+                key={e.head + e.img + e.desc + i}
+                onClick={() => openBottomSheet(popUpContent[e.head])}
+              />
+            ))}
+          </View>
+          <NoteComponent />
+          <DGHeading head="Surya Namaskar (Sun Salutation)" />
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              marginTop: 20,
+            }}>
+            {suryaNamaskarList.map((e, i) => (
+              <ExcersiseImgCard
+                img={e.img}
+                label={e.head}
+                desc={e.desc}
+                key={e.head + e.img + e.desc + i}
+                onClick={() => openBottomSheet(popUpContent[e.head])}
+              />
+            ))}
+          </View>
+          <View style={{height: 20}} />
+          <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
+          <DGHeading head="Aerobic Exercise" />
+          <Text style={{color: '#000'}}>
+            Large muscular groups are used during aerobic activity, which uses
+            oxygen for an extended length of time. It comprises of large muscles
+            moving continuously, repeatedly, and rhythmically. During aerobic
+            exercise heart rate and breathe rate increases. Rhythmic aerobic
+            exercise is very important. A total of 30-45 minutes should be spent
+            exercising every day
+          </Text>
+          <BottomSheetYesbullet
+            item={{
+              bullet: true,
+              head: 'Benefits',
+              desc: [
+                'Improves blood flow.',
+                'Reduces blood pressure, blood glucose and blood cholesterol.',
+                'Cardiorespiratory fitness is enhanced.',
+              ],
+            }}
+          />
+          <View style={{height: 20}} />
+
           <Image
-            source={excerciseflow}
+            src={R2_URL + 'aerobicImg.png'}
             style={[{width: '100%', height: 300, objectFit: 'fill'}]}
           />
+
+          <DGHeading head="Strength Exercise" />
+          <Text style={{color: '#000'}}>
+            Exercises that build muscle strength involve lifting objects or
+            pushing back against resistance. High intensity workouts help in
+            strengthening the muscles.
+          </Text>
+          <BottomSheetYesbullet
+            item={{
+              bullet: true,
+              head: 'Benefits',
+              desc: [
+                'Build up stamina, lean muscle mass.',
+                'Improves insulin secretion and helps maintain glucose level.',
+                'Reduces the risk of cardiovascular diseases.',
+              ],
+            }}
+          />
+          <View style={{height: 20}} />
+
+          <Image
+            src={R2_URL + 'strength.png'}
+            style={[{width: '100%', height: 300, objectFit: 'fill'}]}
+          />
+          <DGHeading head="Importance of Exercise" />
         </View>
 
-        <DGHeading head="Flexibility Exercise" />
-        <Text style={{color: '#000'}}>
-          Flexibility exercises are aimed at improving the muscle tone and
-          motion at joints.{' '}
-        </Text>
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            desc: 'It loosens the muscle and reduces muscle cramps.',
-            head: 'Benefits',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            desc: 'Stretching, Yoga',
-            head: 'Examples',
-          }}
-        />
-        <DGHeading head="Stretching" />
-        <Text>
-          {
-            'Stretching the muscles and joints helps with the smooth motion of the body.\naaIt also improves the physical activity of the body and increases blood flow.'
-          }
-        </Text>
-        <Text style={{fontWeight: '700', color: '#000', fontSize: 16}}>
-          A single stretch can be held for 15 to 20 seconds, and then repeated
-          two to four times.
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-          {streachingList.map((e, i) => (
-            <ExcersiseImgCard
-              img={e.img}
-              label={e.head}
-              key={e.head + e.img + i}
-              onClick={() => {
-                openBottomSheet(popUpContent[e.key]);
-              }}
-            />
-          ))}
-        </View>
-        <NoteComponent />
-        <View style={{height: 20}} />
-        <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
-        <DGHeading head="Yoga" />
-        <Text style={{color: '#000'}}>
-          Ancient wisdom meets modern medicine: Yoga, simple and accessible,
-          complements diabetes management by:
-        </Text>
-        <View style={{height: 10}} />
-
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Boosting insulin',
-            desc: 'Specific poses stimulate pancreas and improve insulin sensitivity.',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Balancing blood sugar',
-            desc: 'Practice helps control glucose levels and enhances metabolism.',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Enhancing wellbeing',
-            desc: 'Yoga reduces stress, improves quality of life, and manages complications.',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Main strays of Yoga',
-            desc: 'Simple physical exercises (asanas), breathing exercises (pranayama), and relaxation techniques (savasana) or meditation.',
-          }}
-        />
-        <DGHeading head="Featured poses" />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Abdominal & forward bends',
-            desc: ' Stimulate pancreas for insulin release.',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Dhanurasana, matsyendrasana, vajrasana, bhujangasana, setubhandhasana, and pavanamuktasan',
-            desc: 'Increase insulin utilization for glucose absorption. ',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Sitting postures (ardhamatsyendrasan, yoga mudra, and mandukasan) & body twists (vakrasan and ardhamatsyendrasan)',
-            desc: 'Optimize pancreatic function & digestion.',
-          }}
-        />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            head: 'Surya namaskar or Sun salutation',
-            desc: 'Practicing 30 minutes of suya namaskar helps powerful flow for metabolic balance & pre-diabetic support.',
-          }}
-        />
-        <DGHeading head="Featured poses" />
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-          {featuredPosesList.map((e, i) => (
-            <ExcersiseImgCard
-              img={e.img}
-              label={e.head}
-              desc={e.desc}
-              key={e.head + e.img + e.desc + i}
-              onClick={() => openBottomSheet(popUpContent[e.head])}
-            />
-          ))}
-        </View>
-        <NoteComponent />
-        <DGHeading head="Surya Namaskar (Sun Salutation)" />
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-          {suryaNamaskarList.map((e, i) => (
-            <ExcersiseImgCard
-              img={e.img}
-              label={e.head}
-              desc={e.desc}
-              key={e.head + e.img + e.desc + i}
-              onClick={() => openBottomSheet(popUpContent[e.head])}
-            />
-          ))}
-        </View>
-        <View style={{height: 20}} />
-        <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
-        <DGHeading head="Aerobic Exercise" />
-        <Text style={{color: '#000'}}>
-          Large muscular groups are used during aerobic activity, which uses
-          oxygen for an extended length of time. It comprises of large muscles
-          moving continuously, repeatedly, and rhythmically. During aerobic
-          exercise heart rate and breathe rate increases. Rhythmic aerobic
-          exercise is very important. A total of 30-45 minutes should be spent
-          exercising every day
-        </Text>
-        <BottomSheetYesbullet
-          item={{
-            bullet: true,
-            head: 'Benefits',
-            desc: [
-              'Improves blood flow.',
-              'Reduces blood pressure, blood glucose and blood cholesterol.',
-              'Cardiorespiratory fitness is enhanced.',
-            ],
-          }}
-        />
-        <View style={{height: 20}} />
-
-        <Image
-          src={R2_URL + 'aerobicImg.png'}
-          style={[{width: '100%', height: 300, objectFit: 'fill'}]}
-        />
-
-        <DGHeading head="Strength Exercise" />
-        <Text style={{color: '#000'}}>
-          Exercises that build muscle strength involve lifting objects or
-          pushing back against resistance. High intensity workouts help in
-          strengthening the muscles.
-        </Text>
-        <BottomSheetYesbullet
-          item={{
-            bullet: true,
-            head: 'Benefits',
-            desc: [
-              'Build up stamina, lean muscle mass.',
-              'Improves insulin secretion and helps maintain glucose level.',
-              'Reduces the risk of cardiovascular diseases.',
-            ],
-          }}
-        />
-        <View style={{height: 20}} />
-
-        <Image
-          src={R2_URL + 'strength.png'}
-          style={[{width: '100%', height: 300, objectFit: 'fill'}]}
-        />
+        <ImportanceOfExeCarousal />
         <View style={{height: 30}} />
       </ScrollView>
     </SafeAreaView>

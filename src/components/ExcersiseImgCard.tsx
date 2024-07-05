@@ -1,12 +1,11 @@
+import {R2_URL} from '@env';
 import {
   Dimensions,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
-import {R2_URL} from '@env';
 
 import React, {FC} from 'react';
 interface IExcersiseImgCard {

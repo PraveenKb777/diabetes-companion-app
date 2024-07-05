@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {R2_URL} from '@env';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 interface IUser {
   img?: string;
@@ -15,7 +16,7 @@ interface IUser {
 
 const HomeHeader = () => {
   const [userObj, setUserObj] = useState<IUser>();
-
+  const navigation = useNavigation();
   useEffect(() => {
     getUser();
   }, []);
@@ -32,7 +33,8 @@ const HomeHeader = () => {
         alignItems: 'center',
       }}>
       <Text style={[styles.headerText]}>Hello, {userObj?.name}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ProfileScreen' as never)}>
         <Image
           src={userObj?.img || `${R2_URL}100.png`}
           style={{height: 42, width: 42}}

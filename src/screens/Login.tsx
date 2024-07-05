@@ -39,11 +39,18 @@ const Login = () => {
     try {
       const res = await auth.post('/auth/login', {email, password});
       const {message, token, user} = await res.data;
+      console.log(user);
       ToastAndroid.show(message, ToastAndroid.SHORT);
       await AsyncStorage.setItem('token', token);
       await AsyncStorage.setItem('user', JSON.stringify(user));
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
+      const data = await error.response.data;
+      console.log('>>>', data);
+      const msg =
+        error.response.data.message || 'Something went wrong try again';
+      ToastAndroid.show(msg, ToastAndroid.SHORT);
+
       console.log(error.response);
     } finally {
       setLoad(false);
@@ -82,6 +89,17 @@ const Login = () => {
         </Text>
         <View style={[{height: 36}]} />
         <CustomButton onPress={onPressLogin} label="LOGIN" load={load} />
+
+        <Text style={[styles.tcMain]}>
+          New to the application?{' '}
+          <Text
+            style={[styles.tcHighlight]}
+            onPress={() =>
+              navigation.dispatch(StackActions.replace('SignUpScreen'))
+            }>
+            Sign Up
+          </Text>
+        </Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -99,5 +117,19 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     marginVertical: 5,
+  },
+  tcMain: {
+    marginVertical: 40,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  tcStyle: {
+    color: '#9D9D9D',
+    fontSize: 14,
+    fontWeight: 400,
+  },
+  tcHighlight: {
+    color: '#0075FF',
+    textDecorationLine: 'underline',
   },
 });

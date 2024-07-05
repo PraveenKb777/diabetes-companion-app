@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {forwardRef} from 'react';
 import {
   Image,
   StyleProp,
@@ -17,32 +17,34 @@ interface ICustomTextInput extends TextInputProps {
   suffixIconTap?: () => void;
 }
 
-const CustomTextinput: FC<ICustomTextInput> = ({
-  mainContStyle = {},
-  prefixIcon,
-  suffixIcon,
-  suffixIconTap,
-  ...props
-}) => {
-  return (
-    <View style={[styles.mainCont, mainContStyle]}>
-      {prefixIcon ? <Image source={prefixIcon} height={10} width={10} /> : null}
-      <TextInput
-        placeholderTextColor={'rgba(0, 11, 33, .2)'}
-        style={[{marginLeft: 5, flex: 1}, props.style]}
-        cursorColor={'rgba(0, 11, 33, .4)'}
-        {...props}
-      />
-      {suffixIcon ? (
-        <TouchableOpacity
-          activeOpacity={suffixIcon ? 0 : 1}
-          onPress={suffixIconTap || undefined}>
-          <Image source={suffixIcon} height={10} width={10} />
-        </TouchableOpacity>
-      ) : null}
-    </View>
-  );
-};
+const CustomTextinput = forwardRef<TextInput, ICustomTextInput>(
+  (
+    {mainContStyle = {}, prefixIcon, suffixIcon, suffixIconTap, ...props},
+    ref,
+  ) => {
+    return (
+      <View style={[styles.mainCont, mainContStyle]}>
+        {prefixIcon ? (
+          <Image source={prefixIcon} height={10} width={10} />
+        ) : null}
+        <TextInput
+          placeholderTextColor={'rgba(0, 11, 33, .2)'}
+          style={[{marginLeft: 5, flex: 1}, props.style]}
+          cursorColor={'rgba(0, 11, 33, .4)'}
+          ref={ref}
+          {...props}
+        />
+        {suffixIcon ? (
+          <TouchableOpacity
+            activeOpacity={suffixIcon ? 0 : 1}
+            onPress={suffixIconTap || undefined}>
+            <Image source={suffixIcon} height={10} width={10} />
+          </TouchableOpacity>
+        ) : null}
+      </View>
+    );
+  },
+);
 
 export default CustomTextinput;
 
