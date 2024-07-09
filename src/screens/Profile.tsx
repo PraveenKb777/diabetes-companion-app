@@ -39,6 +39,7 @@ import CustomTextinput from '../components/CustomTextinput';
 import ProfileButton from '../components/ProfileButton';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
+import {StackNavigation} from '../Stack';
 
 export interface IUser {
   id: string;
@@ -59,7 +60,7 @@ const Profile = () => {
   const [conPassVis, setConPassVis] = useState(true);
   const [changePassVis, setChangePassVis] = useState(false);
   const [load, setLoad] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigation>();
   useEffect(() => {
     getUser();
   }, []);
@@ -189,7 +190,11 @@ const Profile = () => {
             navigation.navigate('AppicationDisclimarScreen' as never)
           }
         />
-        <ProfileButton label="Give Feedback" Svg={FeedBackSvg} />
+        <ProfileButton
+          label="Give Feedback"
+          Svg={FeedBackSvg}
+          onPress={() => navigation.navigate('FeedBackScreen')}
+        />
         <View
           style={{
             backgroundColor: 'rgba(0, 0, 0, 0.20)',

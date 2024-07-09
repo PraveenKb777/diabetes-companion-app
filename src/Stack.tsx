@@ -17,6 +17,8 @@ import {NavigationProp} from '@react-navigation/native';
 import BMIResult from './screens/BMIResult';
 import WhrCalculator from './screens/WhrCalculator';
 import WHRResult from './screens/WHRResult';
+import FeedBackScreen from './screens/FeedBackScreen';
+import MythsAndFacts from './screens/MythsAndFacts';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -34,6 +36,8 @@ export type ScreenNames = [
   'BMIResultScreen',
   'WhrCalculatorScreen',
   'WHRResultScreen',
+  'FeedBackScreen',
+  'MythsAndFactsScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -157,6 +161,20 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={WHRResult}
+      />
+      <Screen
+        name="FeedBackScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={FeedBackScreen}
+      />
+      <Screen
+        name="MythsAndFactsScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={MythsAndFacts}
       />
     </Navigator>
   );

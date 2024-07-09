@@ -1,9 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import {useBottomSheet} from '../context/BottomSheetContext';
+import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import DownGradientBox from '../components/DownGradientBox';
-import {useNavigation} from '@react-navigation/native';
+import {StackNavigation} from '../Stack';
 
 // e
 
@@ -17,7 +18,7 @@ import {useNavigation} from '@react-navigation/native';
 
 //
 
-const eduList: {img: string; head: string; nav: string}[] = [
+const eduList: {img: string; head: string; nav: any}[] = [
   {
     head: 'Diabetes Guide',
     img: 'edumulti.png',
@@ -36,7 +37,7 @@ const eduList: {img: string; head: string; nav: string}[] = [
   {
     head: 'Myths and Facts',
     img: 'edufacts.png',
-    nav: 'DiabetesGuideScreen',
+    nav: 'MythsAndFactsScreen',
   },
   {
     head: 'Exercise Guide',
@@ -51,7 +52,7 @@ const eduList: {img: string; head: string; nav: string}[] = [
 ];
 
 const Education = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigation>();
 
   return (
     <ScrollView style={{padding: 12, paddingTop: 50}}>
@@ -78,5 +79,3 @@ const Education = () => {
 };
 
 export default Education;
-
-const styles = StyleSheet.create({});

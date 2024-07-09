@@ -1,9 +1,9 @@
 import {R2_URL} from '@env';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import CustomButton from '../components/CustomButton';
-import {StackActionType, useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 
 const RiskFinder = () => {
@@ -24,7 +24,9 @@ const RiskFinder = () => {
           onPress={() => navigation.navigate('WhrCalculatorScreen')}
         />
         <View style={{height: 16}} />
-        <CustomButton label="Diabetes rick finder" />
+        <CustomButton label="Diabetes risk finder" />
+        <View style={{height: 16}} />
+        <CustomButton label="MODY FINDER" />
       </ScrollView>
     </SafeAreaView>
   );

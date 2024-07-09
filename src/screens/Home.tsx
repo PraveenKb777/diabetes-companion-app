@@ -65,7 +65,7 @@ import weightscale from '../assets/mythandfact/weightscale.png';
 import whatyouprefer from '../assets/mythandfact/whatyouprefer.png';
 import yesrice from '../assets/mythandfact/yesrice.png';
 
-const MythFactList: IMythAndFactItem[] = [
+export const MythFactList: IMythAndFactItem[] = [
   {
     id: 'wite]wgsvwgvgw',
     number: '#1',

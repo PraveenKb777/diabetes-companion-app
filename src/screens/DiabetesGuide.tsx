@@ -1,21 +1,23 @@
+/* eslint-disable react-native/no-inline-styles */
+import {R2_URL} from '@env';
 import {
   Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import {R2_URL} from '@env';
 
 import React, {FC} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
-import DiabetesMellitusCard from '../components/DiabetesMellitusCard';
-import {DMItems} from './Home';
-import FlowChartCard from '../components/FlowChartDiabetesGuide';
 import CauseOfDCard from '../components/CauseOfDCard';
+import DiabetesMellitusCard from '../components/DiabetesMellitusCard';
+import FlowChartCard from '../components/FlowChartDiabetesGuide';
+import {DMItems} from './Home';
 
+import {useNavigation} from '@react-navigation/native';
+import YoutubeIframe from 'react-native-youtube-iframe';
 import alcohol from '../assets/causeofdiabetics/alcohol.png';
 import bodyparts from '../assets/causeofdiabetics/bodyparts.png';
 import childwithmon from '../assets/causeofdiabetics/childwithmon.png';
@@ -23,15 +25,13 @@ import family from '../assets/causeofdiabetics/family.png';
 import surgury from '../assets/causeofdiabetics/surgury.png';
 import tablets from '../assets/causeofdiabetics/tablets.png';
 import weight from '../assets/causeofdiabetics/weight.png';
-import YoutubeIframe from 'react-native-youtube-iframe';
-import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
-import ComplicationsOfDCard from '../components/ComplicationsOfDCard';
-import TestForDCard from '../components/TestForDCard';
-import SubCarousal from '../components/SubCarousal';
-import ModyCard from '../components/ModyCard';
-import {CarouselItem} from '../components/Carousal';
-import {useNavigation} from '@react-navigation/native';
 import BOMBGCard from '../components/BOMBGCard';
+import {CarouselItem} from '../components/Carousal';
+import ComplicationsOfDCard from '../components/ComplicationsOfDCard';
+import ModyCard from '../components/ModyCard';
+import SubCarousal from '../components/SubCarousal';
+import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
+import TestForDCard from '../components/TestForDCard';
 
 //
 
