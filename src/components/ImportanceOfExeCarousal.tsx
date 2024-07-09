@@ -39,7 +39,6 @@ const importanceOfExcList: IEGList[][] = [
   ],
 ];
 
-/* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState} from 'react';
 import {
   Dimensions,

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 export interface IMythAndFactItem {

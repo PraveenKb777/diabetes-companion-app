@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {FC} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useBottomSheet} from '../context/BottomSheetContext';

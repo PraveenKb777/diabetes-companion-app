@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {R2_URL} from '@env';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';

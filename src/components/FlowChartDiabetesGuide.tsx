@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {FC} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 

@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {FC} from 'react';
 import {G, Mask, Path, Rect, Svg, SvgProps} from 'react-native-svg';
 
