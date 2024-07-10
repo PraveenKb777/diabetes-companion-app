@@ -1,4 +1,5 @@
-import {R2_URL, R2_AUDIO_URL} from '@env';
+// DRFResults
+
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {
@@ -14,47 +15,37 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {DownArrowSvg} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
 import Loading from '../components/Loading';
-import {BottomSheetNobullet} from '../context/BottomSheetContext';
+import {
+  BottomSheetNobullet,
+  BottomSheetYesbullet,
+} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
-import AudioPlayer from '../components/AudioPlayer';
-
-const findBodyGrade = (val: number, gender: string = 'male') => {
+import {R2_URL} from '@env';
+const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
   let pos: DimensionValue;
+  let image: string;
 
-  if (gender === 'male') {
-    if (val < 0.9) {
-      color = '#1F8C0E';
-      cat = 'Low';
-      pos = '15%';
-    } else if (val >= 0.9 && val < 0.95) {
-      color = '#F47C0C';
-      cat = 'Moderate';
-      pos = '48%';
-    } else {
-      color = '#EE3F3F';
-      cat = 'High Risk';
-      pos = '82%';
-    }
+  if (val < 30) {
+    color = '#1F8C0E';
+    cat = 'Low';
+    pos = '15%';
+    image = 'happy.png';
+  } else if (val >= 30 && val < 50) {
+    color = '#F47C0C';
+    cat = 'Moderate';
+    pos = '48%';
+    image = 'sad.png';
   } else {
-    if (val < 0.8) {
-      color = '#1F8C0E';
-      cat = 'Low';
-      pos = '15%';
-    } else if (val > 0.8 && val < 0.85) {
-      color = '#F47C0C';
-      cat = 'Moderate';
-      pos = '48%';
-    } else {
-      color = '#EE3F3F';
-      cat = 'High Risk';
-      pos = '82%';
-    }
+    color = '#EE3F3F';
+    cat = 'High';
+    pos = '82%';
+    image = 'verySad.png';
   }
 
-  return {color, cat, pos};
+  return {color, cat, pos, image};
 };
 
 type ParamList = {
@@ -63,51 +54,25 @@ type ParamList = {
   };
 };
 
-interface IWHhrData {
-  name: string;
-  gender: string;
-  waist_cm: number;
-  hip_cm: number;
-  whr_score: number;
-  created_at: string;
+interface IDRFData {
+  id: string;
+  score: number;
 }
 
 // whrFemale.png
 
 // whrMale.png
 
-const WHRResult = () => {
+const DRFResults = () => {
   const [load, setLoad] = useState(true);
-  const [whrData, setWhrData] = useState<IWHhrData>();
-  const [url, setUrl] = useState<string>();
+  const [drfData, setDrfData] = useState<IDRFData>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
-      const res = await auth.get(`/whr/${params?.id || ''}`);
+      const res = await auth.get(`/drf/${params?.id || ''}`);
       const {result} = await res.data;
-      const gender = result.gender;
-      const score = result.whr_score;
-      let audioUrl = R2_AUDIO_URL;
-      if (gender === 'male') {
-        if (score > 0.95) {
-          audioUrl += 'highriskmenwhr.mp3';
-        } else if (score >= 0.81 && score <= 0.85) {
-          audioUrl += 'moderateriskmenwhr.mp3';
-        } else {
-          audioUrl += 'lowriskmenwhr.mp3';
-        }
-      } else {
-        if (score > 0.85) {
-          audioUrl += 'highriskwomenwhr.mp3';
-        } else if (score >= 0.81 && score <= 0.85) {
-          audioUrl += 'moderateriskwomenwhr.mp3';
-        } else {
-          audioUrl += 'lowriskwomenwhr.mp3';
-        }
-      }
-      setUrl(audioUrl);
-      setWhrData(result);
+      setDrfData(result);
     } catch (error: any) {
       console.log(error.response);
       const msg = error?.response?.data?.message || 'Something went wrong';
@@ -123,49 +88,45 @@ const WHRResult = () => {
   if (load) {
     return <Loading />;
   }
+  console.log(`${R2_URL}${findBodyGrade(drfData?.score!).image}`);
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader
-        heading={`Waist to Hip Ration (WHR)\nResult-${
-          whrData?.gender === 'male' ? 'Male' : 'Female'
-        }`}
-      />
+      <BackButtonHeader heading={'Diabetes Risk Finder Result'} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <DGHeading head="Waist to Hip Ration (WHR) " />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            desc: 'Body fat distribution, specifically around the abdomen.',
-            head: 'Measures',
-          }}
+        <Image
+          src={`${R2_URL}${findBodyGrade(drfData?.score!).image}`}
+          style={{width: '100%', aspectRatio: 1}}
         />
-        <BottomSheetNobullet
-          item={{
-            bullet: false,
-            desc: 'Waist circumference (cm) / Hip circumference (cm)',
-            head: 'Formula',
-          }}
-        />
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: '700',
+            color: '#000',
+            textAlign: 'center',
+          }}>
+          You are at{' '}
+          <Text style={{color: findBodyGrade(drfData?.score!).color}}>
+            {findBodyGrade(drfData?.score!).cat}
+          </Text>{' '}
+          Risk!
+        </Text>
         <DGHeading head="Results" />
-        <AudioPlayer url={url || ''} />
         <View style={{height: 20}} />
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
-            WHR Score {'  '} :{'       '}
-            <Text style={{color: findBodyGrade(whrData?.whr_score!).color}}>
-              {whrData?.whr_score!}
+            DRF Score {'    '} :{'       '}
+            <Text style={{color: findBodyGrade(drfData?.score!).color}}>
+              {drfData?.score!}
             </Text>
           </Text>
           <Text style={styles.resultText}>
             Risk Level {'     '} :{'       '}
-            <Text style={{color: findBodyGrade(whrData?.whr_score!).color}}>
-              {findBodyGrade(whrData?.whr_score!).cat}
+            <Text style={{color: findBodyGrade(drfData?.score!).color}}>
+              {findBodyGrade(drfData?.score!).cat}
             </Text>
           </Text>
           <View style={{height: 30}} />
-          <DownArrowSvg
-            style={{left: findBodyGrade(whrData?.whr_score!).pos}}
-          />
+          <DownArrowSvg style={{left: findBodyGrade(drfData?.score!).pos}} />
 
           <View style={styles.indicatorCont}>
             <View
@@ -220,20 +181,31 @@ const WHRResult = () => {
             </Text>
           </View>
         </View>
-
-        <DGHeading head={whrData?.gender === 'male' ? 'Male' : 'Female'} />
-        <Image
-          src={`${R2_URL}${
-            whrData?.gender === 'male' ? 'whrMale.png' : 'whrFemale.png'
-          }`}
-          style={styles.pryamid}
+        <DGHeading head="Recommendations" />
+        <Text>
+          Maintain a healthy lifestyle and monitor for any new symptoms.
+        </Text>
+        <View style={{height: 20}} />
+        <BottomSheetYesbullet
+          item={{
+            bullet: true,
+            head: 'Important Disclaimers',
+            desc: [
+              'This 	assessment is for informational purposes only and does not 	constitute a diagnosis of diabetes/MODY.',
+              'Consulting 	a healthcare professional for accurate diagnosis and management is 	essential.',
+              'Individual 	results may vary depending on the accuracy of your responses and 	limitations of the algorithm.',
+              'This 	assessment may not capture all potential risk factors for 	diabetes/MODY and additional testing or evaluation may be necessary.',
+              'Take 	necessary steps to maintain a healthy lifestyle and prioritize 	regular medical checkups.',
+              'Your 	data will be kept confidential and will not be used for any purpose 	other than this assessment.',
+            ],
+          }}
         />
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default WHRResult;
+export default DRFResults;
 
 const styles = StyleSheet.create({
   safeArea: {

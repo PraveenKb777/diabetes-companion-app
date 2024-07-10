@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {DGHeading} from './DiabetesGuide';
 import CustomTextinput from '../components/CustomTextinput';
@@ -19,20 +19,33 @@ import auth from '../utils/auth';
 import {FemaleSvg, MaleSvg} from '../assets/Svg';
 import AudioPlayer from '../components/AudioPlayer';
 import {R2_AUDIO_URL} from '@env';
+import RadioButtons from '../components/RadioButtons';
 
-const WhrCalculator = () => {
+const PHYSICAL_ACTIVITY = [
+  'Vigorous exercise or strenuous work',
+  'Moderate exercise (work/home)',
+  'Mild exercise (work/home)',
+  'No exercise & sedentary work/home',
+];
+const GENERATION = ['No family history', 'Either parent', 'Both parents'];
+
+const DRFCalculator = () => {
   const [load, setLoad] = useState(false);
   const [name, setName] = useState('');
   const [waist, setWaist] = useState('');
-  const [hip, setHip] = useState('');
+  const [age, setAge] = useState('');
   const [gender, setGender] = useState<'male' | 'female'>();
+  const [physical_activity, setPhysicalActivity] = useState<number>();
+  const [family_history, setFamilyHistory] = useState<number>();
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
+    setAge('');
+    setFamilyHistory(undefined);
     setGender(undefined);
     setName('');
     setWaist('');
-    setHip('');
+    setPhysicalActivity(undefined);
   };
 
   useFocusEffect(
@@ -43,12 +56,19 @@ const WhrCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
-      const res = await auth.post('/whr', {name, hip, waist, gender});
+      const res = await auth.post('/drf', {
+        name,
+        age,
+        physical_activity,
+        family_history,
+        waist,
+        gender,
+      });
       const {
         result: {id},
       } = await res.data;
-      ToastAndroid.show('WHR Calculated successfully', ToastAndroid.SHORT);
-      navigation.navigate('WHRResultScreen', {id});
+      ToastAndroid.show('DRF Calculated successfully', ToastAndroid.SHORT);
+      navigation.navigate('DRFResultsScreen', {id});
     } catch (error: any) {
       console.log(error.response, error);
       const msg =
@@ -62,9 +82,8 @@ const WhrCalculator = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader heading="Waist Hip Ratio (WHR)" />
+      <BackButtonHeader heading="Diabetes Risk Finder (DRF)" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <AudioPlayer url={`${R2_AUDIO_URL}calculatebuttonvoiceforwhr.mp3`} />
         <DGHeading head="Gender" />
         <View style={[styles.genderMain]}>
           <TouchableOpacity
@@ -92,6 +111,15 @@ const WhrCalculator = () => {
           value={name}
           onChangeText={e => setName(e)}
         />
+        <DGHeading head="Age" />
+        <CustomTextinput
+          placeholder="Enter your age"
+          keyboardType="numeric"
+          mainContStyle={{flex: 1}}
+          value={age}
+          maxLength={3}
+          onChangeText={e => setAge(e)}
+        />
         <DGHeading head="Waist" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -104,20 +132,19 @@ const WhrCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+        <DGHeading head="How would you describe your level of physical activity?" />
+        <RadioButtons
+          list={PHYSICAL_ACTIVITY}
+          onChange={e => setPhysicalActivity(e)}
+          value={physical_activity}
+        />
+        <DGHeading head="Generations with diabetes?" />
+        <RadioButtons
+          list={GENERATION}
+          value={family_history}
+          onChange={e => setFamilyHistory(e)}
+        />
 
-        <DGHeading head="Hip" />
-
-        <View style={styles.measurmentInput}>
-          <CustomTextinput
-            placeholder="Enter your hip size"
-            keyboardType="numeric"
-            mainContStyle={{flex: 1}}
-            value={hip}
-            maxLength={3}
-            onChangeText={e => setHip(e)}
-          />
-          <MeasurementBox unit="cm" />
-        </View>
         <View style={{height: 30}} />
         <CustomButton label="CALCULATE" load={load} onPress={calculateBmi} />
       </ScrollView>
@@ -125,7 +152,7 @@ const WhrCalculator = () => {
   );
 };
 
-export default WhrCalculator;
+export default DRFCalculator;
 
 const styles = StyleSheet.create({
   genderMain: {

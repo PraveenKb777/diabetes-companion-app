@@ -6,13 +6,13 @@ import {
   ToastAndroid,
   View,
 } from 'react-native';
-import React, {FC, useState} from 'react';
+import React, {FC, useCallback, useState} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {DGHeading} from './DiabetesGuide';
 import CustomTextinput from '../components/CustomTextinput';
 import CustomButton from '../components/CustomButton';
 import auth from '../utils/auth';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 import AudioPlayer from '../components/AudioPlayer';
 import {R2_AUDIO_URL} from '@env';
@@ -30,6 +30,18 @@ const BmiCalculator = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const navigation = useNavigation<StackNavigation>();
+
+  const clearState = () => {
+    setWeight('');
+    setName('');
+    setHeight('');
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => clearState();
+    }, []),
+  );
   const calculateBmi = async () => {
     setLoad(true);
     try {

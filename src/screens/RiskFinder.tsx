@@ -25,7 +25,10 @@ const RiskFinder = () => {
           onPress={() => navigation.navigate('WhrCalculatorScreen')}
         />
         <View style={{height: 16}} />
-        <CustomButton label="Diabetes risk finder" />
+        <CustomButton
+          label="Diabetes risk finder"
+          onPress={() => navigation.navigate('DRFCalculatorScreen')}
+        />
         <View style={{height: 16}} />
         <CustomButton label="MODY FINDER" />
       </ScrollView>

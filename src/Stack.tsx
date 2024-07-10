@@ -19,6 +19,8 @@ import WhrCalculator from './screens/WhrCalculator';
 import WHRResult from './screens/WHRResult';
 import FeedBackScreen from './screens/FeedBackScreen';
 import MythsAndFacts from './screens/MythsAndFacts';
+import DRFCalculator from './screens/DRFCalculator';
+import DRFResults from './screens/DRFResults';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -38,6 +40,8 @@ export type ScreenNames = [
   'WHRResultScreen',
   'FeedBackScreen',
   'MythsAndFactsScreen',
+  'DRFCalculatorScreen',
+  'DRFResultsScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -175,6 +179,20 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={MythsAndFacts}
+      />
+      <Screen
+        name="DRFCalculatorScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={DRFCalculator}
+      />
+      <Screen
+        name="DRFResultsScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={DRFResults}
       />
     </Navigator>
   );
