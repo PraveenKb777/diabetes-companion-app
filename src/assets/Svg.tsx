@@ -386,3 +386,12 @@ export const FemaleSvg: FC<SvgProps> = props => (
     />
   </Svg>
 );
+
+export const AudioSVG: FC<SvgProps> = props => (
+  <Svg width={18} height={18} viewBox="0 0 18 18" fill="none" {...props}>
+    <Path
+      d="M11 17.725v-2.05q2.25-.65 3.625-2.5T16 8.975t-1.375-4.2T11 2.275V.225q3.1.7 5.05 3.138T18 8.975t-1.95 5.613T11 17.725M0 12V6h4l5-5v16l-5-5zm11 1V4.95a4.15 4.15 0 0 1 1.838 1.65Q13.5 7.7 13.5 9q0 1.275-.662 2.363A4.17 4.17 0 0 1 11 13M7 5.85 4.85 8H2v2h2.85L7 12.15z"
+      fill="#fff"
+    />
+  </Svg>
+);

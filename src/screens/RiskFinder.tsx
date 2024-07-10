@@ -5,6 +5,7 @@ import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import CustomButton from '../components/CustomButton';
 import {StackNavigation} from '../Stack';
+import AudioPlayer from '../components/AudioPlayer';
 
 const RiskFinder = () => {
   const navigation = useNavigation<StackNavigation>();

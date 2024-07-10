@@ -17,6 +17,8 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 import auth from '../utils/auth';
 import {FemaleSvg, MaleSvg} from '../assets/Svg';
+import AudioPlayer from '../components/AudioPlayer';
+import {R2_AUDIO_URL} from '@env';
 
 const WhrCalculator = () => {
   const [load, setLoad] = useState(false);
@@ -49,6 +51,7 @@ const WhrCalculator = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="Waist Hip Ratio (WHR)" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AudioPlayer url={`${R2_AUDIO_URL}calculatebuttonvoiceforwhr.mp3`} />
         <DGHeading head="Gender" />
         <View style={[styles.genderMain]}>
           <TouchableOpacity

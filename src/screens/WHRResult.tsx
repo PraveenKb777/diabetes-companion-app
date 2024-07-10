@@ -1,4 +1,4 @@
-import {R2_URL} from '@env';
+import {R2_URL, R2_AUDIO_URL} from '@env';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {
@@ -17,6 +17,7 @@ import Loading from '../components/Loading';
 import {BottomSheetNobullet} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
+import AudioPlayer from '../components/AudioPlayer';
 
 const findBodyGrade = (val: number, gender: string = 'male') => {
   let color: string;
@@ -78,13 +79,34 @@ interface IWHhrData {
 const WHRResult = () => {
   const [load, setLoad] = useState(true);
   const [whrData, setWhrData] = useState<IWHhrData>();
-
+  const [url, setUrl] = useState<string>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
       const res = await auth.get(`/whr/${params?.id || ''}`);
       const {result} = await res.data;
+      const gender = result.gender;
+      const score = result.whr_score;
+      let audioUrl = R2_AUDIO_URL;
+      if (gender === 'male') {
+        if (score > 0.95) {
+          audioUrl += 'highriskmenwhr.mp3';
+        } else if (score >= 0.81 && score <= 0.85) {
+          audioUrl += 'moderateriskmenwhr.mp3';
+        } else {
+          audioUrl += 'lowriskmenwhr.mp3';
+        }
+      } else {
+        if (score > 0.85) {
+          audioUrl += 'highriskwomenwhr.mp3';
+        } else if (score >= 0.81 && score <= 0.85) {
+          audioUrl += 'moderateriskwomenwhr.mp3';
+        } else {
+          audioUrl += 'lowriskwomenwhr.mp3';
+        }
+      }
+      setUrl(audioUrl);
       setWhrData(result);
     } catch (error: any) {
       console.log(error.response);
@@ -125,6 +147,8 @@ const WHRResult = () => {
           }}
         />
         <DGHeading head="Results" />
+        <AudioPlayer url={url || ''} />
+        <View style={{height: 20}} />
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
             WHR Score {'  '} :{'       '}

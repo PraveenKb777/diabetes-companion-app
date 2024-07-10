@@ -14,7 +14,8 @@ import CustomButton from '../components/CustomButton';
 import auth from '../utils/auth';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
-
+import AudioPlayer from '../components/AudioPlayer';
+import {R2_AUDIO_URL} from '@env';
 export const MeasurementBox: FC<{unit: string}> = ({unit}) => {
   return (
     <View style={[styles.measurment]}>
@@ -53,6 +54,8 @@ const BmiCalculator = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="Body Mass Index (BMI)" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AudioPlayer url={`${R2_AUDIO_URL}calculatebuttonvoiceforbmi.mp3`} />
+
         <DGHeading head="Name" />
         <CustomTextinput
           placeholder="Enter your name"
@@ -71,9 +74,7 @@ const BmiCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
-
         <DGHeading head="Weight" />
-
         <View style={styles.measurmentInput}>
           <CustomTextinput
             placeholder="Enter your weight"

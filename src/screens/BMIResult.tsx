@@ -17,7 +17,8 @@ import Loading from '../components/Loading';
 import {BottomSheetNobullet} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
-
+import {R2_AUDIO_URL} from '@env';
+import AudioPlayer from '../components/AudioPlayer';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -61,13 +62,28 @@ interface IBmiData {
 const BMIResult = () => {
   const [load, setLoad] = useState(true);
   const [bmiData, setBmiData] = useState<IBmiData>();
-
+  const [url, setUrl] = useState<string>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
       const res = await auth.get(`/bmi/${params?.id || ''}`);
       const {result} = await res.data;
+      let audioFile = R2_AUDIO_URL;
+      if (result.bmi_score >= 40) {
+        audioFile = audioFile + 'obesityiiibmi.mp3';
+      } else if (result.bmi_score >= 35 && result.bmi_score <= 39.9) {
+        audioFile = audioFile + 'obesityiibmi.mp3';
+      } else if (result.bmi_score >= 30 && result.bmi_score <= 34.9) {
+        audioFile = audioFile + 'obesityibmi.mp3';
+      } else if (result.bmi_score >= 25 && result.bmi_score <= 29.9) {
+        audioFile = audioFile + 'preobesitybmi.mp3';
+      } else if (result.bmi_score >= 18.5 && result.bmi_score <= 24.9) {
+        audioFile = audioFile + 'normalweightbmi.mp3';
+      } else {
+        audioFile = audioFile + 'underweightbmi.mp3';
+      }
+      setUrl(audioFile);
       setBmiData(result);
     } catch (error: any) {
       console.log(error.response);
@@ -104,6 +120,8 @@ const BMIResult = () => {
           }}
         />
         <DGHeading head="Results" />
+        <AudioPlayer url={url || ''} />
+        <View style={{height: 20}} />
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
             BMI Score {'  '} :{'       '}
