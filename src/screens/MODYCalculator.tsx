@@ -1,3 +1,5 @@
+//
+
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React, {useCallback, useState} from 'react';
 import {
@@ -19,31 +21,45 @@ import auth from '../utils/auth';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
 
-const PHYSICAL_ACTIVITY = [
-  'Vigorous exercise or strenuous work',
-  'Moderate exercise (work/home)',
-  'Mild exercise (work/home)',
-  'No exercise & sedentary work/home',
+const PARENT_HISTORY = [
+  'No parent with diabetes',
+  'One parent with diabetes',
+  'Both the Parent with diabetes',
 ];
-const GENERATION = ['No family history', 'Either parent', 'Both parents'];
+const GENERATION = [
+  '0 or 1 generations with diabetes',
+  '2 or 3 generations with diabetes',
+];
 
-const DRFCalculator = () => {
+const HBA1C = [' ≤7.5 %', '>7.5 %'];
+
+const OPTIONS = ['Presence', 'Absence'];
+
+const MODYCalculator = () => {
   const [load, setLoad] = useState(false);
   const [name, setName] = useState('');
-  const [waist, setWaist] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
   const [age, setAge] = useState('');
-  const [gender, setGender] = useState<'male' | 'female'>();
-  const [physical_activity, setPhysicalActivity] = useState<number>();
+  const [parent_history, setParentHistory] = useState<number>();
   const [family_history, setFamilyHistory] = useState<number>();
+  const [hba1c, setHba1c] = useState<number>();
+  const [auto_anitbodie, setAutoAnitbodie] = useState<number>();
+  const [ketoacidosis, setKetoacidosis] = useState<number>();
+  const [complications, setComplications] = useState<number>();
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
     setAge('');
     setFamilyHistory(undefined);
-    setGender(undefined);
     setName('');
-    setWaist('');
-    setPhysicalActivity(undefined);
+    setHeight('');
+    setWeight('');
+    setParentHistory(undefined);
+    setHba1c(undefined);
+    setAutoAnitbodie(undefined);
+    setKetoacidosis(undefined);
+    setComplications(undefined);
   };
 
   useFocusEffect(
@@ -54,19 +70,23 @@ const DRFCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
-      const res = await auth.post('/drf', {
+      const res = await auth.post('/mody', {
         name,
         age,
-        physical_activity,
+        parent_history,
         family_history,
-        waist,
-        gender,
+        height,
+        weight,
+        auto_anitbodie,
+        hba1c,
+        ketoacidosis,
+        complications,
       });
       const {
         result: {id},
       } = await res.data;
-      ToastAndroid.show('DRF Calculated successfully', ToastAndroid.SHORT);
-      navigation.navigate('DRFResultsScreen', {id});
+      ToastAndroid.show('MODY Calculated successfully', ToastAndroid.SHORT);
+      navigation.navigate('ModyResultsScreen', {id});
     } catch (error: any) {
       console.log(error.response, error);
       const msg =
@@ -80,29 +100,10 @@ const DRFCalculator = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader heading="Diabetes Risk Finder (DRF)" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <DGHeading head="Gender" />
-        <View style={[styles.genderMain]}>
-          <TouchableOpacity
-            style={[
-              styles.genderItemCont,
-              gender !== 'male' ? {opacity: 0.5} : {},
-            ]}
-            onPress={() => setGender('male')}>
-            <MaleSvg />
-            <Text style={styles.genderText}>Male</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.genderItemCont,
-              gender !== 'female' ? {opacity: 0.5} : {},
-            ]}
-            onPress={() => setGender('female')}>
-            <FemaleSvg />
-            <Text style={styles.genderText}>Female</Text>
-          </TouchableOpacity>
-        </View>
+      <BackButtonHeader heading="MODY Risk Finder " />
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="always">
         <DGHeading head="Name" />
         <CustomTextinput
           placeholder="Enter your name"
@@ -118,29 +119,61 @@ const DRFCalculator = () => {
           maxLength={3}
           onChangeText={e => setAge(e)}
         />
-        <DGHeading head="Waist" />
+        <DGHeading head="Height" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
-            placeholder="Enter your waist size"
+            placeholder="Enter your height size"
             keyboardType="numeric"
             mainContStyle={{flex: 1}}
-            value={waist}
+            value={height}
             maxLength={3}
-            onChangeText={e => setWaist(e)}
+            onChangeText={e => setHeight(e)}
           />
           <MeasurementBox unit="cm" />
         </View>
-        <DGHeading head="How would you describe your level of physical activity?" />
-        <RadioButtons
-          list={PHYSICAL_ACTIVITY}
-          onChange={e => setPhysicalActivity(e)}
-          value={physical_activity}
-        />
-        <DGHeading head="Do either of your Parents have diabetes?" />
+        <DGHeading head="Weight" />
+        <View style={styles.measurmentInput}>
+          <CustomTextinput
+            placeholder="Enter your weight size"
+            keyboardType="numeric"
+            mainContStyle={{flex: 1}}
+            value={weight}
+            maxLength={3}
+            onChangeText={e => setWeight(e)}
+          />
+          <MeasurementBox unit="kg" />
+        </View>
+        <DGHeading head="Generations with diabetes?" />
         <RadioButtons
           list={GENERATION}
           value={family_history}
           onChange={e => setFamilyHistory(e)}
+        />
+        <DGHeading head="Parent with diabetes?" />
+        <RadioButtons
+          list={PARENT_HISTORY}
+          onChange={e => setParentHistory(e)}
+          value={parent_history}
+        />
+        <DGHeading head="HbA1C (%)" />
+        <RadioButtons list={HBA1C} onChange={e => setHba1c(e)} value={hba1c} />
+        <DGHeading head="Auto antibodies (IAA/GAD) " />
+        <RadioButtons
+          list={OPTIONS}
+          onChange={e => setAutoAnitbodie(e)}
+          value={auto_anitbodie}
+        />
+        <DGHeading head="Ketoacidosis" />
+        <RadioButtons
+          list={OPTIONS}
+          onChange={e => setKetoacidosis(e)}
+          value={ketoacidosis}
+        />
+        <DGHeading head="Complications : (Glycosuria or  Macrosomia and Neonatal hypoglycemia or Renal cysts or Urogenital abnormalities or Exocrine Insufficiency)" />
+        <RadioButtons
+          list={OPTIONS}
+          onChange={e => setComplications(e)}
+          value={complications}
         />
 
         <View style={{height: 30}} />
@@ -150,7 +183,7 @@ const DRFCalculator = () => {
   );
 };
 
-export default DRFCalculator;
+export default MODYCalculator;
 
 const styles = StyleSheet.create({
   genderMain: {

@@ -30,7 +30,10 @@ const RiskFinder = () => {
           onPress={() => navigation.navigate('DRFCalculatorScreen')}
         />
         <View style={{height: 16}} />
-        <CustomButton label="MODY FINDER" />
+        <CustomButton
+          label="MODY FINDER"
+          onPress={() => navigation.navigate('MODYCalculatorScreen')}
+        />
       </ScrollView>
     </SafeAreaView>
   );

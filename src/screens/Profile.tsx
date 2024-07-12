@@ -181,7 +181,11 @@ const Profile = () => {
           Svg={Settings}
           onPress={() => navigation.navigate('ProfileSettingScreen' as never)}
         />
-        <ProfileButton label="My Log" Svg={LogSvg} />
+        <ProfileButton
+          label="My Log"
+          Svg={LogSvg}
+          onPress={() => navigation.navigate('MyLogScreen')}
+        />
         <ProfileButton
           label="Importance & Disclaimer"
           Svg={ImportantSvg}

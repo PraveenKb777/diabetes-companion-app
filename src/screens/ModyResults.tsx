@@ -1,5 +1,3 @@
-// DRFResults
-
 import {R2_URL} from '@env';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
@@ -30,7 +28,7 @@ const findBodyGrade = (val: number) => {
     cat = 'Low';
     pos = '15%';
     image = 'happy.png';
-  } else if (val >= 30 && val < 50) {
+  } else if (val >= 31 && val < 61) {
     color = '#F47C0C';
     cat = 'Moderate';
     pos = '48%';
@@ -53,21 +51,21 @@ type ParamList = {
 
 interface IDRFData {
   id: string;
-  drf_score: number;
+  mody_score: number;
 }
 
 // whrFemale.png
 
 // whrMale.png
 
-const DRFResults = () => {
+const ModyResults = () => {
   const [load, setLoad] = useState(true);
   const [drfData, setDrfData] = useState<IDRFData>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
-      const res = await auth.get(`/drf/${params?.id || ''}`);
+      const res = await auth.get(`/mody/${params?.id || ''}`);
       const {result} = await res.data;
       setDrfData(result);
     } catch (error: any) {
@@ -87,10 +85,10 @@ const DRFResults = () => {
   }
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader heading={'Diabetes Risk Finder Result'} />
+      <BackButtonHeader heading={'MODY Risk Finder Result'} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image
-          src={`${R2_URL}${findBodyGrade(drfData?.drf_score!).image}`}
+          src={`${R2_URL}${findBodyGrade(drfData?.mody_score!).image}`}
           style={{width: '100%', aspectRatio: 1}}
         />
         <Text
@@ -101,8 +99,8 @@ const DRFResults = () => {
             textAlign: 'center',
           }}>
           You are at{' '}
-          <Text style={{color: findBodyGrade(drfData?.drf_score!).color}}>
-            {findBodyGrade(drfData?.drf_score!).cat}
+          <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
+            {findBodyGrade(drfData?.mody_score!).cat}
           </Text>{' '}
           Risk!
         </Text>
@@ -111,19 +109,19 @@ const DRFResults = () => {
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
             DRF Score {'    '} :{'       '}
-            <Text style={{color: findBodyGrade(drfData?.drf_score!).color}}>
-              {drfData?.drf_score!}
+            <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
+              {drfData?.mody_score!}
             </Text>
           </Text>
           <Text style={styles.resultText}>
             Risk Level {'     '} :{'       '}
-            <Text style={{color: findBodyGrade(drfData?.drf_score!).color}}>
-              {findBodyGrade(drfData?.drf_score!).cat}
+            <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
+              {findBodyGrade(drfData?.mody_score!).cat}
             </Text>
           </Text>
           <View style={{height: 30}} />
           <DownArrowSvg
-            style={{left: findBodyGrade(drfData?.drf_score!).pos}}
+            style={{left: findBodyGrade(drfData?.mody_score!).pos}}
           />
 
           <View style={styles.indicatorCont}>
@@ -181,9 +179,9 @@ const DRFResults = () => {
         </View>
         <DGHeading head="Recommendations" />
         <Text style={{fontStyle: 'italic', color: '#000', fontSize: 16}}>
-          {drfData?.drf_score! < 30
+          {drfData?.mody_score! < 30
             ? 'Maintain a healthy lifestyle and monitor for any new symptoms.'
-            : drfData?.drf_score! <= 50
+            : drfData?.mody_score! <= 50
             ? 'Schedule a health checkup and consult with a healthcare provider for further evaluation.'
             : 'Seek immediate medical advice and undergo a comprehensive health assessment.'}
         </Text>
@@ -207,7 +205,7 @@ const DRFResults = () => {
   );
 };
 
-export default DRFResults;
+export default ModyResults;
 
 const styles = StyleSheet.create({
   safeArea: {

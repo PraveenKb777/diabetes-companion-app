@@ -1,12 +1,17 @@
 import React, {FC} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {R2_URL} from '@env';
 
 const DietPrincipalCard: FC<{item: {id: string; img: any; head: string}}> = ({
   item,
 }) => {
+  const imgSource =
+    typeof item.img === 'string'
+      ? {src: R2_URL + item.img}
+      : {source: item.img};
   return (
     <View style={[styles.itemContainer]}>
-      <ImageBackground source={item.img} style={[styles.banner]}>
+      <ImageBackground source={item.img} style={[styles.banner]} {...imgSource}>
         {/* <Image
           source={item.img}
           style={{height: 152, width: '100%', objectFit: 'fill'}}

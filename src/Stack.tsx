@@ -21,6 +21,12 @@ import FeedBackScreen from './screens/FeedBackScreen';
 import MythsAndFacts from './screens/MythsAndFacts';
 import DRFCalculator from './screens/DRFCalculator';
 import DRFResults from './screens/DRFResults';
+import MODYCalculator from './screens/MODYCalculator';
+import ModyResults from './screens/ModyResults';
+import DietaryGuide from './screens/DietaryGuide';
+import Assesment from './screens/Assesment';
+import AssesmentQuestions from './screens/AssesmentQuestions';
+import MyLog from './screens/MyLog';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -42,6 +48,12 @@ export type ScreenNames = [
   'MythsAndFactsScreen',
   'DRFCalculatorScreen',
   'DRFResultsScreen',
+  'MODYCalculatorScreen',
+  'ModyResultsScreen',
+  'DietaryGuideScreen',
+  'AssesmentScreen',
+  'AssesmentQuestionsScreen',
+  'MyLogScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -193,6 +205,48 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={DRFResults}
+      />
+      <Screen
+        name="MODYCalculatorScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={MODYCalculator}
+      />
+      <Screen
+        name="ModyResultsScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={ModyResults}
+      />
+      <Screen
+        name="DietaryGuideScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={DietaryGuide}
+      />
+      <Screen
+        name="AssesmentScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={Assesment}
+      />
+      <Screen
+        name="AssesmentQuestionsScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={AssesmentQuestions}
+      />
+      <Screen
+        name="MyLogScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={MyLog}
       />
     </Navigator>
   );

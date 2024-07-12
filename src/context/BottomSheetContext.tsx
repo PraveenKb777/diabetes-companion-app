@@ -6,9 +6,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {Dimensions, Text, View} from 'react-native';
+import {Dimensions, Text, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import AudioPlayer from '../components/AudioPlayer';
 
 interface Base {
   head?: string;
@@ -31,6 +32,7 @@ export interface IBottomSheetMain {
   head: string;
   bullet?: boolean;
   content?: BulletType[];
+  audio?: string;
 }
 
 export interface IBottomSheetStrDesc extends IBottomSheetMain {
@@ -139,6 +141,7 @@ const BottomSheetItem: FC<{item: IBottomSheetContent}> = ({item}) => {
           <BottomSheetNobullet key={e.head! + i} item={e} />
         );
       })}
+      {item.audio ? <AudioPlayer url={item.audio} /> : null}
     </View>
   );
 };

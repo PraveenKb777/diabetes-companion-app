@@ -1,5 +1,12 @@
 import {FC} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ColorValue,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useBottomSheet} from '../context/BottomSheetContext';
 import popUpContent from '../popUpContent';
 import {R2_URL} from '@env';
@@ -8,15 +15,17 @@ const SympromesOfDiaCard: FC<{
   img: any;
   label: string;
   desc?: string;
-  itemKey: string;
+  itemKey?: string;
+  borderColor?: ColorValue;
+  width?: any;
   onClick?: () => {};
-}> = ({label, onClick, img, itemKey, desc}) => {
+}> = ({label, onClick, img, itemKey, desc, borderColor, width}) => {
   const {openBottomSheet} = useBottomSheet();
-  const value = popUpContent[itemKey];
+  const value = popUpContent[itemKey || ''];
 
   const length = value?.content?.length || 0;
   const onPress = () => {
-    openBottomSheet(value, length > 3);
+    itemKey && openBottomSheet(value, length > 3);
     onClick && onClick();
   };
 
@@ -24,20 +33,33 @@ const SympromesOfDiaCard: FC<{
     typeof img === 'string' ? {src: R2_URL + img} : {source: img};
 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.mainCont}>
-      <Image source={img} style={styles.img} {...imgSource} />
+    <TouchableOpacity
+      activeOpacity={itemKey ? 0 : 1}
+      onPress={onPress}
+      style={[
+        styles.mainCont,
+        borderColor ? {borderColor: borderColor} : {},
+        width ? {width: width} : {width: 210},
+      ]}>
+      <Image
+        source={img}
+        style={[styles.img, width ? {width: width} : {}]}
+        {...imgSource}
+      />
       <Text style={[styles.text]}>{label}</Text>
       {desc ? <Text style={[styles.text, styles.desc]}>{desc}</Text> : null}
-      <View style={[styles.infoCont]}>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 12,
-            fontFamily: '700',
-          }}>
-          i
-        </Text>
-      </View>
+      {itemKey ? (
+        <View style={[styles.infoCont]}>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 12,
+              fontFamily: '700',
+            }}>
+            i
+          </Text>
+        </View>
+      ) : null}
     </TouchableOpacity>
   );
 };
@@ -56,6 +78,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
     marginRight: 10,
+    flex: 1,
     // paddingLeft: 15,
   },
   img: {

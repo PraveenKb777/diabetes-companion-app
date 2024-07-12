@@ -3,21 +3,9 @@ import React from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import DownGradientBox from '../components/DownGradientBox';
-import {StackNavigation} from '../Stack';
+import {ScreenNames, StackNavigation} from '../Stack';
 
-// e
-
-//
-
-//
-
-//
-
-//
-
-//
-
-const eduList: {img: string; head: string; nav: any}[] = [
+const eduList: {img: string; head: string; nav: ScreenNames[number]}[] = [
   {
     head: 'Diabetes Guide',
     img: 'edumulti.png',
@@ -31,7 +19,7 @@ const eduList: {img: string; head: string; nav: any}[] = [
   {
     head: 'Dietary Guide',
     img: 'edumeal.png',
-    nav: 'DiabetesGuideScreen',
+    nav: 'DietaryGuideScreen',
   },
   {
     head: 'Myths and Facts',
@@ -46,7 +34,7 @@ const eduList: {img: string; head: string; nav: any}[] = [
   {
     head: 'Assessment',
     img: 'edubrain.png',
-    nav: 'DiabetesGuideScreen',
+    nav: 'AssesmentScreen',
   },
 ];
 
