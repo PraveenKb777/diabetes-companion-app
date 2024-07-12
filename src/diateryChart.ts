@@ -1,5 +1,5 @@
 const DChart = {
-  'Foods Included Liberally': {
+  liberally: {
     Vegetables: [
       {
         Name: 'Ash gourd',
@@ -349,7 +349,7 @@ const DChart = {
       },
     ],
   },
-  'Foods Included Moderately': {
+  moderately: {
     'Cereals and Millets': [
       {
         Name: 'Black rice',
@@ -1247,7 +1247,7 @@ const DChart = {
       },
     ],
   },
-  'Foods Excluded': {
+  excluded: {
     'Cereals and Millets': [
       {
         Name: 'Cornflakes',

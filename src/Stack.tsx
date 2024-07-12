@@ -27,6 +27,7 @@ import DietaryGuide from './screens/DietaryGuide';
 import Assesment from './screens/Assesment';
 import AssesmentQuestions from './screens/AssesmentQuestions';
 import MyLog from './screens/MyLog';
+import NoInternetScreen from './screens/NoInternetScreen';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -54,6 +55,7 @@ export type ScreenNames = [
   'AssesmentScreen',
   'AssesmentQuestionsScreen',
   'MyLogScreen',
+  'NoInternetScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -247,6 +249,13 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={MyLog}
+      />
+      <Screen
+        name="NoInternetScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={NoInternetScreen}
       />
     </Navigator>
   );

@@ -1,8 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // AudioPlayer.tsx
 import React, {useCallback, useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import Sound from 'react-native-sound';
 import {AudioSVG} from '../assets/Svg';
 import Equalizer from './Equilizer';

@@ -72,9 +72,11 @@ const SignUp = () => {
 
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
-      ToastAndroid.show(error.response.data.message, ToastAndroid.SHORT);
-
-      console.log('error', error.response);
+      console.log('error', error);
+      const message =
+        error.response.data.message ||
+        'Something went wrong kindly try after some time';
+      ToastAndroid.show(message, ToastAndroid.SHORT);
     } finally {
       setLoad(false);
     }

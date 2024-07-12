@@ -29,7 +29,7 @@ const CustomTextinput = forwardRef<TextInput, ICustomTextInput>(
         ) : null}
         <TextInput
           placeholderTextColor={'rgba(0, 11, 33, .2)'}
-          style={[{marginLeft: 5, flex: 1}, props.style]}
+          style={[{marginLeft: 5, flex: 1, color: '#000'}, props.style]}
           cursorColor={'rgba(0, 11, 33, .4)'}
           ref={ref}
           {...props}
