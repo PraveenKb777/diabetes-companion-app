@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useBottomSheet} from '../context/BottomSheetContext';
 import popUpContent from '../popUpContent';
-
+import {R2_URL} from '@env';
 const CauseOfDCard: FC<{
   img: any;
   label: string;
@@ -18,6 +18,8 @@ const CauseOfDCard: FC<{
     openBottomSheet(value, length > 3);
     onClick && onClick();
   };
+  const imgSource =
+    typeof img === 'string' ? {src: R2_URL + img} : {source: img};
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.mainCont}>
@@ -31,7 +33,7 @@ const CauseOfDCard: FC<{
           backgroundColor: color || '#000',
         }}
       />
-      <Image source={img} style={styles.img} />
+      <Image style={styles.img} {...imgSource} />
       <Text style={[styles.text]}>{label}</Text>
       <View style={[styles.infoCont, {alignSelf: 'flex-start'}]}>
         <Text

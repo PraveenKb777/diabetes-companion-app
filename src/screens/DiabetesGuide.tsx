@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import CauseOfDCard from '../components/CauseOfDCard';
 import DiabetesMellitusCard from '../components/DiabetesMellitusCard';
@@ -31,24 +31,7 @@ import ModyCard from '../components/ModyCard';
 import SubCarousal from '../components/SubCarousal';
 import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
 import TestForDCard from '../components/TestForDCard';
-
-//
-
-// footpain.jpg
-
-//
-
-//
-
-//
-
-//
-
-// urinatetoilate.jpg
-
-// vagina.jpg
-
-// woundonfeet.jpg
+import Loading from '../components/Loading';
 
 interface ISymptomesOfDiaCard {
   head: string;
@@ -67,19 +50,19 @@ const symptomesofDiaList: ISymptomesOfDiaCard[] = [
   {
     head: 'Polyphagia',
     key: 'Polyphagia',
-    img: 'overeating.jpg',
+    img: 'symptomesofdfood.png',
     desc: '(Increase appetite)',
   },
   {
     head: 'Polydipsia',
     key: 'Polydipsia',
-    img: 'overdrinking.jpg',
+    img: 'symptomesofDrinkwater.png',
     desc: '(Increase thirst)',
   },
   {
     head: 'Blurred vision',
     key: 'Blurred vision',
-    img: 'eyecolor.jpg',
+    img: 'symptomesofdbluredvision.png',
   },
   {
     head: 'Vaginal Infection',
@@ -118,7 +101,7 @@ const causeOfDiabeticsList: ICauseofDiabetics[] = [
   {
     head: 'Family History',
     key: 'Family history',
-    img: childwithmon,
+    img: 'youngmodyfamily.png',
     color: '#0075FF',
   },
   {
@@ -154,7 +137,7 @@ const causeOfDiabeticsList: ICauseofDiabetics[] = [
   {
     head: 'Age',
     key: 'Age',
-    img: family,
+    img: 'youngmodypersonclipart.png',
     color: '#F79646',
   },
 ];
@@ -252,13 +235,13 @@ const waysToControlD: CarouselItem[] = [
     head: 'Eat Healthy',
     img: 'healthyfood.png',
     id: 'erhqehv4354',
-    navigation: 'LoginScreen',
+    navigation: 'DietaryGuideScreen',
   },
   {
     head: 'Do regular exercise and lose extra weight (atleast 20-25 minutes per day)',
     img: 'excersise.png',
     id: 'erhqeh354',
-    navigation: 'EatHealthy',
+    navigation: 'ExcerciseGuideScreen',
   },
   {
     head: 'Sleep well (7 hours/night)',
@@ -329,7 +312,15 @@ export const DGHeading: FC<{head: string; onClick?: () => {}}> = ({head}) => {
 
 const DiabetesGuide: FC = () => {
   const navigation = useNavigation();
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    const id = setTimeout(() => setLoad(false));
 
+    return () => clearTimeout(id);
+  }, []);
+  if (load) {
+    return <Loading />;
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Diabetes Guide" />

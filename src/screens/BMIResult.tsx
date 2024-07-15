@@ -119,6 +119,20 @@ const BMIResult = () => {
             head: 'Formula',
           }}
         />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            desc: '18.5-24.9 kg/m²',
+            head: 'Normal Range',
+          }}
+        />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            desc: 'Assesses risk for weight-related health issues like heart disease, diabetes and some cancers.',
+            head: 'Benefits',
+          }}
+        />
         <DGHeading head="Results" />
         <AudioPlayer url={url || ''} />
         <View style={{height: 20}} />

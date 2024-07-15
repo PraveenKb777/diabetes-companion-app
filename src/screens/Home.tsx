@@ -63,6 +63,8 @@ import vegetablenames from '../assets/mythandfact/vegetablenames.png';
 import weightscale from '../assets/mythandfact/weightscale.png';
 import whatyouprefer from '../assets/mythandfact/whatyouprefer.png';
 import yesrice from '../assets/mythandfact/yesrice.png';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigation} from '../Stack';
 
 export const MythFactList: IMythAndFactItem[] = [
   {
@@ -163,7 +165,7 @@ export const MythFactList: IMythAndFactItem[] = [
   },
 ];
 
-const HomeHead: FC<{head: string; onClick?: () => {}}> = ({
+const HomeHead: FC<{head: string; onClick?: () => void}> = ({
   head,
   onClick = () => {},
 }) => {
@@ -233,6 +235,7 @@ const DPItems: {id: string; img: any; head: string}[] = [
 ];
 
 const Home = () => {
+  const navigation = useNavigation<StackNavigation>();
   return (
     <SafeAreaView style={[styles.safeArea]}>
       <ScrollView style={[styles.scrolView]}>
@@ -242,10 +245,23 @@ const Home = () => {
           <Carousel />
         </View>
         <View style={[styles.homeScreenNavs]}>
-          <DownGradientBox img={cmp} label="Caloric Menu Planner - CMP" />
-          <DownGradientBox img={riskfinder} label="BMI, WHR, Risk Finder" />
+          <DownGradientBox
+            img={cmp}
+            label="Caloric Menu Planner - CMP"
+            onClick={() => navigation.navigate('HomeScreen', {screen: 'CMP'})}
+          />
+          <DownGradientBox
+            img={riskfinder}
+            label="BMI, WHR, DRF, MODY RF"
+            onClick={() =>
+              navigation.navigate('HomeScreen', {screen: 'RiskFinder'})
+            }
+          />
         </View>
-        <HomeHead head="Unveiling MODY" />
+        <HomeHead
+          head="Unveiling MODY"
+          onClick={() => navigation.navigate('ModyScreen')}
+        />
         <ModyCard
           item={{
             id: '262brjwjrbttr',
@@ -262,14 +278,20 @@ const Home = () => {
             img: insulin,
           }}
         />
-        <HomeHead head="Diabetes Mellitus" />
+        <HomeHead
+          head="Diabetes Mellitus"
+          onClick={() => navigation.navigate('DiabetesGuideScreen')}
+        />
         <ScrollView horizontal nestedScrollEnabled>
           {DMItems.map(e => (
             <DiabetesMellitusCard key={e.id} item={e} />
           ))}
         </ScrollView>
 
-        <HomeHead head="Myths and Facts" />
+        <HomeHead
+          head="Myths and Facts"
+          onClick={() => navigation.navigate('MythsAndFactsScreen')}
+        />
         <MythsAndFactsCard
           item={{
             id: 'wite]wgsvwgvgw',
@@ -280,7 +302,10 @@ const Home = () => {
             factImg: doctoradvice,
           }}
         />
-        <HomeHead head="Diabetic Diet Principle" />
+        <HomeHead
+          head="Diabetic Diet Principle"
+          onClick={() => navigation.navigate('DietaryGuideScreen')}
+        />
         <ScrollView horizontal nestedScrollEnabled>
           {DPItems.map(e => (
             <DietPrincipalCard key={e.id} item={e} />
@@ -294,7 +319,10 @@ const Home = () => {
           eat liberally, moderately and those to avoid. Plus, explore effective
           home remedies for managing diabetes mellitus naturally.
         </Text>
-        <HomeHead head="Move and Conquer" />
+        <HomeHead
+          head="Move and Conquer"
+          onClick={() => navigation.navigate('ExcerciseGuideScreen')}
+        />
         <View style={styles.lastCont}>
           <Image
             source={excerciseflow}
@@ -338,6 +366,7 @@ const Home = () => {
           <CustomButton
             label="Take a quiz"
             style={{alignSelf: 'flex-start', paddingHorizontal: 25}}
+            onPress={() => navigation.navigate('AssesmentScreen')}
           />
         </View>
 

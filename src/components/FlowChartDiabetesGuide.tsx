@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {R2_URL} from '@env';
 
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import child from '../assets/typesofflowchart/child.png';
@@ -25,10 +26,14 @@ export const FlowChartCard: FC<{
     openBottomSheet(value, length > 3);
     onClick && onClick();
   };
+  const imgSource =
+    typeof img === 'string' ? {src: R2_URL + img} : {source: img};
+
+  // type1change1.png
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.mainCont}>
-      <Image source={img} style={styles.img} />
+      <Image style={styles.img} {...imgSource} />
       <Text style={[styles.text]}>{label}</Text>
       <View style={[styles.infoCont, {alignSelf: 'flex-start'}]}>
         <Text
@@ -141,7 +146,10 @@ const FlowChartDiabetesGuide: FC = () => {
             backgroundColor: '#000',
           }}
         />
-        <FlowChartCard label="Type 1 Diabetes Mellitus" img={upsetgirl} />
+        <FlowChartCard
+          label="Type 1 Diabetes Mellitus"
+          img={'type1change1.png'}
+        />
       </View>
       <View style={{marginBottom: 16, marginRight: 32, alignSelf: 'flex-end'}}>
         <View
@@ -154,7 +162,10 @@ const FlowChartDiabetesGuide: FC = () => {
             backgroundColor: '#000',
           }}
         />
-        <FlowChartCard label="Type 2 Diabetes Mellitus" img={ladybloodtest} />
+        <FlowChartCard
+          label="Type 2 Diabetes Mellitus"
+          img={'type2change.png'}
+        />
       </View>
       <View style={{marginBottom: 16, marginRight: 32, alignSelf: 'flex-end'}}>
         <View

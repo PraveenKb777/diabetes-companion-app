@@ -2,15 +2,16 @@ import React, {FC} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {CarouselItem} from './Carousal';
 import {R2_URL} from '@env';
-import {NextBlueSvg} from '../assets/Svg';
+import {NextBlueSvg, PlaySVG} from '../assets/Svg';
 
 interface IModyCard {
   item: CarouselItem;
   onPress?: () => void;
   info?: boolean;
+  video?: string;
 }
 
-const ModyCard: FC<IModyCard> = ({item, onPress, info}) => {
+const ModyCard: FC<IModyCard> = ({item, onPress, info, video}) => {
   const imgSource =
     typeof item.img === 'string'
       ? {src: R2_URL + item.img}
@@ -34,10 +35,25 @@ const ModyCard: FC<IModyCard> = ({item, onPress, info}) => {
           />
         ) : null}
         {item.img ? (
-          <Image
-            {...imgSource}
-            style={{height: 52, width: 52, borderRadius: 100}}
-          />
+          <View>
+            <Image
+              {...imgSource}
+              style={{height: 52, width: 52, borderRadius: 100}}
+            />
+            {video ? (
+              <TouchableOpacity
+                style={{
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginLeft: 3,
+                }}>
+                <PlaySVG />
+              </TouchableOpacity>
+            ) : null}
+          </View>
         ) : null}
         <View style={[{marginLeft: item.img ? 20 : 0, flex: 1}]}>
           <Text style={[styles.itemText]}>{item.head}</Text>

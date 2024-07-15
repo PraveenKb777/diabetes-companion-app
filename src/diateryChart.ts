@@ -39,7 +39,7 @@ const DChart = {
         'Total Fat (gm)': 0.32,
         'Total  Fiber (gm)': 3.98,
         'Glycemic Index': 'Nil',
-        img: 'brinjal.avif',
+        img: 'brinjal.jpg',
       },
       {
         Name: 'Cho-cho-marrow',
@@ -173,7 +173,7 @@ const DChart = {
         'Total Fat (gm)': 1.35,
         'Total  Fiber (gm)': 8.6,
         'Glycemic Index': 'Nil',
-        img: 'agathileaves.avif',
+        img: 'agathileaves.jpg',
       },
       {
         Name: 'Amaranth leaves',
@@ -293,7 +293,7 @@ const DChart = {
         'Total Fat (gm)': 0.64,
         'Total  Fiber (gm)': 2.38,
         'Glycemic Index': 12,
-        img: 'spinach.avif',
+        img: 'spinach.jpg',
       },
     ],
     Spices: [

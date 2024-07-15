@@ -1,5 +1,5 @@
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {CarouselItem} from '../components/Carousal';
 import {ScrollView} from 'react-native-gesture-handler';
 import BackButtonHeader from '../components/BackButtonHeader';
@@ -10,6 +10,7 @@ import {
   useBottomSheet,
 } from '../context/BottomSheetContext';
 import popUpContent from '../popUpContent';
+import Loading from '../components/Loading';
 // dnamody.png
 
 // groupmody.png
@@ -272,6 +273,15 @@ const Mody = () => {
   const onPress = (value: IBottomSheetContent) => {
     openBottomSheet(value);
   };
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    const id = setTimeout(() => setLoad(false));
+
+    return () => clearTimeout(id);
+  }, []);
+  if (load) {
+    return <Loading />;
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Maturity Onset Diabetes of the Young (MODY) Guide" />

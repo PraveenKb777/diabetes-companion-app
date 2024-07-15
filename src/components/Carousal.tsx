@@ -21,6 +21,7 @@ import seven from '../assets/banner/7.png';
 import eight from '../assets/banner/8.png';
 import nine from '../assets/banner/9.png';
 import ten from '../assets/banner/10.png';
+import {ScreenNames} from '../Stack';
 
 const {width} = Dimensions.get('window');
 
@@ -29,8 +30,9 @@ export interface CarouselItem {
   img?: any;
   head: string;
   desc?: String;
-  navigation?: string;
+  navigation?: ScreenNames[number];
   color?: string;
+  video?: string;
 }
 
 interface CarouselProps {

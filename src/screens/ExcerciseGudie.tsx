@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {ScrollView} from 'react-native-gesture-handler';
 import {DGHeading} from './DiabetesGuide';
@@ -22,6 +22,7 @@ import popUpContent from '../popUpContent';
 import YoutubeIframe from 'react-native-youtube-iframe';
 import {R2_URL} from '@env';
 import ImportanceOfExeCarousal from '../components/ImportanceOfExeCarousal';
+import Loading from '../components/Loading';
 
 const streachingList: {head: string; img: string; key: string}[] = [
   {
@@ -309,7 +310,15 @@ const NoteComponent = () => (
 
 const ExcerciseGudie = () => {
   const {openBottomSheet} = useBottomSheet();
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    const id = setTimeout(() => setLoad(false));
 
+    return () => clearTimeout(id);
+  }, []);
+  if (load) {
+    return <Loading />;
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Exercise Guide" />

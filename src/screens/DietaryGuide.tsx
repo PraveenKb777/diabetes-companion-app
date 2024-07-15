@@ -1,3 +1,5 @@
+import {R2_AUDIO_URL, R2_URL} from '@env';
+import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -7,18 +9,16 @@ import {
   Text,
   View,
 } from 'react-native';
-import React from 'react';
-import DietPrincipalCard from '../components/DietPrincipalCard';
-import BackButtonHeader from '../components/BackButtonHeader';
-import {DGHeading} from './DiabetesGuide';
-import AudioPlayer from '../components/AudioPlayer';
-import {R2_AUDIO_URL, R2_URL} from '@env';
-import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
-import {CarouselItem} from '../components/Carousal';
-import ModyCard from '../components/ModyCard';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import BackButtonHeader from '../components/BackButtonHeader';
+import {CarouselItem} from '../components/Carousal';
+import DietPrincipalCard from '../components/DietPrincipalCard';
+import ModyCard from '../components/ModyCard';
+import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
 import {useBottomSheet} from '../context/BottomSheetContext';
-
+import {DGHeading} from './DiabetesGuide';
+import FoodsIncluded from '../components/FoodsIncluded';
+import Loading from '../components/Loading';
 const DPItems: {id: string; img: any; head: string}[] = [
   {
     id: '0931ngagweggweg42',
@@ -177,20 +177,19 @@ const CRAVE_AND_CUT = [
   },
 ];
 
-//
-
-//
-
-//
-
-//  oileclipps.png
-
-//
-
-//  waterglass.png
 const width = Dimensions.get('window').width;
 const DietaryGuide = () => {
   const {openBottomSheet} = useBottomSheet();
+
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    const id = setTimeout(() => setLoad(false));
+
+    return () => clearTimeout(id);
+  }, []);
+  if (load) {
+    return <Loading />;
+  }
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -345,6 +344,8 @@ const DietaryGuide = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <DGHeading head="Food Included " />
+        <FoodsIncluded />
         <Image
           src={`${R2_URL}dgYoga.png`}
           style={{width: '100%', aspectRatio: 1 / 1.6, objectFit: 'fill'}}

@@ -1,9 +1,9 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {R2_URL} from '@env';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 interface IUser {
   img?: string;
@@ -17,9 +17,12 @@ interface IUser {
 const HomeHeader = () => {
   const [userObj, setUserObj] = useState<IUser>();
   const navigation = useNavigation();
-  useEffect(() => {
-    getUser();
-  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getUser();
+    }, []),
+  );
 
   const getUser = async () => {
     const user = JSON.parse((await AsyncStorage.getItem('user')) || '');

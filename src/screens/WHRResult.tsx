@@ -23,13 +23,13 @@ const findBodyGrade = (val: number, gender: string = 'male') => {
   let color: string;
   let cat: string;
   let pos: DimensionValue;
-
+  console.log('gender', gender);
   if (gender === 'male') {
-    if (val < 0.9) {
+    if (val <= 0.9) {
       color = '#1F8C0E';
       cat = 'Low';
       pos = '15%';
-    } else if (val >= 0.9 && val < 0.95) {
+    } else if (val > 0.9 && val <= 0.95) {
       color = '#F47C0C';
       cat = 'Moderate';
       pos = '48%';
@@ -39,11 +39,11 @@ const findBodyGrade = (val: number, gender: string = 'male') => {
       pos = '82%';
     }
   } else {
-    if (val < 0.8) {
+    if (val <= 0.8) {
       color = '#1F8C0E';
       cat = 'Low';
       pos = '15%';
-    } else if (val > 0.8 && val < 0.85) {
+    } else if (val > 0.8 && val <= 0.85) {
       color = '#F47C0C';
       cat = 'Moderate';
       pos = '48%';
@@ -146,25 +146,52 @@ const WHRResult = () => {
             head: 'Formula',
           }}
         />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            desc: whrData?.gender === 'male' ? '0.90 or less' : '0.80 or less',
+            head:
+              whrData?.gender === 'male'
+                ? 'Normal Range for men'
+                : 'Normal Range for women',
+          }}
+        />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            desc: 'Identifies excess abdominal fat, a major risk factor for heart disease and diabetes, even within a normal BMI range.',
+            head: 'Benefits',
+          }}
+        />
         <DGHeading head="Results" />
         <AudioPlayer url={url || ''} />
         <View style={{height: 20}} />
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
             WHR Score {'  '} :{'       '}
-            <Text style={{color: findBodyGrade(whrData?.whr_score!).color}}>
+            <Text
+              style={{
+                color: findBodyGrade(whrData?.whr_score!, whrData?.gender)
+                  .color,
+              }}>
               {whrData?.whr_score!}
             </Text>
           </Text>
           <Text style={styles.resultText}>
             Risk Level {'     '} :{'       '}
-            <Text style={{color: findBodyGrade(whrData?.whr_score!).color}}>
-              {findBodyGrade(whrData?.whr_score!).cat}
+            <Text
+              style={{
+                color: findBodyGrade(whrData?.whr_score!, whrData?.gender)
+                  .color,
+              }}>
+              {findBodyGrade(whrData?.whr_score!, whrData?.gender).cat}
             </Text>
           </Text>
           <View style={{height: 30}} />
           <DownArrowSvg
-            style={{left: findBodyGrade(whrData?.whr_score!).pos}}
+            style={{
+              left: findBodyGrade(whrData?.whr_score!, whrData?.gender).pos,
+            }}
           />
 
           <View style={styles.indicatorCont}>

@@ -6,12 +6,9 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   ToastAndroid,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import {FemaleSvg, MaleSvg} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
 import CustomButton from '../components/CustomButton';
 import CustomTextinput from '../components/CustomTextinput';
@@ -21,11 +18,7 @@ import auth from '../utils/auth';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
 
-const PARENT_HISTORY = [
-  'No parent with diabetes',
-  'One parent with diabetes',
-  'Both the Parent with diabetes',
-];
+const PARENT_HISTORY = ['No parent with diabetes', 'One parent with diabetes'];
 const GENERATION = [
   '0 or 1 generations with diabetes',
   '2 or 3 generations with diabetes',
@@ -98,6 +91,12 @@ const MODYCalculator = () => {
     }
   };
 
+  const bmiCalculator = (h: number, w: number) => {
+    const meterHeight = h / 100;
+    const bmi = w / (meterHeight * meterHeight);
+    return parseFloat(bmi.toFixed(2));
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="MODY Risk Finder " />
@@ -143,13 +142,16 @@ const MODYCalculator = () => {
           />
           <MeasurementBox unit="kg" />
         </View>
+        <DGHeading
+          head={`BMI Score : ${bmiCalculator(+height, +weight) || '0'}`}
+        />
         <DGHeading head="Generations with diabetes?" />
         <RadioButtons
           list={GENERATION}
           value={family_history}
           onChange={e => setFamilyHistory(e)}
         />
-        <DGHeading head="Parent with diabetes?" />
+        <DGHeading head="Do either of your Parents have diabetes?" />
         <RadioButtons
           list={PARENT_HISTORY}
           onChange={e => setParentHistory(e)}
@@ -157,19 +159,19 @@ const MODYCalculator = () => {
         />
         <DGHeading head="HbA1C (%)" />
         <RadioButtons list={HBA1C} onChange={e => setHba1c(e)} value={hba1c} />
-        <DGHeading head="Auto antibodies (IAA/GAD) " />
+        <DGHeading head="Are auto antibodies (IAA/GAD- Insulin Auto Antibodies/ Glutamic Acid Decarboxylase) present in your blood? " />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setAutoAnitbodie(e)}
           value={auto_anitbodie}
         />
-        <DGHeading head="Ketoacidosis" />
+        <DGHeading head="Have you diagnosed with Ketoacidosis?" />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setKetoacidosis(e)}
           value={ketoacidosis}
         />
-        <DGHeading head="Complications : (Glycosuria or  Macrosomia and Neonatal hypoglycemia or Renal cysts or Urogenital abnormalities or Exocrine Insufficiency)" />
+        <DGHeading head="Do you have any of the following complications? (Glycosuria or  Macrosomia and Neonatal hypoglycemia or Renal cysts or Urogenital abnormalities or Exocrine Insufficiency)" />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setComplications(e)}

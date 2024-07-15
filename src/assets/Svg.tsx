@@ -418,3 +418,8 @@ export const TimeCircleSVG: FC<SvgProps> = props => (
     />
   </Svg>
 );
+export const PlaySVG: FC<SvgProps> = props => (
+  <Svg width={11} height={14} viewBox="0 0 11 14" fill="none" {...props}>
+    <Path d="m0 0 11 7-11 7z" fill="#fff" />
+  </Svg>
+);

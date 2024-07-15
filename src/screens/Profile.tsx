@@ -1,7 +1,7 @@
 import {R2_URL} from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useRef, useState} from 'react';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -60,9 +60,15 @@ const Profile = () => {
   const [changePassVis, setChangePassVis] = useState(false);
   const [load, setLoad] = useState(false);
   const navigation = useNavigation<StackNavigation>();
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getUser();
+    }, []),
+  );
 
   const changePassword = async () => {
     setLoad(true);

@@ -31,7 +31,7 @@ const RiskFinder = () => {
         />
         <View style={{height: 16}} />
         <CustomButton
-          label="MODY FINDER"
+          label={'Maturity Onset Diabetes\nof the Young (MODY) Risk finder'}
           onPress={() => navigation.navigate('MODYCalculatorScreen')}
         />
       </ScrollView>

@@ -38,5 +38,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 700,
     fontSize: 14,
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });
