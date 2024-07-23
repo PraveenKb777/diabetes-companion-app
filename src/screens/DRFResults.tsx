@@ -16,33 +16,42 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {DownArrowSvg} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
 import Loading from '../components/Loading';
-import {BottomSheetYesbullet} from '../context/BottomSheetContext';
+import {
+  BottomSheetNobullet,
+  BottomSheetYesbullet,
+} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
+import AudioPlayer from '../components/AudioPlayer';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
   let pos: DimensionValue;
   let image: string;
+  let url: string =
+    'https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/';
 
   if (val < 30) {
     color = '#1F8C0E';
     cat = 'Low';
     pos = '15%';
     image = 'happy.png';
+    url += 'lowdiabetesriskfinder.mp3';
   } else if (val >= 30 && val < 50) {
     color = '#F47C0C';
     cat = 'Moderate';
     pos = '48%';
     image = 'sad.png';
+    url += 'moderatediabetesrisk.mp3';
   } else {
     color = '#EE3F3F';
     cat = 'High';
     pos = '82%';
     image = 'verySad.png';
+    url += 'highdiabetesrisk.mp3';
   }
 
-  return {color, cat, pos, image};
+  return {color, cat, pos, image, url};
 };
 
 type ParamList = {
@@ -89,6 +98,7 @@ const DRFResults = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading={'Diabetes Risk Finder Result'} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AudioPlayer url={findBodyGrade(drfData?.drf_score).url} />
         <Image
           src={`${R2_URL}${findBodyGrade(drfData?.drf_score!).image}`}
           style={{width: '100%', aspectRatio: 1}}
@@ -202,6 +212,25 @@ const DRFResults = () => {
             ],
           }}
         />
+        <View
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            marginTop: 30,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            elevation: 5,
+
+            backgroundColor: '#fff',
+          }}>
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              desc: 'The Indian Diabetes Risk Score (Mohan and Anbalagan, 2013) was employed for the general diabetes risk assessment.',
+              head: 'Reference',
+            }}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

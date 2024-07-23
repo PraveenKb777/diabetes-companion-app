@@ -1,5 +1,12 @@
 import React, {FC} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {CarouselItem} from './Carousal';
 import {R2_URL} from '@env';
 import {NextBlueSvg, PlaySVG} from '../assets/Svg';
@@ -42,6 +49,7 @@ const ModyCard: FC<IModyCard> = ({item, onPress, info, video}) => {
             />
             {video ? (
               <TouchableOpacity
+                onPress={() => Linking.openURL(video)}
                 style={{
                   position: 'absolute',
                   height: '100%',

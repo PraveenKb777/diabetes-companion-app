@@ -14,33 +14,42 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {DownArrowSvg} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
 import Loading from '../components/Loading';
-import {BottomSheetYesbullet} from '../context/BottomSheetContext';
+import {
+  BottomSheetNobullet,
+  BottomSheetYesbullet,
+} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
+import AudioPlayer from '../components/AudioPlayer';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
   let pos: DimensionValue;
   let image: string;
+  let url: string =
+    'https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/';
 
   if (val < 30) {
     color = '#1F8C0E';
     cat = 'Low';
     pos = '15%';
     image = 'happy.png';
+    url += 'lowmodyrisk.mp3';
   } else if (val >= 31 && val < 61) {
     color = '#F47C0C';
     cat = 'Moderate';
     pos = '48%';
     image = 'sad.png';
+    url += 'moderatemodyrisk.mp3';
   } else {
     color = '#EE3F3F';
     cat = 'High';
     pos = '82%';
     image = 'verySad.png';
+    url += 'highmodyrisk.mp3';
   }
 
-  return {color, cat, pos, image};
+  return {color, cat, pos, image, url};
 };
 
 type ParamList = {
@@ -87,6 +96,7 @@ const ModyResults = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading={'MODY Risk Finder Result'} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AudioPlayer url={findBodyGrade(drfData?.mody_score!).url} />
         <Image
           src={`${R2_URL}${findBodyGrade(drfData?.mody_score!).image}`}
           style={{width: '100%', aspectRatio: 1}}
@@ -200,6 +210,25 @@ const ModyResults = () => {
             ],
           }}
         />
+        <View
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            marginTop: 30,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            elevation: 5,
+
+            backgroundColor: '#fff',
+          }}>
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              desc: 'The MODY risk scoring was formulated based on various literatures (Aarthy et al., 2021; Bhat et al., 2022; Nair et al., 2013b; Naylor et al., 2018; University of Exeter, 2023) and underwent validation by diabetologists, incorporating their feedback to refine the scores.',
+              head: 'Reference',
+            }}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

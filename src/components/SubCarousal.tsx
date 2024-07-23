@@ -40,7 +40,7 @@ interface CarouselProps {
 
 const Items: ISubCarousal[] = [
   {
-    videoId: 'gtw2T55VXQQ',
+    videoId: 'aGljCxxb2FQ',
     head: 'Invasive',
     desc: 'Physio-chemical sensor used to measure/scan the level of glucose in blood.',
 
@@ -69,7 +69,7 @@ const Items: ISubCarousal[] = [
     ],
   },
   {
-    videoId: '4P_k0rqmyX8',
+    videoId: 'Ih8LwZNmxPk',
     head: 'Non-Invasive',
     desc: 'Physio-chemical sensor used to measure/scan the level of glucose in blood.',
     content: [
@@ -93,7 +93,7 @@ const Items: ISubCarousal[] = [
     ],
   },
   {
-    videoId: '4P_k0rqmyX8',
+    videoId: 'z4JZzwgHImY',
     head: 'Continuous Glucose\nMonitoring ',
     desc: 'Sensor on skin (arm/belly) measures interstitial glucose few minutes.\n\t -Wireless date transfer to monitor for continuous tracking.',
     content: [

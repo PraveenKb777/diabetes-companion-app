@@ -1081,7 +1081,7 @@ const DChart = {
         'Total Fat (gm)': 39.63,
         'Total  Fiber (gm)': 10.38,
         'Glycemic Index': 'Nil',
-        img: 'groundnuts1.png',
+        img: 'groundnuts1.jpeg',
       },
       {
         Name: 'Pumpkin Seeds',

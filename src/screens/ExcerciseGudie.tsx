@@ -408,7 +408,7 @@ const ExcerciseGudie = () => {
           </View>
           <NoteComponent />
           <View style={{height: 20}} />
-          <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
+          <YoutubeIframe height={250} videoId="OYeq-ZAbDco" />
           <DGHeading head="Yoga" />
           <Text style={{color: '#000'}}>
             Ancient wisdom meets modern medicine: Yoga, simple and accessible,
@@ -511,7 +511,7 @@ const ExcerciseGudie = () => {
             ))}
           </View>
           <View style={{height: 20}} />
-          <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
+          <YoutubeIframe height={250} videoId="GwkMVyC9rg4" />
           <DGHeading head="Aerobic Exercise" />
           <Text style={{color: '#000'}}>
             Large muscular groups are used during aerobic activity, which uses

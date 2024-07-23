@@ -346,7 +346,7 @@ const DiabetesGuide: FC = () => {
           ))}
         </View>
 
-        <YoutubeIframe height={250} videoId="GYGIVAb5s4U" />
+        <YoutubeIframe height={250} videoId="u3UkFFN9qjA" />
         <View style={{paddingHorizontal: 16}}>
           <DGHeading head="Symptoms of Diabetes" />
           <ScrollView horizontal nestedScrollEnabled>

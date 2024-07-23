@@ -18,6 +18,9 @@ interface IDownGradientBox {
   onClick?: () => void;
   label?: string;
   above?: boolean;
+  color?: (string | number)[];
+  fontSize?: number;
+  fontStyle?: 'normal' | 'italic' | undefined;
 }
 
 const DownGradientBox: FC<IDownGradientBox> = ({
@@ -26,6 +29,9 @@ const DownGradientBox: FC<IDownGradientBox> = ({
   label = '',
   onClick = () => {},
   above = false,
+  fontSize,
+  color,
+  fontStyle,
 }) => {
   const imgSource =
     typeof img === 'string' ? {src: R2_URL + img} : {source: img};
@@ -34,9 +40,15 @@ const DownGradientBox: FC<IDownGradientBox> = ({
       {...imgSource}
       //   resizeMode="cover"
       style={[styles.mainCont, style]}>
-      <WhiteGradiantBox height={300} style={styles.gradiantPos} />
+      <WhiteGradiantBox color={color} height={300} style={styles.gradiantPos} />
       <View style={[styles.contentCont]}>
-        <Text style={[styles.text, {maxWidth: above ? '100%' : '70%'}]}>
+        <Text
+          style={[
+            styles.text,
+            {maxWidth: above ? '100%' : '70%'},
+            color ? {color: '#fff'} : {},
+            {fontSize, fontStyle},
+          ]}>
           {label}
         </Text>
         <TouchableOpacity

@@ -6,12 +6,14 @@ interface IWhiteGradiantBox {
   style?: StyleProp<ViewStyle>;
   direction?: 'left' | 'right' | 'top' | 'bottom';
   height?: number;
+  color?: (string | number)[];
 }
 
 const WhiteGradiantBox: FC<IWhiteGradiantBox> = ({
   style,
   direction,
   height = 500,
+  color,
 }) => {
   const deg =
     direction === 'bottom'
@@ -24,7 +26,7 @@ const WhiteGradiantBox: FC<IWhiteGradiantBox> = ({
 
   return (
     <LinearGradient
-      colors={['rgba(254,254,255,1)', 'rgba(255,254,254,0)']}
+      colors={color ? color : ['rgba(254,254,255,1)', 'rgba(255,254,254,0)']}
       start={{x: 0.5, y: 0}}
       end={{x: 0.5, y: 0.7}}
       style={[

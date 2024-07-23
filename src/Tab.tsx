@@ -7,6 +7,7 @@ import Home from './screens/Home';
 import {Text} from 'react-native';
 import Education from './screens/Education';
 import RiskFinder from './screens/RiskFinder';
+import CMP from './screens/CMP';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -63,7 +64,7 @@ export function TabNavigator() {
       />
       <Screen
         name="CMP"
-        component={Home}
+        component={CMP}
         options={getTabOptions(CMPSvg, 'CMP')}
       />
     </Navigator>

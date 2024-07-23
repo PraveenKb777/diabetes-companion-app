@@ -60,6 +60,13 @@ const ReactionComp: FC<IReactComp> = ({onClick, selected, index}) => {
     </View>
   );
 };
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 const AssesmentQuestion = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,23 +74,49 @@ const AssesmentQuestion = () => {
   const flatListRef = useRef<FlatList<string>>(null);
   const [nextAvilable, setNextAvilable] = useState(false);
   const navigation = useNavigation<StackNavigation>();
+  const [list, setList] = useState({});
+  const [falseAnswer, setFalseAnswer] = useState<any[]>([]);
   const [load, setLoad] = useState(false);
+
+  // console.log('>>', list);
   const [finalScore, setFinalScore] = useState<number>();
   useEffect(() => {
-    const curItem = Object.keys(ASSESMENT_QUESTIONS)[currentIndex];
-    const totalItem = ASSESMENT_QUESTIONS[curItem].length;
+    setList(() => {
+      let newArray = shuffleArray([...ASSESMENT_QUESTIONS]);
+      let count = 0;
+      let itemKey = 1;
+      const newObj = {};
+      let newSubObj = [];
+      for (let i of newArray) {
+        if (count === 6) {
+          // console.log(newSubObj);
+          count = 0;
+          newObj[`${itemKey}`] = newSubObj;
+          newSubObj = [];
+          itemKey++;
+        }
+        newSubObj.push(i);
+        count++;
+      }
+      newObj[`${itemKey}`] = newSubObj;
+      return newObj;
+    });
+  }, []);
+  useEffect(() => {
+    const curItem = Object.keys(list)[currentIndex];
+    const totalItem = list[curItem]?.length;
     const answerLength = Object.keys(answers[curItem] || {}).length;
     if (totalItem === answerLength) {
       setNextAvilable(true);
     } else {
       setNextAvilable(false);
     }
-  }, [answers, currentIndex]);
+  }, [answers, currentIndex, list]);
 
   const handleNext = () => {
     nextAvilable &&
       setCurrentIndex(_ => {
-        if (currentIndex === Object.keys(ASSESMENT_QUESTIONS).length - 1) {
+        if (currentIndex === Object.keys(list).length - 1) {
           sendData();
           return currentIndex;
         }
@@ -93,8 +126,9 @@ const AssesmentQuestion = () => {
       });
   };
 
-  const sendData = async () => {
+  const sendData = () => {
     let answerKeys = Object.values(answers);
+    console.log(answers);
     let score = 0;
     for (let i of answerKeys) {
       let asnwersCount = Object.values(i);
@@ -104,6 +138,23 @@ const AssesmentQuestion = () => {
         }
       }
     }
+    console.log(score);
+    const answerItems = Object.keys(answers);
+    let newFAnswer = [];
+    for (let i of answerItems) {
+      const thisList = list[i];
+      const curAnswer = answers[i];
+      const currentAnswerKeys = Object.keys(curAnswer);
+      console.log('thelist , ', thisList);
+      console.log('answer', currentAnswerKeys, curAnswer);
+      for (let k of currentAnswerKeys) {
+        console.log('k\n', curAnswer[k]);
+        if (curAnswer[k] === 1) {
+          newFAnswer.push(thisList[+k - 1]);
+        }
+      }
+    }
+    setFalseAnswer(newFAnswer);
     setFinalScore(score);
     console.log(answerKeys);
   };
@@ -118,9 +169,8 @@ const AssesmentQuestion = () => {
   };
 
   const renderItem: ListRenderItem<string> = ({item, index}) => {
-    const DATA: string[] | {head: string; body: string}[] =
-      ASSESMENT_QUESTIONS[item];
-    console.log(DATA);
+    const DATA: string[] | {head: string; body: string}[] = list[item];
+    // console.log(DATA);
     const onPressR = (v: any) => {
       onClickReaction(item, v);
     };
@@ -139,7 +189,7 @@ const AssesmentQuestion = () => {
           <Text>
             {'<  '}
             <Text style={{fontSize: 20, color: '#0075FF'}}>{`${index + 1}/ ${
-              Object.keys(ASSESMENT_QUESTIONS).length
+              Object.keys(list).length
             }`}</Text>
             {'  >'}
           </Text>
@@ -227,6 +277,13 @@ const AssesmentQuestion = () => {
               {finalScore}/{30}
             </Text>
           </View>
+          <DGHeading head="Questions which you have answered incorrectly:" />
+          {falseAnswer.map((e, i) => (
+            <Text>
+              {i + 1}.{'  '}
+              {e}
+            </Text>
+          ))}
           <View style={{height: 30}} />
 
           <CustomButton
@@ -246,7 +303,7 @@ const AssesmentQuestion = () => {
       <BackButtonHeader heading="Feed Back" />
       <FlatList
         ref={flatListRef}
-        data={Object.keys(ASSESMENT_QUESTIONS)}
+        data={Object.keys(list)}
         horizontal
         pagingEnabled
         scrollEnabled={false}

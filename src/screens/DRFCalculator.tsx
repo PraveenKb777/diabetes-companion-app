@@ -18,6 +18,7 @@ import {StackNavigation} from '../Stack';
 import auth from '../utils/auth';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
+import AudioPlayer from '../components/AudioPlayer';
 
 const PHYSICAL_ACTIVITY = [
   'Vigorous exercise or strenuous work',
@@ -82,6 +83,7 @@ const DRFCalculator = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="Diabetes Risk Finder (DRF)" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <AudioPlayer url="https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/calculatebuttonvoiceforisk%20finder.mp3" />
         <DGHeading head="Gender" />
         <View style={[styles.genderMain]}>
           <TouchableOpacity

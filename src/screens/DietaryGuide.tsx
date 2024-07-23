@@ -15,10 +15,14 @@ import {CarouselItem} from '../components/Carousal';
 import DietPrincipalCard from '../components/DietPrincipalCard';
 import ModyCard from '../components/ModyCard';
 import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
-import {useBottomSheet} from '../context/BottomSheetContext';
+import {
+  BottomSheetNobullet,
+  useBottomSheet,
+} from '../context/BottomSheetContext';
 import {DGHeading} from './DiabetesGuide';
 import FoodsIncluded from '../components/FoodsIncluded';
 import Loading from '../components/Loading';
+import AudioPlayer from '../components/AudioPlayer';
 const DPItems: {id: string; img: any; head: string}[] = [
   {
     id: '0931ngagweggweg42',
@@ -54,6 +58,7 @@ const HOME_REMADIES: CarouselItem[] = [
     img: 'dItemsPicks/bittergourd.png',
     desc: 'Consume 1 cup juice in the morning.\nBenefits: Hypoglycemic properties, reduces blood glucose levels.',
     color: '#9BBB59',
+    video: 'https://youtu.be/Y44AZu4huCQ?si=Lbo1nbdihxKUAYxb',
   },
   {
     id: '788hsabdfqybuyfq',
@@ -61,6 +66,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Boil 10g paste in 100ml water till reduced to 25ml, drink twice daily.\nBenefits: Effective in diabetes management.',
     color: '#5FB65B',
     img: 'dItemsPicks/keelaneli.png',
+    video: 'https://youtu.be/jtqYgejeA0Q?si=L9mRz7N9xRMhyD6P',
   },
   {
     id: '788hsabdfqybufq',
@@ -68,6 +74,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Consume 1 teaspoon powder with water twice daily.\nBenefits: Controls blood glucose levels.',
     color: '#5DB18E',
     img: 'dItemsPicks/cumin.png',
+    video: 'https://youtu.be/sSb4RW_0Rwk?si=9G26ykNerGvBeGse',
   },
   {
     id: '788hsabdfqybuf',
@@ -75,6 +82,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Soak 10g seeds, consume water on empty stomach.\nBenefits: Reduces carbohydrates absorption, lower blood sugar.',
     color: '#5F9DAC',
     img: 'dItemsPicks/fenugreek.png',
+    video: 'https://youtu.be/TmlReZRxcYM?si=-ycv8_BoathHGpyd',
   },
   {
     id: '788hsabdfqybf',
@@ -82,6 +90,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Consume 1-2 daily.\nBenefits: Regulates carbohydrate absorption, improves insulin sensitivity.',
     color: '#626EA7',
     img: 'dItemsPicks/gooseberry.png',
+    video: 'https://youtu.be/SeDYQbnMwHU?si=KLL2STWxx3n8GJo3',
   },
   {
     id: '788hsabdfqyb',
@@ -89,6 +98,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Boil 10g seed powder in 100ml water till reduced to one fourth, consume decoction on empty stomach.\nBenefits: Regulates insulin, increase insulin production, lower blood sugar.',
     color: '#8064A2',
     img: 'dItemsPicks/jamunfruit.jpeg',
+    video: 'https://youtu.be/2h49yYRzoQ0?si=rXHGWWxAv2FoiI2Y',
   },
   {
     id: '788hsadfqyb',
@@ -96,6 +106,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Manage diabetes with 5-log powder twice/thrice daily.\nBenefits: Stimulates insulin production, reduces blood sugar.',
     color: '#9BBB59',
     img: 'dItemsPicks/curryleaves.png',
+    video: 'https://youtu.be/ZmVFG0ndIns',
   },
   {
     id: '788hsadqyb',
@@ -103,6 +114,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Drink 1 cup juice with black pepper on empty stomach for 3 stomach.\nBenefits: Rich in flavonoids, helps manage blood sugar level .',
     color: '#5FB65B',
     img: 'dItemsPicks/neemleaves.jpeg',
+    video: 'https://youtu.be/Id95c5aWt1Q',
   },
   {
     id: '788hsadyb',
@@ -110,6 +122,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Boil in 10-15 leaves in water, drink decoction after meal.\nBenefits: High in antioxidants, lower blood glucose, reduces insulin resistance.',
     color: '#5DB18E',
     img: 'dItemsPicks/guavaleaves.jpeg',
+    video: 'https://youtu.be/edSpIGuZAeI',
   },
   {
     id: '788hsadb',
@@ -117,6 +130,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Blend and drink juice of handful of tender leaves every morning.\nBenefits: Controls blood sugar, purifies blood.',
     color: '#5F9DAC',
     img: 'dItemsPicks/drumstickleaves.jpeg',
+    video: 'https://youtu.be/ds6bt5b1zyA',
   },
   {
     id: '788sadb',
@@ -124,6 +138,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Add 1/2 tsp powder to warm water, drink daily.\nBenefits: Triggers insulin activity, lowers blood sugar levels.',
     color: '#626EA7',
     img: 'dItemsPicks/cinnamon.png',
+    video: 'https://youtu.be/1h4JrDYX1Ao',
   },
   {
     id: '788sdb',
@@ -131,6 +146,7 @@ const HOME_REMADIES: CarouselItem[] = [
     desc: 'Drink 1 cup unsweetened juice twice daily.\nBenefits: Regulates blood glucose levels, rich in phytosterols.',
     color: '#8064A2',
     img: 'dItemsPicks/alovevera.jpeg',
+    video: 'https://youtu.be/cer_VIGNzY8',
   },
 ];
 
@@ -210,7 +226,7 @@ const DietaryGuide = () => {
           home remedies for managing diabetes mellitus naturally.
         </Text>
         <DGHeading head={'Healthy Eating Plate for Diabetic\nIndividual'} />
-        {/* <AudioPlayer url={`${R2_AUDIO_URL}`} /> */}
+        <AudioPlayer url={`${R2_AUDIO_URL}fillplate.mp3`} />
         <View
           style={{
             padding: 60,
@@ -228,6 +244,7 @@ const DietaryGuide = () => {
             onPress={() =>
               openBottomSheet({
                 head: 'Fluids',
+                audio: `${R2_AUDIO_URL}fluids.mp3`,
                 bullet: true,
                 desc: [
                   ' Water or zero caloric drink.',
@@ -253,6 +270,7 @@ const DietaryGuide = () => {
                 head: 'Fruits',
                 bullet: true,
                 desc: ['Eat a small amount of fruit 1-2 cups per day.'],
+                audio: `${R2_AUDIO_URL}fruits.mp3`,
               })
             }>
             <Image
@@ -278,7 +296,7 @@ const DietaryGuide = () => {
                   'Use combinations of oils',
                   '20-30% of total calories from fats',
                 ],
-                audio: `${R2_AUDIO_URL}calculatebuttonvoiceforbmi.mp3`,
+                audio: `${R2_AUDIO_URL}fatsandoils.mp3`,
               })
             }>
             <Image
@@ -293,6 +311,7 @@ const DietaryGuide = () => {
                   head: 'Non starchy vegetables ',
                   bullet: true,
                   desc: ['Vegetables', 'Green leafy vegetables'],
+                  audio: `${R2_AUDIO_URL}nonstarchyveggie.mp3`,
                 })
               }>
               <Image
@@ -308,6 +327,7 @@ const DietaryGuide = () => {
                 openBottomSheet({
                   head: 'Protein foods',
                   bullet: true,
+                  audio: `${R2_AUDIO_URL}proteinfoods.mp3`,
                   desc: [
                     'Quarter plate with foods high in protein',
                     'Legumes and pulses',
@@ -335,6 +355,7 @@ const DietaryGuide = () => {
                   head: 'Cereals and Millets',
                   bullet: true,
                   desc: ['55-60% of total calories from carbohydrates.'],
+                  audio: `${R2_AUDIO_URL}carbohydratefoods.mp3`,
                 })
               }>
               <Image
@@ -343,6 +364,26 @@ const DietaryGuide = () => {
               />
             </TouchableOpacity>
           </View>
+        </View>
+        <View
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            marginTop: 30,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            elevation: 5,
+            margin: 10,
+
+            backgroundColor: '#fff',
+          }}>
+          <BottomSheetNobullet
+            item={{
+              bullet: false,
+              desc: 'Tap on Any side of the plate to discover the foods recommended.',
+              head: 'Note',
+            }}
+          />
         </View>
         <DGHeading head="Food Included " />
         <FoodsIncluded />
@@ -372,7 +413,7 @@ const DietaryGuide = () => {
         </View>
         <DGHeading head="Home Remedies for Diabetes Mellitus" />
         {HOME_REMADIES.map(e => {
-          return <ModyCard item={e} key={e.id} />;
+          return <ModyCard item={e} key={e.id} video={e.video} />;
         })}
         <View style={{height: 30}} />
       </ScrollView>

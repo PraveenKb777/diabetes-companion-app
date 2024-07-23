@@ -17,6 +17,7 @@ import {StackNavigation} from '../Stack';
 import auth from '../utils/auth';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
+import AudioPlayer from '../components/AudioPlayer';
 
 const PARENT_HISTORY = ['No parent with diabetes', 'One parent with diabetes'];
 const GENERATION = [
@@ -103,6 +104,7 @@ const MODYCalculator = () => {
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="always">
+        <AudioPlayer url="https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/calculatebuttonvoiceformodyriskfinder.mp3" />
         <DGHeading head="Name" />
         <CustomTextinput
           placeholder="Enter your name"
