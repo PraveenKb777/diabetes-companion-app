@@ -11,7 +11,7 @@ const Radios: FC<{
       <View style={[styles.outerRing, selected ? {borderColor: '#000'} : {}]}>
         {selected ? <View style={styles.innerCircle} /> : null}
       </View>
-      <Text>{label}</Text>
+      <Text style={{color: selected ? '#000' : undefined}}>{label}</Text>
     </TouchableOpacity>
   );
 };

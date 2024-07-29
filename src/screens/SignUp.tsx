@@ -19,6 +19,16 @@ import visibility from '../assets/icons/visibility.png';
 import CustomButton from '../components/CustomButton';
 import DropdownComponent from '../components/CustomDropDown';
 import auth from '../utils/auth';
+import {
+  Gender,
+  validateAge,
+  validateConfirmPassword,
+  validateEmail,
+  validateGender,
+  validateName,
+  validatePassword,
+} from '../utils/validations';
+import {ErrorInputComp} from './Login';
 
 const data = [
   {label: 'Male', value: 'male'},
@@ -35,7 +45,44 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passVis, setPassVis] = useState(true);
   const [conPassVis, setConPassVis] = useState(true);
+  const [errors, setErrors] = useState({
+    nameError: '',
+    emailError: '',
+    passError: '',
+    confirmPassError: '',
+    ageError: '',
+    genderError: '',
+  });
   // const [check, setCheck] = useState(false);
+  const isErrors = () => {
+    const nameError = validateName(name);
+    const emailError = validateEmail(email);
+    const passError = validatePassword(password);
+    const confirmPassError = validateConfirmPassword(password, confirmPassword);
+    const ageError = validateAge(Number(age));
+    const genderError = validateGender(gender as Gender);
+    setErrors({
+      ageError,
+      confirmPassError,
+      emailError,
+      genderError,
+      nameError,
+      passError,
+    });
+    if (
+      nameError === '' &&
+      emailError === '' &&
+      passError === '' &&
+      ageError === '' &&
+      confirmPassError === '' &&
+      genderError === ''
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
   useEffect(() => {
     clearStorage();
   }, []);
@@ -52,6 +99,10 @@ const SignUp = () => {
   const onPressSignUp = async () => {
     setLoad(true);
     try {
+      const error = isErrors();
+      if (error) {
+        return;
+      }
       const datas = {
         email: email,
         name: name,
@@ -96,6 +147,7 @@ const SignUp = () => {
           value={name}
           onChangeText={e => setName(e)}
         />
+        <ErrorInputComp label={errors.nameError} />
         <CustomTextinput
           prefixIcon={mail}
           placeholder="Enter E-mail address"
@@ -103,6 +155,7 @@ const SignUp = () => {
           value={email}
           onChangeText={e => setEmail(e)}
         />
+        <ErrorInputComp label={errors.emailError} />
         <CustomTextinput
           prefixIcon={today}
           placeholder="Enter Age"
@@ -111,6 +164,7 @@ const SignUp = () => {
           onChangeText={e => setAge(e)}
           maxLength={2}
         />
+        <ErrorInputComp label={errors.ageError} />
         <DropdownComponent
           data={data}
           labelField={'label' as never}
@@ -119,6 +173,7 @@ const SignUp = () => {
           additionalDropDownStyle={[styles.inputStyle]}
           value={gender}
         />
+        <ErrorInputComp label={errors.genderError} />
         <CustomTextinput
           prefixIcon={lock}
           mainContStyle={[styles.inputStyle]}
@@ -129,6 +184,7 @@ const SignUp = () => {
           onChangeText={e => setPassword(e)}
           suffixIconTap={() => setPassVis(e => !e)}
         />
+        <ErrorInputComp label={errors.passError} />
         <CustomTextinput
           prefixIcon={lock}
           mainContStyle={[styles.inputStyle]}
@@ -139,6 +195,7 @@ const SignUp = () => {
           suffixIconTap={() => setConPassVis(e => !e)}
           onChangeText={e => setConfirmPassword(e)}
         />
+        <ErrorInputComp label={errors.confirmPassError} />
         {/* <View style={[styles.tcMain]}>
           <TouchableOpacity onPress={() => setCheck(e => !e)}>
             {check ? (

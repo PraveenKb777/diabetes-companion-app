@@ -19,6 +19,14 @@ import auth from '../utils/auth';
 import {FemaleSvg, MaleSvg} from '../assets/Svg';
 import AudioPlayer from '../components/AudioPlayer';
 import {R2_AUDIO_URL} from '@env';
+import {
+  Gender,
+  validateGender,
+  validateHip,
+  validateName,
+  validateWaist,
+} from '../utils/validations';
+import {ErrorInputComp} from './Login';
 
 const WhrCalculator = () => {
   const [load, setLoad] = useState(false);
@@ -26,6 +34,37 @@ const WhrCalculator = () => {
   const [waist, setWaist] = useState('');
   const [hip, setHip] = useState('');
   const [gender, setGender] = useState<'male' | 'female'>();
+  const [errors, setErrors] = useState({
+    nameError: '',
+    waistError: '',
+    hipError: '',
+    genderError: '',
+  });
+
+  const isError = () => {
+    const nameError = validateName(name);
+    const waistError = validateWaist(Number(waist));
+    const hipError = validateHip(Number(hip));
+    const genderError = validateGender(gender as Gender);
+    setErrors({
+      hipError,
+      nameError,
+      waistError,
+      genderError,
+    });
+
+    if (
+      nameError === '' &&
+      waistError === '' &&
+      hipError === '' &&
+      genderError === ''
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
@@ -43,6 +82,11 @@ const WhrCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
+      const error = isError();
+      console.log('>>>error', error);
+      if (error) {
+        return;
+      }
       const res = await auth.post('/whr', {name, hip, waist, gender});
       const {
         result: {id},
@@ -86,12 +130,14 @@ const WhrCalculator = () => {
             <Text style={styles.genderText}>Female</Text>
           </TouchableOpacity>
         </View>
+        <ErrorInputComp label={errors.genderError} />
         <DGHeading head="Name" />
         <CustomTextinput
           placeholder="Enter your name"
           value={name}
           onChangeText={e => setName(e)}
         />
+        <ErrorInputComp label={errors.nameError} />
         <DGHeading head="Waist" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -104,6 +150,7 @@ const WhrCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+        <ErrorInputComp label={errors.waistError} />
 
         <DGHeading head="Hip" />
 
@@ -118,6 +165,8 @@ const WhrCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+
+        <ErrorInputComp label={errors.hipError} />
         <View style={{height: 30}} />
         <CustomButton label="CALCULATE" load={load} onPress={calculateBmi} />
       </ScrollView>

@@ -10,15 +10,23 @@ import {
   View,
 } from 'react-native';
 import {FemaleSvg, MaleSvg} from '../assets/Svg';
+import AudioPlayer from '../components/AudioPlayer';
 import BackButtonHeader from '../components/BackButtonHeader';
 import CustomButton from '../components/CustomButton';
 import CustomTextinput from '../components/CustomTextinput';
 import RadioButtons from '../components/RadioButtons';
 import {StackNavigation} from '../Stack';
 import auth from '../utils/auth';
+import {
+  Gender,
+  validateAge,
+  validateGender,
+  validateName,
+  validateWaist,
+} from '../utils/validations';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
-import AudioPlayer from '../components/AudioPlayer';
+import {ErrorInputComp} from './Login';
 
 const PHYSICAL_ACTIVITY = [
   'Vigorous exercise or strenuous work',
@@ -36,6 +44,48 @@ const DRFCalculator = () => {
   const [gender, setGender] = useState<'male' | 'female'>();
   const [physical_activity, setPhysicalActivity] = useState<number>();
   const [family_history, setFamilyHistory] = useState<number>();
+  const [errors, setErrors] = useState({
+    nameError: '',
+    waistError: '',
+    ageError: '',
+    genderError: '',
+    familyHistoryError: '',
+    physicaActivityError: '',
+  });
+
+  const isError = () => {
+    const nameError = validateName(name);
+    const waistError = validateWaist(Number(waist));
+    const ageError = validateAge(Number(age));
+    const genderError = validateGender(gender as Gender);
+    const physicaActivityError =
+      physical_activity === undefined ? 'Kindly select one option' : '';
+    const familyHistoryError =
+      family_history === undefined ? 'Kindly select one option' : '';
+
+    setErrors({
+      nameError,
+      waistError,
+      genderError,
+      ageError,
+      physicaActivityError,
+      familyHistoryError,
+    });
+
+    if (
+      nameError === '' &&
+      waistError === '' &&
+      ageError === '' &&
+      genderError === '' &&
+      physicaActivityError === '' &&
+      familyHistoryError === ''
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
@@ -55,6 +105,10 @@ const DRFCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
+      const error = isError();
+      if (error) {
+        return;
+      }
       const res = await auth.post('/drf', {
         name,
         age,
@@ -82,7 +136,9 @@ const DRFCalculator = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="Diabetes Risk Finder (DRF)" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        keyboardShouldPersistTaps="always"
+        contentContainerStyle={styles.scrollContent}>
         <AudioPlayer url="https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/calculatebuttonvoiceforisk%20finder.mp3" />
         <DGHeading head="Gender" />
         <View style={[styles.genderMain]}>
@@ -105,12 +161,14 @@ const DRFCalculator = () => {
             <Text style={styles.genderText}>Female</Text>
           </TouchableOpacity>
         </View>
+        <ErrorInputComp label={errors.genderError} />
         <DGHeading head="Name" />
         <CustomTextinput
           placeholder="Enter your name"
           value={name}
           onChangeText={e => setName(e)}
         />
+        <ErrorInputComp label={errors.nameError} />
         <DGHeading head="Age" />
         <CustomTextinput
           placeholder="Enter your age"
@@ -120,6 +178,7 @@ const DRFCalculator = () => {
           maxLength={3}
           onChangeText={e => setAge(e)}
         />
+        <ErrorInputComp label={errors.ageError} />
         <DGHeading head="Waist" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -132,19 +191,21 @@ const DRFCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+        <ErrorInputComp label={errors.waistError} />
         <DGHeading head="How would you describe your level of physical activity?" />
         <RadioButtons
           list={PHYSICAL_ACTIVITY}
           onChange={e => setPhysicalActivity(e)}
           value={physical_activity}
         />
+        <ErrorInputComp label={errors.physicaActivityError} />
         <DGHeading head="Do either of your Parents have diabetes?" />
         <RadioButtons
           list={GENERATION}
           value={family_history}
           onChange={e => setFamilyHistory(e)}
         />
-
+        <ErrorInputComp label={errors.familyHistoryError} />
         <View style={{height: 30}} />
         <CustomButton label="CALCULATE" load={load} onPress={calculateBmi} />
       </ScrollView>

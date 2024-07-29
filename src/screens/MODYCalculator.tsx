@@ -9,15 +9,22 @@ import {
   ToastAndroid,
   View,
 } from 'react-native';
+import AudioPlayer from '../components/AudioPlayer';
 import BackButtonHeader from '../components/BackButtonHeader';
 import CustomButton from '../components/CustomButton';
 import CustomTextinput from '../components/CustomTextinput';
 import RadioButtons from '../components/RadioButtons';
 import {StackNavigation} from '../Stack';
 import auth from '../utils/auth';
+import {
+  validateAge,
+  validateHeight,
+  validateName,
+  validateWeight,
+} from '../utils/validations';
 import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
-import AudioPlayer from '../components/AudioPlayer';
+import {ErrorInputComp} from './Login';
 
 const PARENT_HISTORY = ['No parent with diabetes', 'One parent with diabetes'];
 const GENERATION = [
@@ -41,6 +48,66 @@ const MODYCalculator = () => {
   const [auto_anitbodie, setAutoAnitbodie] = useState<number>();
   const [ketoacidosis, setKetoacidosis] = useState<number>();
   const [complications, setComplications] = useState<number>();
+  const [errors, setErrors] = useState({
+    nameError: '',
+    ageError: '',
+    heightError: '',
+    weightError: '',
+    parentHistoryError: '',
+    familyHistoryError: '',
+    hba1cError: '',
+    autoAntibodieError: '',
+    ketoacidosisError: '',
+    complicationsError: '',
+  });
+
+  const isError = () => {
+    const nameError = validateName(name);
+    const ageError = validateAge(Number(age));
+    const heightError = validateHeight(Number(height));
+    const weightError = validateWeight(Number(weight));
+    const parentHistoryError =
+      parent_history === undefined ? 'Kindly select one option' : '';
+    const familyHistoryError =
+      family_history === undefined ? 'Kindly select one option' : '';
+    const hba1cError = hba1c === undefined ? 'Kindly select one option' : '';
+    const autoAntibodieError =
+      auto_anitbodie === undefined ? 'Kindly select one option' : '';
+    const ketoacidosisError =
+      ketoacidosis === undefined ? 'Kindly select one option' : '';
+    const complicationsError =
+      complications === undefined ? 'Kindly select one option' : '';
+
+    setErrors({
+      ageError,
+      autoAntibodieError,
+      complicationsError,
+      familyHistoryError,
+      hba1cError,
+      heightError,
+      ketoacidosisError,
+      nameError,
+      parentHistoryError,
+      weightError,
+    });
+
+    if (
+      ageError === '' &&
+      autoAntibodieError === '' &&
+      complicationsError === '' &&
+      familyHistoryError === '' &&
+      hba1cError === '' &&
+      heightError === '' &&
+      ketoacidosisError === '' &&
+      nameError === '' &&
+      parentHistoryError === '' &&
+      weightError === ''
+    ) {
+      return false;
+    }
+
+    return true;
+  };
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
@@ -64,6 +131,12 @@ const MODYCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
+      const error = isError();
+
+      if (error) {
+        return;
+      }
+
       const res = await auth.post('/mody', {
         name,
         age,
@@ -111,6 +184,7 @@ const MODYCalculator = () => {
           value={name}
           onChangeText={e => setName(e)}
         />
+        <ErrorInputComp label={errors.nameError} />
         <DGHeading head="Age" />
         <CustomTextinput
           placeholder="Enter your age"
@@ -120,6 +194,9 @@ const MODYCalculator = () => {
           maxLength={3}
           onChangeText={e => setAge(e)}
         />
+
+        <ErrorInputComp label={errors.ageError} />
+
         <DGHeading head="Height" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -132,6 +209,9 @@ const MODYCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+
+        <ErrorInputComp label={errors.heightError} />
+
         <DGHeading head="Weight" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -144,6 +224,7 @@ const MODYCalculator = () => {
           />
           <MeasurementBox unit="kg" />
         </View>
+        <ErrorInputComp label={errors.weightError} />
         <DGHeading
           head={`BMI Score : ${bmiCalculator(+height, +weight) || '0'}`}
         />
@@ -153,33 +234,38 @@ const MODYCalculator = () => {
           value={family_history}
           onChange={e => setFamilyHistory(e)}
         />
+        <ErrorInputComp label={errors.familyHistoryError} />
         <DGHeading head="Do either of your Parents have diabetes?" />
         <RadioButtons
           list={PARENT_HISTORY}
           onChange={e => setParentHistory(e)}
           value={parent_history}
         />
+        <ErrorInputComp label={errors.parentHistoryError} />
         <DGHeading head="HbA1C (%)" />
         <RadioButtons list={HBA1C} onChange={e => setHba1c(e)} value={hba1c} />
+        <ErrorInputComp label={errors.hba1cError} />
         <DGHeading head="Are auto antibodies (IAA/GAD- Insulin Auto Antibodies/ Glutamic Acid Decarboxylase) present in your blood? " />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setAutoAnitbodie(e)}
           value={auto_anitbodie}
         />
+        <ErrorInputComp label={errors.autoAntibodieError} />
         <DGHeading head="Have you diagnosed with Ketoacidosis?" />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setKetoacidosis(e)}
           value={ketoacidosis}
         />
+        <ErrorInputComp label={errors.ketoacidosisError} />
         <DGHeading head="Do you have any of the following complications? (Glycosuria or  Macrosomia and Neonatal hypoglycemia or Renal cysts or Urogenital abnormalities or Exocrine Insufficiency)" />
         <RadioButtons
           list={OPTIONS}
           onChange={e => setComplications(e)}
           value={complications}
         />
-
+        <ErrorInputComp label={errors.complicationsError} />
         <View style={{height: 30}} />
         <CustomButton label="CALCULATE" load={load} onPress={calculateBmi} />
       </ScrollView>

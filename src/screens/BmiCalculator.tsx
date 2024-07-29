@@ -16,6 +16,12 @@ import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 import AudioPlayer from '../components/AudioPlayer';
 import {R2_AUDIO_URL} from '@env';
+import {
+  validateHeight,
+  validateName,
+  validateWeight,
+} from '../utils/validations';
+import {ErrorInputComp} from './Login';
 export const MeasurementBox: FC<{unit: string}> = ({unit}) => {
   return (
     <View style={[styles.measurment]}>
@@ -29,6 +35,12 @@ const BmiCalculator = () => {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [errors, setErrors] = useState({
+    nameError: '',
+    weightError: '',
+    heightError: '',
+  });
+
   const navigation = useNavigation<StackNavigation>();
 
   const clearState = () => {
@@ -37,6 +49,23 @@ const BmiCalculator = () => {
     setHeight('');
   };
 
+  const isError = () => {
+    const nameError = validateName(name);
+    const weightError = validateWeight(Number(weight));
+    const heightError = validateHeight(Number(height));
+
+    setErrors({
+      heightError,
+      nameError,
+      weightError,
+    });
+
+    if (nameError === '' && weightError === '' && heightError === '') {
+      return false;
+    }
+
+    return true;
+  };
   useFocusEffect(
     useCallback(() => {
       return () => clearState();
@@ -45,6 +74,11 @@ const BmiCalculator = () => {
   const calculateBmi = async () => {
     setLoad(true);
     try {
+      const error = isError();
+
+      if (error) {
+        return;
+      }
       const res = await auth.post('/bmi', {name, height, weight});
       const {
         result: {id},
@@ -74,6 +108,7 @@ const BmiCalculator = () => {
           value={name}
           onChangeText={e => setName(e)}
         />
+        <ErrorInputComp label={errors.nameError} />
         <DGHeading head="Height" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -86,6 +121,7 @@ const BmiCalculator = () => {
           />
           <MeasurementBox unit="cm" />
         </View>
+        <ErrorInputComp label={errors.heightError} />
         <DGHeading head="Weight" />
         <View style={styles.measurmentInput}>
           <CustomTextinput
@@ -98,6 +134,7 @@ const BmiCalculator = () => {
           />
           <MeasurementBox unit="kg" />
         </View>
+        <ErrorInputComp label={errors.weightError} />
         <View style={{height: 30}} />
         <CustomButton label="CALCULATE" load={load} onPress={calculateBmi} />
       </ScrollView>

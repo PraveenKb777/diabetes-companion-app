@@ -1,7 +1,7 @@
 import {R2_URL} from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -20,6 +20,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import {StackNavigation} from '../Stack';
 import {
   FeedBackSvg,
   ImportantSvg,
@@ -37,8 +38,9 @@ import CustomButton from '../components/CustomButton';
 import CustomTextinput from '../components/CustomTextinput';
 import ProfileButton from '../components/ProfileButton';
 import auth from '../utils/auth';
+import {validateConfirmPassword, validatePassword} from '../utils/validations';
 import {DGHeading} from './DiabetesGuide';
-import {StackNavigation} from '../Stack';
+import {ErrorInputComp} from './Login';
 
 export interface IUser {
   id: string;
@@ -59,6 +61,12 @@ const Profile = () => {
   const [conPassVis, setConPassVis] = useState(true);
   const [changePassVis, setChangePassVis] = useState(false);
   const [load, setLoad] = useState(false);
+
+  const [errors, setErrors] = useState({
+    currPasswordError: '',
+    passwordError: '',
+    confirmPasswordError: '',
+  });
   const navigation = useNavigation<StackNavigation>();
   // useEffect(() => {
   //   getUser();
@@ -70,9 +78,33 @@ const Profile = () => {
     }, []),
   );
 
+  const isError = () => {
+    const currPasswordError = validatePassword(oldPassword);
+    const passwordError = validatePassword(password);
+    const confirmPasswordError = validateConfirmPassword(
+      password,
+      confirmPassword,
+    );
+
+    setErrors({confirmPasswordError, currPasswordError, passwordError});
+
+    if (
+      currPasswordError === '' &&
+      passwordError === '' &&
+      confirmPasswordError === ''
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   const changePassword = async () => {
     setLoad(true);
     try {
+      const error = isError();
+      if (error) {
+        return;
+      }
       const res = await auth.post('/auth/change-password', {
         password,
         confirmPassword,
@@ -115,7 +147,7 @@ const Profile = () => {
   const passwordBtnRef = useRef<TextInput>(null);
 
   React.useEffect(() => {
-    val.value = withTiming(changePassVis ? 400 : 90, {
+    val.value = withTiming(changePassVis ? 420 : 90, {
       duration: 300,
       easing: Easing.inOut(Easing.ease),
     });
@@ -135,8 +167,12 @@ const Profile = () => {
     setOldPassword('');
     setPassword('');
     setConfirmPassword('');
+    setErrors({
+      currPasswordError: '',
+      passwordError: '',
+      confirmPasswordError: '',
+    });
   };
-  console.log(changePassVis);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Profile" />
@@ -242,6 +278,7 @@ const Profile = () => {
             suffixIconTap={() => setOldPassVis(e => !e)}
             onChangeText={e => setOldPassword(e)}
           />
+          <ErrorInputComp label={errors.currPasswordError} />
           <Text style={{marginVertical: 16}}>
             Please enter and confirm your new password.
           </Text>
@@ -254,6 +291,7 @@ const Profile = () => {
             onChangeText={e => setPassword(e)}
             suffixIconTap={() => setPassVis(e => !e)}
           />
+          <ErrorInputComp label={errors.passwordError} />
           <View style={{height: 20}} />
           <CustomTextinput
             placeholder="Re-enter new password"
@@ -264,7 +302,8 @@ const Profile = () => {
             suffixIconTap={() => setConPassVis(e => !e)}
             onChangeText={e => setConfirmPassword(e)}
           />
-          <View style={{height: 20}} />
+          <ErrorInputComp label={errors.confirmPasswordError} />
+          <View style={{height: 20, flex: 1}} />
 
           <CustomButton
             label="Change password"
@@ -290,7 +329,7 @@ const Profile = () => {
           btnStyle="danger"
           onPress={async () => {
             await AsyncStorage.clear();
-            navigation.navigate('SplashScreen' as never);
+            navigation.reset({routes: [{name: 'SplashScreen'}]});
           }}
         />
         <View style={{height: 30}} />

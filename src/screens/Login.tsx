@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackActions, useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,12 +16,37 @@ import CustomButton from '../components/CustomButton';
 import CustomTextinput from '../components/CustomTextinput';
 import auth from '../utils/auth';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {validateEmail, validatePassword} from '../utils/validations';
+
+export const ErrorInputComp: FC<{label: string}> = ({label}) => {
+  if (!label) {
+    return null;
+  }
+  return <Text style={{color: '#FF6666', fontSize: 10}}>{label}</Text>;
+};
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passVis, setPassVis] = useState(true);
   const [load, setLoad] = useState(false);
+
+  const [errors, setErrors] = useState({
+    emailError: '',
+    passError: '',
+  });
+
+  const isErrors = () => {
+    const emailError = validateEmail(email);
+    const passError = validatePassword(password);
+    setErrors({emailError, passError});
+
+    if (emailError === '' && passError === '') {
+      return false;
+    }
+
+    return true;
+  };
 
   useEffect(() => {
     clearStorage();
@@ -37,12 +62,18 @@ const Login = () => {
   const onPressLogin = async () => {
     setLoad(true);
     try {
+      const error = isErrors();
+
+      if (error) {
+        return;
+      }
       const res = await auth.post('/auth/login', {email, password});
       const {message, token, user} = await res.data;
       console.log(user);
       ToastAndroid.show(message, ToastAndroid.SHORT);
       await AsyncStorage.setItem('token', token);
       await AsyncStorage.setItem('user', JSON.stringify(user));
+      console.log(user, '>>user');
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
       const data = await error.response.data;
@@ -59,7 +90,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={[styles.safeArea]}>
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps="always">
         <Text style={[styles.welcome]}>Hello Again!</Text>
         <Text style={[styles.subHead]}>
           It’s great to have you back! Please log in to access your diabetes
@@ -72,6 +103,7 @@ const Login = () => {
           value={email}
           onChangeText={e => setEmail(e)}
         />
+        <ErrorInputComp label={errors.emailError} />
         <CustomTextinput
           prefixIcon={lock}
           mainContStyle={[styles.inputStyle]}
@@ -82,6 +114,7 @@ const Login = () => {
           onChangeText={e => setPassword(e)}
           suffixIconTap={() => setPassVis(e => !e)}
         />
+        <ErrorInputComp label={errors.passError} />
         <Text
           onPress={() => navigation.navigate('ForgotPasswordScreen')}
           style={[{alignSelf: 'flex-end'}, styles.inputStyle]}>

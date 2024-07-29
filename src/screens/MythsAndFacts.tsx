@@ -56,7 +56,7 @@ const MythsAndFacts = () => {
         data={MythFactList}
         horizontal
         pagingEnabled
-        // scrollEnabled={false}
+        scrollEnabled={false}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         showsHorizontalScrollIndicator={false}
