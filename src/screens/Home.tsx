@@ -248,13 +248,15 @@ const Home = () => {
           <DownGradientBox
             img={cmp}
             label="Caloric Menu Planner - CMP"
-            onClick={() => navigation.navigate('HomeScreen', {screen: 'CMP'})}
+            onClick={() =>
+              navigation.navigate('HomeScreen', {screen: 'CMP'} as any)
+            }
           />
           <DownGradientBox
             img={riskfinder}
             label="BMI, WHR, DRF, MODY RF"
             onClick={() =>
-              navigation.navigate('HomeScreen', {screen: 'RiskFinder'})
+              navigation.navigate('HomeScreen', {screen: 'RiskFinder'} as any)
             }
           />
         </View>

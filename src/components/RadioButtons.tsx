@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 
-const Radios: FC<{
+export const Radios: FC<{
   selected?: boolean;
   label?: string;
   onClick?: () => void;

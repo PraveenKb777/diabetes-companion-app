@@ -28,6 +28,9 @@ import Assesment from './screens/Assesment';
 import AssesmentQuestions from './screens/AssesmentQuestions';
 import MyLog from './screens/MyLog';
 import NoInternetScreen from './screens/NoInternetScreen';
+import WebViewComponent from './screens/WebView';
+import ChooseYourCaloricValue from './screens/ChooseYourCaloricValue';
+import CaloriesWiseList from './screens/CaloriesWiseList';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -56,6 +59,9 @@ export type ScreenNames = [
   'AssesmentQuestionsScreen',
   'MyLogScreen',
   'NoInternetScreen',
+  'WebViewScreen',
+  'CYCVScreen',
+  'CaloriesWiseListScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -167,6 +173,13 @@ const StackNavigator = () => {
         component={BMIResult}
       />
       <Screen
+        name="CaloriesWiseListScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={CaloriesWiseList}
+      />
+      <Screen
         name="WhrCalculatorScreen"
         options={{
           headerShown: false,
@@ -256,6 +269,20 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={NoInternetScreen}
+      />
+      <Screen
+        name="WebViewScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={WebViewComponent}
+      />
+      <Screen
+        name="CYCVScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={ChooseYourCaloricValue}
       />
     </Navigator>
   );

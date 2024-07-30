@@ -2,13 +2,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackActions, useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {ActivityIndicator, Image, SafeAreaView, StyleSheet} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  Linking,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import img from '../assets/img/splash_img.jpeg';
 import auth from '../utils/auth';
+import {StackNavigation} from '../Stack';
 
 const SplashScreen = () => {
-  const navigation = useNavigation();
-  //   const [load, setLoad] = useState(true);
+  const navigation = useNavigation<StackNavigation>();
   useEffect(() => {
     setTimeout(validate, 2000);
   }, []);
@@ -33,11 +41,17 @@ const SplashScreen = () => {
       //   setLoad(false);
     }
   };
-
+  const url =
+    'https://visiting-card-worker.praveen-cendrol.workers.dev/' as any;
   return (
     <SafeAreaView style={styles.safeArea}>
       <Image source={img} style={styles.logo} />
       <ActivityIndicator color={'#0075FF'} style={[styles.loader]} />
+      <TouchableOpacity
+        onPress={() => Linking.openURL(url)}
+        style={[styles.loader, {bottom: 30}]}>
+        <Text>Crafted and Created by MGTECH</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -59,6 +73,6 @@ const styles = StyleSheet.create({
   loader: {
     // alignSelf: 'flex-end',
     position: 'absolute',
-    bottom: 30,
+    bottom: 80,
   },
 });

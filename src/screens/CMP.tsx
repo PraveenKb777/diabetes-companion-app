@@ -3,7 +3,11 @@ import React from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {ScrollView} from 'react-native-gesture-handler';
 import DownGradientBox from '../components/DownGradientBox';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigation} from '../Stack';
 const CMP = () => {
+  const navigattion = useNavigation<StackNavigation>();
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Caloric Menu Planner " />
@@ -27,6 +31,7 @@ const CMP = () => {
             label="Plan your menu"
             fontSize={20}
             fontStyle="italic"
+            onClick={() => navigattion.navigate('CYCVScreen')}
           />
           <DownGradientBox
             img={'cmpedityourmeal.png'}
