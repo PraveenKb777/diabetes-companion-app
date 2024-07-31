@@ -1,3 +1,4 @@
+import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -5,18 +6,17 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
-import {CALORIC_AMOUNTS} from './ChooseYourCaloricValue';
-import BackButtonHeader from '../components/BackButtonHeader';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {ArrowIndicator, NextArrow} from '../assets/Svg';
+import BackButtonHeader from '../components/BackButtonHeader';
 import MENU from '../datas/menu';
-import {useDispatch} from 'react-redux';
+import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {setSelectedItem} from '../redux/slice/cmpSlice';
+import {CALORIC_AMOUNTS} from './ChooseYourCaloricValue';
 const COUNT = Array(7)
   .fill(0)
   .map((_, i) => i);
@@ -122,6 +122,7 @@ const FoodsRenderItems: FC<{
       <ScrollView horizontal style={{marginVertical: 10}}>
         {item?.map(subMain => (
           <TouchableOpacity
+            key={subMain.uuid}
             onPress={() =>
               !(foodList?.name === subMain.name)
                 ? setFoodList(subMain)
@@ -232,14 +233,25 @@ const CaloriesWiseList = () => {
   const {selectedItems} = useAppSelector(e => e.cmpReducer);
   console.log('>>>>', selectedItems);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [nextEnabled, setNextEnabled] = useState(false);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let total = 0;
+    let avilable = 0;
+    MENU[selectedIndex].forEach(e => e && total++);
+    selectedItems[selectedIndex].forEach(e => {
+      e && avilable++;
+    });
+    if (total === avilable) {
+      setNextEnabled(true);
+    } else {
+      setNextEnabled(false);
+    }
+    setCount(avilable);
+  }, [selectedIndex, selectedItems]);
+
   const renderItem: ListRenderItem<(typeof MENU)[0]> = ({index, item}) => {
     const headingItem = MEALS_HEADING[index];
-    console.log(
-      '>>>>',
-      selectedItems[index].map((e, i) => {
-        return e?.name;
-      }),
-    );
     return (
       <View style={{width, padding: 16, height: '100%'}}>
         <ScrollView
@@ -300,6 +312,7 @@ const CaloriesWiseList = () => {
             </View>
             {item.map((minlist, i) => (
               <FoodsRenderItems
+                key={'' + i + i + i}
                 item={minlist}
                 timingIndex={index}
                 itemIndex={i}
@@ -307,13 +320,61 @@ const CaloriesWiseList = () => {
             ))}
           </View>
         </ScrollView>
+        <ScrollView
+          style={{
+            borderWidth: 1,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            borderRadius: 5,
+            marginTop: 10,
+            maxHeight: (height * 30) / 100,
+            flexGrow: 0,
+          }}
+          contentContainerStyle={{padding: 16}}>
+          <View
+            style={{
+              width: 4,
+              height: '110%',
+              backgroundColor: '#0075FF',
+              position: 'absolute',
+              top: 16,
+              left: 5,
+              borderRadius: 100,
+            }}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+              Items selected ({count}/{MENU[index].length})
+            </Text>
+            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+              Qty
+            </Text>
+          </View>
+          {selectedItems[index].map(e =>
+            e ? (
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text
+                  style={{fontSize: 16, fontWeight: 'bold', maxWidth: '70%'}}>
+                  {e.name}
+                </Text>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>{e.qty}</Text>
+              </View>
+            ) : null,
+          )}
+        </ScrollView>
       </View>
     );
   };
 
   const handleNext = () => {
     setSelectedIndex(_ => {
-      if (selectedIndex === MENU.length - 1) {
+      if (selectedIndex === MENU.length - 1 || !nextEnabled) {
+        if (!nextEnabled) {
+          ToastAndroid.show(
+            'Kindly select at least one item from all rows',
+            ToastAndroid.SHORT,
+          );
+        }
         return selectedIndex;
       }
       const nextIndex = selectedIndex + 1;
@@ -381,7 +442,9 @@ const CaloriesWiseList = () => {
           style={[
             {
               backgroundColor:
-                MENU.length - 1 === selectedIndex ? 'grey' : '#000',
+                MENU.length - 1 === selectedIndex || !nextEnabled
+                  ? 'grey'
+                  : '#000',
               height: 40,
               width: 40,
               justifyContent: 'center',

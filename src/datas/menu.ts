@@ -1,15 +1,14 @@
 // 1250 kacl
 
 const MENU = [
-  // Early morning
   [
     [
       {
         name: 'Beverages',
-        uuid: 'uuid_1',
+        uuid: 'fca4d208-3fe7-4f06-a9e3-c06da3957de4',
         foods: [
           {
-            id: 'e9b1e4d5-1234-5678-9123-456789abcdef',
+            id: '716ca70e-3f26-443d-8418-1d8b218929fb',
             name: 'Cinnamon tea without sugar',
             qty: '1 cup',
             energy_kcal: 9.88,
@@ -19,7 +18,7 @@ const MENU = [
             fiber_g: 2.12,
           },
           {
-            id: 'd4a9b3c4-5678-1234-5678-1234567890ab',
+            id: '779faa0c-16d8-43c4-abe8-6e1b6374bf07',
             name: 'Amla Juice without sugar',
             qty: '1 cup',
             energy_kcal: 45.4,
@@ -29,7 +28,7 @@ const MENU = [
             fiber_g: 6.56,
           },
           {
-            id: 'f6c7e8d9-2345-6789-1234-567890abcdef',
+            id: '446c6db6-7ccd-4531-a45c-07585304b2bb',
             name: 'Fenugreek water',
             qty: '1 cup',
             energy_kcal: 14.1,
@@ -39,7 +38,7 @@ const MENU = [
             fiber_g: 2.86,
           },
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef12',
+            id: '6a744f48-f4c0-4fb4-9330-347e3fca12bd',
             name: 'Cumin water',
             qty: '1 cup',
             energy_kcal: 18.26,
@@ -49,7 +48,7 @@ const MENU = [
             fiber_g: 1.82,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef123',
+            id: 'fac1eba7-e011-41d5-ab56-2a054f57d6fa',
             name: 'Skimmed Milk without sugar',
             qty: '1 cup',
             energy_kcal: 68,
@@ -59,7 +58,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef1234',
+            id: '03b7bbf4-0e06-42df-b555-1fc6d7df0e9b',
             name: 'Skimmed Milk coffee without sugar',
             qty: '1 cup',
             energy_kcal: 91.8,
@@ -69,7 +68,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-0abcdef12345',
+            id: '34db3b03-2447-46ed-a7c5-50ad2b0edb7f',
             name: 'Skimmed Milk tea without sugar',
             qty: '1 cup',
             energy_kcal: 73.64,
@@ -79,7 +78,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-abcdef123456',
+            id: '339484a0-39e9-4b67-82c4-fc228285262c',
             name: 'Diluted Milk without sugar',
             qty: '1 cup',
             energy_kcal: 62,
@@ -89,7 +88,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-abcdef123456',
+            id: '5a25f899-9619-4576-a814-0568f064d3a7',
             name: 'Diluted Milk coffee without sugar',
             qty: '1 cup',
             energy_kcal: 85.8,
@@ -99,7 +98,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-abcdef123456',
+            id: 'befbdcfc-66ed-4079-8e32-f5c9905db0f0',
             name: 'Diluted Milk tea without sugar',
             qty: '1 cup',
             energy_kcal: 67.64,
@@ -112,15 +111,14 @@ const MENU = [
       },
     ],
   ],
-  //   breakfast
   [
     [
       {
         name: 'Dosai',
-        uuid: 'a1b2c3d-9012-3456-7890abcdef01',
+        uuid: 'd93debc3-cc97-4f93-946a-4619eee336e9',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: '282d6e0d-1ca4-45d6-b221-70f19a5f741d',
             name: 'Rice dosai',
             qty: '2 medium size',
             energy_kcal: 169.78,
@@ -130,7 +128,7 @@ const MENU = [
             fiber_g: 3.54,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: 'd896d9c2-c441-4427-a8d1-b22fe61f7586',
             name: 'Mixed Pulse adai',
             qty: '2 medium size',
             energy_kcal: 169.4,
@@ -140,7 +138,7 @@ const MENU = [
             fiber_g: 6.36,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: 'ecb9a88f-e9a9-41b4-9183-c511c0408c79',
             name: 'Bajra dosai',
             qty: '2 medium size',
             energy_kcal: 169.06,
@@ -150,7 +148,7 @@ const MENU = [
             fiber_g: 5.08,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: 'd44b88ea-cd30-46dd-9d6a-f477ac14d673',
             name: 'Ragi dosai',
             qty: '2 medium size',
             energy_kcal: 167.82,
@@ -160,7 +158,7 @@ const MENU = [
             fiber_g: 3.96,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: 'd6e21c1d-3897-4b51-9884-ed80c3c7ab3a',
             name: 'Corriander dosai',
             qty: '2 medium size',
             energy_kcal: 176,
@@ -170,7 +168,7 @@ const MENU = [
             fiber_g: 4.48,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '2226d939-d119-4543-beac-b08c61f90eff',
             name: 'Methi dosai',
             qty: '2 medium size',
             energy_kcal: 176.66,
@@ -180,7 +178,7 @@ const MENU = [
             fiber_g: 4.52,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: 'b72c648c-c36a-4b10-b3d2-aa23b3fe9ce2',
             name: 'Wheat flour dosai',
             qty: '2 medium size',
             energy_kcal: 160.98,
@@ -190,7 +188,7 @@ const MENU = [
             fiber_g: 5.62,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: 'a4972ad9-1416-4566-b72f-0652de1404b6',
             name: 'Wheat rava dosai',
             qty: '2 medium size',
             energy_kcal: 197.58,
@@ -200,7 +198,7 @@ const MENU = [
             fiber_g: 6.16,
           },
           {
-            id: 'i9j0k1l2-3456-7890-1234-56abcdef89',
+            id: 'aaf07ea3-13ed-4635-a047-d3da69e24079',
             name: 'Jowar dosai',
             qty: '2 medium size',
             energy_kcal: 166.28,
@@ -210,7 +208,7 @@ const MENU = [
             fiber_g: 4.82,
           },
           {
-            id: 'j0k1l2m3-4567-8901-2345-67abcdef90',
+            id: '6a284f99-0345-46ea-b25c-f4a6d65f78e3',
             name: 'Samai dosai',
             qty: '2 medium size',
             energy_kcal: 167.66,
@@ -220,7 +218,7 @@ const MENU = [
             fiber_g: 5.12,
           },
           {
-            id: 'k1l2m3n4-5678-9012-3456-78abcdef01',
+            id: '75b29c93-d56b-402d-a759-eae49b879b5e',
             name: 'Varagu dosai',
             qty: '2 medium size',
             energy_kcal: 154.38,
@@ -233,10 +231,10 @@ const MENU = [
       },
       {
         name: 'Idli',
-        uuid: 'l1m2n3o4-9012-3456-7890abcdef01',
+        uuid: '179e470b-f6b1-4644-811b-bded6134ba87',
         foods: [
           {
-            id: 'l1m2n3o4-5678-9012-3456-7890abcdef01',
+            id: 'c9274770-cb5f-4739-b0de-54460119d9a2',
             name: 'Rice idli',
             qty: '2 large size',
             energy_kcal: 169.78,
@@ -246,7 +244,7 @@ const MENU = [
             fiber_g: 3.54,
           },
           {
-            id: 'm2n3o4p5-6789-0123-4567-890abcdef12',
+            id: 'b5fa04fe-4fc2-49b9-abe7-556fc9f77809',
             name: 'Bajra idli',
             qty: '2 large size',
             energy_kcal: 169.48,
@@ -256,7 +254,7 @@ const MENU = [
             fiber_g: 5.04,
           },
           {
-            id: 'n3o4p5q6-7890-1234-5678-90abcdef23',
+            id: '8bae93cb-c326-48d1-8896-ca752a5b010e',
             name: 'Jowar idli',
             qty: '2 large size',
             energy_kcal: 166.28,
@@ -266,7 +264,7 @@ const MENU = [
             fiber_g: 4.82,
           },
           {
-            id: 'o4p5q6r7-8901-2345-6789-01abcdef34',
+            id: 'cf7bb932-379c-4661-8d41-3776600986ec',
             name: 'Ragi idli',
             qty: '2 large size',
             energy_kcal: 167.82,
@@ -276,7 +274,7 @@ const MENU = [
             fiber_g: 3.96,
           },
           {
-            id: 'p5q6r7s8-9012-3456-7890-12abcdef45',
+            id: 'f898b637-6e96-4baa-bd50-708fbebe07bf',
             name: 'Samai idli',
             qty: '2 large size',
             energy_kcal: 167.66,
@@ -286,7 +284,7 @@ const MENU = [
             fiber_g: 5.12,
           },
           {
-            id: 'q6r7s8t9-0123-4567-8901-23abcdef56',
+            id: '6f593b39-8820-4cf0-a613-a6421397b305',
             name: 'Varagu idli',
             qty: '2 large size',
             energy_kcal: 154.38,
@@ -299,10 +297,10 @@ const MENU = [
       },
       {
         name: 'Idiyappam',
-        uuid: 'r1s2t3u4-5678-9012-7890abcdef01',
+        uuid: '674c5fb9-872f-4ca0-ad22-b494f31811f4',
         foods: [
           {
-            id: 'r1s2t3u4-5678-9012-3456-7890abcdef01',
+            id: '0a88c2ab-5427-45c2-aa80-9d201e3c53ae',
             name: 'Rice Idiyappam',
             qty: '2 large size',
             energy_kcal: 178.18,
@@ -312,7 +310,7 @@ const MENU = [
             fiber_g: 1.4,
           },
           {
-            id: 's2t3u4v5-6789-0123-4567-890abcdef12',
+            id: 'b14ef3e6-3aae-47e6-9e5e-519f7867798b',
             name: 'Bajra Idiyappam',
             qty: '2 large size',
             energy_kcal: 174,
@@ -322,7 +320,7 @@ const MENU = [
             fiber_g: 5.74,
           },
           {
-            id: 't3u4v5w6-7890-1234-5678-90abcdef23',
+            id: '16ec2379-07c8-41f1-bcf2-d9f2c5695c9b',
             name: 'Jowar Idiyappam',
             qty: '2 large size',
             energy_kcal: 169.3,
@@ -332,7 +330,7 @@ const MENU = [
             fiber_g: 4.36,
           },
           {
-            id: 'u4v5w6x7-8901-2345-6789-01abcdef34',
+            id: 'f12c9361-3aa2-4fed-838f-4b87ef02da2b',
             name: 'Ragi Idiyappam',
             qty: '2 large size',
             energy_kcal: 162.32,
@@ -342,7 +340,7 @@ const MENU = [
             fiber_g: 5.08,
           },
           {
-            id: 'v5w6x7y8-9012-3456-7890-12abcdef45',
+            id: 'd4147d1a-93ed-4036-ba14-f875393d0181',
             name: 'Samai Idiyappam',
             qty: '2 large size',
             energy_kcal: 173.16,
@@ -352,7 +350,7 @@ const MENU = [
             fiber_g: 3.86,
           },
           {
-            id: 'w6x7y8z9-0123-4567-8901-23abcdef56',
+            id: '77ce3a18-eede-4977-be3d-2e9373dd6d2d',
             name: 'Varagu Idiyappam',
             qty: '2 large size',
             energy_kcal: 164.6,
@@ -365,10 +363,10 @@ const MENU = [
       },
       {
         name: 'Pongal',
-        uuid: 'x1y2z3a4-9012-3456-7890abcdef01',
+        uuid: '90dad025-a1f4-4927-b470-dca5311b0547',
         foods: [
           {
-            id: 'x1y2z3a4-5678-9012-3456-7890abcdef01',
+            id: '30c6d754-c65d-4672-a10b-e3919f9f2d6e',
             name: 'Bajra Pongal',
             qty: '1 cup',
             energy_kcal: 170.66,
@@ -378,7 +376,7 @@ const MENU = [
             fiber_g: 5.43,
           },
           {
-            id: 'y2z3a4b5-6789-0123-4567-890abcdef12',
+            id: '66c678b2-194a-4bc0-aa6c-8986d27403e9',
             name: 'Jowar Pongal',
             qty: '1 cup',
             energy_kcal: 164.97,
@@ -388,7 +386,7 @@ const MENU = [
             fiber_g: 4.9,
           },
           {
-            id: 'z3a4b5c6-7890-1234-5678-90abcdef23',
+            id: 'bc40a07b-ed48-4cee-841f-826a282d236d',
             name: 'Samai Pongal',
             qty: '1 cup',
             energy_kcal: 168.02,
@@ -398,7 +396,7 @@ const MENU = [
             fiber_g: 4.27,
           },
           {
-            id: 'a4b5c6d7-8901-2345-6789-01abcdef34',
+            id: '48264ea9-f27c-46ed-a56b-da21f1a38da4',
             name: 'Varagu Pongal',
             qty: '1 cup',
             energy_kcal: 164.97,
@@ -411,10 +409,10 @@ const MENU = [
       },
       {
         name: 'Chapati',
-        uuid: 'b1c2d3e4-5678-9012-7890abcdef01',
+        uuid: 'ce06ec81-57d6-42f3-bc76-ad0ad669520f',
         foods: [
           {
-            id: 'b1c2d3e4-5678-9012-3456-7890abcdef01',
+            id: '1bdb7eb9-ba3e-4e53-8750-415c052a3132',
             name: 'Wheat Flour Chapati',
             qty: '2 medium size',
             energy_kcal: 160.97,
@@ -424,7 +422,7 @@ const MENU = [
             fiber_g: 5.62,
           },
           {
-            id: 'c2d3e4f5-6789-0123-4567-890abcdef12',
+            id: '765b8698-9be8-426b-ac91-0f70d4b1b02b',
             name: 'Methi Chapati',
             qty: '2 medium size',
             energy_kcal: 167.85,
@@ -434,7 +432,7 @@ const MENU = [
             fiber_g: 6.6,
           },
           {
-            id: 'd3e4f5g6-7890-1234-5678-90abcdef23',
+            id: 'c4bdbbae-d78f-4534-83a4-0e3f4f105ca6',
             name: 'Ragi Chapati',
             qty: '2 medium size',
             energy_kcal: 160.37,
@@ -447,10 +445,10 @@ const MENU = [
       },
       {
         name: 'Upma',
-        uuid: 'a1b2c3d4-3456-7890abcdef01',
+        uuid: '7d6074ad-86ed-4f0c-a21c-fe7c1d246584',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: 'f4e2c66f-1922-4c02-8866-592a5e42c1d4',
             name: 'Rice Rava Upma',
             qty: '1 cup',
             energy_kcal: 166.83,
@@ -460,7 +458,7 @@ const MENU = [
             fiber_g: 4.86,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: 'd91b736b-0701-450e-a2e1-495d010e92db',
             name: 'Wheat Rava Upma',
             qty: '1 cup',
             energy_kcal: 170.05,
@@ -470,7 +468,7 @@ const MENU = [
             fiber_g: 4.78,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: '3c6cd73f-6b13-437a-99f5-94cecc4a623b',
             name: 'Bajra Upma',
             qty: '1 cup',
             energy_kcal: 174,
@@ -480,7 +478,7 @@ const MENU = [
             fiber_g: 5.75,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: 'c8b93db0-3f4d-4368-b253-ff9ac859defb',
             name: 'Jowar Upma',
             qty: '1 cup',
             energy_kcal: 167.07,
@@ -490,7 +488,7 @@ const MENU = [
             fiber_g: 5.11,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: '00b033a6-e513-4a91-965f-c194b00cf063',
             name: 'Samai Upma',
             qty: '1 cup',
             energy_kcal: 165.09,
@@ -500,7 +498,7 @@ const MENU = [
             fiber_g: 5.93,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '6d0de609-662b-46a5-b238-2bca8cdf897c',
             name: 'Varagu Upma',
             qty: '1 cup',
             energy_kcal: 171.53,
@@ -510,7 +508,7 @@ const MENU = [
             fiber_g: 3.32,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: 'c75ee912-2c1f-4e53-a892-021f8c0871aa',
             name: 'Wheat Rava Kichadi',
             qty: '1 cup',
             energy_kcal: 143.77,
@@ -525,10 +523,10 @@ const MENU = [
     [
       {
         name: 'Chutney',
-        uuid: 'a1b2c3d4-3456-7890abcdef01',
+        uuid: '021135f8-dc43-4c0e-840c-4b5df21c0ed4',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: '281e34cd-3588-4bfb-ae2f-c25c3a64a58f',
             name: 'Garlic Chutney',
             qty: '¼ cup',
             energy_kcal: 49.35,
@@ -538,7 +536,7 @@ const MENU = [
             fiber_g: 2.45,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: 'ee2b6228-1e30-49c4-8440-9037b13e9fc3',
             name: 'Ginger Chutney',
             qty: '¼ cup',
             energy_kcal: 51.78,
@@ -548,7 +546,7 @@ const MENU = [
             fiber_g: 2.16,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: '5e36d671-47d1-4e16-9092-1b98b06f9e37',
             name: 'Tamarind Chutney',
             qty: '¼ cup',
             energy_kcal: 53.84,
@@ -558,7 +556,7 @@ const MENU = [
             fiber_g: 2.34,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: '5e477f49-e1ae-4833-bf5b-e49e96ba4b85',
             name: 'Mint Chutney',
             qty: '¼ cup',
             energy_kcal: 47.52,
@@ -568,7 +566,7 @@ const MENU = [
             fiber_g: 4.44,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: 'a5d6a013-dd3a-4117-a251-3d999ad7ae54',
             name: 'Coriander Chutney',
             qty: '¼ cup',
             energy_kcal: 42.86,
@@ -578,7 +576,7 @@ const MENU = [
             fiber_g: 3.26,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '9fdc4640-51ec-4e4c-bbec-d2211a29714f',
             name: 'Curry Leaves Chutney',
             qty: '¼ cup',
             energy_kcal: 48.15,
@@ -588,7 +586,7 @@ const MENU = [
             fiber_g: 9.16,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: '6044e6ca-ef7c-4117-882e-60a4190fa618',
             name: 'Ridge Gourd Chutney',
             qty: '¼ cup',
             energy_kcal: 47.56,
@@ -598,7 +596,7 @@ const MENU = [
             fiber_g: 2.67,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: '996365d3-d038-432e-b267-2c16a13e870a',
             name: 'Pulse Chutney',
             qty: '¼ cup',
             energy_kcal: 53.45,
@@ -609,12 +607,14 @@ const MENU = [
           },
         ],
       },
+    ],
+    [
       {
         name: 'Sambar',
-        uuid: 'a1b2c3d4-5678-9-7890abcdef01',
+        uuid: 'e2fcdffd-57c0-4aea-adb4-f231deb1f123',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: 'c7c9813f-ba31-46e5-89a0-90206ba08554',
             name: 'Green Gram Dhal Fry',
             qty: '¼ cup',
             energy_kcal: 19.6375,
@@ -624,7 +624,7 @@ const MENU = [
             fiber_g: 1.1675,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: '56c0d462-4a4c-4af9-ba01-46d8e54c62c3',
             name: 'Red Gram Dhal Fry',
             qty: '¼ cup',
             energy_kcal: 47.85,
@@ -634,7 +634,7 @@ const MENU = [
             fiber_g: 1.67,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: 'f2ab1dc0-82f1-4d30-82ce-216043b584e6',
             name: 'Red Gram Dhal Sambar',
             qty: '¼ cup',
             energy_kcal: 37.5725,
@@ -644,7 +644,7 @@ const MENU = [
             fiber_g: 1.74,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: '137c6f59-38ee-495e-aac2-4114e7dc23cc',
             name: 'Lady’s Finger Sambar',
             qty: '¼ cup',
             energy_kcal: 41.91,
@@ -654,7 +654,7 @@ const MENU = [
             fiber_g: 2.07,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: '8766c742-32c4-412e-9815-b4a450a4de1c',
             name: 'Arachivitta Sambar',
             qty: '¼ cup',
             energy_kcal: 43.31,
@@ -664,7 +664,7 @@ const MENU = [
             fiber_g: 2.675,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: 'ebc573c8-5588-4bcd-99cd-9a22a793400a',
             name: 'Pumpkin Sambar',
             qty: '¼ cup',
             energy_kcal: 41.975,
@@ -674,7 +674,7 @@ const MENU = [
             fiber_g: 2.0375,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: '81c5e661-37ec-4165-bc3c-bd4fb4bc0669',
             name: 'Channa Masala',
             qty: '¼ cup',
             energy_kcal: 29.1425,
@@ -684,7 +684,7 @@ const MENU = [
             fiber_g: 1.7125,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: '5d3b87fd-1900-4d5a-ab73-e9ddec5d7c4b',
             name: 'Fenugreek Leaves Sambar',
             qty: '¼ cup',
             energy_kcal: 35.17,
@@ -694,7 +694,7 @@ const MENU = [
             fiber_g: 1.6175,
           },
           {
-            id: 'i9j0k1l2-3456-7890-1234-56abcdef89',
+            id: 'ef6b9aa2-95e5-40a5-881d-a0fe69fca370',
             name: 'Paruppu Urundai Kara Kulambu',
             qty: '¼ cup',
             energy_kcal: 50.2425,
@@ -704,7 +704,7 @@ const MENU = [
             fiber_g: 2.62,
           },
           {
-            id: 'j0k1l2m3-4567-8901-2345-67abcdef90',
+            id: '1ce1676a-a472-4e56-b556-bbba84df3675',
             name: 'Garlic Fenugreek Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 49.44,
@@ -714,7 +714,7 @@ const MENU = [
             fiber_g: 2.47,
           },
           {
-            id: 'k1l2m3n4-5678-9012-3456-78abcdef01',
+            id: 'd951d833-3837-42ab-8bf2-b0758fabd0aa',
             name: 'Avarai Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 41.315,
@@ -724,7 +724,7 @@ const MENU = [
             fiber_g: 3.975,
           },
           {
-            id: 'l2m3n4o5-6789-0123-4567-89abcdef12',
+            id: '2c4d47dc-cbc3-4ac6-a91d-023311d6632a',
             name: 'Kovai Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 38.745,
@@ -734,7 +734,7 @@ const MENU = [
             fiber_g: 2.63,
           },
           {
-            id: 'm3n4o5p6-7890-1234-5678-90abcdef23',
+            id: 'aeb245c4-b803-400f-828c-e6a18b16642f',
             name: 'Bittergourd Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 38.805,
@@ -744,7 +744,7 @@ const MENU = [
             fiber_g: 2.7475,
           },
           {
-            id: 'n4o5p6q7-8901-2345-6789-01abcdef34',
+            id: 'b78d802e-7979-42c9-aa24-ee9e0a7390c3',
             name: 'Vendakai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 40.8375,
@@ -754,7 +754,7 @@ const MENU = [
             fiber_g: 2.8375,
           },
           {
-            id: 'o5p6q7r8-9012-3456-7890-12abcdef45',
+            id: '5695f0bb-4539-44df-afaf-f1ccb677fcdd',
             name: 'Brinjal Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 40.2975,
@@ -767,15 +767,14 @@ const MENU = [
       },
     ],
   ],
-  //   mid morning
   [
     [
       {
         name: 'Beverages',
-        uuid: '-b7bb-4f68-82eb-f9c3b4410639',
+        uuid: 'f199461c-b7d3-470f-8e35-050e3ca5ecfe',
         foods: [
           {
-            id: 'a3c7c4e0-b7bb-4f68-82eb-f9c3b4410639',
+            id: '927886e9-2b84-4fe8-97fb-b75fcda71e12',
             name: 'Cinnamon Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 9.88,
@@ -785,7 +784,7 @@ const MENU = [
             fiber_g: 2.12,
           },
           {
-            id: '2b4829c8-35d6-4b3b-b660-014c66d98d7a',
+            id: 'c41c2418-dbbc-43e7-9ab3-61e21d420d65',
             name: 'Amla Juice with Turmeric Without Sugar',
             qty: '1 cup',
             energy_kcal: 45.4,
@@ -795,7 +794,7 @@ const MENU = [
             fiber_g: 6.56,
           },
           {
-            id: 'd6c8d8a4-3b07-4f3a-b462-53a228f1b357',
+            id: '5c4c079c-f079-4c73-bc7f-441fe3547375',
             name: 'Fenugreek Water',
             qty: '1 cup',
             energy_kcal: 14.1,
@@ -805,84 +804,84 @@ const MENU = [
             fiber_g: 2.86,
           },
           {
-            id: '9e3c6f4b-d3b7-4b1a-8923-bba029bc78bc',
+            id: '3aec2fa5-46d3-444f-843f-897345cc68f4',
             name: 'Cumin Water',
             qty: '1 cup',
             energy_kcal: 18.26,
             carbohydrate_g: 1.36,
             protein_g: 0.84,
-            fat_g: 1.0,
+            fat_g: 1,
             fiber_g: 1.82,
           },
           {
-            id: 'e5c3f4d0-c6d4-4a5d-bd44-e3a07e6f9e2f',
+            id: '2a05fb82-4c0d-46f4-9396-f0c22eaf234a',
             name: 'Skimmed Milk Without Sugar',
             qty: '1 cup',
-            energy_kcal: 68.0,
+            energy_kcal: 68,
             carbohydrate_g: 9.6,
             protein_g: 6.74,
             fat_g: 0.16,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '6f48cf73-7c7d-46bb-bd3d-5d2d4f8e9470',
+            id: '6c7b8c1d-6a15-4ff3-8921-3ad430f34b96',
             name: 'Skimmed Milk Coffee Without Sugar',
             qty: '1 cup',
             energy_kcal: 91.8,
-            carbohydrate_g: 14.0,
+            carbohydrate_g: 14,
             protein_g: 7.58,
             fat_g: 0.48,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'd0b7353e-09dc-49c6-9c7d-ea5f6ea238ed',
+            id: '5324b5a8-616a-4e1e-9b3c-60782acf67ea',
             name: 'Skimmed Milk Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 73.64,
             carbohydrate_g: 9.84,
             protein_g: 6.78,
             fat_g: 0.16,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '0d3fc07c-3307-426a-8a0a-d7b15e6f949d',
+            id: '523e81fa-da94-498e-b8c8-c0a6afe1ed6e',
             name: 'Diluted Milk Without Sugar',
             qty: '1 cup',
-            energy_kcal: 62.0,
+            energy_kcal: 62,
             carbohydrate_g: 4.66,
             protein_g: 3.32,
             fat_g: 3.35,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'c36fcfa7-cf67-45e4-b85a-9e9d7c6e7126',
+            id: '982a8a0c-c718-4a2d-9f33-aefc92f5a87d',
             name: 'Diluted Milk Coffee Without Sugar',
             qty: '1 cup',
             energy_kcal: 85.8,
             carbohydrate_g: 9.06,
             protein_g: 4.16,
             fat_g: 3.67,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '75e1fc58-4b8a-4e6d-80b0-cdd1b1e6db2b',
+            id: '02fd09c0-be1d-48a0-9a3f-3d27aeffbfe4',
             name: 'Diluted Milk Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 67.64,
             carbohydrate_g: 4.9,
             protein_g: 4.36,
             fat_g: 3.35,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'd862a8b8-61dc-4e6b-a8c8-4f1a7e7425e4',
+            id: '72b9007c-1a41-4ab9-9b29-211299f07254',
             name: 'Buttermilk',
             qty: '1 cup',
             energy_kcal: 25.72,
             carbohydrate_g: 1.28,
             protein_g: 1.32,
             fat_g: 1.72,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
         ],
       },
@@ -890,10 +889,10 @@ const MENU = [
     [
       {
         name: 'Fruits',
-        uuid: 'e1c5d6e0-4dbb-9b3e-d2fa5b928568',
+        uuid: '80cc9915-bd90-4411-8c39-73ef5db69703',
         foods: [
           {
-            id: 'e1c5d6e0-1bfc-4dbb-9b3e-d2fa5b928568',
+            id: 'af461096-093b-48ac-998f-15ec84c610d2',
             name: 'Apple',
             qty: '1/2 big or 64 grams',
             energy_kcal: 40,
@@ -903,7 +902,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: '62e7c935-1a7b-48f0-a07e-4a91a1ecb0f8',
+            id: '29f9e17a-6053-45aa-8dfb-01307cc7209f',
             name: 'Orange',
             qty: '1 medium or 108 grams',
             energy_kcal: 40,
@@ -913,7 +912,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'd42a4e66-e4ea-4a55-9e2e-0b1f6a7367b7',
+            id: '9973cc07-b5e8-48cf-b43f-a337b5c5d532',
             name: 'Pink Guava',
             qty: '1 medium or 86 grams',
             energy_kcal: 40,
@@ -923,7 +922,7 @@ const MENU = [
             fiber_g: 6,
           },
           {
-            id: 'dc08c26d-0b71-4b30-b0cf-68bb7b62ae3b',
+            id: '028d6d7d-371c-4d24-813a-5630a4e27b7b',
             name: 'White Guava',
             qty: '1 medium or 124 grams',
             energy_kcal: 40,
@@ -933,7 +932,7 @@ const MENU = [
             fiber_g: 11,
           },
           {
-            id: '27a6e1b8-5649-4db8-bc7e-cc5a3e6f04a2',
+            id: '887f04a2-7ba2-43af-901a-f21f712b54c2',
             name: 'Seeded Green Grapes',
             qty: '20 nos or 72 grams',
             energy_kcal: 40,
@@ -943,7 +942,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: '7f2b17b3-1b85-40f4-b2f8-8a2c7a5f4d84',
+            id: 'bd76a05f-8254-47a3-ad87-9ce1ae32d61f',
             name: 'Seeded Round Black Grapes',
             qty: '20 nos or 66 grams',
             energy_kcal: 40,
@@ -953,7 +952,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'f2296468-29c0-4f6b-8169-5c24b4a8107c',
+            id: '8cb4fbb3-e505-4d71-8741-3414185c0c78',
             name: 'Pear',
             qty: '1 medium or 107 grams',
             energy_kcal: 40,
@@ -963,7 +962,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'b1d4d78a-52b5-4b4f-95e4-34e080a2a3c3',
+            id: 'e64fa262-40ce-4a14-813d-71d1f0c64de7',
             name: 'Watermelon',
             qty: '1 big slice or 195 grams',
             energy_kcal: 40,
@@ -973,7 +972,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: '0ef8ff36-2d68-4d5e-9b18-493b4893f715',
+            id: '440afab7-07e2-4876-a3f5-16827ff27355',
             name: 'Musk Melon',
             qty: '4-5 slices or 173 grams',
             energy_kcal: 40,
@@ -983,7 +982,7 @@ const MENU = [
             fiber_g: 3,
           },
           {
-            id: 'ad5fc64d-12ab-4a26-872d-529527b236a5',
+            id: '7f9dc963-7c25-477a-8fd7-9cf2e96d94d7',
             name: 'Pomegranate',
             qty: '1 oz or 75 grams',
             energy_kcal: 40,
@@ -993,7 +992,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: '63b6d7c2-9f4b-44fc-8cb6-8f86a51c3e7d',
+            id: '491a1216-6b17-443e-a5c1-6d54effe5472',
             name: 'Gooseberry',
             qty: '2 nos or 170 grams',
             energy_kcal: 40,
@@ -1003,7 +1002,7 @@ const MENU = [
             fiber_g: 13,
           },
           {
-            id: '418813a1-8f75-4d0b-9b1d-7412dbb14efb',
+            id: '552477e6-15c3-4b3b-945b-62006a1df588',
             name: 'Papaya',
             qty: '4 thin long slices or 168 grams',
             energy_kcal: 40,
@@ -1013,7 +1012,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'c20eb13d-fc0b-4d76-9232-68dbb2b39d91',
+            id: '769d8830-83f7-4854-9e99-a065b6dd17a6',
             name: 'Jamun Fruit',
             qty: '75 grams',
             energy_kcal: 40.69,
@@ -1026,20 +1025,20 @@ const MENU = [
       },
       {
         name: 'Sundal',
-        uuid: '7d118c1d-49b4-83b7-18e54b5678e1',
+        uuid: '0cad91a8-bed9-4150-ae3f-e3575c5f9c3e',
         foods: [
           {
-            id: '7d118c1d-8f95-49b4-83b7-18e54b5678e1',
+            id: '0d7baffa-e08f-4f0e-ae1c-ec8a6257f10a',
             name: 'Whole Green Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 46.92,
-            carbohydrate_g: 6.0,
+            carbohydrate_g: 6,
             protein_g: 2.85,
             fat_g: 1.14,
             fiber_g: 2.19,
           },
           {
-            id: '5d828d5d-ff7b-4cf4-b0e0-e05a07e8b464',
+            id: '9ab1fecb-9a69-4b3c-a7f9-cb6219f434ec',
             name: 'Cow Pea Sundal',
             qty: '1/2 cup',
             energy_kcal: 50.24,
@@ -1049,7 +1048,7 @@ const MENU = [
             fiber_g: 1.53,
           },
           {
-            id: '1c9f60e3-93c1-4a86-8556-badf507d7e43',
+            id: '6c6453fe-7340-4e80-a881-261a1fd26a70',
             name: 'Horse Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 51.4,
@@ -1059,7 +1058,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: '9d9d8d9e-0a55-4d2a-8f7f-4c5d9c9a5de4',
+            id: '4a5a247c-8a04-4eda-9363-7ec517b2baab',
             name: 'Bengal Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 46.08,
@@ -1072,10 +1071,10 @@ const MENU = [
       },
       {
         name: 'Sprouts',
-        uuid: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+        uuid: '1768cd40-774c-431a-b1f6-799129fffcf7',
         foods: [
           {
-            id: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+            id: '09f0250f-3f72-40c9-9774-933bdb3d38ed',
             name: 'Whole Green Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 36.715,
@@ -1085,7 +1084,7 @@ const MENU = [
             fiber_g: 2.13,
           },
           {
-            id: 'ab16c9ed-54a6-45f8-bc73-f6b54d5ae23f',
+            id: 'c7f62437-3ffb-43fa-9513-6880833f0699',
             name: 'Cow Pea Sprouts',
             qty: '1/2 cup',
             energy_kcal: 40.035,
@@ -1095,7 +1094,7 @@ const MENU = [
             fiber_g: 1.465,
           },
           {
-            id: '2c37e0c8-4e4d-4f18-9306-6f5f2b68de2e',
+            id: 'e7be84e4-2304-4aec-ac0c-ed6ef5145a3e',
             name: 'Horse Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 41.2,
@@ -1105,7 +1104,7 @@ const MENU = [
             fiber_g: 0.985,
           },
           {
-            id: '8bde2d5a-6e45-42cf-bfb7-5a8b2cf7c5b7',
+            id: '72153c73-8365-471c-b0f3-6046bcf7ffac',
             name: 'Bengal Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 35.88,
@@ -1118,10 +1117,10 @@ const MENU = [
       },
       {
         name: 'Nuts',
-        uuid: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+        uuid: '76f23eb0-a2b8-4b73-9688-b2273af35208',
         foods: [
           {
-            id: 'a8b9454a-0b2f-4b2e-8b7b-5c94d8d73fd4',
+            id: '2e5706ff-a037-4ac7-a635-208206030550',
             name: 'Almonds',
             qty: '6 nos',
             energy_kcal: 42.5,
@@ -1131,7 +1130,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'b1e4d2e6-57d2-4f46-a1f4-4e3b1c5e0d79',
+            id: 'cf3af18c-86e7-49c5-bfdb-3369af731464',
             name: 'Walnuts',
             qty: '3 nos',
             energy_kcal: 48.5,
@@ -1141,7 +1140,7 @@ const MENU = [
             fiber_g: 0.5,
           },
           {
-            id: 'c7f89a4d-9d53-4b12-bdbf-d7d48e5a0fc2',
+            id: '106da8b8-2e29-400e-90a7-1d75ec19f8f1',
             name: 'Peanuts',
             qty: '10 nos',
             energy_kcal: 41.5,
@@ -1151,7 +1150,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'd3e1f624-067e-48e2-849a-92715f7f2d4e',
+            id: 'aa080474-e282-40cb-b9d5-038a9224bbaa',
             name: 'Pista',
             qty: '12 nos',
             energy_kcal: 43,
@@ -1164,15 +1163,14 @@ const MENU = [
       },
     ],
   ],
-  //   Lunch
   [
     [
       {
         name: 'Rice',
-        uuid: 'd1a1e1f6-4d2b-b073-5d7c3dce5d56',
+        uuid: '841e4500-01eb-4bdc-bdbf-7e649448816b',
         foods: [
           {
-            id: 'd1a1e1f6-3b6b-4d2b-b073-5d7c3dce5d56',
+            id: '4f58c766-22ef-452d-8b33-e477d0451ea0',
             name: 'Parboiled cooked rice',
             qty: '1 cup',
             energy_kcal: 176,
@@ -1182,7 +1180,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: 'e9d11d12-f71a-4d3d-92c8-74f9121db3b7',
+            id: '3b7a4206-f1ea-4990-9f90-28c757d9bc51',
             name: 'Brown cooked rice',
             qty: '1 cup',
             energy_kcal: 176,
@@ -1192,7 +1190,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: 'a32d6d5f-1ed4-4d9c-8ef6-9c92ab774a6c',
+            id: '45f1827b-aa93-49b4-bc70-816829aa3575',
             name: 'Samai rice',
             qty: '1 cup',
             energy_kcal: 174,
@@ -1202,7 +1200,7 @@ const MENU = [
             fiber_g: 4,
           },
           {
-            id: 'c25e05f4-c1db-47e4-a1d6-d7c5c0f9b4a7',
+            id: '03e099c4-69d3-43cb-8cec-75721bf56a0a',
             name: 'Varagu rice',
             qty: '1 cup',
             energy_kcal: 166,
@@ -1212,7 +1210,7 @@ const MENU = [
             fiber_g: 4,
           },
           {
-            id: 'e51b9f6a-3b3f-4d5e-9c26-7b3e847a7a7d',
+            id: '4c7e2f72-6201-450c-989a-73b19b366eb7',
             name: 'Thinai rice',
             qty: '1 cup',
             energy_kcal: 174,
@@ -1222,7 +1220,7 @@ const MENU = [
             fiber_g: 4,
           },
           {
-            id: 'a0e4c38b-6a90-44a8-a5b8-94b84783a7d4',
+            id: '6fed64ef-cece-473f-a08f-1a90e802007e',
             name: 'Bajra rice',
             qty: '1 cup',
             energy_kcal: 174,
@@ -1235,10 +1233,10 @@ const MENU = [
       },
       {
         name: 'Variety Rice',
-        uuid: '-621e-4c6b-bd39-c9a7c9e5a1de',
+        uuid: 'a628c6ff-0cc5-4234-b48e-d37f57e3f4f0',
         foods: [
           {
-            id: 'f032d7b0-0b85-4c0b-a0c1-cf1bfc7f8d7a',
+            id: '3d17c815-46ee-41ae-b689-3c2d6c1d444b',
             name: 'Tamarind rice',
             qty: '1 cup',
             energy_kcal: 241.74,
@@ -1248,7 +1246,7 @@ const MENU = [
             fiber_g: 4.56,
           },
           {
-            id: 'a3c29a52-7d5e-42ac-88c7-cfa5f4a0b7fc',
+            id: '4a213979-3044-48a6-b62a-8e180bfb9db3',
             name: 'Mint rice',
             qty: '1 cup',
             energy_kcal: 250.54,
@@ -1258,7 +1256,7 @@ const MENU = [
             fiber_g: 5.99,
           },
           {
-            id: '6cbd8b4d-fd48-4eb7-b5e7-0a5e5e1d05d2',
+            id: '686742b6-31d3-4de4-bb88-9b915e602a59',
             name: 'Lemon rice',
             qty: '1 cup',
             energy_kcal: 220.97,
@@ -1268,7 +1266,7 @@ const MENU = [
             fiber_g: 4.66,
           },
           {
-            id: '8d7f36c7-0548-4876-8e58-1c67d9b97c67',
+            id: '957ab1ed-10ee-4c92-8872-f8d3a830ffb7',
             name: 'Curry leaves rice',
             qty: '1 cup',
             energy_kcal: 219.06,
@@ -1278,7 +1276,7 @@ const MENU = [
             fiber_g: 5.04,
           },
           {
-            id: 'e6a2d2cf-7fa6-45c8-9365-e5291a1d712f',
+            id: 'd7064476-3f72-4445-8647-efe0c8fd10b2',
             name: 'Urad dhal rice',
             qty: '1 cup',
             energy_kcal: 218.53,
@@ -1288,7 +1286,7 @@ const MENU = [
             fiber_g: 8.81,
           },
           {
-            id: 'd9b78d94-4f1c-4b10-9e46-5e9a43c4b9b3',
+            id: 'de4352ce-885f-42cb-8225-430b7aff4e0f',
             name: 'Garlic onion rice',
             qty: '1 cup',
             energy_kcal: 218.53,
@@ -1298,7 +1296,7 @@ const MENU = [
             fiber_g: 8.81,
           },
           {
-            id: 'a43cbbeb-7d30-4e54-b95b-095c9b80f1b7',
+            id: 'aa98cf9b-74c3-43ca-aa02-7f0e631ee2c4',
             name: 'Drumstick leaves rice',
             qty: '1 cup',
             energy_kcal: 239.86,
@@ -1308,7 +1306,7 @@ const MENU = [
             fiber_g: 5.46,
           },
           {
-            id: '2e2828a2-c41c-4699-b9e4-ef6e2f4b9bcb',
+            id: 'f6f3d4f0-261c-4c3e-a83b-96652f5a5fff',
             name: 'Arisi paruppu Sadam',
             qty: '1 cup',
             energy_kcal: 218.53,
@@ -1318,7 +1316,7 @@ const MENU = [
             fiber_g: 8.81,
           },
           {
-            id: 'ea03cbec-621e-4c6b-bd39-c9a7c9e5a1de',
+            id: 'e7667f85-b9d2-489f-9480-c612b6e89e6b',
             name: 'Egg rice',
             qty: '1 cup',
             energy_kcal: 265.91,
@@ -1333,10 +1331,10 @@ const MENU = [
     [
       {
         name: 'Veg Kuzhambu',
-        uuid: 'd8b6eeb1-41e1-978b-59c7f0058470',
+        uuid: '17271a13-4d6b-4986-a3b5-e3aa890a552e',
         foods: [
           {
-            id: 'd8b6eeb1-6589-41e1-978b-59c7f0058470',
+            id: '8c4a6bb2-ab7e-4cb7-bb8a-7844a5d52187',
             name: 'Green gram dhal masiyal',
             qty: '1/4 cup',
             energy_kcal: 19.6375,
@@ -1346,7 +1344,7 @@ const MENU = [
             fiber_g: 1.1675,
           },
           {
-            id: 'b3e2b8de-59a7-4d12-a3d2-5f4e90d73e8f',
+            id: 'b32bc851-69fe-4e2b-af7c-6237f6a32793',
             name: 'Red gram dhal masiyal',
             qty: '1/4 cup',
             energy_kcal: 47.85,
@@ -1356,7 +1354,7 @@ const MENU = [
             fiber_g: 1.67,
           },
           {
-            id: '2dbf6c7b-10fc-474b-bb8b-1864ff43a65d',
+            id: '0f164613-84ca-4bbd-a2f9-71c393b61632',
             name: 'Red gram dhal sambar',
             qty: '1/4 cup',
             energy_kcal: 37.5725,
@@ -1366,7 +1364,7 @@ const MENU = [
             fiber_g: 1.74,
           },
           {
-            id: 'dd3a3c1b-1d89-464c-920e-1d2dbb4b6c78',
+            id: 'f32b9dbf-f27e-4182-abb5-ad9a3577c79c',
             name: 'Lady’s finger sambar',
             qty: '1/4 cup',
             energy_kcal: 41.91,
@@ -1376,7 +1374,7 @@ const MENU = [
             fiber_g: 2.07,
           },
           {
-            id: '5a5d02b4-fd68-4c8a-9c8e-cb6f4d785fe1',
+            id: 'c31f508b-7b04-418a-8ac4-e957a34443d3',
             name: 'Arachivitta sambar',
             qty: '1/4 cup',
             energy_kcal: 43.31,
@@ -1386,7 +1384,7 @@ const MENU = [
             fiber_g: 2.675,
           },
           {
-            id: '7438e7b0-20af-4b28-b89e-5c915283f7b0',
+            id: '53631f43-450a-492e-9223-e87feee41d37',
             name: 'Pumpkin sambar',
             qty: '1/4 cup',
             energy_kcal: 41.975,
@@ -1396,7 +1394,7 @@ const MENU = [
             fiber_g: 2.0375,
           },
           {
-            id: 'c5e1a4d2-844d-4c73-83ee-8c85c5b5e7f7',
+            id: '88175c91-d315-4067-94e5-e5d9a3490248',
             name: 'Drumstick sambar',
             qty: '1/4 cup',
             energy_kcal: 46.45,
@@ -1406,7 +1404,7 @@ const MENU = [
             fiber_g: 3.425,
           },
           {
-            id: 'ddc07300-2996-4e8b-9de8-123b87c737dd',
+            id: 'ea3ee553-2341-4f8a-b74a-89ff35775bd4',
             name: 'Small Onion sambar',
             qty: '1/4 cup',
             energy_kcal: 43.7775,
@@ -1416,7 +1414,7 @@ const MENU = [
             fiber_g: 1.74,
           },
           {
-            id: '8a0e9308-61c5-4b9a-8c3e-0f78b5b894d4',
+            id: 'f5bd7d5a-e7b3-48aa-824f-46bcecce23de',
             name: 'Fenugreek leaves sambar',
             qty: '1/4 cup',
             energy_kcal: 35.17,
@@ -1426,7 +1424,7 @@ const MENU = [
             fiber_g: 1.6175,
           },
           {
-            id: 'cbac5b2d-3f6e-4992-a33a-550b07f9b2e3',
+            id: 'b7d8ee8e-4d1a-40af-97d2-200291f0fc1a',
             name: 'Paruppu urundai kara kuzhambu',
             qty: '1/4 cup',
             energy_kcal: 50.2425,
@@ -1436,7 +1434,7 @@ const MENU = [
             fiber_g: 2.62,
           },
           {
-            id: 'e65d5c6b-4b5d-4b0d-b6e7-4baf15c9256f',
+            id: '173b7b71-46e5-4dbc-b77d-63700adfe128',
             name: 'Garlic fenugreek pulikuzhambu',
             qty: '1/4 cup',
             energy_kcal: 49.44,
@@ -1446,7 +1444,7 @@ const MENU = [
             fiber_g: 2.47,
           },
           {
-            id: '4ac83c51-82bc-4304-803f-7b68d7d9c1c4',
+            id: '7bc6e756-cfd0-4bdc-b998-07d165cfeb5f',
             name: 'Avarai pulikulambu',
             qty: '1/4 cup',
             energy_kcal: 41.315,
@@ -1456,7 +1454,7 @@ const MENU = [
             fiber_g: 3.975,
           },
           {
-            id: 'd34577c7-cf92-4e6f-9c36-5e22a0b75c1d',
+            id: 'e26a505e-65a8-46ca-9794-982c7b83c426',
             name: 'Kovai pulikulambu',
             qty: '1/4 cup',
             energy_kcal: 38.745,
@@ -1466,7 +1464,7 @@ const MENU = [
             fiber_g: 2.63,
           },
           {
-            id: '85d1be45-fc1e-4421-892b-5b8b7c9f587e',
+            id: '4e270d55-f5ba-4281-93bd-f29c7c665df6',
             name: 'Bittergourd pulikulambu',
             qty: '1/4 cup',
             energy_kcal: 38.805,
@@ -1476,7 +1474,7 @@ const MENU = [
             fiber_g: 2.7475,
           },
           {
-            id: '2c2796c3-5f86-47ed-bd43-5bfb5e62fc94',
+            id: '76110f84-615e-4c90-8b68-7b42a9ffbc2c',
             name: 'Vendakai pulikuzhambu',
             qty: '1/4 cup',
             energy_kcal: 40.8375,
@@ -1486,7 +1484,7 @@ const MENU = [
             fiber_g: 2.8375,
           },
           {
-            id: 'f31c5b67-5e6a-4b4c-876e-5d0759c42569',
+            id: '98d3d1f1-57ba-456f-974e-36cb448c3741',
             name: 'Brinjal pulikulambu',
             qty: '1/4 cup',
             energy_kcal: 40.2975,
@@ -1499,10 +1497,10 @@ const MENU = [
       },
       {
         name: 'Non-Veg Kuzhambu',
-        uuid: 'f12dbf94-4f67-b761-9e6e3f833e2d',
+        uuid: '9c80df8d-436a-4769-a0a1-fe3cf9af6b74',
         foods: [
           {
-            id: 'f12dbf94-7c8a-4f67-b761-9e6e3f833e2d',
+            id: 'aad41954-fe30-4a5b-8014-a7e804968f74',
             name: 'Egg gravy (Poultry/country hen)',
             qty: '1/4 cup',
             energy_kcal: 42.0875,
@@ -1512,7 +1510,7 @@ const MENU = [
             fiber_g: 0.53,
           },
           {
-            id: 'c76ea9b1-c76f-4a4b-b2f0-8d0b8a92a8c1',
+            id: '53706396-9094-45df-8a62-7d46c288ce56',
             name: 'Fish gravy (Pomfret black)',
             qty: '1/4 cup',
             energy_kcal: 39.525,
@@ -1522,7 +1520,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: 'b68cb8c2-105e-4eec-bf1b-2d62ae6cc8d7',
+            id: '204af909-ba1e-4ac4-a9c4-9aa16b8d76e3',
             name: 'Fish gravy (Tuna)',
             qty: '1/4 cup',
             energy_kcal: 39.525,
@@ -1532,7 +1530,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: 'b1d3f4d2-f165-4a43-8fd5-0517f9f731ab',
+            id: 'd651fff9-d11a-4292-ac16-26f506e2b76d',
             name: 'Fish gravy (Mackerel)',
             qty: '1/4 cup',
             energy_kcal: 39.775,
@@ -1542,7 +1540,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: 'b0c17a34-8a1c-4b83-94ae-83f6099ae95d',
+            id: '9a7569eb-5ebd-4ae0-b12c-a561f069ba12',
             name: 'Prawn gravy',
             qty: '1/4 cup',
             energy_kcal: 40.775,
@@ -1552,7 +1550,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: '6d3d48c0-8dc3-4115-9e8f-1e87d24f5c3e',
+            id: '04e5ce74-ff74-49c6-967f-c6c72b3e5200',
             name: 'Crab gravy',
             qty: '1/4 cup',
             energy_kcal: 38.77,
@@ -1562,7 +1560,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: 'e8dcb29e-8fa8-44a4-a0e2-5d6e15f80d09',
+            id: 'f18325ba-4408-42f3-9a07-68e431c26868',
             name: 'Chicken gravy',
             qty: '1/4 cup',
             energy_kcal: 39.72,
@@ -1572,7 +1570,7 @@ const MENU = [
             fiber_g: 0.885,
           },
           {
-            id: 'c62e44c8-218e-4b2e-b5f7-33e9cde7de3b',
+            id: '40ca2745-4ba1-4996-bcb1-16fb0f8d4fec',
             name: 'Mutton gravy',
             qty: '1/4 cup',
             energy_kcal: 40.655,
@@ -1587,10 +1585,10 @@ const MENU = [
     [
       {
         name: 'Rasam',
-        uuid: 'f0e349b7-d2e2-4b8b-83f1',
+        uuid: '9268c775-0d87-411a-a182-3d5c031bcc42',
         foods: [
           {
-            id: 'f0e349b7-d2e2-4b8b-83f1-45838e3fc2b3',
+            id: 'fa30c055-0a22-429c-bc9e-592a842f5056',
             name: 'Tomato Rasam',
             qty: '1/4 cup',
             energy_kcal: 35.495,
@@ -1600,7 +1598,7 @@ const MENU = [
             fiber_g: 2.43,
           },
           {
-            id: '8f27b6d2-549a-4d56-a3c2-8e8b15a12c6b',
+            id: 'd3744f79-213b-4fc4-bc60-7838af28ffdc',
             name: 'Jeera Rasam',
             qty: '1/4 cup',
             energy_kcal: 36.31,
@@ -1610,7 +1608,7 @@ const MENU = [
             fiber_g: 3.165,
           },
           {
-            id: 'd0cbf5f3-2e5c-4ae3-a8c7-78a017d21c9e',
+            id: '70abf1ef-0b55-46dd-a97f-4a71ef0f203c',
             name: 'Pepper Rasam',
             qty: '1/4 cup',
             energy_kcal: 34.78,
@@ -1625,10 +1623,10 @@ const MENU = [
     [
       {
         name: 'Veg Side name - Vegetable Kootu ',
-        uuid: 'f0e349b7-d2e2-4b8b-83f1',
+        uuid: '8db93d43-baf5-4ebb-b8f7-71cf5daa0ec6',
         foods: [
           {
-            id: 'a4d1c080-76c7-4c37-9088-d1b1b0d27a7a',
+            id: 'b8a15fa4-d305-4e84-b6c7-10115c1a2e43',
             name: 'Beans Kootu',
             qty: '1/4 cup',
             energy_kcal: 45.65,
@@ -1638,7 +1636,7 @@ const MENU = [
             fiber_g: 4.1,
           },
           {
-            id: 'bbcfbe5e-31f0-44c7-a2a1-5e3c0a2d35e7',
+            id: '69d113cf-f546-44ef-93be-7d9e1a410ecb',
             name: 'Brinjal Kootu',
             qty: '1/4 cup',
             energy_kcal: 48.11,
@@ -1648,7 +1646,7 @@ const MENU = [
             fiber_g: 3.905,
           },
           {
-            id: '87cfb9e1-d586-4d36-b4f6-c4e8e7f038d5',
+            id: 'decceb6b-999e-4217-b737-f25192058ea8',
             name: 'Plaintain Stem Mor Kootu',
             qty: '1/4 cup',
             energy_kcal: 45.95,
@@ -1658,7 +1656,7 @@ const MENU = [
             fiber_g: 1.055,
           },
           {
-            id: 'ea5f61e7-5e1f-4dc2-a23e-c3e6a85b0cb8',
+            id: '3c730fa7-9435-47af-902f-ebc5fd9cd631',
             name: 'Chow Chow Kootu',
             qty: '1/4 cup',
             energy_kcal: 48.79,
@@ -1668,7 +1666,7 @@ const MENU = [
             fiber_g: 2.375,
           },
           {
-            id: '7f9c65a4-7a6e-4c2e-8e56-74b52e46b6d4',
+            id: '56da5f68-65f8-4e54-9acc-1b8b056011c0',
             name: 'Avarakai Kootu',
             qty: '1/4 cup',
             energy_kcal: 47.915,
@@ -1678,7 +1676,7 @@ const MENU = [
             fiber_g: 5.71,
           },
           {
-            id: 'd29ae68a-74f4-4892-b473-c5ae7be54653',
+            id: '53a0a01c-0f58-407a-b6b9-44095f022313',
             name: 'Snake Gourd Kootu',
             qty: '1/4 cup',
             energy_kcal: 45.545,
@@ -1688,7 +1686,7 @@ const MENU = [
             fiber_g: 3.24,
           },
           {
-            id: '94f28e63-c6eb-4998-a15d-e1077a3a4f4a',
+            id: '9a602301-05d1-485b-9243-f6ba63261c4f',
             name: 'Ashgourd Kootu (Poosanikai Kootu)',
             qty: '1/4 cup',
             energy_kcal: 50.31,
@@ -1698,7 +1696,7 @@ const MENU = [
             fiber_g: 4.655,
           },
           {
-            id: 'e4b3a29f-b8c6-4cf4-bf5b-e8ad982fd8dc',
+            id: '0e2a10f6-e412-4cbc-9359-bab22cc4e6d1',
             name: 'Bittergourd Kootu',
             qty: '1/4 cup',
             energy_kcal: 47.8,
@@ -1708,7 +1706,7 @@ const MENU = [
             fiber_g: 3.6425,
           },
           {
-            id: 'f01e60d2-44e4-4bfa-b809-3e7e42364513',
+            id: '515dd571-c1c4-4ee9-91fd-38c2a6b25186',
             name: 'Ridge Gourd Kootu',
             qty: '1/4 cup',
             energy_kcal: 48.845,
@@ -1718,7 +1716,7 @@ const MENU = [
             fiber_g: 3.375,
           },
           {
-            id: '4c84b935-546c-4f25-9d70-d97aebd8f6b5',
+            id: 'e5ff1270-179f-4e47-9bab-c4d2de7dc88e',
             name: 'Drumstick Kootu',
             qty: '1/4 cup',
             energy_kcal: 34.685,
@@ -1733,10 +1731,10 @@ const MENU = [
     [
       {
         name: 'Veg Side name - Vegetable Porial',
-        uuid: '-46a8-4a6b-8923-d38e2074f9a7',
+        uuid: '28295de5-42f4-43eb-8b5e-a761367761ef',
         foods: [
           {
-            id: '8efb0d8b-46a8-4a6b-8923-d38e2074f9a7',
+            id: '789c5416-9ddb-46af-be04-f2fd40bddce8',
             name: 'Plaintain Flower Porial',
             qty: '1/4 cup',
             energy_kcal: 41.385,
@@ -1746,7 +1744,7 @@ const MENU = [
             fiber_g: 4.975,
           },
           {
-            id: '2cb0f6e5-2c80-4ac0-96c1-4077b621f65c',
+            id: '32918ddb-fb00-4858-bf43-15979366db8a',
             name: 'Plaintain Stem Poriyal',
             qty: '1/4 cup',
             energy_kcal: 41.285,
@@ -1756,7 +1754,7 @@ const MENU = [
             fiber_g: 2.095,
           },
           {
-            id: 'c1eaa620-8d48-40d3-94d2-e8d7e8178714',
+            id: '18f8fa7f-4ef2-48ac-bc7e-4883027ad166',
             name: 'Carrot Beans Porial',
             qty: '1/4 cup',
             energy_kcal: 39.69,
@@ -1766,7 +1764,7 @@ const MENU = [
             fiber_g: 3.28,
           },
           {
-            id: '3b9b4e8e-6c1b-4f51-991e-91a2b7b38f59',
+            id: 'a468fb59-56ba-4994-9ed9-fdec4310d5c6',
             name: 'Beans Porial',
             qty: '1/4 cup',
             energy_kcal: 31.385,
@@ -1776,7 +1774,7 @@ const MENU = [
             fiber_g: 2.235,
           },
           {
-            id: '7d02b393-6f07-4d7e-81e4-6b9a92a62c35',
+            id: '3a5b7144-78a9-4b64-8a76-76e02042d07a',
             name: 'Bittergourd Porial',
             qty: '1/4 cup',
             energy_kcal: 41.12,
@@ -1786,7 +1784,7 @@ const MENU = [
             fiber_g: 3.835,
           },
           {
-            id: '9d5f542f-8e92-42d2-b5ea-cbdb429a4c7e',
+            id: 'ca21c7f9-fad8-4c32-80ce-8f58caa46f46',
             name: 'Venthaya Keerai Poriyal',
             qty: '1/4 cup',
             energy_kcal: 49.365,
@@ -1796,7 +1794,7 @@ const MENU = [
             fiber_g: 3.925,
           },
           {
-            id: '59e3d702-6635-411d-8529-26f4931b86b1',
+            id: '370ea40f-978a-41d3-aa54-da2d1f09a1c0',
             name: 'Agathi Keerai Porial',
             qty: '1/4 cup',
             energy_kcal: 52.4225,
@@ -1806,7 +1804,7 @@ const MENU = [
             fiber_g: 5.15,
           },
           {
-            id: '95f07e9d-b6b6-49e3-9c8c-f9c3a53cda2f',
+            id: '07202f9a-dfc3-4bef-aa7d-ad542d3e450a',
             name: 'Drumstick Leaves Porial',
             qty: '1/4 cup',
             energy_kcal: 50.8725,
@@ -1816,7 +1814,7 @@ const MENU = [
             fiber_g: 4.96,
           },
           {
-            id: 'b3d98b68-20a0-4a0d-8a62-29d59a42f125',
+            id: '82ed772c-0473-4362-9718-9bb09c09f7dd',
             name: 'Keerai Masiyal (Spinach)',
             qty: '1/4 cup',
             energy_kcal: 39.215,
@@ -1829,10 +1827,10 @@ const MENU = [
       },
       {
         name: 'Non Veg Side dish',
-        uuid: 'f8d2b74d-4e62-9239-d5a0f5b87b6e',
+        uuid: 'c1f4e029-e743-4ee7-8fa7-9be4b0f43eba',
         foods: [
           {
-            id: 'f8d2b74d-75e6-4e62-9239-d5a0f5b87b6e',
+            id: '2c87ce75-d55d-4f60-92ee-4ad01590ba73',
             name: 'Egg Burji (Poultry Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 102.38,
@@ -1842,7 +1840,7 @@ const MENU = [
             fiber_g: 0.46,
           },
           {
-            id: 'bcf7e9f5-9620-4c2e-b5e7-d65ea12b1b1a',
+            id: '98f41fac-d8a0-42ad-889e-88eaf60c780c',
             name: 'Egg Burji (Country Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 119.38,
@@ -1852,7 +1850,7 @@ const MENU = [
             fiber_g: 0.46,
           },
           {
-            id: 'c0f3f37b-d0b2-4f83-8b5d-5010c4b39a7e',
+            id: '94b64d3a-6180-4f02-8c8f-e7a61d0ce63f',
             name: 'Half Boiled/Full Boiled/Scrambled Egg (Poultry Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 67,
@@ -1862,7 +1860,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'e2b0b367-4e4c-4b2e-8c84-bc6744d3fc62',
+            id: '0de69da7-9b32-44b1-9e61-7e8969b7d233',
             name: 'Half Boiled/Full Boiled/Scrambled Egg (Country Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 84,
@@ -1872,7 +1870,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: '5a2d6a5f-f64a-4d87-84b5-4f039c21e458',
+            id: '01407556-e329-43cb-8fc7-3ee37190db05',
             name: 'Egg Omelet (Poultry Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 98.8,
@@ -1882,7 +1880,7 @@ const MENU = [
             fiber_g: 0.25,
           },
           {
-            id: '27ae6b91-07cb-4e90-86ab-f81e30eaa958',
+            id: '0bfebe05-16ef-4fc6-aeee-f7ba7fcd64f0',
             name: 'Egg Omelet (Country Hen)',
             qty: '1 serve (1 Egg)',
             energy_kcal: 115.8,
@@ -1892,7 +1890,7 @@ const MENU = [
             fiber_g: 0.25,
           },
           {
-            id: '9a6b29e2-3497-48e4-9884-e8101b9d1d34',
+            id: '5c0e373f-c862-4b00-9065-ecac78dbf186',
             name: 'Shallow Fried Tuna Fish',
             qty: '1 serve (76 grams of fish)',
             energy_kcal: 112,
@@ -1902,7 +1900,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: '9b7f1b25-1e8d-4530-b865-e59b5b7f528c',
+            id: 'c55b974c-3f79-41ab-90b2-d7789f51db36',
             name: 'Shallow Fried Pomfret Black Fish',
             qty: '1 serve (69 grams of fish)',
             energy_kcal: 112,
@@ -1912,7 +1910,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: 'b8456c4c-08b8-4a77-8bb5-155c908f58f1',
+            id: '618fb80c-867e-42b3-8cc8-9bc2c45f971e',
             name: 'Shallow Fried Mackerel Fish',
             qty: '1 serve (85 grams of fish)',
             energy_kcal: 113,
@@ -1922,7 +1920,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: '9c7b6fd6-419f-4f7a-a893-903a4de54c79',
+            id: '1d8059a3-17f3-4679-83e4-e40abb5ba884',
             name: 'Shallow Fried Small Prawns',
             qty: '1 cup (120 grams of prawns)',
             energy_kcal: 112,
@@ -1932,7 +1930,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: '7a88e8d3-cd57-4e6e-851f-12f490d1f8c5',
+            id: '68c1407d-5ac1-40f5-97b6-3656c8c49ec7',
             name: 'Shallow Fried Chicken',
             qty: '1 cup (65 grams of chicken)',
             energy_kcal: 115.8,
@@ -1942,7 +1940,7 @@ const MENU = [
             fiber_g: 0.25,
           },
           {
-            id: 'd282a56f-8b3f-4a5a-9040-d2a6bc0adf0e',
+            id: '8d83c181-1c83-4b29-aeef-14f6e46585e3',
             name: 'Shallow Fried Mutton',
             qty: '1 cup (50 grams of mutton)',
             energy_kcal: 119.8,
@@ -1957,10 +1955,10 @@ const MENU = [
     [
       {
         name: 'Accompaniments',
-        uuid: '8b52b488-df68-4f83-9a85',
+        uuid: '6ff19b0a-536b-418f-b822-dbdd8e59b1a7',
         foods: [
           {
-            id: '8b52b488-df68-4f83-9a85-81f737b8c743',
+            id: 'bd82b8f7-dd9e-4bff-9e04-703d9b9e9165',
             name: 'Curd',
             qty: '1/4 cup',
             energy_kcal: 30,
@@ -1973,15 +1971,14 @@ const MENU = [
       },
     ],
   ],
-  //   Tea TIme
   [
     [
       {
         name: 'Beverages',
-        uuid: '-b7bb-4f68-82eb-f9c3b4410639',
+        uuid: '8d9fb0ab-e9f6-49d9-b57d-765cf882f318',
         foods: [
           {
-            id: 'a3c7c4e0-b7bb-4f68-82eb-f9c3b4410639',
+            id: 'e17c6b68-9bba-4b23-a70d-a12d6d8407ed',
             name: 'Cinnamon Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 9.88,
@@ -1991,7 +1988,7 @@ const MENU = [
             fiber_g: 2.12,
           },
           {
-            id: '2b4829c8-35d6-4b3b-b660-014c66d98d7a',
+            id: '08736759-705b-4961-a7b3-9b60d349f02a',
             name: 'Amla Juice with Turmeric Without Sugar',
             qty: '1 cup',
             energy_kcal: 45.4,
@@ -2001,7 +1998,7 @@ const MENU = [
             fiber_g: 6.56,
           },
           {
-            id: 'd6c8d8a4-3b07-4f3a-b462-53a228f1b357',
+            id: '057e1868-9603-4a94-85bd-300c66f1161f',
             name: 'Fenugreek Water',
             qty: '1 cup',
             energy_kcal: 14.1,
@@ -2011,84 +2008,84 @@ const MENU = [
             fiber_g: 2.86,
           },
           {
-            id: '9e3c6f4b-d3b7-4b1a-8923-bba029bc78bc',
+            id: '8ffdf35a-b953-42dd-af63-5a94529471ed',
             name: 'Cumin Water',
             qty: '1 cup',
             energy_kcal: 18.26,
             carbohydrate_g: 1.36,
             protein_g: 0.84,
-            fat_g: 1.0,
+            fat_g: 1,
             fiber_g: 1.82,
           },
           {
-            id: 'e5c3f4d0-c6d4-4a5d-bd44-e3a07e6f9e2f',
+            id: '405d08da-e138-4d75-a03b-c93231f2d7ab',
             name: 'Skimmed Milk Without Sugar',
             qty: '1 cup',
-            energy_kcal: 68.0,
+            energy_kcal: 68,
             carbohydrate_g: 9.6,
             protein_g: 6.74,
             fat_g: 0.16,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '6f48cf73-7c7d-46bb-bd3d-5d2d4f8e9470',
+            id: '549df983-5d05-444e-bc78-f4e8061774f2',
             name: 'Skimmed Milk Coffee Without Sugar',
             qty: '1 cup',
             energy_kcal: 91.8,
-            carbohydrate_g: 14.0,
+            carbohydrate_g: 14,
             protein_g: 7.58,
             fat_g: 0.48,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'd0b7353e-09dc-49c6-9c7d-ea5f6ea238ed',
+            id: '70704d8c-3836-45a6-9d41-b3acee447501',
             name: 'Skimmed Milk Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 73.64,
             carbohydrate_g: 9.84,
             protein_g: 6.78,
             fat_g: 0.16,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '0d3fc07c-3307-426a-8a0a-d7b15e6f949d',
+            id: 'eb975429-e610-49e8-b590-2fd9c89c832e',
             name: 'Diluted Milk Without Sugar',
             qty: '1 cup',
-            energy_kcal: 62.0,
+            energy_kcal: 62,
             carbohydrate_g: 4.66,
             protein_g: 3.32,
             fat_g: 3.35,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'c36fcfa7-cf67-45e4-b85a-9e9d7c6e7126',
+            id: '572bc298-2c45-4ed2-9fb4-c900cb574516',
             name: 'Diluted Milk Coffee Without Sugar',
             qty: '1 cup',
             energy_kcal: 85.8,
             carbohydrate_g: 9.06,
             protein_g: 4.16,
             fat_g: 3.67,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: '75e1fc58-4b8a-4e6d-80b0-cdd1b1e6db2b',
+            id: '18667007-7f5e-4ad0-8157-a84033e95a43',
             name: 'Diluted Milk Tea Without Sugar',
             qty: '1 cup',
             energy_kcal: 67.64,
             carbohydrate_g: 4.9,
             protein_g: 4.36,
             fat_g: 3.35,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
           {
-            id: 'd862a8b8-61dc-4e6b-a8c8-4f1a7e7425e4',
+            id: '2232e02b-1ff1-4934-b0d5-14dd602f1240',
             name: 'Buttermilk',
             qty: '1 cup',
             energy_kcal: 25.72,
             carbohydrate_g: 1.28,
             protein_g: 1.32,
             fat_g: 1.72,
-            fiber_g: 0.0,
+            fiber_g: 0,
           },
         ],
       },
@@ -2096,10 +2093,10 @@ const MENU = [
     [
       {
         name: 'Fruits',
-        uuid: 'e1c5d6e0-4dbb-9b3e-d2fa5b928568',
+        uuid: 'ffa9da1a-803b-4411-883a-0fcd021c9d84',
         foods: [
           {
-            id: 'e1c5d6e0-1bfc-4dbb-9b3e-d2fa5b928568',
+            id: '034e628e-8694-477f-a7b7-a3e78bd993bb',
             name: 'Apple',
             qty: '1/2 big or 64 grams',
             energy_kcal: 40,
@@ -2109,7 +2106,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: '62e7c935-1a7b-48f0-a07e-4a91a1ecb0f8',
+            id: '68620b98-8533-4748-8021-ef016df27a34',
             name: 'Orange',
             qty: '1 medium or 108 grams',
             energy_kcal: 40,
@@ -2119,7 +2116,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'd42a4e66-e4ea-4a55-9e2e-0b1f6a7367b7',
+            id: 'd4c09a1b-d511-4fa1-aac7-09bccd1bff3a',
             name: 'Pink Guava',
             qty: '1 medium or 86 grams',
             energy_kcal: 40,
@@ -2129,7 +2126,7 @@ const MENU = [
             fiber_g: 6,
           },
           {
-            id: 'dc08c26d-0b71-4b30-b0cf-68bb7b62ae3b',
+            id: '4f556192-384a-4c42-8841-6e868d9086f3',
             name: 'White Guava',
             qty: '1 medium or 124 grams',
             energy_kcal: 40,
@@ -2139,7 +2136,7 @@ const MENU = [
             fiber_g: 11,
           },
           {
-            id: '27a6e1b8-5649-4db8-bc7e-cc5a3e6f04a2',
+            id: '4f96e2fb-9cd6-469b-aedb-7fffa2407a4c',
             name: 'Seeded Green Grapes',
             qty: '20 nos or 72 grams',
             energy_kcal: 40,
@@ -2149,7 +2146,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: '7f2b17b3-1b85-40f4-b2f8-8a2c7a5f4d84',
+            id: '3ecf23b5-6eb9-4d7a-9bad-21e8c2a58eb3',
             name: 'Seeded Round Black Grapes',
             qty: '20 nos or 66 grams',
             energy_kcal: 40,
@@ -2159,7 +2156,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'f2296468-29c0-4f6b-8169-5c24b4a8107c',
+            id: 'bd38de9a-9bf4-4cb3-9f66-2c55dbb839d9',
             name: 'Pear',
             qty: '1 medium or 107 grams',
             energy_kcal: 40,
@@ -2169,7 +2166,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'b1d4d78a-52b5-4b4f-95e4-34e080a2a3c3',
+            id: '47f1d331-526b-43de-9e57-b965aa7263e5',
             name: 'Watermelon',
             qty: '1 big slice or 195 grams',
             energy_kcal: 40,
@@ -2179,7 +2176,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: '0ef8ff36-2d68-4d5e-9b18-493b4893f715',
+            id: '407d419b-5e68-4e95-bab2-ae594d5e42c4',
             name: 'Musk Melon',
             qty: '4-5 slices or 173 grams',
             energy_kcal: 40,
@@ -2189,7 +2186,7 @@ const MENU = [
             fiber_g: 3,
           },
           {
-            id: 'ad5fc64d-12ab-4a26-872d-529527b236a5',
+            id: '40e38dc0-dc2a-48a8-84e2-ee32172c4d2f',
             name: 'Pomegranate',
             qty: '1 oz or 75 grams',
             energy_kcal: 40,
@@ -2199,7 +2196,7 @@ const MENU = [
             fiber_g: 2,
           },
           {
-            id: '63b6d7c2-9f4b-44fc-8cb6-8f86a51c3e7d',
+            id: 'd7a52213-aeca-45ff-a943-9886292c7ed2',
             name: 'Gooseberry',
             qty: '2 nos or 170 grams',
             energy_kcal: 40,
@@ -2209,7 +2206,7 @@ const MENU = [
             fiber_g: 13,
           },
           {
-            id: '418813a1-8f75-4d0b-9b1d-7412dbb14efb',
+            id: 'fd0af2ca-7155-4e58-9673-4afd427e1252',
             name: 'Papaya',
             qty: '4 thin long slices or 168 grams',
             energy_kcal: 40,
@@ -2219,7 +2216,7 @@ const MENU = [
             fiber_g: 5,
           },
           {
-            id: 'c20eb13d-fc0b-4d76-9232-68dbb2b39d91',
+            id: '3d8fb27e-1698-4820-9f3b-ffebef38003b',
             name: 'Jamun Fruit',
             qty: '75 grams',
             energy_kcal: 40.69,
@@ -2232,20 +2229,20 @@ const MENU = [
       },
       {
         name: 'Sundal',
-        uuid: '7d118c1d-49b4-83b7-18e54b5678e1',
+        uuid: '015ea310-cffc-41f5-9a27-fc4277fb8234',
         foods: [
           {
-            id: '7d118c1d-8f95-49b4-83b7-18e54b5678e1',
+            id: '5f547e9c-8e81-43bb-b3ee-ba9893cb577d',
             name: 'Whole Green Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 46.92,
-            carbohydrate_g: 6.0,
+            carbohydrate_g: 6,
             protein_g: 2.85,
             fat_g: 1.14,
             fiber_g: 2.19,
           },
           {
-            id: '5d828d5d-ff7b-4cf4-b0e0-e05a07e8b464',
+            id: '1ad17950-2a89-4794-b7be-a57168701f1f',
             name: 'Cow Pea Sundal',
             qty: '1/2 cup',
             energy_kcal: 50.24,
@@ -2255,7 +2252,7 @@ const MENU = [
             fiber_g: 1.53,
           },
           {
-            id: '1c9f60e3-93c1-4a86-8556-badf507d7e43',
+            id: '066e307a-00ea-4edc-ae57-5612e3f10d40',
             name: 'Horse Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 51.4,
@@ -2265,7 +2262,7 @@ const MENU = [
             fiber_g: 1.05,
           },
           {
-            id: '9d9d8d9e-0a55-4d2a-8f7f-4c5d9c9a5de4',
+            id: '84df21a8-5c45-41d7-996d-b76fb97889f0',
             name: 'Bengal Gram Sundal',
             qty: '1/2 cup',
             energy_kcal: 46.08,
@@ -2278,10 +2275,10 @@ const MENU = [
       },
       {
         name: 'Sprouts',
-        uuid: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+        uuid: 'f89e813f-a462-4a30-afd9-f24b20911fd1',
         foods: [
           {
-            id: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+            id: '4ab9d9e5-8611-456d-9e45-9367b99d775a',
             name: 'Whole Green Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 36.715,
@@ -2291,7 +2288,7 @@ const MENU = [
             fiber_g: 2.13,
           },
           {
-            id: 'ab16c9ed-54a6-45f8-bc73-f6b54d5ae23f',
+            id: 'f2d6814b-5aac-4789-833c-ab921b448ce1',
             name: 'Cow Pea Sprouts',
             qty: '1/2 cup',
             energy_kcal: 40.035,
@@ -2301,7 +2298,7 @@ const MENU = [
             fiber_g: 1.465,
           },
           {
-            id: '2c37e0c8-4e4d-4f18-9306-6f5f2b68de2e',
+            id: '6e14dfa4-67b6-47e6-b7a5-731f090652b0',
             name: 'Horse Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 41.2,
@@ -2311,7 +2308,7 @@ const MENU = [
             fiber_g: 0.985,
           },
           {
-            id: '8bde2d5a-6e45-42cf-bfb7-5a8b2cf7c5b7',
+            id: '010e7a3f-ce14-45c9-b960-e28397a29787',
             name: 'Bengal Gram Sprouts',
             qty: '1/2 cup',
             energy_kcal: 35.88,
@@ -2324,10 +2321,10 @@ const MENU = [
       },
       {
         name: 'Nuts',
-        uuid: '0d3a9f8b-c7a4-4f51-9b85-9a2ea62c7e30',
+        uuid: 'a44d08fe-16a8-4177-bf70-2019b8e5b2d6',
         foods: [
           {
-            id: 'a8b9454a-0b2f-4b2e-8b7b-5c94d8d73fd4',
+            id: '742a3248-48e4-4373-a524-649128af1719',
             name: 'Almonds',
             qty: '6 nos',
             energy_kcal: 42.5,
@@ -2337,7 +2334,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'b1e4d2e6-57d2-4f46-a1f4-4e3b1c5e0d79',
+            id: '63c50368-88f5-4538-946d-a7ed0deec8c1',
             name: 'Walnuts',
             qty: '3 nos',
             energy_kcal: 48.5,
@@ -2347,7 +2344,7 @@ const MENU = [
             fiber_g: 0.5,
           },
           {
-            id: 'c7f89a4d-9d53-4b12-bdbf-d7d48e5a0fc2',
+            id: '43f26607-b82f-4a4a-b01c-1a563a3fd4f0',
             name: 'Peanuts',
             qty: '10 nos',
             energy_kcal: 41.5,
@@ -2357,7 +2354,7 @@ const MENU = [
             fiber_g: 1,
           },
           {
-            id: 'd3e1f624-067e-48e2-849a-92715f7f2d4e',
+            id: '77184c02-1c33-4f6e-884c-4e27a6ae09ef',
             name: 'Pista',
             qty: '12 nos',
             energy_kcal: 43,
@@ -2370,15 +2367,14 @@ const MENU = [
       },
     ],
   ],
-  //   dinner
   [
     [
       {
         name: 'Dosai',
-        uuid: 'a1b2c3d-9012-3456-7890abcdef01',
+        uuid: 'f4b432bb-633f-4fa9-ad75-1402e4ead747',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: 'c78e355e-3d6e-47ec-b9fa-16c30aae3e44',
             name: 'Rice dosai',
             qty: '2 medium size',
             energy_kcal: 169.78,
@@ -2388,7 +2384,7 @@ const MENU = [
             fiber_g: 3.54,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: 'ace861b6-0444-4154-b2be-202d776edf97',
             name: 'Mixed Pulse adai',
             qty: '2 medium size',
             energy_kcal: 169.4,
@@ -2398,7 +2394,7 @@ const MENU = [
             fiber_g: 6.36,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: '9aec92dc-587d-47fa-974e-ebaee23bfa58',
             name: 'Bajra dosai',
             qty: '2 medium size',
             energy_kcal: 169.06,
@@ -2408,7 +2404,7 @@ const MENU = [
             fiber_g: 5.08,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: '3bf323cc-8530-47ca-92ef-0c51ca716b48',
             name: 'Ragi dosai',
             qty: '2 medium size',
             energy_kcal: 167.82,
@@ -2418,7 +2414,7 @@ const MENU = [
             fiber_g: 3.96,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: '8ebd5b81-9a33-497e-a51c-3bd9eddc1653',
             name: 'Corriander dosai',
             qty: '2 medium size',
             energy_kcal: 176,
@@ -2428,7 +2424,7 @@ const MENU = [
             fiber_g: 4.48,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: 'e2a67fed-c92d-442d-bd32-d35d1c181bf5',
             name: 'Methi dosai',
             qty: '2 medium size',
             energy_kcal: 176.66,
@@ -2438,7 +2434,7 @@ const MENU = [
             fiber_g: 4.52,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: '79ba3b0b-8eec-4ebc-827d-a3137ef17e95',
             name: 'Wheat flour dosai',
             qty: '2 medium size',
             energy_kcal: 160.98,
@@ -2448,7 +2444,7 @@ const MENU = [
             fiber_g: 5.62,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: '50f9031f-a308-4494-9ace-138b336aa8d9',
             name: 'Wheat rava dosai',
             qty: '2 medium size',
             energy_kcal: 197.58,
@@ -2458,7 +2454,7 @@ const MENU = [
             fiber_g: 6.16,
           },
           {
-            id: 'i9j0k1l2-3456-7890-1234-56abcdef89',
+            id: '7a0dd98d-4792-4f74-a9c4-40279a84ce15',
             name: 'Jowar dosai',
             qty: '2 medium size',
             energy_kcal: 166.28,
@@ -2468,7 +2464,7 @@ const MENU = [
             fiber_g: 4.82,
           },
           {
-            id: 'j0k1l2m3-4567-8901-2345-67abcdef90',
+            id: '1135e262-fdb2-4d40-9619-21523e0b00d6',
             name: 'Samai dosai',
             qty: '2 medium size',
             energy_kcal: 167.66,
@@ -2478,7 +2474,7 @@ const MENU = [
             fiber_g: 5.12,
           },
           {
-            id: 'k1l2m3n4-5678-9012-3456-78abcdef01',
+            id: '3dc30524-2186-48d3-82d9-3c2e5ee91f67',
             name: 'Varagu dosai',
             qty: '2 medium size',
             energy_kcal: 154.38,
@@ -2491,10 +2487,10 @@ const MENU = [
       },
       {
         name: 'Idli',
-        uuid: 'l1m2n3o4-9012-3456-7890abcdef01',
+        uuid: 'fa6eba8c-ca00-42d7-8e16-257ab037d807',
         foods: [
           {
-            id: 'l1m2n3o4-5678-9012-3456-7890abcdef01',
+            id: '56ca9621-a070-46e1-bbe1-195d4d71866a',
             name: 'Rice idli',
             qty: '2 large size',
             energy_kcal: 169.78,
@@ -2504,7 +2500,7 @@ const MENU = [
             fiber_g: 3.54,
           },
           {
-            id: 'm2n3o4p5-6789-0123-4567-890abcdef12',
+            id: 'f1e25d4a-7c6d-4239-9fc1-8b7f53c61053',
             name: 'Bajra idli',
             qty: '2 large size',
             energy_kcal: 169.48,
@@ -2514,7 +2510,7 @@ const MENU = [
             fiber_g: 5.04,
           },
           {
-            id: 'n3o4p5q6-7890-1234-5678-90abcdef23',
+            id: '892a7b3b-0113-41c4-8bd2-9d95c82b044d',
             name: 'Jowar idli',
             qty: '2 large size',
             energy_kcal: 166.28,
@@ -2524,7 +2520,7 @@ const MENU = [
             fiber_g: 4.82,
           },
           {
-            id: 'o4p5q6r7-8901-2345-6789-01abcdef34',
+            id: 'd84ef2a3-3abf-4946-a4db-11421a0cbc89',
             name: 'Ragi idli',
             qty: '2 large size',
             energy_kcal: 167.82,
@@ -2534,7 +2530,7 @@ const MENU = [
             fiber_g: 3.96,
           },
           {
-            id: 'p5q6r7s8-9012-3456-7890-12abcdef45',
+            id: '293b4add-6eb3-4082-9980-a9ba161908bb',
             name: 'Samai idli',
             qty: '2 large size',
             energy_kcal: 167.66,
@@ -2544,7 +2540,7 @@ const MENU = [
             fiber_g: 5.12,
           },
           {
-            id: 'q6r7s8t9-0123-4567-8901-23abcdef56',
+            id: '2a48a09d-bc01-4f4a-93b6-4891c9a1c5ab',
             name: 'Varagu idli',
             qty: '2 large size',
             energy_kcal: 154.38,
@@ -2557,10 +2553,10 @@ const MENU = [
       },
       {
         name: 'Idiyappam',
-        uuid: 'r1s2t3u4-5678-9012-7890abcdef01',
+        uuid: '2ab44c24-e2f4-491d-b7df-13c8aecc87c4',
         foods: [
           {
-            id: 'r1s2t3u4-5678-9012-3456-7890abcdef01',
+            id: 'e0f79ea7-d95f-4196-8143-68eac16f5b68',
             name: 'Rice Idiyappam',
             qty: '2 large size',
             energy_kcal: 178.18,
@@ -2570,7 +2566,7 @@ const MENU = [
             fiber_g: 1.4,
           },
           {
-            id: 's2t3u4v5-6789-0123-4567-890abcdef12',
+            id: '80c80c58-b4bd-4a43-84b4-f6a35e97ac49',
             name: 'Bajra Idiyappam',
             qty: '2 large size',
             energy_kcal: 174,
@@ -2580,7 +2576,7 @@ const MENU = [
             fiber_g: 5.74,
           },
           {
-            id: 't3u4v5w6-7890-1234-5678-90abcdef23',
+            id: '5db20aba-7397-43ed-a016-c1ab8840dfed',
             name: 'Jowar Idiyappam',
             qty: '2 large size',
             energy_kcal: 169.3,
@@ -2590,7 +2586,7 @@ const MENU = [
             fiber_g: 4.36,
           },
           {
-            id: 'u4v5w6x7-8901-2345-6789-01abcdef34',
+            id: 'c229948d-457b-47fd-a98f-fdddb3dfa4fc',
             name: 'Ragi Idiyappam',
             qty: '2 large size',
             energy_kcal: 162.32,
@@ -2600,7 +2596,7 @@ const MENU = [
             fiber_g: 5.08,
           },
           {
-            id: 'v5w6x7y8-9012-3456-7890-12abcdef45',
+            id: '82a4ad33-ff10-4ca5-9820-5cd31d3ac266',
             name: 'Samai Idiyappam',
             qty: '2 large size',
             energy_kcal: 173.16,
@@ -2610,7 +2606,7 @@ const MENU = [
             fiber_g: 3.86,
           },
           {
-            id: 'w6x7y8z9-0123-4567-8901-23abcdef56',
+            id: 'eb97e92b-0298-48b8-badb-3cdf00a0d6ac',
             name: 'Varagu Idiyappam',
             qty: '2 large size',
             energy_kcal: 164.6,
@@ -2623,10 +2619,10 @@ const MENU = [
       },
       {
         name: 'Pongal',
-        uuid: 'x1y2z3a4-9012-3456-7890abcdef01',
+        uuid: 'a6288e29-014f-4930-ba96-183873dd52f8',
         foods: [
           {
-            id: 'x1y2z3a4-5678-9012-3456-7890abcdef01',
+            id: '23706e80-67f3-4eb6-bbc3-4c9fed2619b2',
             name: 'Bajra Pongal',
             qty: '1 cup',
             energy_kcal: 170.66,
@@ -2636,7 +2632,7 @@ const MENU = [
             fiber_g: 5.43,
           },
           {
-            id: 'y2z3a4b5-6789-0123-4567-890abcdef12',
+            id: 'df0f9a73-8304-4827-8f69-98a734b20f04',
             name: 'Jowar Pongal',
             qty: '1 cup',
             energy_kcal: 164.97,
@@ -2646,7 +2642,7 @@ const MENU = [
             fiber_g: 4.9,
           },
           {
-            id: 'z3a4b5c6-7890-1234-5678-90abcdef23',
+            id: '28e51367-9546-41d3-8fdf-346d725c8c64',
             name: 'Samai Pongal',
             qty: '1 cup',
             energy_kcal: 168.02,
@@ -2656,7 +2652,7 @@ const MENU = [
             fiber_g: 4.27,
           },
           {
-            id: 'a4b5c6d7-8901-2345-6789-01abcdef34',
+            id: '8c05cb40-dbc2-4eb0-8fff-30dbad665f18',
             name: 'Varagu Pongal',
             qty: '1 cup',
             energy_kcal: 164.97,
@@ -2669,10 +2665,10 @@ const MENU = [
       },
       {
         name: 'Chapati',
-        uuid: 'b1c2d3e4-5678-9012-7890abcdef01',
+        uuid: '63012e80-f7cc-4c46-9c44-d5849abe429d',
         foods: [
           {
-            id: 'b1c2d3e4-5678-9012-3456-7890abcdef01',
+            id: '97b3ae4f-cf67-4ca4-9c5d-a01cc33ed5de',
             name: 'Wheat Flour Chapati',
             qty: '2 medium size',
             energy_kcal: 160.97,
@@ -2682,7 +2678,7 @@ const MENU = [
             fiber_g: 5.62,
           },
           {
-            id: 'c2d3e4f5-6789-0123-4567-890abcdef12',
+            id: '7d775220-62cf-44e3-bb5c-ed234416a59c',
             name: 'Methi Chapati',
             qty: '2 medium size',
             energy_kcal: 167.85,
@@ -2692,7 +2688,7 @@ const MENU = [
             fiber_g: 6.6,
           },
           {
-            id: 'd3e4f5g6-7890-1234-5678-90abcdef23',
+            id: 'e2fe7897-3194-415b-a827-d185293aef1c',
             name: 'Ragi Chapati',
             qty: '2 medium size',
             energy_kcal: 160.37,
@@ -2705,10 +2701,10 @@ const MENU = [
       },
       {
         name: 'Upma',
-        uuid: 'a1b2c3d4-3456-7890abcdef01',
+        uuid: 'b06733a0-61cc-4c92-9c78-49ead0b1cb10',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: '3d188f1c-e5f7-4395-8e79-307144ef96aa',
             name: 'Rice Rava Upma',
             qty: '1 cup',
             energy_kcal: 166.83,
@@ -2718,7 +2714,7 @@ const MENU = [
             fiber_g: 4.86,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: '7837b800-8e8d-43c3-9f18-c3060ef4028c',
             name: 'Wheat Rava Upma',
             qty: '1 cup',
             energy_kcal: 170.05,
@@ -2728,7 +2724,7 @@ const MENU = [
             fiber_g: 4.78,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: '5a2b952b-2475-4b3b-8e01-daae6bb5a374',
             name: 'Bajra Upma',
             qty: '1 cup',
             energy_kcal: 174,
@@ -2738,7 +2734,7 @@ const MENU = [
             fiber_g: 5.75,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: 'da4fbf69-b6d5-4617-b266-9bdcf94f8184',
             name: 'Jowar Upma',
             qty: '1 cup',
             energy_kcal: 167.07,
@@ -2748,7 +2744,7 @@ const MENU = [
             fiber_g: 5.11,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: 'c4bfa28e-932b-4ad6-b3cd-22e6eadf94ec',
             name: 'Samai Upma',
             qty: '1 cup',
             energy_kcal: 165.09,
@@ -2758,7 +2754,7 @@ const MENU = [
             fiber_g: 5.93,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '5af93071-dacb-4894-9eea-01aca3c0e92c',
             name: 'Varagu Upma',
             qty: '1 cup',
             energy_kcal: 171.53,
@@ -2768,7 +2764,7 @@ const MENU = [
             fiber_g: 3.32,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: 'e3101251-3d41-48d5-a2ef-a9f8e9ec7a25',
             name: 'Wheat Rava Kichadi',
             qty: '1 cup',
             energy_kcal: 143.77,
@@ -2783,10 +2779,10 @@ const MENU = [
     [
       {
         name: 'Chutney',
-        uuid: 'a1b2c3d4-3456-7890abcdef01',
+        uuid: '004eb3bf-7537-4ed5-9e3c-2c9ee3ac4f75',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: 'c7538251-a61d-46a6-acaf-eb659c8f5a7d',
             name: 'Garlic Chutney',
             qty: '¼ cup',
             energy_kcal: 49.35,
@@ -2796,7 +2792,7 @@ const MENU = [
             fiber_g: 2.45,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: '078aa28e-65bc-445a-a531-d10e9fa5fefa',
             name: 'Ginger Chutney',
             qty: '¼ cup',
             energy_kcal: 51.78,
@@ -2806,7 +2802,7 @@ const MENU = [
             fiber_g: 2.16,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: '0c33501e-d9bc-4148-b8a8-ff819751caff',
             name: 'Tamarind Chutney',
             qty: '¼ cup',
             energy_kcal: 53.84,
@@ -2816,7 +2812,7 @@ const MENU = [
             fiber_g: 2.34,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: '68a9777b-e2d2-4f3e-afcf-ecc31d3bcc7b',
             name: 'Mint Chutney',
             qty: '¼ cup',
             energy_kcal: 47.52,
@@ -2826,7 +2822,7 @@ const MENU = [
             fiber_g: 4.44,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: '724df703-c381-4d20-b654-c1467130b89f',
             name: 'Coriander Chutney',
             qty: '¼ cup',
             energy_kcal: 42.86,
@@ -2836,7 +2832,7 @@ const MENU = [
             fiber_g: 3.26,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '281cebb3-38dd-4e51-975b-cafeeb07a267',
             name: 'Curry Leaves Chutney',
             qty: '¼ cup',
             energy_kcal: 48.15,
@@ -2846,7 +2842,7 @@ const MENU = [
             fiber_g: 9.16,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: '485e6764-c026-4dd5-b9bd-5577aa5d1cff',
             name: 'Ridge Gourd Chutney',
             qty: '¼ cup',
             energy_kcal: 47.56,
@@ -2856,7 +2852,7 @@ const MENU = [
             fiber_g: 2.67,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: '376671a3-6ddf-43e7-8a16-717e00f5e64a',
             name: 'Pulse Chutney',
             qty: '¼ cup',
             energy_kcal: 53.45,
@@ -2869,10 +2865,10 @@ const MENU = [
       },
       {
         name: 'Sambar',
-        uuid: 'a1b2c3d4-5678-9-7890abcdef01',
+        uuid: '7ddb87b0-62f4-4f95-a89b-e42b5abc55bc',
         foods: [
           {
-            id: 'a1b2c3d4-5678-9012-3456-7890abcdef01',
+            id: '8a7e4fec-d669-4db8-a10d-9279a932e2a0',
             name: 'Green Gram Dhal Fry',
             qty: '¼ cup',
             energy_kcal: 19.6375,
@@ -2882,7 +2878,7 @@ const MENU = [
             fiber_g: 1.1675,
           },
           {
-            id: 'b2c3d4e5-6789-0123-4567-890abcdef12',
+            id: 'a76c5496-65cc-45f7-bb89-d03e215c4804',
             name: 'Red Gram Dhal Fry',
             qty: '¼ cup',
             energy_kcal: 47.85,
@@ -2892,7 +2888,7 @@ const MENU = [
             fiber_g: 1.67,
           },
           {
-            id: 'c3d4e5f6-7890-1234-5678-90abcdef23',
+            id: 'f4399afb-7cf0-497d-88a3-fc97c335338c',
             name: 'Red Gram Dhal Sambar',
             qty: '¼ cup',
             energy_kcal: 37.5725,
@@ -2902,7 +2898,7 @@ const MENU = [
             fiber_g: 1.74,
           },
           {
-            id: 'd4e5f6g7-8901-2345-6789-01abcdef34',
+            id: '5ec6b95d-727c-4ac9-9442-9c4bacf263f1',
             name: 'Lady’s Finger Sambar',
             qty: '¼ cup',
             energy_kcal: 41.91,
@@ -2912,7 +2908,7 @@ const MENU = [
             fiber_g: 2.07,
           },
           {
-            id: 'e5f6g7h8-9012-3456-7890-12abcdef45',
+            id: 'd33c2739-bc0d-49f1-87f2-ca90721bb1ee',
             name: 'Arachivitta Sambar',
             qty: '¼ cup',
             energy_kcal: 43.31,
@@ -2922,7 +2918,7 @@ const MENU = [
             fiber_g: 2.675,
           },
           {
-            id: 'f6g7h8i9-0123-4567-8901-23abcdef56',
+            id: '6aa3edbb-36f8-4194-9c5a-e66b50842ece',
             name: 'Pumpkin Sambar',
             qty: '¼ cup',
             energy_kcal: 41.975,
@@ -2932,7 +2928,7 @@ const MENU = [
             fiber_g: 2.0375,
           },
           {
-            id: 'g7h8i9j0-1234-5678-9012-34abcdef67',
+            id: 'c4648d3d-f0f8-41a8-84da-d50916134819',
             name: 'Channa Masala',
             qty: '¼ cup',
             energy_kcal: 29.1425,
@@ -2942,7 +2938,7 @@ const MENU = [
             fiber_g: 1.7125,
           },
           {
-            id: 'h8i9j0k1-2345-6789-0123-45abcdef78',
+            id: '7d421548-897c-4d96-a6ce-6da42a454156',
             name: 'Fenugreek Leaves Sambar',
             qty: '¼ cup',
             energy_kcal: 35.17,
@@ -2952,7 +2948,7 @@ const MENU = [
             fiber_g: 1.6175,
           },
           {
-            id: 'i9j0k1l2-3456-7890-1234-56abcdef89',
+            id: '7bf2ea1b-a345-498e-8bd9-fd1ee6977d61',
             name: 'Paruppu Urundai Kara Kulambu',
             qty: '¼ cup',
             energy_kcal: 50.2425,
@@ -2962,7 +2958,7 @@ const MENU = [
             fiber_g: 2.62,
           },
           {
-            id: 'j0k1l2m3-4567-8901-2345-67abcdef90',
+            id: '6778927a-8937-4f7c-9dac-33ae6c519d2e',
             name: 'Garlic Fenugreek Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 49.44,
@@ -2972,7 +2968,7 @@ const MENU = [
             fiber_g: 2.47,
           },
           {
-            id: 'k1l2m3n4-5678-9012-3456-78abcdef01',
+            id: 'c940ee5a-84df-4fe3-a0d9-113d8353beb6',
             name: 'Avarai Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 41.315,
@@ -2982,7 +2978,7 @@ const MENU = [
             fiber_g: 3.975,
           },
           {
-            id: 'l2m3n4o5-6789-0123-4567-89abcdef12',
+            id: '87938485-b571-4e92-9e88-e8206ab691a2',
             name: 'Kovai Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 38.745,
@@ -2992,7 +2988,7 @@ const MENU = [
             fiber_g: 2.63,
           },
           {
-            id: 'm3n4o5p6-7890-1234-5678-90abcdef23',
+            id: 'f5952b9d-964c-4cc9-8aba-feebc3f76f57',
             name: 'Bittergourd Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 38.805,
@@ -3002,7 +2998,7 @@ const MENU = [
             fiber_g: 2.7475,
           },
           {
-            id: 'n4o5p6q7-8901-2345-6789-01abcdef34',
+            id: 'a83d77c5-1492-47a7-a020-ccde56cfe005',
             name: 'Vendakai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 40.8375,
@@ -3012,7 +3008,7 @@ const MENU = [
             fiber_g: 2.8375,
           },
           {
-            id: 'o5p6q7r8-9012-3456-7890-12abcdef45',
+            id: '66290322-2245-4cc6-b097-a19661e8c412',
             name: 'Brinjal Pulikulambu',
             qty: '¼ cup',
             energy_kcal: 40.2975,
@@ -3029,10 +3025,10 @@ const MENU = [
     [
       {
         name: 'Beverages',
-        uuid: 'f43a2d62-4b1d-9611-1b1c7d63f028',
+        uuid: '298520be-cc5e-4c23-896d-7d20441a33e2',
         foods: [
           {
-            id: 'f43a2d62-85b3-4b1d-9611-1b1c7d63f028',
+            id: '219f2331-3a45-471b-9c3e-9e3b3f15f119',
             name: 'Skimmed Milk without sugar',
             qty: '1 cup',
             energy_kcal: 68,
@@ -3042,7 +3038,7 @@ const MENU = [
             fiber_g: 0,
           },
           {
-            id: '7c9f8474-1e1b-4b58-8f69-913a8f45bb8d',
+            id: '569379fe-3a96-4037-a5b9-f086bc216e56',
             name: 'Diluted Milk without sugar',
             qty: '1 cup',
             energy_kcal: 62,
