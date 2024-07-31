@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  ToastAndroid,
   View,
 } from 'react-native';
 
@@ -65,7 +66,11 @@ const ChooseYourCaloricValue = () => {
         <View style={{height: 30}} />
         <CustomButton
           label="next"
-          onPress={() => navigation.navigate('CaloriesWiseListScreen')}
+          onPress={() =>
+            selectedCalories
+              ? navigation.navigate('CaloriesWiseListScreen')
+              : ToastAndroid.show('Kindly select a value', ToastAndroid.SHORT)
+          }
         />
         <View style={{height: 30}} />
       </ScrollView>

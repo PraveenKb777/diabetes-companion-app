@@ -1,9 +1,9 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import BackButtonHeader from '../components/BackButtonHeader';
-import {ScrollView} from 'react-native-gesture-handler';
-import DownGradientBox from '../components/DownGradientBox';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import BackButtonHeader from '../components/BackButtonHeader';
+import DownGradientBox from '../components/DownGradientBox';
 import {StackNavigation} from '../Stack';
 const CMP = () => {
   const navigattion = useNavigation<StackNavigation>();
@@ -48,5 +48,3 @@ const CMP = () => {
 };
 
 export default CMP;
-
-const styles = StyleSheet.create({});

@@ -58,6 +58,7 @@ const ReactionComp: FC<IReactComp> = ({onClick, selected, index}) => {
             minWidth: '19%',
             marginHorizontal: '.5%',
           }}
+          key={JSON.stringify(e) + i}
           onPress={() => onClick && onPress(i + 1)}>
           <Image
             style={[styles.reactionImg]}

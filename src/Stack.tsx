@@ -73,7 +73,7 @@ const {Navigator, Screen} = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Navigator initialRouteName="SplashScreen">
+    <Navigator initialRouteName="CaloriesWiseListScreen">
       <Screen
         name="SplashScreen"
         options={{

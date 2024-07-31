@@ -1,5 +1,5 @@
 import {R2_URL} from '@env';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {
   DimensionValue,
@@ -19,6 +19,7 @@ import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
 import {R2_AUDIO_URL} from '@env';
 import AudioPlayer from '../components/AudioPlayer';
+import {StackNavigation} from '../Stack';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -64,6 +65,7 @@ const BMIResult = () => {
   const [bmiData, setBmiData] = useState<IBmiData>();
   const [url, setUrl] = useState<string>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
+  const navigation = useNavigation<StackNavigation>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
@@ -88,11 +90,13 @@ const BMIResult = () => {
     } catch (error: any) {
       console.log(error.response);
       const msg = error?.response?.data?.message || 'Something went wrong';
+
       ToastAndroid.show(msg, ToastAndroid.SHORT);
+      navigation.goBack();
     } finally {
       setLoad(false);
     }
-  }, [params?.id]);
+  }, [navigation, params?.id]);
   useEffect(() => {
     getBmidata();
   }, [getBmidata]);

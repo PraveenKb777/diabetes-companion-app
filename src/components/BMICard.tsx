@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import moment from 'moment';
 import {TimeCircleSVG} from '../assets/Svg';
@@ -16,6 +16,7 @@ interface IBMICard {
   age?: number;
   drfScore?: number;
   modyScore?: number;
+  onPress?: () => void;
 }
 
 const fetchCategory = (val: number) => {
@@ -88,7 +89,9 @@ const RenderText: FC<{label?: string; text?: any; unit?: string}> = ({
   text,
   unit,
 }) => {
-  if (!text) return null;
+  if (!text) {
+    return null;
+  }
 
   return (
     <View
@@ -150,9 +153,13 @@ const BMICard: FC<IBMICard> = ({
   age,
   drfScore,
   modyScore,
+  onPress,
 }) => {
   return (
-    <View style={styles.bmiCardMain}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onPress && onPress}
+      style={styles.bmiCardMain}>
       <RenderText label="Name" text={name} />
       <RenderText
         label="BMI Score"
@@ -207,7 +214,7 @@ const BMICard: FC<IBMICard> = ({
           {moment(time).format('h:mm a')}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

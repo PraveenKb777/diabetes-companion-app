@@ -13,6 +13,9 @@ import auth from '../utils/auth';
 import BMICard from '../components/BMICard';
 import Loading from '../components/Loading';
 import {NextArrow} from '../assets/Svg';
+import NothingToShow from '../components/NothingToShow';
+import {ScreenNames, StackNavigation} from '../Stack';
+import {useNavigation} from '@react-navigation/native';
 
 const HEADING = ['BMI', 'WHR', 'DRF', 'MODY RF', 'CMP'];
 const URLS = ['/bmi', '/whr', '/drf', '/mody', ''];
@@ -110,6 +113,28 @@ const MyLog = () => {
   const handlePrev = () => {
     !load && pages.prevPage && setCurrPage(e => e - 1);
   };
+
+  const navigation = useNavigation<StackNavigation>();
+
+  const onPressCard = (id: any) => {
+    // const URLS = ['/bmi', '/whr', '/drf', '/mody', ''];
+    let navigationRoute: ScreenNames[number] = 'BMIResultScreen';
+    if (selectedItem === 1) {
+      navigationRoute = 'WHRResultScreen';
+    }
+
+    if (selectedItem === 2) {
+      navigationRoute = 'DRFResultsScreen';
+    }
+    if (selectedItem === 3) {
+      navigationRoute = 'ModyResultsScreen';
+    }
+    if (selectedItem === 4) {
+      navigationRoute = 'BMIResultScreen';
+    }
+
+    navigation.navigate(navigationRoute, {id});
+  };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="My Log" />
@@ -150,6 +175,8 @@ const MyLog = () => {
       </View>
       {load ? (
         <Loading />
+      ) : !list?.length ? (
+        <NothingToShow />
       ) : (
         <ScrollView style={{flex: 1, padding: 16}}>
           {list?.map(e => (
@@ -167,6 +194,7 @@ const MyLog = () => {
               drfScore={e.drf_score}
               time={e.created_at}
               modyScore={e.mody_score}
+              onPress={() => onPressCard(e.id)}
             />
           ))}
           <View style={{height: 30}} />

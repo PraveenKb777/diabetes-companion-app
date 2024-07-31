@@ -423,3 +423,17 @@ export const PlaySVG: FC<SvgProps> = props => (
     <Path d="m0 0 11 7-11 7z" fill="#fff" />
   </Svg>
 );
+
+export const ArrowIndicator: FC<SvgProps> = props => (
+  <Svg width={12} height={12} viewBox="0 0 12 12" fill="none" {...props}>
+    <Mask id="a" maskUnits="userSpaceOnUse" x={0} y={0} width={12} height={12}>
+      <Path fill="#D9D9D9" d="M12 12H0V0h12z" />
+    </Mask>
+    <G mask="url(#a)">
+      <Path
+        d="m7 3 3 3-3 3-.7-.725L8.075 6.5H2v-1h6.075L6.3 3.725z"
+        fill="#1C1B1F"
+      />
+    </G>
+  </Svg>
+);

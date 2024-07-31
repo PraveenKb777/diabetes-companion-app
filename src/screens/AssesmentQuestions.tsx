@@ -18,7 +18,7 @@ import {StackNavigation} from '../Stack';
 import {NextArrow} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
 import CustomButton from '../components/CustomButton';
-import ASSESMENT_QUESTIONS from '../questions/assesment';
+import ASSESMENT_QUESTIONS from '../datas/assesment';
 import {DGHeading} from './DiabetesGuide';
 const REC_ITEMS = ['No', 'Yes'];
 
