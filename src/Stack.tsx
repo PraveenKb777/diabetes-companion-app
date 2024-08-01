@@ -31,6 +31,7 @@ import NoInternetScreen from './screens/NoInternetScreen';
 import WebViewComponent from './screens/WebView';
 import ChooseYourCaloricValue from './screens/ChooseYourCaloricValue';
 import CaloriesWiseList from './screens/CaloriesWiseList';
+import YourCaloricMenu from './screens/YourCaloricMenu';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -62,6 +63,7 @@ export type ScreenNames = [
   'WebViewScreen',
   'CYCVScreen',
   'CaloriesWiseListScreen',
+  'YourCaloricMenuScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
@@ -73,7 +75,7 @@ const {Navigator, Screen} = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Navigator initialRouteName="CaloriesWiseListScreen">
+    <Navigator initialRouteName="SplashScreen">
       <Screen
         name="SplashScreen"
         options={{
@@ -227,6 +229,13 @@ const StackNavigator = () => {
           headerShown: false,
         }}
         component={MODYCalculator}
+      />
+      <Screen
+        name="YourCaloricMenuScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={YourCaloricMenu}
       />
       <Screen
         name="ModyResultsScreen"

@@ -16,6 +16,11 @@ interface IBMICard {
   age?: number;
   drfScore?: number;
   modyScore?: number;
+  carbohydrate_g: number;
+  energy_kcal: number;
+  fat_g: number;
+  fiber_g: number;
+  protein_g: number;
   onPress?: () => void;
 }
 
@@ -153,6 +158,12 @@ const BMICard: FC<IBMICard> = ({
   age,
   drfScore,
   modyScore,
+  carbohydrate_g,
+
+  energy_kcal,
+  fat_g,
+  fiber_g,
+  protein_g,
   onPress,
 }) => {
   return (
@@ -195,6 +206,31 @@ const BMICard: FC<IBMICard> = ({
       <RenderText
         label="Risk Level"
         text={modyScore !== undefined ? findModyLevel(modyScore) : undefined}
+      />
+      <RenderText
+        label="Total Energy"
+        text={energy_kcal !== undefined ? energy_kcal + '' : undefined}
+        unit="kacl"
+      />
+      <RenderText
+        label="Carbohydrate"
+        text={carbohydrate_g !== undefined ? carbohydrate_g + '' : undefined}
+        unit="gm"
+      />
+      <RenderText
+        label="Protein"
+        text={protein_g !== undefined ? protein_g + '' : undefined}
+        unit="(kacl)"
+      />
+      <RenderText
+        label="Fat"
+        text={fat_g !== undefined ? fat_g + '' : undefined}
+        unit="gm"
+      />
+      <RenderText
+        label="Fiber"
+        text={fiber_g !== undefined ? fiber_g + '' : undefined}
+        unit="gm"
       />
 
       <View

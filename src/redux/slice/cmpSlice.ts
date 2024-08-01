@@ -26,6 +26,18 @@ const cmpSlice = createSlice({
       console.log(action.type);
       state.selectedCalories = action.payload;
     },
+    resetState: state => {
+      state.selectedCalories = '';
+      state.selectedItems = {
+        0: [],
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+      };
+    },
     setSelectedItem: (
       state,
       action: PayloadAction<{
@@ -48,5 +60,6 @@ const cmpSlice = createSlice({
 });
 
 const cmpReducer = cmpSlice.reducer;
-export const {setSelectedCalories, setSelectedItem} = cmpSlice.actions;
+export const {setSelectedCalories, setSelectedItem, resetState} =
+  cmpSlice.actions;
 export default cmpReducer;

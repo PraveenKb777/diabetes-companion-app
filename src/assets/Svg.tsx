@@ -437,3 +437,27 @@ export const ArrowIndicator: FC<SvgProps> = props => (
     </G>
   </Svg>
 );
+
+export const TickSVG: FC<SvgProps> = props => (
+  <Svg width={18} height={13} viewBox="0 0 18 13" fill="none" {...props}>
+    <Path
+      d="M6.55 13 .85 7.3l1.425-1.425L6.55 10.15 15.725.975 17.15 2.4z"
+      fill="#fff"
+    />
+  </Svg>
+);
+
+export const EditItemsSvg: FC<SvgProps> = props => (
+  <Svg width={33} height={33} viewBox="0 0 33 33" fill="none" {...props}>
+    <Rect width={33} height={33} rx={2} fill="#0075FF" />
+    <Mask id="a" maskUnits="userSpaceOnUse" x={6} y={6} width={21} height={21}>
+      <Path fill="#D9D9D9" d="M6 6h21v21H6z" />
+    </Mask>
+    <G mask="url(#a)">
+      <Path
+        d="M10.375 22.625h1.247l8.553-8.553-1.247-1.247-8.553 8.553zm-1.75 1.75v-3.719l11.55-11.528q.262-.24.58-.372.317-.13.667-.131.35 0 .678.131.328.132.569.394l1.203 1.225q.262.24.383.569a1.9 1.9 0 0 1 0 1.323 1.6 1.6 0 0 1-.383.58L12.344 24.375zm10.916-10.916-.613-.634 1.247 1.247z"
+        fill="#fff"
+      />
+    </G>
+  </Svg>
+);

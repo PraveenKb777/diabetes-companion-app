@@ -40,6 +40,9 @@ const CMP = () => {
             label="View your menu"
             fontSize={20}
             fontStyle="italic"
+            onClick={() =>
+              navigattion.navigate('YourCaloricMenuScreen', {latest: true})
+            }
           />
         </View>
       </ScrollView>

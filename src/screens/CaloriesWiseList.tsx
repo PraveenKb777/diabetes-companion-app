@@ -1,4 +1,11 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   Dimensions,
   Image,
@@ -11,17 +18,25 @@ import {
   View,
 } from 'react-native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import {ArrowIndicator, NextArrow} from '../assets/Svg';
+import {ArrowIndicator, NextArrow, TickSVG} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
-import MENU from '../datas/menu';
+import menu from '../datas/index';
 import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {setSelectedItem} from '../redux/slice/cmpSlice';
 import {CALORIC_AMOUNTS} from './ChooseYourCaloricValue';
+import {
+  RouteProp,
+  StackActions,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import {StackNavigation} from '../Stack';
+import Loading from '../components/Loading';
 const COUNT = Array(7)
   .fill(0)
   .map((_, i) => i);
 
-const MEALS_HEADING = [
+export const MEALS_HEADING = [
   {head: 'Early Morning', time: '6 - 7 AM'},
   {head: 'Breakfast', time: '8 - 9 AM'},
   {head: 'Mid Morning', time: '11 AM'},
@@ -218,17 +233,58 @@ const CurrentMealIndicator: FC<CurrentMealIndicatorProps> = ({
       data={COUNT}
       keyExtractor={(e, i) => '' + e + i}
       ref={flatListRef}
+      initialNumToRender={60}
+      onScrollToIndexFailed={info => {
+        const wait = new Promise(resolve => setTimeout(resolve, 500));
+        wait.then(() => {
+          flatListRef.current?.scrollToIndex({
+            index: info.index,
+            animated: true,
+          });
+        });
+      }}
     />
   );
 };
 const {width, height} = Dimensions.get('window');
+
+type ParamList = {
+  Detail: {
+    index: number;
+  };
+};
 const CaloriesWiseList = () => {
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(false);
+    });
+  }, []);
   const selectedItem = useAppSelector(e => {
     const id = e.cmpReducer.selectedCalories;
 
     const item = CALORIC_AMOUNTS.find(i => i.id === id);
-    return item;
+    return item || {id: '', val: ''};
   });
+  const MENU = useMemo(() => {
+    const index = selectedItem.val;
+    return menu[index] as (typeof menu)['1250 kacl'];
+  }, [selectedItem?.val]);
+
+  const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
+  console.log(params?.index);
+  useEffect(() => {
+    if (params?.index) {
+      setSelectedIndex(params?.index);
+
+      flatListRef.current?.scrollToIndex({
+        animated: true,
+        index: params?.index,
+      });
+    }
+  }, [params?.index, load]);
+
+  const navigation = useNavigation<StackNavigation>();
 
   const {selectedItems} = useAppSelector(e => e.cmpReducer);
   console.log('>>>>', selectedItems);
@@ -248,7 +304,7 @@ const CaloriesWiseList = () => {
       setNextEnabled(false);
     }
     setCount(avilable);
-  }, [selectedIndex, selectedItems]);
+  }, [MENU, selectedIndex, selectedItems]);
 
   const renderItem: ListRenderItem<(typeof MENU)[0]> = ({index, item}) => {
     const headingItem = MEALS_HEADING[index];
@@ -352,6 +408,7 @@ const CaloriesWiseList = () => {
           {selectedItems[index].map(e =>
             e ? (
               <View
+                key={e.id + 'list items'}
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text
                   style={{fontSize: 16, fontWeight: 'bold', maxWidth: '70%'}}>
@@ -374,6 +431,8 @@ const CaloriesWiseList = () => {
             'Kindly select at least one item from all rows',
             ToastAndroid.SHORT,
           );
+        } else {
+          navigation.dispatch(StackActions.replace('YourCaloricMenuScreen'));
         }
         return selectedIndex;
       }
@@ -396,6 +455,10 @@ const CaloriesWiseList = () => {
   const flatListRef = React.useRef<FlatList<
     {name: string; uuid: string; foods: IFood[]}[][]
   > | null>(null);
+
+  if (load) {
+    return <Loading />;
+  }
   return (
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader
@@ -409,6 +472,16 @@ const CaloriesWiseList = () => {
         data={MENU}
         ref={flatListRef}
         renderItem={renderItem}
+        onScrollToIndexFailed={info => {
+          const wait = new Promise(resolve => setTimeout(resolve, 500));
+          wait.then(() => {
+            console.log('its heppening');
+            flatListRef.current?.scrollToIndex({
+              index: info.index,
+              animated: true,
+            });
+          });
+        }}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
       />
@@ -442,7 +515,9 @@ const CaloriesWiseList = () => {
           style={[
             {
               backgroundColor:
-                MENU.length - 1 === selectedIndex || !nextEnabled
+                MENU.length - 1 === selectedIndex && nextEnabled
+                  ? '#0075FF'
+                  : MENU.length - 1 === selectedIndex || !nextEnabled
                   ? 'grey'
                   : '#000',
               height: 40,
@@ -456,7 +531,11 @@ const CaloriesWiseList = () => {
             },
           ]}
           onPress={handleNext}>
-          <NextArrow height={20} width={20} />
+          {selectedIndex === MENU.length - 1 ? (
+            <TickSVG />
+          ) : (
+            <NextArrow height={20} width={20} />
+          )}
         </TouchableOpacity>
       </View>
     </SafeAreaView>

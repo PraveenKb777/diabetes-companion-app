@@ -9,14 +9,14 @@ import {
   View,
 } from 'react-native';
 
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {DGHeading} from './DiabetesGuide';
 import {Radios} from '../components/RadioButtons';
 import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
-import {setSelectedCalories} from '../redux/slice/cmpSlice';
+import {resetState, setSelectedCalories} from '../redux/slice/cmpSlice';
 import CustomButton from '../components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 
 export const CALORIC_AMOUNTS = [
@@ -55,6 +55,12 @@ const RadioButtons: FC<{
 
 const ChooseYourCaloricValue = () => {
   const {selectedCalories} = useAppSelector(e => e.cmpReducer);
+  const dispatch = useAppDispatch();
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(resetState());
+    }, []),
+  );
   const navigation = useNavigation<StackNavigation>();
   return (
     <SafeAreaView style={styles.safeArea}>

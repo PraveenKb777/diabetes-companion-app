@@ -18,7 +18,7 @@ import {ScreenNames, StackNavigation} from '../Stack';
 import {useNavigation} from '@react-navigation/native';
 
 const HEADING = ['BMI', 'WHR', 'DRF', 'MODY RF', 'CMP'];
-const URLS = ['/bmi', '/whr', '/drf', '/mody', ''];
+const URLS = ['/bmi', '/whr', '/drf', '/mody', '/cmp'];
 interface IBmiResult {
   bmi_score: number;
   created_at: string;
@@ -66,9 +66,23 @@ interface IModyResults {
   weight_kg: number;
 }
 
+interface ICMPResults {
+  carbohydrate_g: number;
+  created_at: Date;
+  energy_kcal: number;
+  fat_g: number;
+  fiber_g: number;
+  id: string;
+  protein_g: number;
+}
+
 const LIMIT = 3;
 
-export type ALL = IBmiResult & IDRFREsults & IWHRResults & IModyResults;
+export type ALL = IBmiResult &
+  IDRFREsults &
+  IWHRResults &
+  IModyResults &
+  ICMPResults;
 
 const MyLog = () => {
   const [date, setDate] = useState('');
@@ -130,7 +144,7 @@ const MyLog = () => {
       navigationRoute = 'ModyResultsScreen';
     }
     if (selectedItem === 4) {
-      navigationRoute = 'BMIResultScreen';
+      navigationRoute = 'YourCaloricMenuScreen';
     }
 
     navigation.navigate(navigationRoute, {id});
@@ -194,6 +208,11 @@ const MyLog = () => {
               drfScore={e.drf_score}
               time={e.created_at}
               modyScore={e.mody_score}
+              carbohydrate_g={e.carbohydrate_g}
+              energy_kcal={e.energy_kcal}
+              fat_g={e.fat_g}
+              fiber_g={e.fiber_g}
+              protein_g={e.protein_g}
               onPress={() => onPressCard(e.id)}
             />
           ))}
