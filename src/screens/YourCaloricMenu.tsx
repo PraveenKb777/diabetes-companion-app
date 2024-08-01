@@ -1,4 +1,11 @@
 import {
+  RouteProp,
+  StackActions,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {
   SafeAreaView,
   StyleSheet,
   Text,
@@ -6,23 +13,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import BackButtonHeader from '../components/BackButtonHeader';
 import {ScrollView} from 'react-native-gesture-handler';
-import {IFood, MEALS_HEADING} from './CaloriesWiseList';
-import {EditItemsSvg, EditPenSvg} from '../assets/Svg';
-import {
-  RouteProp,
-  StackActions,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
-import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
+import {EditItemsSvg} from '../assets/Svg';
+import BackButtonHeader from '../components/BackButtonHeader';
 import CustomButton from '../components/CustomButton';
-import auth from '../utils/auth';
 import Loading from '../components/Loading';
+import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {resetState} from '../redux/slice/cmpSlice';
+import auth from '../utils/auth';
+import {IFood, MEALS_HEADING} from './CaloriesWiseList';
 type ParamList = {
   Details: {
     id?: string;
@@ -482,5 +482,3 @@ const YourCaloricMenu = () => {
 };
 
 export default YourCaloricMenu;
-
-const styles = StyleSheet.create({});
