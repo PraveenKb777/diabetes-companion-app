@@ -300,7 +300,7 @@ const AssesmentQuestion = () => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <BackButtonHeader heading="Feed Back" />
+      <BackButtonHeader heading="Assesment" />
       <FlatList
         ref={flatListRef}
         data={Object.keys(list)}

@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {
+  Dimensions,
   ImageBackground,
   StyleProp,
   StyleSheet,
@@ -62,7 +63,7 @@ const DownGradientBox: FC<IDownGradientBox> = ({
 };
 
 export default DownGradientBox;
-
+const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   contentCont: {
     flexDirection: 'row',
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     // elevation: 5,
     height: 200,
-    width: 169,
+    width: (width * 45) / 100,
   },
 
   gradiantPos: {

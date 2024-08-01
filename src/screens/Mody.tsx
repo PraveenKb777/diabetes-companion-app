@@ -284,7 +284,9 @@ const Mody = () => {
   }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <BackButtonHeader heading="Maturity Onset Diabetes of the Young (MODY) Guide" />
+      <BackButtonHeader
+        heading={'Maturity Onset Diabetes of\nthe Young (MODY) Guide'}
+      />
 
       <ScrollView style={{flex: 1, padding: 16}}>
         <DGHeading head="Unveiling MODY" />

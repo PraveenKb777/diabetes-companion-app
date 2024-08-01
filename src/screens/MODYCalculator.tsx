@@ -26,15 +26,19 @@ import {MeasurementBox} from './BmiCalculator';
 import {DGHeading} from './DiabetesGuide';
 import {ErrorInputComp} from './Login';
 
-const PARENT_HISTORY = ['No parent with diabetes', 'One parent with diabetes'];
+const PARENT_HISTORY = [
+  'No parent with diabetes',
+  'One parent or both with diabetes',
+];
 const GENERATION = [
   '0 or 1 generations with diabetes',
   '2 or 3 generations with diabetes',
 ];
 
-const HBA1C = [' ≤7.5 %', '>7.5 %'];
+const HBA1C = ['>7.5 %', ' ≤7.5 %'];
 
 const OPTIONS = ['Presence', 'Absence'];
+const OPTIONS2 = ['Absence', 'Presence'];
 
 const MODYCalculator = () => {
   const [load, setLoad] = useState(false);
@@ -228,7 +232,7 @@ const MODYCalculator = () => {
         <DGHeading
           head={`BMI Score : ${bmiCalculator(+height, +weight) || '0'}`}
         />
-        <DGHeading head="Generations with diabetes?" />
+        <DGHeading head="Generations with diabetes" />
         <RadioButtons
           list={GENERATION}
           value={family_history}
@@ -261,7 +265,7 @@ const MODYCalculator = () => {
         <ErrorInputComp label={errors.ketoacidosisError} />
         <DGHeading head="Do you have any of the following complications? (Glycosuria or  Macrosomia and Neonatal hypoglycemia or Renal cysts or Urogenital abnormalities or Exocrine Insufficiency)" />
         <RadioButtons
-          list={OPTIONS}
+          list={OPTIONS2}
           onChange={e => setComplications(e)}
           value={complications}
         />

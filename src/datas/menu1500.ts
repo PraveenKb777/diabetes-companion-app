@@ -107,26 +107,6 @@ export const menu1500 = [
             fiber_g: 0,
             id: 'ee7d8730-ea47-419d-b0c5-50a0df0d6ec5',
           },
-          {
-            name: 'Bittergourd juice',
-            qty: '1 1/2 cup',
-            energy_kcal: 58.08,
-            carbohydrate_g: 6.87,
-            protein_g: 4.83,
-            fat_g: 0.78,
-            fiber_g: 11.16,
-            id: 'ed738f96-1c13-42c0-aeb3-c09b59828323',
-          },
-          {
-            name: 'Buttermilk',
-            qty: '1 1/2 cup',
-            energy_kcal: 38.58,
-            carbohydrate_g: 1.92,
-            protein_g: 1.98,
-            fat_g: 2.58,
-            fiber_g: 0,
-            id: '4a73b18f-52bd-4360-a3f4-c75e0963a72a',
-          },
         ],
       },
     ],
@@ -723,7 +703,7 @@ export const menu1500 = [
           },
           {
             id: 'a1d46a6b-4e07-465b-8a26-5e2cf796233a',
-            name: 'Paruppu Urundai Kara Kulambu',
+            name: 'Paruppu Urundai Kara kuzhambu',
             qty: '¼ cup',
             energy_kcal: 50.2425,
             carbohydrate_g: 6.97,
@@ -743,7 +723,7 @@ export const menu1500 = [
           },
           {
             id: '19bb37db-a08a-4234-8494-9c9ed9932b5b',
-            name: 'Avarai Pulikulambu',
+            name: 'Avarai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 41.315,
             carbohydrate_g: 4.725,
@@ -753,7 +733,7 @@ export const menu1500 = [
           },
           {
             id: '14fd7200-9e45-4506-95ac-48702af79eaa',
-            name: 'Kovai Pulikulambu',
+            name: 'Kovai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 38.745,
             carbohydrate_g: 4.8,
@@ -763,7 +743,7 @@ export const menu1500 = [
           },
           {
             id: '8ebcca1f-895d-4ac2-90dc-de22d16727df',
-            name: 'Bittergourd Pulikulambu',
+            name: 'Bittergourd Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 38.805,
             carbohydrate_g: 4.77,
@@ -783,7 +763,7 @@ export const menu1500 = [
           },
           {
             id: 'f28b7952-194e-435f-b83c-08c22fa87d38',
-            name: 'Brinjal Pulikulambu',
+            name: 'Brinjal Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 40.2975,
             carbohydrate_g: 5.0775,
@@ -1481,7 +1461,7 @@ export const menu1500 = [
             id: '94b7686c-b16e-45a2-94a8-c3f4496285f9',
           },
           {
-            name: 'Paruppu urundai kara kulambu',
+            name: 'Paruppu urundai kara kuzhambu',
             qty: '1/2 cup',
             energy_kcal: 100.485,
             carbohydrate_g: 13.94,
@@ -1511,7 +1491,7 @@ export const menu1500 = [
             id: '9470b69a-8db5-4458-93e5-f45f72080c2d',
           },
           {
-            name: 'Kovai pulikulambu',
+            name: 'Kovai pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 77.49,
             carbohydrate_g: 9.6,
@@ -1521,7 +1501,7 @@ export const menu1500 = [
             id: '7ca08049-6f7d-403d-a994-25321b648e56',
           },
           {
-            name: 'Bittergourd pulikulambu',
+            name: 'Bittergourd pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 77.61,
             carbohydrate_g: 9.54,
@@ -1541,7 +1521,7 @@ export const menu1500 = [
             id: 'beaf437c-0198-432d-8985-fd54eb04bf96',
           },
           {
-            name: 'Brinjal pulikulambu',
+            name: 'Brinjal pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 80.595,
             carbohydrate_g: 10.155,
@@ -1681,7 +1661,7 @@ export const menu1500 = [
     ],
     [
       {
-        name: 'Veg Side name - Vegetable Kootu ',
+        name: 'Veg side dish - Vegetable Kootu ',
         img: 'sidedish-vegkootu.jpeg',
         uuid: '16e16ce2-e742-45d5-80b0-33c327fdb59c',
         foods: [
@@ -1790,7 +1770,7 @@ export const menu1500 = [
     ],
     [
       {
-        name: 'Veg Side name - Vegetable Porial',
+        name: 'Veg side dish - Vegetable Porial',
         img: 'sidedish-vegporiyal.jpeg',
         uuid: '7fe79dd5-c4bd-4385-a18b-a834e7f85bcb',
         foods: [
@@ -3038,7 +3018,7 @@ export const menu1500 = [
           },
           {
             id: '3ca122c7-7290-458e-8a00-18c54f1b60e7',
-            name: 'Paruppu Urundai Kara Kulambu',
+            name: 'Paruppu Urundai Kara kuzhambu',
             qty: '¼ cup',
             energy_kcal: 50.2425,
             carbohydrate_g: 6.97,
@@ -3058,7 +3038,7 @@ export const menu1500 = [
           },
           {
             id: 'b52ad293-156c-4cd8-aea6-b1d1f19ea705',
-            name: 'Avarai Pulikulambu',
+            name: 'Avarai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 41.315,
             carbohydrate_g: 4.725,
@@ -3068,7 +3048,7 @@ export const menu1500 = [
           },
           {
             id: '033a73ae-edcb-4eff-b539-a75a29fe1b90',
-            name: 'Kovai Pulikulambu',
+            name: 'Kovai Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 38.745,
             carbohydrate_g: 4.8,
@@ -3078,7 +3058,7 @@ export const menu1500 = [
           },
           {
             id: '7603dd9a-2121-4b52-95f3-484bfe396b91',
-            name: 'Bittergourd Pulikulambu',
+            name: 'Bittergourd Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 38.805,
             carbohydrate_g: 4.77,
@@ -3098,7 +3078,7 @@ export const menu1500 = [
           },
           {
             id: '590744ff-bc03-4000-acbb-bbd7559e4d27',
-            name: 'Brinjal Pulikulambu',
+            name: 'Brinjal Pulikuzhambu',
             qty: '¼ cup',
             energy_kcal: 40.2975,
             carbohydrate_g: 5.0775,

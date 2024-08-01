@@ -352,10 +352,18 @@ const ExcerciseGudie = () => {
               borderWidth: 1,
               borderColor: 'rgba(0, 0, 0, 0.20)',
               borderRadius: 10,
+              aspectRatio: 1,
+              alignItems: 'center',
             }}>
             <Image
               source={excerciseflow}
-              style={[{width: '100%', height: 300, objectFit: 'fill'}]}
+              style={[
+                {
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                },
+              ]}
             />
           </View>
 

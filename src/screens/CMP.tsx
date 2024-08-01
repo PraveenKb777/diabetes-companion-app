@@ -45,6 +45,42 @@ const CMP = () => {
             }
           />
         </View>
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 10,
+            borderWidth: 1,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            borderRadius: 10,
+            backgroundColor: '#fff',
+            elevation: 2,
+            marginTop: 30,
+          }}>
+          <Text style={{fontSize: 16, fontStyle: 'italic'}}>
+            <Text style={{color: '#000'}}>Note : </Text>Restrict the usage of
+            COCONUT in your meal
+          </Text>
+        </View>
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 10,
+            borderWidth: 1,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            borderRadius: 10,
+            backgroundColor: '#fff',
+            elevation: 2,
+            marginTop: 10,
+          }}>
+          <Text style={{fontSize: 16, fontStyle: 'italic'}}>
+            <Text style={{color: '#000'}}>Note : </Text>
+            <Text style={{color: '#000'}}> 1 Cup = 200ml</Text>
+          </Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

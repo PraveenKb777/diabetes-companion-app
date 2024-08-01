@@ -377,7 +377,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.energy_kcal} Kacl
+            {totals.energy_kcal} Kcal
           </Text>
         </View>
         <View

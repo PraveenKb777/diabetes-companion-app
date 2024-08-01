@@ -391,7 +391,7 @@ const styles = StyleSheet.create({
   homeScreenNavs: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   headMainCont: {
     marginVertical: 16,

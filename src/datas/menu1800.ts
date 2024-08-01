@@ -106,26 +106,6 @@ export const menu1800 = [
             fiber_g: 0,
             id: '798c9049-b652-4caf-a390-8b95479303e9',
           },
-          {
-            name: 'Bittergourd juice',
-            qty: '1 1/2 cup',
-            energy_kcal: 58.08,
-            carbohydrate_g: 6.87,
-            protein_g: 4.83,
-            fat_g: 0.78,
-            fiber_g: 11.16,
-            id: 'e8bbd274-620a-44c8-ab6d-a426a3718b6d',
-          },
-          {
-            name: 'Buttermilk',
-            qty: '1 1/2 cup',
-            energy_kcal: 38.58,
-            carbohydrate_g: 1.92,
-            protein_g: 1.98,
-            fat_g: 2.58,
-            fiber_g: 0,
-            id: '71036a42-7e12-4abf-bd36-7197a624d339',
-          },
         ],
       },
     ],
@@ -1410,7 +1390,7 @@ export const menu1800 = [
             id: '18ec1b69-af28-4f46-a37d-816b11f98c33',
           },
           {
-            name: 'Avarai Pulikulambu',
+            name: 'Avarai Pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 82.63,
             carbohydrate_g: 9.45,
@@ -1420,7 +1400,7 @@ export const menu1800 = [
             id: 'bd2d47a3-6473-4d5a-ac1a-d7c57d50bcfb',
           },
           {
-            name: 'Kovai Pulikulambu',
+            name: 'Kovai Pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 77.49,
             carbohydrate_g: 9.6,
@@ -1430,7 +1410,7 @@ export const menu1800 = [
             id: '317341c0-1eef-4032-ab40-19310620de18',
           },
           {
-            name: 'Bittergourd Pulikulambu',
+            name: 'Bittergourd Pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 77.61,
             carbohydrate_g: 9.54,
@@ -1450,7 +1430,7 @@ export const menu1800 = [
             id: '892b9f52-c2a2-4b9c-97d9-8e75bad100c2',
           },
           {
-            name: 'Brinjal Pulikulambu',
+            name: 'Brinjal Pulikuzhambu',
             qty: '1/2 cup',
             energy_kcal: 80.595,
             carbohydrate_g: 10.155,
@@ -1590,7 +1570,7 @@ export const menu1800 = [
     ],
     [
       {
-        name: 'Veg Side name - Vegetable Kootu ',
+        name: 'Veg side dish - Vegetable Kootu ',
         img: 'sidedish-vegkootu.jpeg',
         uuid: '46f86de0-4873-401e-9954-a4451193cfce',
         foods: [
@@ -1699,7 +1679,7 @@ export const menu1800 = [
     ],
     [
       {
-        name: 'Veg Side name - Vegetable Porial',
+        name: 'Veg side dish - Vegetable Porial',
         img: 'sidedish-vegporiyal.jpeg',
         uuid: '7d1af9e6-1f4c-41cd-bdfe-5e8df78f7778',
         foods: [

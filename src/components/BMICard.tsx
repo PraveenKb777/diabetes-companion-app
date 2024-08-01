@@ -210,7 +210,7 @@ const BMICard: FC<IBMICard> = ({
       <RenderText
         label="Total Energy"
         text={energy_kcal !== undefined ? energy_kcal + '' : undefined}
-        unit="kacl"
+        unit="Kcal"
       />
       <RenderText
         label="Carbohydrate"
@@ -220,7 +220,7 @@ const BMICard: FC<IBMICard> = ({
       <RenderText
         label="Protein"
         text={protein_g !== undefined ? protein_g + '' : undefined}
-        unit="(kacl)"
+        unit="(Kcal)"
       />
       <RenderText
         label="Fat"

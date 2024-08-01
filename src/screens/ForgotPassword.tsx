@@ -162,7 +162,7 @@ const Login = () => {
         <View style={[{height: 36}]} />
         <CustomButton
           onPress={onPressSubmit}
-          label={stage ? 'SEND CODE' : 'SUBMIT'}
+          label={stage ? 'SUBMIT' : 'SEND CODE'}
           load={load}
         />
       </ScrollView>

@@ -42,7 +42,7 @@ export const MEALS_HEADING = [
   {head: 'Early Morning', time: '6 - 7 AM'},
   {head: 'Breakfast', time: '8 - 9 AM'},
   {head: 'Mid Morning', time: '11 AM'},
-  {head: 'lunch', time: '1 - 2 PM'},
+  {head: 'Lunch', time: '1 - 2 PM'},
   {head: 'Tea Time', time: '4 - 5 PM'},
   {head: 'Dinner', time: '7 - 8 PM'},
   {head: 'Bed Time', time: '9 - 10 PM'},
@@ -271,7 +271,7 @@ const CaloriesWiseList = () => {
   });
   const MENU = useMemo(() => {
     const index = selectedItem.val;
-    return menu[index] as (typeof menu)['1250 kacl'];
+    return menu[index] as (typeof menu)['1250 Kcal'];
   }, [selectedItem?.val]);
 
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
@@ -291,7 +291,7 @@ const CaloriesWiseList = () => {
 
   const {selectedItems} = useAppSelector(e => e.cmpReducer);
   //console.log('>>>>', selectedItems);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [nextEnabled, setNextEnabled] = useState(false);
   const [count, setCount] = useState(0);
   useEffect(() => {

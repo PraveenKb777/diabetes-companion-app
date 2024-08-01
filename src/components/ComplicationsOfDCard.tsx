@@ -23,8 +23,14 @@ const ComplicationsOfDCard: FC<{
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.mainCont}>
-      <Image source={img} style={styles.img} {...imgSource} />
-      <Text style={[styles.text]}>{label}</Text>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Image
+          source={img}
+          style={[styles.img, {marginRight: 10}]}
+          {...imgSource}
+        />
+        <Text style={[styles.text]}>{label}</Text>
+      </View>
       <View style={[styles.infoCont]}>
         <Text
           style={{

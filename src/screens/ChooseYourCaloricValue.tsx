@@ -22,15 +22,15 @@ import {StackNavigation} from '../Stack';
 export const CALORIC_AMOUNTS = [
   {
     id: '6ac67627-9aa5-46a1-a634-7a4f35acbfb0',
-    val: '1250 kacl',
+    val: '1250 Kcal',
   },
   {
     id: '53a67fef-286a-4872-a128-0919e631d9d5',
-    val: '1500 kacl',
+    val: '1500 Kcal',
   },
   {
     id: '601b95af-6c4d-4da5-82a5-707ac8059570',
-    val: '1800 kacl',
+    val: '1800 Kcal',
   },
 ];
 
