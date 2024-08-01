@@ -113,7 +113,7 @@ const SignUp = () => {
         secret: 'yyy',
       };
       // const datas = {email, name, password, confirmPassword, age, gender};
-      // console.log({email, name, password, confirmPassword, age, gender});
+      // //console.log({email, name, password, confirmPassword, age, gender});
       const res = await auth.post('/auth/sign-up', datas);
       // { token, message: "user created successfully", success: true },
       const {message, token, user} = await res.data;
@@ -123,7 +123,7 @@ const SignUp = () => {
 
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
-      console.log('error', error);
+      //console.log('error', error);
       const message =
         error.response.data.message ||
         'Something went wrong kindly try after some time';

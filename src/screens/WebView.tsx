@@ -7,7 +7,7 @@ import {useRoute} from '@react-navigation/native';
 const WebViewComponent = () => {
   const [load, setLoad] = useState(true);
   const {params}: any = useRoute();
-  console.log(params?.url);
+  //console.log(params?.url);
 
   return (
     <>

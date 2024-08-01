@@ -86,7 +86,7 @@ const BmiCalculator = () => {
       ToastAndroid.show('Bmi Calculated successfully', ToastAndroid.SHORT);
       navigation.navigate('BMIResultScreen', {id});
     } catch (error: any) {
-      console.log(error.response);
+      //console.log(error.response);
       const msg =
         error?.response?.data?.message ||
         'Something went wrong try after some time';

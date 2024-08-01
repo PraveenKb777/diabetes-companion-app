@@ -123,7 +123,7 @@ const DRFCalculator = () => {
       ToastAndroid.show('DRF Calculated successfully', ToastAndroid.SHORT);
       navigation.navigate('DRFResultsScreen', {id});
     } catch (error: any) {
-      console.log(error.response, error);
+      //console.log(error.response, error);
       const msg =
         error?.response?.data?.message ||
         'Something went wrong try after some time';

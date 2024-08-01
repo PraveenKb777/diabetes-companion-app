@@ -21,19 +21,19 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({url}) => {
   const [sound, setSound] = useState<Sound | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [load, setLoad] = useState(true);
-  console.log(load);
+  //console.log(load);
   useEffect(() => {
     Sound.setCategory('SoloAmbient');
     const loadSound = () => {
       const soundFile = new Sound(url, undefined, error => {
         setLoad(false);
         if (error) {
-          console.log('Failed to load the sound', error);
+          //console.log('Failed to load the sound', error);
           return;
         }
         setSound(soundFile);
       });
-      console.log(soundFile);
+      //console.log(soundFile);
     };
 
     loadSound();
@@ -56,9 +56,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({url}) => {
     if (sound) {
       sound.play(success => {
         if (success) {
-          console.log('Successfully finished playing');
+          //console.log('Successfully finished playing');
         } else {
-          console.log('Playback failed due to audio decoding errors');
+          //console.log('Playback failed due to audio decoding errors');
         }
         setIsPlaying(false);
       });
@@ -69,7 +69,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({url}) => {
   const stopSound = () => {
     if (sound) {
       sound.stop(() => {
-        console.log('Sound stopped');
+        //console.log('Sound stopped');
         setIsPlaying(false);
       });
     }

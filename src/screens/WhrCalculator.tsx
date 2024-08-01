@@ -83,7 +83,7 @@ const WhrCalculator = () => {
     setLoad(true);
     try {
       const error = isError();
-      console.log('>>>error', error);
+      //console.log('>>>error', error);
       if (error) {
         return;
       }
@@ -94,7 +94,7 @@ const WhrCalculator = () => {
       ToastAndroid.show('WHR Calculated successfully', ToastAndroid.SHORT);
       navigation.navigate('WHRResultScreen', {id});
     } catch (error: any) {
-      console.log(error.response, error);
+      //console.log(error.response, error);
       const msg =
         error?.response?.data?.message ||
         'Something went wrong try after some time';

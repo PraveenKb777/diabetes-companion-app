@@ -155,7 +155,7 @@ const MODYCalculator = () => {
       ToastAndroid.show('MODY Calculated successfully', ToastAndroid.SHORT);
       navigation.navigate('ModyResultsScreen', {id});
     } catch (error: any) {
-      console.log(error.response, error);
+      //console.log(error.response, error);
       const msg =
         error?.response?.data?.message ||
         'Something went wrong try after some time';

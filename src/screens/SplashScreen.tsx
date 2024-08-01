@@ -27,7 +27,7 @@ const SplashScreen = () => {
       const token = await AsyncStorage.getItem('token');
 
       if (!token) {
-        console.log('entered');
+        //console.log('entered');
         navigation.dispatch(StackActions.replace('FirstTimeScreen'));
         return;
       }
@@ -36,7 +36,7 @@ const SplashScreen = () => {
     } catch (error: any) {
       await AsyncStorage.removeItem('token');
       navigation.dispatch(StackActions.replace('LoginScreen'));
-      console.log(error.response);
+      //console.log(error.response);
     } finally {
       //   setLoad(false);
     }

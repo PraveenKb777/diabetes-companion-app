@@ -5,6 +5,7 @@ const MENU = [
     [
       {
         name: 'Beverages',
+        img: 'beverages.png',
         uuid: 'fca4d208-3fe7-4f06-a9e3-c06da3957de4',
         foods: [
           {
@@ -115,6 +116,7 @@ const MENU = [
     [
       {
         name: 'Dosai',
+        img: 'dosa.jpeg',
         uuid: 'd93debc3-cc97-4f93-946a-4619eee336e9',
         foods: [
           {
@@ -231,6 +233,7 @@ const MENU = [
       },
       {
         name: 'Idli',
+        img: 'idli.jpeg',
         uuid: '179e470b-f6b1-4644-811b-bded6134ba87',
         foods: [
           {
@@ -297,6 +300,7 @@ const MENU = [
       },
       {
         name: 'Idiyappam',
+        img: 'idiyappam.jpeg',
         uuid: '674c5fb9-872f-4ca0-ad22-b494f31811f4',
         foods: [
           {
@@ -363,6 +367,7 @@ const MENU = [
       },
       {
         name: 'Pongal',
+        img: 'pongal.jpeg',
         uuid: '90dad025-a1f4-4927-b470-dca5311b0547',
         foods: [
           {
@@ -409,6 +414,7 @@ const MENU = [
       },
       {
         name: 'Chapati',
+        img: 'chapati.jpeg',
         uuid: 'ce06ec81-57d6-42f3-bc76-ad0ad669520f',
         foods: [
           {
@@ -445,6 +451,7 @@ const MENU = [
       },
       {
         name: 'Upma',
+        img: 'upma.jpeg',
         uuid: '7d6074ad-86ed-4f0c-a21c-fe7c1d246584',
         foods: [
           {
@@ -523,6 +530,7 @@ const MENU = [
     [
       {
         name: 'Chutney',
+        img: 'chutney.jpeg',
         uuid: '021135f8-dc43-4c0e-840c-4b5df21c0ed4',
         foods: [
           {
@@ -611,6 +619,7 @@ const MENU = [
     [
       {
         name: 'Sambar',
+        img: 'sambar.jpeg',
         uuid: 'e2fcdffd-57c0-4aea-adb4-f231deb1f123',
         foods: [
           {
@@ -771,6 +780,7 @@ const MENU = [
     [
       {
         name: 'Beverages',
+        img: 'beverages.png',
         uuid: 'f199461c-b7d3-470f-8e35-050e3ca5ecfe',
         foods: [
           {
@@ -889,6 +899,7 @@ const MENU = [
     [
       {
         name: 'Fruits',
+        img: 'fruit.jpeg',
         uuid: '80cc9915-bd90-4411-8c39-73ef5db69703',
         foods: [
           {
@@ -1025,6 +1036,7 @@ const MENU = [
       },
       {
         name: 'Sundal',
+        img: 'sundal.jpeg',
         uuid: '0cad91a8-bed9-4150-ae3f-e3575c5f9c3e',
         foods: [
           {
@@ -1071,6 +1083,7 @@ const MENU = [
       },
       {
         name: 'Sprouts',
+        img: 'sprouts.jpeg',
         uuid: '1768cd40-774c-431a-b1f6-799129fffcf7',
         foods: [
           {
@@ -1117,6 +1130,7 @@ const MENU = [
       },
       {
         name: 'Nuts',
+        img: 'nuts.jpeg',
         uuid: '76f23eb0-a2b8-4b73-9688-b2273af35208',
         foods: [
           {
@@ -1167,6 +1181,7 @@ const MENU = [
     [
       {
         name: 'Rice',
+        img: 'rice.jpeg',
         uuid: '841e4500-01eb-4bdc-bdbf-7e649448816b',
         foods: [
           {
@@ -1233,6 +1248,7 @@ const MENU = [
       },
       {
         name: 'Variety Rice',
+        img: 'varietyrice.jpeg',
         uuid: 'a628c6ff-0cc5-4234-b48e-d37f57e3f4f0',
         foods: [
           {
@@ -1331,6 +1347,7 @@ const MENU = [
     [
       {
         name: 'Veg Kuzhambu',
+        img: 'curries-gravies-vegkuzhambu.jpeg',
         uuid: '17271a13-4d6b-4986-a3b5-e3aa890a552e',
         foods: [
           {
@@ -1497,6 +1514,7 @@ const MENU = [
       },
       {
         name: 'Non-Veg Kuzhambu',
+        img: 'curries-gravies-nonvegkuzhambu.jpeg',
         uuid: '9c80df8d-436a-4769-a0a1-fe3cf9af6b74',
         foods: [
           {
@@ -1585,6 +1603,7 @@ const MENU = [
     [
       {
         name: 'Rasam',
+        img: 'rasam.jpeg',
         uuid: '9268c775-0d87-411a-a182-3d5c031bcc42',
         foods: [
           {
@@ -1623,6 +1642,7 @@ const MENU = [
     [
       {
         name: 'Veg Side name - Vegetable Kootu ',
+        img: 'sidedish-vegkootu.jpeg',
         uuid: '8db93d43-baf5-4ebb-b8f7-71cf5daa0ec6',
         foods: [
           {
@@ -1731,6 +1751,7 @@ const MENU = [
     [
       {
         name: 'Veg Side name - Vegetable Porial',
+        img: 'sidedish-vegporiyal.jpeg',
         uuid: '28295de5-42f4-43eb-8b5e-a761367761ef',
         foods: [
           {
@@ -1827,6 +1848,7 @@ const MENU = [
       },
       {
         name: 'Non Veg Side dish',
+        img: 'nonvegsidedish.jpeg',
         uuid: 'c1f4e029-e743-4ee7-8fa7-9be4b0f43eba',
         foods: [
           {
@@ -1955,6 +1977,7 @@ const MENU = [
     [
       {
         name: 'Accompaniments',
+        img: 'curd.jpeg',
         uuid: '6ff19b0a-536b-418f-b822-dbdd8e59b1a7',
         foods: [
           {
@@ -1975,6 +1998,7 @@ const MENU = [
     [
       {
         name: 'Beverages',
+        img: 'beverages.png',
         uuid: '8d9fb0ab-e9f6-49d9-b57d-765cf882f318',
         foods: [
           {
@@ -2093,6 +2117,7 @@ const MENU = [
     [
       {
         name: 'Fruits',
+        img: 'fruit.jpeg',
         uuid: 'ffa9da1a-803b-4411-883a-0fcd021c9d84',
         foods: [
           {
@@ -2229,6 +2254,7 @@ const MENU = [
       },
       {
         name: 'Sundal',
+        img: 'sundal.jpeg',
         uuid: '015ea310-cffc-41f5-9a27-fc4277fb8234',
         foods: [
           {
@@ -2275,6 +2301,7 @@ const MENU = [
       },
       {
         name: 'Sprouts',
+        img: 'sprouts.jpeg',
         uuid: 'f89e813f-a462-4a30-afd9-f24b20911fd1',
         foods: [
           {
@@ -2321,6 +2348,7 @@ const MENU = [
       },
       {
         name: 'Nuts',
+        img: 'nuts.jpeg',
         uuid: 'a44d08fe-16a8-4177-bf70-2019b8e5b2d6',
         foods: [
           {
@@ -2371,6 +2399,7 @@ const MENU = [
     [
       {
         name: 'Dosai',
+        img: 'dosa.jpeg',
         uuid: 'f4b432bb-633f-4fa9-ad75-1402e4ead747',
         foods: [
           {
@@ -2487,6 +2516,7 @@ const MENU = [
       },
       {
         name: 'Idli',
+        img: 'idli.jpeg',
         uuid: 'fa6eba8c-ca00-42d7-8e16-257ab037d807',
         foods: [
           {
@@ -2553,6 +2583,7 @@ const MENU = [
       },
       {
         name: 'Idiyappam',
+        img: 'idiyappam.jpeg',
         uuid: '2ab44c24-e2f4-491d-b7df-13c8aecc87c4',
         foods: [
           {
@@ -2619,6 +2650,7 @@ const MENU = [
       },
       {
         name: 'Pongal',
+        img: 'pongal.jpeg',
         uuid: 'a6288e29-014f-4930-ba96-183873dd52f8',
         foods: [
           {
@@ -2665,6 +2697,7 @@ const MENU = [
       },
       {
         name: 'Chapati',
+        img: 'chapati.jpeg',
         uuid: '63012e80-f7cc-4c46-9c44-d5849abe429d',
         foods: [
           {
@@ -2701,6 +2734,7 @@ const MENU = [
       },
       {
         name: 'Upma',
+        img: 'upma.jpeg',
         uuid: 'b06733a0-61cc-4c92-9c78-49ead0b1cb10',
         foods: [
           {
@@ -2779,6 +2813,7 @@ const MENU = [
     [
       {
         name: 'Chutney',
+        img: 'chutney.jpeg',
         uuid: '004eb3bf-7537-4ed5-9e3c-2c9ee3ac4f75',
         foods: [
           {
@@ -2867,6 +2902,7 @@ const MENU = [
     [
       {
         name: 'Sambar',
+        img: 'sambar.jpeg',
         uuid: '7ddb87b0-62f4-4f95-a89b-e42b5abc55bc',
         foods: [
           {
@@ -3027,6 +3063,7 @@ const MENU = [
     [
       {
         name: 'Beverages',
+        img: 'beverages.png',
         uuid: '298520be-cc5e-4c23-896d-7d20441a33e2',
         foods: [
           {

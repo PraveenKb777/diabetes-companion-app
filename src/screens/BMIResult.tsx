@@ -88,7 +88,7 @@ const BMIResult = () => {
       setUrl(audioFile);
       setBmiData(result);
     } catch (error: any) {
-      console.log(error.response);
+      //console.log(error.response);
       const msg = error?.response?.data?.message || 'Something went wrong';
 
       ToastAndroid.show(msg, ToastAndroid.SHORT);

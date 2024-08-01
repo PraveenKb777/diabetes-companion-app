@@ -115,7 +115,7 @@ const Profile = () => {
       ToastAndroid.show(data.message, ToastAndroid.SHORT);
       setChangePassVis(false);
     } catch (error: any) {
-      console.log(error);
+      //console.log(error);
       const msg =
         error.response.data.message ||
         'Something went wrong try again after some time';

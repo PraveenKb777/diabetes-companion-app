@@ -63,7 +63,7 @@ const Login = () => {
         navigation.dispatch(StackActions.replace('LoginScreen'));
       }
     } catch (error: any) {
-      console.log(error.response);
+      //console.log(error.response);
       const {message} = error.response.data;
       ToastAndroid.show(message, ToastAndroid.SHORT);
     } finally {
@@ -118,7 +118,7 @@ const Login = () => {
                     ToastAndroid.SHORT,
                   );
                 } catch (error) {
-                  console.log(error);
+                  //console.log(error);
                 }
               }}>
               Send Again

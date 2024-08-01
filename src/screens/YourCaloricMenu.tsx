@@ -75,7 +75,7 @@ const YourCaloricMenu = () => {
       const cmp_data = JSON.parse(result.cmp_data);
       setSelectedItems(cmp_data);
     } catch (error: any) {
-      console.log(error);
+      //console.log(error);
       const msg = error.response.data.message || 'Something went wrong';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
       navigation.goBack();
@@ -92,7 +92,7 @@ const YourCaloricMenu = () => {
       const cmp_data = JSON.parse(result.cmp_data);
       setSelectedItems(cmp_data);
     } catch (error: any) {
-      console.log(error);
+      //console.log(error);
 
       const msg = error.response.data.message || 'Something went wrong';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
@@ -134,7 +134,7 @@ const YourCaloricMenu = () => {
     setLoad(true);
     try {
       const res = await auth.post('/cmp', {cmp_data: selectedItems});
-      console.log(await res.data);
+      //console.log(await res.data);
       dispatch(resetState());
       ToastAndroid.show(
         'Your Meal plan has been recorded successfully',
@@ -145,7 +145,7 @@ const YourCaloricMenu = () => {
         routes: [{name: 'HomeScreen', state: {routes: [{name: 'CMP'}]}}],
       });
     } catch (error: any) {
-      console.log(error);
+      //console.log(error);
       const msg = error.response.data.message || 'Something went wrong';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
     } finally {

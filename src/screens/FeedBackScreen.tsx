@@ -153,8 +153,8 @@ const FeedBackScreen = () => {
         );
       }
     } catch (error: any) {
-      console.log(error);
-      console.log(error.response);
+      //console.log(error);
+      //console.log(error.response);
     } finally {
       setCheckLoad(false);
     }
@@ -196,8 +196,8 @@ const FeedBackScreen = () => {
       navigation.navigate('ProfileScreen');
       ToastAndroid.show(message, ToastAndroid.SHORT);
     } catch (error: any) {
-      console.log(error);
-      console.log(error.response);
+      //console.log(error);
+      //console.log(error.response);
       const msg = error?.response?.data?.message || 'Something went wrong';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
     } finally {
@@ -217,7 +217,7 @@ const FeedBackScreen = () => {
   const renderItem: ListRenderItem<string> = ({item, index}) => {
     const DATA: string[] | {head: string; body: string}[] =
       FeedBackQuestions[item];
-    console.log(DATA);
+    //console.log(DATA);
     const onPressR = (v: any) => {
       onClickReaction(item, v);
     };

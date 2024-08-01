@@ -69,20 +69,20 @@ const Login = () => {
       }
       const res = await auth.post('/auth/login', {email, password});
       const {message, token, user} = await res.data;
-      console.log(user);
+      //console.log(user);
       ToastAndroid.show(message, ToastAndroid.SHORT);
       await AsyncStorage.setItem('token', token);
       await AsyncStorage.setItem('user', JSON.stringify(user));
-      console.log(user, '>>user');
+      //console.log(user, '>>user');
       navigation.dispatch(StackActions.replace('HomeScreen'));
     } catch (error: any) {
       const data = await error.response.data;
-      console.log('>>>', data);
+      //console.log('>>>', data);
       const msg =
         error.response.data.message || 'Something went wrong try again';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
 
-      console.log(error.response);
+      //console.log(error.response);
     } finally {
       setLoad(false);
     }

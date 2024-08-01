@@ -103,16 +103,16 @@ const MyLog = () => {
       url += `?limit=${LIMIT}&offset=${
         (currPage - 1) * LIMIT
       }&order_by=desc&date=${date}`;
-      console.log(url);
+      //console.log(url);
       const res = await auth.get(url);
       const {result, currentPage, nextPage, prevPage, totalPages, total} =
         await res.data;
       setPages({currentPage, nextPage, prevPage, totalPages});
       setList(result);
-      console.log(result, totalPages, total);
+      //console.log(result, totalPages, total);
     } catch (error: any) {
-      console.log(error);
-      console.log(error.response);
+      //console.log(error);
+      //console.log(error.response);
     } finally {
       setLoad(false);
     }

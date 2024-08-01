@@ -3,7 +3,7 @@ export enum Gender {
   Female = 'female',
   Other = 'other',
 }
-console.log(Object.values(Gender));
+//console.log(Object.values(Gender));
 export function validateEmail(email: string): string {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {

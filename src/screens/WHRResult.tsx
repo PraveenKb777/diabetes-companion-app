@@ -23,7 +23,7 @@ const findBodyGrade = (val: number, gender: string = 'male') => {
   let color: string;
   let cat: string;
   let pos: DimensionValue;
-  console.log('gender', gender);
+  //console.log('gender', gender);
   if (gender === 'male') {
     if (val <= 0.9) {
       color = '#1F8C0E';
@@ -109,7 +109,7 @@ const WHRResult = () => {
       setUrl(audioUrl);
       setWhrData(result);
     } catch (error: any) {
-      console.log(error.response);
+      //console.log(error.response);
       const msg = error?.response?.data?.message || 'Something went wrong';
       ToastAndroid.show(msg, ToastAndroid.SHORT);
     } finally {

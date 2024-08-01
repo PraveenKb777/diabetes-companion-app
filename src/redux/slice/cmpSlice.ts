@@ -23,7 +23,7 @@ const cmpSlice = createSlice({
   initialState,
   reducers: {
     setSelectedCalories: (state, action: PayloadAction<string>) => {
-      console.log(action.type);
+      //console.log(action.type);
       state.selectedCalories = action.payload;
     },
     resetState: state => {
@@ -48,13 +48,13 @@ const cmpSlice = createSlice({
       }>,
     ) => {
       const {isSelected, itemIndex, timingIndex, item} = action.payload;
-      console.log(action.payload);
+      //console.log(action.payload);
 
       const newSelectedItem = {...state.selectedItems};
-      console.log(newSelectedItem[timingIndex][itemIndex]);
+      //console.log(newSelectedItem[timingIndex][itemIndex]);
       newSelectedItem[timingIndex][itemIndex] = isSelected ? undefined : item;
       state.selectedItems = newSelectedItem;
-      console.log(state);
+      //console.log(state);
     },
   },
 });

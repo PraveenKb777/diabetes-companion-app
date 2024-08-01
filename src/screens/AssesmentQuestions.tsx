@@ -78,7 +78,7 @@ const AssesmentQuestion = () => {
   const [falseAnswer, setFalseAnswer] = useState<any[]>([]);
   const [load, setLoad] = useState(false);
 
-  // console.log('>>', list);
+  // //console.log('>>', list);
   const [finalScore, setFinalScore] = useState<number>();
   useEffect(() => {
     setList(() => {
@@ -89,7 +89,7 @@ const AssesmentQuestion = () => {
       let newSubObj = [];
       for (let i of newArray) {
         if (count === 6) {
-          // console.log(newSubObj);
+          // //console.log(newSubObj);
           count = 0;
           newObj[`${itemKey}`] = newSubObj;
           newSubObj = [];
@@ -128,7 +128,7 @@ const AssesmentQuestion = () => {
 
   const sendData = () => {
     let answerKeys = Object.values(answers);
-    console.log(answers);
+    //console.log(answers);
     let score = 0;
     for (let i of answerKeys) {
       let asnwersCount = Object.values(i);
@@ -138,17 +138,17 @@ const AssesmentQuestion = () => {
         }
       }
     }
-    console.log(score);
+    //console.log(score);
     const answerItems = Object.keys(answers);
     let newFAnswer = [];
     for (let i of answerItems) {
       const thisList = list[i];
       const curAnswer = answers[i];
       const currentAnswerKeys = Object.keys(curAnswer);
-      console.log('thelist , ', thisList);
-      console.log('answer', currentAnswerKeys, curAnswer);
+      //console.log('thelist , ', thisList);
+      //console.log('answer', currentAnswerKeys, curAnswer);
       for (let k of currentAnswerKeys) {
-        console.log('k\n', curAnswer[k]);
+        //console.log('k\n', curAnswer[k]);
         if (curAnswer[k] === 1) {
           newFAnswer.push(thisList[+k - 1]);
         }
@@ -156,7 +156,7 @@ const AssesmentQuestion = () => {
     }
     setFalseAnswer(newFAnswer);
     setFinalScore(score);
-    console.log(answerKeys);
+    //console.log(answerKeys);
   };
 
   const onClickReaction = (heading: string, value: any) => {
@@ -170,7 +170,7 @@ const AssesmentQuestion = () => {
 
   const renderItem: ListRenderItem<string> = ({item, index}) => {
     const DATA: string[] | {head: string; body: string}[] = list[item];
-    // console.log(DATA);
+    // //console.log(DATA);
     const onPressR = (v: any) => {
       onClickReaction(item, v);
     };

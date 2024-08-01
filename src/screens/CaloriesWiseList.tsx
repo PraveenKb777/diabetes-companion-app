@@ -17,6 +17,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {R2_URL} from '@env';
+
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import {ArrowIndicator, NextArrow, TickSVG} from '../assets/Svg';
 import BackButtonHeader from '../components/BackButtonHeader';
@@ -126,6 +128,7 @@ const FoodsRenderItems: FC<{
   item: {
     name: string;
     uuid: string;
+    img: string;
     foods: IFood[];
   }[];
   timingIndex?: number;
@@ -145,7 +148,7 @@ const FoodsRenderItems: FC<{
             }
             style={{marginRight: 10, maxWidth: (width * 32) / 100}}>
             <Image
-              src="https://www.colive.com/blog/wp-content/uploads/2024/01/Untitled-design-56.png"
+              src={`${R2_URL}${subMain.img}`}
               style={{
                 height: (width * 30) / 100,
                 aspectRatio: 1,
@@ -272,7 +275,7 @@ const CaloriesWiseList = () => {
   }, [selectedItem?.val]);
 
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
-  console.log(params?.index);
+  //console.log(params?.index);
   useEffect(() => {
     if (params?.index) {
       setSelectedIndex(params?.index);
@@ -287,8 +290,8 @@ const CaloriesWiseList = () => {
   const navigation = useNavigation<StackNavigation>();
 
   const {selectedItems} = useAppSelector(e => e.cmpReducer);
-  console.log('>>>>', selectedItems);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  //console.log('>>>>', selectedItems);
+  const [selectedIndex, setSelectedIndex] = useState(1);
   const [nextEnabled, setNextEnabled] = useState(false);
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -475,7 +478,7 @@ const CaloriesWiseList = () => {
         onScrollToIndexFailed={info => {
           const wait = new Promise(resolve => setTimeout(resolve, 500));
           wait.then(() => {
-            console.log('its heppening');
+            //console.log('its heppening');
             flatListRef.current?.scrollToIndex({
               index: info.index,
               animated: true,
