@@ -1,10 +1,9 @@
-import {Button, Dimensions, StyleSheet, Text, View} from 'react-native';
-import React, {FC, useEffect, useMemo, useState} from 'react';
+import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useSelector} from 'react-redux';
 import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
+import {resetLunchSelectedItem, setIsVariety} from '../redux/slice/cmpSlice';
 import {FoodsRenderItems, MEALS_HEADING} from '../screens/CaloriesWiseList';
-import {resetLunchSelectedItem} from '../redux/slice/cmpSlice';
 const {height} = Dimensions.get('window');
 
 //  v - rice --
@@ -30,8 +29,7 @@ const LunchComponent: FC<{
 }> = ({item, changeNext, currIndex}) => {
   const [count, setCount] = useState(0);
   const dispatch = useAppDispatch();
-  const selectedItems = useAppSelector(e => e.cmpReducer.selectedItems);
-  const [isVarity, setIsVarity] = useState(false);
+  const {selectedItems, isVariety} = useAppSelector(e => e.cmpReducer);
   const [foodList, setFoodList] = useState<typeof item>();
   const headingItem = MEALS_HEADING[3];
   const selectedItemId = useMemo(
@@ -51,7 +49,7 @@ const LunchComponent: FC<{
 
   useEffect(() => {
     const isAvilableVariety = varaityRiceList.includes(selectedItemId || '');
-    setIsVarity(isAvilableVariety);
+    dispatch(setIsVariety(isAvilableVariety));
     let subCapableArray = newData.slice(1);
     if (isAvilableVariety) {
       subCapableArray = [subCapableArray[3]];
@@ -61,9 +59,15 @@ const LunchComponent: FC<{
   }, [newData, selectedItemId, varaityRiceList]);
   //   console.log(newData);
 
+  const firstRender = useRef(true);
+
   useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
     dispatch(resetLunchSelectedItem());
-  }, [isVarity]);
+  }, [isVariety]);
   useEffect(() => {
     let total = 1;
     let avilable = 0;

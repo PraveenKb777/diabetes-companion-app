@@ -38,6 +38,7 @@ auth.interceptors.request.use(async function (config) {
 auth.interceptors.response.use(
   response => response,
   error => {
+    console.log(error);
     if (!error.response) {
       navigator.navigate('NoInternetScreen');
     }

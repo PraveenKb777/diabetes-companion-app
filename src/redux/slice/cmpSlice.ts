@@ -4,6 +4,7 @@ import {IFood} from '../../screens/CaloriesWiseList';
 interface IinitialState {
   selectedCalories: string;
   selectedItems: {[key: number]: (IFood | undefined)[]};
+  isVariety: boolean;
 }
 const initialState: IinitialState = {
   selectedCalories: '',
@@ -16,6 +17,7 @@ const initialState: IinitialState = {
     5: [],
     6: [],
   },
+  isVariety: false,
 };
 
 const cmpSlice = createSlice({
@@ -37,6 +39,7 @@ const cmpSlice = createSlice({
         5: [],
         6: [],
       };
+      state.isVariety = false;
     },
     setSelectedItem: (
       state,
@@ -56,7 +59,9 @@ const cmpSlice = createSlice({
       state.selectedItems = newSelectedItem;
       //console.log(state);
     },
-
+    setIsVariety: (state, action: PayloadAction<boolean>) => {
+      state.isVariety = action.payload;
+    },
     resetLunchSelectedItem: state => {
       const newSelectedItem = {...state.selectedItems};
       const remainingItem = newSelectedItem[3][0];
@@ -72,5 +77,6 @@ export const {
   setSelectedItem,
   resetState,
   resetLunchSelectedItem,
+  setIsVariety,
 } = cmpSlice.actions;
 export default cmpReducer;
