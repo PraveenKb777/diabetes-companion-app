@@ -67,7 +67,7 @@ export type ScreenNames = [
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],
-  {[key: string]: [value: any]} | undefined
+  {[key: string]: any} | undefined
 >;
 export type StackNavigation = NavigationProp<RootStackParamList>;
 

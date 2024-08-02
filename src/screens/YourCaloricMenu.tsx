@@ -133,7 +133,7 @@ const YourCaloricMenu = () => {
   const onPressSave = async () => {
     setLoad(true);
     try {
-      const res = await auth.post('/cmp', {cmp_data: selectedItems});
+      await auth.post('/cmp', {cmp_data: selectedItems});
       //console.log(await res.data);
       dispatch(resetState());
       ToastAndroid.show(
