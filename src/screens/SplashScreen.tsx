@@ -15,6 +15,8 @@ import img from '../assets/img/splash_img.jpeg';
 import auth from '../utils/auth';
 import {StackNavigation} from '../Stack';
 
+import {VERSION} from '@env';
+
 const SplashScreen = () => {
   const navigation = useNavigation<StackNavigation>();
   useEffect(() => {
@@ -50,8 +52,13 @@ const SplashScreen = () => {
       <TouchableOpacity
         onPress={() => Linking.openURL(url)}
         style={[styles.loader, {bottom: 30}]}>
-        <Text>Crafted and Created by MGTECH</Text>
+        <Text style={{textAlign: 'center'}}>
+          Crafted and Created by MGTECH{' '}
+        </Text>
       </TouchableOpacity>
+      <Text style={[styles.loader, {bottom: 10}, {textAlign: 'center'}]}>
+        {VERSION}
+      </Text>
     </SafeAreaView>
   );
 };

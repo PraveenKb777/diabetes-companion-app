@@ -30,6 +30,7 @@ type ParamList = {
   };
 };
 const YourCaloricMenu = () => {
+  console.log('rerender');
   const [load, setLoad] = useState(false);
   const [pageLoad, setPageLoad] = useState(false);
   const [totals, setTotals] = useState({

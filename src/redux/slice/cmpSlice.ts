@@ -56,10 +56,21 @@ const cmpSlice = createSlice({
       state.selectedItems = newSelectedItem;
       //console.log(state);
     },
+
+    resetLunchSelectedItem: state => {
+      const newSelectedItem = {...state.selectedItems};
+      const remainingItem = newSelectedItem[3][0];
+      newSelectedItem[3] = [remainingItem];
+      state.selectedItems = newSelectedItem;
+    },
   },
 });
 
 const cmpReducer = cmpSlice.reducer;
-export const {setSelectedCalories, setSelectedItem, resetState} =
-  cmpSlice.actions;
+export const {
+  setSelectedCalories,
+  setSelectedItem,
+  resetState,
+  resetLunchSelectedItem,
+} = cmpSlice.actions;
 export default cmpReducer;

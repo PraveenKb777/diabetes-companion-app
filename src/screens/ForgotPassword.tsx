@@ -100,6 +100,7 @@ const Login = () => {
                   height: 62,
                   fontSize: 30,
                   letterSpacing: 30,
+                  color: '#000',
                   flex: 1,
                 },
               ]}

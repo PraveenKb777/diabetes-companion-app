@@ -575,7 +575,7 @@ const MENU = [
           },
           {
             id: 'a5d6a013-dd3a-4117-a251-3d999ad7ae54',
-            name: 'Coriander Chutney',
+            name: 'Corriander Chutney',
             qty: '¼ cup',
             energy_kcal: 42.86,
             carbohydrate_g: 1.87,
@@ -2858,7 +2858,7 @@ const MENU = [
           },
           {
             id: '724df703-c381-4d20-b654-c1467130b89f',
-            name: 'Coriander Chutney',
+            name: 'Corriander Chutney',
             qty: '¼ cup',
             energy_kcal: 42.86,
             carbohydrate_g: 1.87,

@@ -64,6 +64,7 @@ export type ScreenNames = [
   'CYCVScreen',
   'CaloriesWiseListScreen',
   'YourCaloricMenuScreen',
+  'ForgotPasswordScreen',
 ]; // type these manually
 export type RootStackParamList = Record<
   ScreenNames[number],

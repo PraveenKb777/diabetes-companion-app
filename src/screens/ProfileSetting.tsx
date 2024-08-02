@@ -48,6 +48,8 @@ const ProfileSetting = () => {
     try {
       const res = await auth.post('/auth/edit-user', user);
       const data1 = await res.data;
+      console.log(data1);
+      await AsyncStorage.setItem('user', JSON.stringify(data1.user));
       navigation.goBack();
       ToastAndroid.show(data1.message, ToastAndroid.SHORT);
     } catch (error: any) {
@@ -143,6 +145,7 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.20)',
+    color: '#000',
   },
   inputStyle: {
     marginVertical: 5,

@@ -34,6 +34,7 @@ import {
 } from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 import Loading from '../components/Loading';
+import LunchComponent from '../components/LunchComponent';
 const COUNT = Array(7)
   .fill(0)
   .map((_, i) => i);
@@ -124,7 +125,7 @@ const FoodListSelection: FC<{
   );
 };
 
-const FoodsRenderItems: FC<{
+export const FoodsRenderItems: FC<{
   item: {
     name: string;
     uuid: string;
@@ -136,38 +137,40 @@ const FoodsRenderItems: FC<{
 }> = ({item, timingIndex = 0, itemIndex = 0}) => {
   const [foodList, setFoodList] = useState<(typeof item)[0]>();
   return (
-    <>
+    <View>
       <ScrollView horizontal style={{marginVertical: 10}}>
-        {item?.map(subMain => (
-          <TouchableOpacity
-            key={subMain.uuid}
-            onPress={() =>
-              !(foodList?.name === subMain.name)
-                ? setFoodList(subMain)
-                : setFoodList(undefined)
-            }
-            style={{marginRight: 10, maxWidth: (width * 32) / 100}}>
-            <Image
-              src={`${R2_URL}${subMain.img}`}
-              style={{
-                height: (width * 30) / 100,
-                aspectRatio: 1,
-                borderRadius: 5,
-                borderColor: 'rgba(0, 0, 0, .20)',
-                borderWidth: 1,
-                marginBottom: 10,
-              }}
-            />
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 'bold',
-                color: '#000',
-              }}>
-              {subMain.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {item?.map(subMain => {
+          return (
+            <TouchableOpacity
+              key={subMain.uuid}
+              onPress={() =>
+                !(foodList?.name === subMain.name)
+                  ? setFoodList(subMain)
+                  : setFoodList(undefined)
+              }
+              style={{marginRight: 10, maxWidth: (width * 32) / 100}}>
+              <Image
+                src={`${R2_URL}${subMain.img}`}
+                style={{
+                  height: (width * 30) / 100,
+                  aspectRatio: 1,
+                  borderRadius: 5,
+                  borderColor: 'rgba(0, 0, 0, .20)',
+                  borderWidth: 1,
+                  marginBottom: 10,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  color: '#000',
+                }}>
+                {subMain.name}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {foodList &&
@@ -180,7 +183,7 @@ const FoodsRenderItems: FC<{
             />
           ))}
       </View>
-    </>
+    </View>
   );
 };
 
@@ -276,6 +279,9 @@ const CaloriesWiseList = () => {
 
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   //console.log(params?.index);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [nextEnabled, setNextEnabled] = useState(false);
+  const [count, setCount] = useState(0);
   useEffect(() => {
     if (params?.index) {
       setSelectedIndex(params?.index);
@@ -285,143 +291,171 @@ const CaloriesWiseList = () => {
         index: params?.index,
       });
     }
+    flatListRef.current?.scrollToIndex({
+      animated: true,
+      index: params?.index || selectedIndex,
+    });
   }, [params?.index, load]);
 
   const navigation = useNavigation<StackNavigation>();
 
   const {selectedItems} = useAppSelector(e => e.cmpReducer);
   //console.log('>>>>', selectedItems);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [nextEnabled, setNextEnabled] = useState(false);
-  const [count, setCount] = useState(0);
+
   useEffect(() => {
-    let total = 0;
-    let avilable = 0;
-    MENU[selectedIndex].forEach(e => e && total++);
-    selectedItems[selectedIndex].forEach(e => {
-      e && avilable++;
-    });
-    if (total === avilable) {
-      setNextEnabled(true);
-    } else {
-      setNextEnabled(false);
+    if (selectedIndex !== 3) {
+      let total = 0;
+      let avilable = 0;
+      MENU[selectedIndex].forEach(e => e && total++);
+      selectedItems[selectedIndex].forEach(e => {
+        e && avilable++;
+      });
+      if (total === avilable) {
+        setNextEnabled(true);
+      } else {
+        setNextEnabled(false);
+      }
+      setCount(avilable);
     }
-    setCount(avilable);
+    console.log('called for inhabit');
   }, [MENU, selectedIndex, selectedItems]);
 
   const renderItem: ListRenderItem<(typeof MENU)[0]> = ({index, item}) => {
     const headingItem = MEALS_HEADING[index];
+
     return (
       <View style={{width, padding: 16, height: '100%'}}>
-        <ScrollView
-          nestedScrollEnabled
-          style={{
-            flex: 1,
-          }}>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: 'rgba(0, 11, 33, 0.20)',
-              padding: 16,
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Text
-                  style={{
-                    backgroundColor: '#000',
-                    textAlign: 'center',
-                    height: 40,
-                    width: 40,
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: '#fff',
-                    textAlignVertical: 'center',
-                    borderRadius: 100,
-                  }}>
-                  {index + 1}
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: '#000',
-                    marginLeft: 16,
-                  }}>
-                  {headingItem.head}
-                </Text>
-              </View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  color: '#000',
-                  padding: 5,
-                  borderWidth: 1,
-                  borderColor: '#9D9D9D',
-                  textAlign: 'center',
-                }}>
-                {headingItem.time}
-              </Text>
-            </View>
-            {item.map((minlist, i) => (
-              <FoodsRenderItems
-                key={'' + i + i + i}
-                item={minlist}
-                timingIndex={index}
-                itemIndex={i}
-              />
-            ))}
-          </View>
-        </ScrollView>
-        <ScrollView
-          style={{
-            borderWidth: 1,
-            borderColor: 'rgba(0, 0, 0, 0.20)',
-            borderRadius: 5,
-            marginTop: 10,
-            maxHeight: (height * 30) / 100,
-            flexGrow: 0,
-          }}
-          contentContainerStyle={{padding: 16}}>
-          <View
-            style={{
-              width: 4,
-              height: '110%',
-              backgroundColor: '#0075FF',
-              position: 'absolute',
-              top: 16,
-              left: 5,
-              borderRadius: 100,
-            }}
+        {index === 3 ? (
+          <LunchComponent
+            currIndex={selectedIndex}
+            item={item}
+            changeNext={setNextEnabled}
           />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
-              Items selected ({count}/{MENU[index].length})
-            </Text>
-            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
-              Qty
-            </Text>
-          </View>
-          {selectedItems[index].map(e =>
-            e ? (
+        ) : (
+          <>
+            <ScrollView
+              nestedScrollEnabled
+              style={{
+                flex: 1,
+              }}>
+              {
+                <View
+                  style={{
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    borderColor: 'rgba(0, 11, 33, 0.20)',
+                    padding: 16,
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      <Text
+                        style={{
+                          backgroundColor: '#000',
+                          textAlign: 'center',
+                          height: 40,
+                          width: 40,
+                          fontSize: 16,
+                          fontWeight: 'bold',
+                          color: '#fff',
+                          textAlignVertical: 'center',
+                          borderRadius: 100,
+                        }}>
+                        {index + 1}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          fontWeight: 'bold',
+                          color: '#000',
+                          marginLeft: 16,
+                        }}>
+                        {headingItem.head}
+                      </Text>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        color: '#000',
+                        padding: 5,
+                        borderWidth: 1,
+                        borderColor: '#9D9D9D',
+                        textAlign: 'center',
+                      }}>
+                      {headingItem.time}
+                    </Text>
+                  </View>
+                  {item.map((minlist, i) => (
+                    <FoodsRenderItems
+                      key={'' + i + i + i}
+                      item={minlist}
+                      timingIndex={index}
+                      itemIndex={i}
+                    />
+                  ))}
+                </View>
+              }
+            </ScrollView>
+            <ScrollView
+              style={{
+                borderWidth: 1,
+                borderColor: 'rgba(0, 0, 0, 0.20)',
+                borderRadius: 5,
+                marginTop: 10,
+                maxHeight: (height * 30) / 100,
+                flexGrow: 0,
+              }}
+              contentContainerStyle={{padding: 16}}>
               <View
-                key={e.id + 'list items'}
+                style={{
+                  width: 4,
+                  height: '110%',
+                  backgroundColor: '#0075FF',
+                  position: 'absolute',
+                  top: 16,
+                  left: 5,
+                  borderRadius: 100,
+                }}
+              />
+              <View
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text
-                  style={{fontSize: 16, fontWeight: 'bold', maxWidth: '70%'}}>
-                  {e.name}
+                <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+                  Items selected ({count}/{MENU[index].length})
                 </Text>
-                <Text style={{fontSize: 16, fontWeight: 'bold'}}>{e.qty}</Text>
+                <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+                  Qty
+                </Text>
               </View>
-            ) : null,
-          )}
-        </ScrollView>
+              {selectedItems[index].map(e =>
+                e ? (
+                  <View
+                    key={e.id + 'list items'}
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        maxWidth: '70%',
+                      }}>
+                      {e.name}
+                    </Text>
+                    <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                      {e.qty}
+                    </Text>
+                  </View>
+                ) : null,
+              )}
+            </ScrollView>
+          </>
+        )}
       </View>
     );
   };
