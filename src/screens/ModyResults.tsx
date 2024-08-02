@@ -29,7 +29,7 @@ const findBodyGrade = (val: number) => {
   let url: string =
     'https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/';
 
-  if (val < 30) {
+  if (val <= 30) {
     color = '#1F8C0E';
     cat = 'Low';
     pos = '15%';
