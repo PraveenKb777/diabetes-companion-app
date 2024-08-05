@@ -1,9 +1,8 @@
-import axios from 'axios';
 import {BASE_URL} from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
+import axios from 'axios';
 import {StackNavigation} from '../Stack';
-import {StackActions} from '@react-navigation/native';
 
 let navigator: StackNavigation;
 
