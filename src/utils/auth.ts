@@ -3,6 +3,7 @@ import {BASE_URL} from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
 import {StackNavigation} from '../Stack';
+import {StackActions} from '@react-navigation/native';
 
 let navigator: StackNavigation;
 
@@ -39,6 +40,10 @@ auth.interceptors.response.use(
   response => response,
   error => {
     console.log(error);
+    if (error.response.status) {
+      error.response.status === 401 &&
+        navigator.reset({routes: [{name: 'LoginScreen'}]});
+    }
     if (!error.response) {
       navigator.navigate('NoInternetScreen');
     }
