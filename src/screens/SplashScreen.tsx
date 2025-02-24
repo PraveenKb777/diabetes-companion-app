@@ -11,7 +11,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import img from '../assets/img/splash_img.jpeg';
+import img from '../assets/img/splash_img.png';
 import auth from '../utils/auth';
 import {StackNavigation} from '../Stack';
 
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
   },
   logo: {
-    height: 200,
-    width: 200,
+    height: 300,
+    width: 300,
   },
   loader: {
     // alignSelf: 'flex-end',

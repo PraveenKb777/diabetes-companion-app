@@ -28,7 +28,7 @@ import {ErrorInputComp} from './Login';
 
 const PARENT_HISTORY = [
   'No parent with diabetes',
-  'One parent or both with diabetes',
+  'One or both parents with diabetes',
 ];
 const GENERATION = [
   '0 or 1 generations with diabetes',

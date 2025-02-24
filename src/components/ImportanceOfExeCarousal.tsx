@@ -25,7 +25,7 @@ const importanceOfExcList: IEGList[][] = [
       img: 'ioerunning.png',
     },
     {
-      head: 'RPromotes sound sleep.',
+      head: 'Promotes sound sleep.',
       img: 'ioesleeping.png',
     },
     {

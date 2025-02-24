@@ -42,7 +42,7 @@ const Items: ISubCarousal[] = [
   {
     videoId: 'aGljCxxb2FQ',
     head: 'Invasive',
-    desc: 'Physio-chemical sensor used to measure/scan the level of glucose in blood.',
+    desc: 'Invasive methods are procedures that involve physical entry into the body for diagnostic or therapeutic purposes.',
 
     content: [
       {
@@ -150,10 +150,7 @@ const PagenationItem = ({
   );
 };
 
-const SubCarousal: React.FC<CarouselProps> = ({
-  data = Items,
-  interval = 8000,
-}) => {
+const SubCarousal: React.FC<CarouselProps> = ({data = Items}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList<ISubCarousal>>(null);
 

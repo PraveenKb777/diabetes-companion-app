@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {Dimensions, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import AudioPlayer from '../components/AudioPlayer';
@@ -169,7 +169,7 @@ export const BottomSheetProvider: React.FC<{children: ReactNode}> = ({
   const openBottomSheet: opBottomSh = (content, maxHeight = false, h) => {
     setItems(content);
     h && setHeight(h);
-    setMaxH(maxHeight);
+    setMaxH(true);
     bottomSheetRef.current?.open();
   };
 

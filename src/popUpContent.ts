@@ -362,7 +362,7 @@ const popUpContent: IPopUpContents = {
     ],
   },
   'Lifestyle Practices': {
-    head: 'Lifestyle Practices',
+    head: 'Unhealthy lifestyle practices',
     bullet: true,
     desc: [
       'Unhealthy diet high in sugar & processed foods.',
@@ -560,7 +560,7 @@ const popUpContent: IPopUpContents = {
   },
   'Diabetic foot': {
     head: 'Diabetic foot',
-    desc: 'Losing feeling & blood flow in your feet due to high sugar levels can lead to ulcers, infections & even amputation',
+    desc: 'Losing feeling & blood flow in your feet due to high sugar levels can lead to ulcers, infections & even amputation.',
     content: [
       {
         head: 'Recommendation',
@@ -571,7 +571,7 @@ const popUpContent: IPopUpContents = {
   },
   FBG: {
     head: 'Fasting Blood Glucose Test (FBG)',
-    desc: 'Measures blood sugar level after an overnight fast ',
+    desc: 'Measures blood sugar level after an overnight fast.',
     content: [
       {
         head: 'Normal Value',
@@ -582,7 +582,7 @@ const popUpContent: IPopUpContents = {
   },
   OGTT: {
     head: 'Oral Glucose Tolerance Test/OGTT',
-    desc: "Evaluates body's ability to process sugar by measuring blood sugar levels before &  after 2 hours consuming a sugary drink",
+    desc: "Evaluates body's ability to process sugar by measuring blood sugar levels before &  after 2 hours consuming a sugary drink.",
     content: [
       {
         head: 'Normal Value',
@@ -1073,11 +1073,11 @@ const popUpContent: IPopUpContents = {
       },
     ],
   },
-  'Trapezius Stretch': {
-    head: 'Trapezius Stretch',
+  'Posterior Shoulder Stretch': {
+    head: 'Posterior Shoulder Stretch',
     bullet: true,
     desc: [
-      'Open chest & shoulders. Lean through doorway with forearms on sides, hold 15-20  seconds.',
+      'Cross one of the arm across the chest, holding elbow with the other hand. Gently bend elbow to deepen the stretch and hold for 15-20 seconds for each sides.',
     ],
     content: [
       {
@@ -1091,7 +1091,7 @@ const popUpContent: IPopUpContents = {
     head: 'Wing Span Stretch',
     bullet: true,
     desc: [
-      'Feel the stretch in your chest and shoulders. Stand tall with your arms outstretched to the sides at shoulder height. Hold for 15-20  seconds.',
+      'Reach behind your back with one hand, then try to touch it with the other hand in the back. Hold for 15-20 seconds.',
     ],
     content: [
       {

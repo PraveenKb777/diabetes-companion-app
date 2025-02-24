@@ -20,7 +20,7 @@ const ApplicationDisclimar = () => {
       <ScrollView style={{flex: 1}} contentContainerStyle={{padding: 16}}>
         <DGHeading head="Aim" />
         <Text style={styles.content}>
-          To create awareness on diabetes particularly Maturity onset Diabetes
+          To create awareness on diabetes particularly Maturity Onset Diabetes
           of the Young(MODY) among diabetes patients & common people.
         </Text>
         <DGHeading head="App Importance" />

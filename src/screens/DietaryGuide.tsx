@@ -5,25 +5,31 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import AudioPlayer from '../components/AudioPlayer';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {CarouselItem} from '../components/Carousal';
 import DietPrincipalCard from '../components/DietPrincipalCard';
+import FoodsIncluded from '../components/FoodsIncluded';
+import Loading from '../components/Loading';
 import ModyCard from '../components/ModyCard';
 import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
+
+import palm1 from '../assets/palm/image1.png';
+import palm2 from '../assets/palm/image2.png';
+import palm3 from '../assets/palm/image3.png';
+import palm4 from '../assets/palm/image4.png';
+import palm5 from '../assets/palm/image5.png';
+import palm6 from '../assets/palm/image6.png';
 import {
   BottomSheetNobullet,
   useBottomSheet,
 } from '../context/BottomSheetContext';
 import {DGHeading} from './DiabetesGuide';
-import FoodsIncluded from '../components/FoodsIncluded';
-import Loading from '../components/Loading';
-import AudioPlayer from '../components/AudioPlayer';
-const DPItems: {id: string; img: any; head: string}[] = [
+export const DPItems: {id: string; img: any; head: string}[] = [
   {
     id: '0931ngagweggweg42',
     img: 'dietaryguidevegies.png',
@@ -46,7 +52,7 @@ const DPItems: {id: string; img: any; head: string}[] = [
   },
   {
     id: '0931ngggweg42',
-    img: 'dietaryguidevitamins.jpeg',
+    img: 'adequateVitamins.jpg',
     head: 'ADEQUATE\nVITAMINS\nAND MINERALS ',
   },
 ];
@@ -71,7 +77,7 @@ const HOME_REMADIES: CarouselItem[] = [
   {
     id: '788hsabdfqybufq',
     head: 'Cumin seeds',
-    desc: 'Consume 1 teaspoon powder with water twice daily.\nBenefits: Controls blood glucose levels.',
+    desc: 'Consume 1 teaspoon seeds with water twice daily.\nBenefits: Controls blood glucose levels.',
     color: '#5DB18E',
     img: 'dItemsPicks/cumin.png',
     video: 'https://youtu.be/sSb4RW_0Rwk?si=9G26ykNerGvBeGse',
@@ -147,6 +153,38 @@ const HOME_REMADIES: CarouselItem[] = [
     color: '#8064A2',
     img: 'dItemsPicks/alovevera.jpeg',
     video: 'https://youtu.be/cer_VIGNzY8',
+  },
+];
+const handMeasurements = [
+  {
+    id: '550e8400-e29b-41d4-a716-446655440000',
+    desc: 'Palm - 1 cup of meat, fish or poultry',
+    img: palm1,
+  },
+  {
+    id: '550e8400-e29b-41d4-a716-446655440001',
+    desc: 'A Thumb - 2 Teaspoons of cheese or butter',
+    img: palm2,
+  },
+  {
+    id: '550e8400-e29b-41d4-a716-446655440002',
+    desc: 'Clenched fist - 1/2 cup of fruit or rice',
+    img: palm3,
+  },
+  {
+    id: '550e8400-e29b-41d4-a716-446655440003',
+    desc: 'Fist - 1 cup of non-starchy vegetables',
+    img: palm4,
+  },
+  {
+    id: '550e8400-e29b-41d4-a716-446655440004',
+    desc: 'One handful - 1/4 cup of nuts or seeds',
+    img: palm5,
+  },
+  {
+    id: '550e8400-e29b-41d4-a716-446655440005',
+    desc: 'Finger tip - 1 teaspoon of cooking oil',
+    img: palm6,
   },
 ];
 
@@ -385,6 +423,84 @@ const DietaryGuide = () => {
             }}
           />
         </View>
+        <DGHeading head="Portion size guide" />
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: 'grey',
+            padding: 10,
+            borderRadius: 10,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              width: '100%',
+              justifyContent: 'space-between',
+              marginBottom: 10,
+            }}>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 16,
+                color: 'black',
+                width: '30%',
+              }}>
+              Hand symbol
+            </Text>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 16,
+                color: 'black',
+                width: '70%',
+              }}>
+              Portion size
+            </Text>
+          </View>
+          {handMeasurements.map((e, i) => {
+            return (
+              <View
+                key={e.id}
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  borderBottomWidth: 1,
+                  marginBottom: 20,
+                  borderColor: 'grey',
+                }}>
+                <View
+                  style={{
+                    borderWidth: 1,
+                    padding: 4,
+                    borderColor: 'grey',
+                    borderRadius: 5,
+                    width: '25%',
+                    aspectRatio: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: 20,
+                  }}>
+                  <Image
+                    source={e.img}
+                    style={{
+                      height: 80,
+                      aspectRatio: 1,
+                    }}
+                  />
+                </View>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                    width: '65%',
+                    marginBottom: 30,
+                  }}>
+                  <Text>{e.desc}</Text>
+                </View>
+              </View>
+            );
+          })}
+        </View>
         <DGHeading head="Food Included " />
         <FoodsIncluded />
         <Image
@@ -422,5 +538,3 @@ const DietaryGuide = () => {
 };
 
 export default DietaryGuide;
-
-const styles = StyleSheet.create({});

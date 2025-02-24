@@ -87,7 +87,7 @@ const Items: CarouselItem[] = [
     id: '8saf89fa0wyryweyb8sg0',
     img: eight,
     head: "Don't neglect your sleep",
-    desc: 'less than 6-9 hours can disrupt blood glucose hormones, spike cTortisol levels, and cause oxidative stress',
+    desc: 'less than 6-9 hours can disrupt blood glucose hormones, spike cortisol levels, and cause oxidative stress',
   },
   {
     id: '8saf89bns-sagiwgga8sg0',

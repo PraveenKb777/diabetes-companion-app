@@ -1,4 +1,5 @@
 import {
+  Dimensions,
   FlatList,
   Image,
   SafeAreaView,
@@ -23,12 +24,13 @@ import YoutubeIframe from 'react-native-youtube-iframe';
 import {R2_URL} from '@env';
 import ImportanceOfExeCarousal from '../components/ImportanceOfExeCarousal';
 import Loading from '../components/Loading';
+import {NoteComp} from './CMP';
 
 const streachingList: {head: string; img: string; key: string}[] = [
   {
     head: 'Forward Neck Stretch',
     key: 'Forward Neck Stretch',
-    img: 'ForwardBendStretch.png',
+    img: 'ForwardNeckStretch.png',
   },
   {
     head: 'Neck Rotation Stretch',
@@ -41,8 +43,8 @@ const streachingList: {head: string; img: string; key: string}[] = [
     img: 'upperTrapeziusStretch.png',
   },
   {
-    head: 'Trapezius Stretch',
-    key: 'Trapezius Stretch',
+    head: 'Posterior Shoulder Stretch',
+    key: 'Posterior Shoulder Stretch',
     img: 'TrapeziusStretch.png',
   },
   {
@@ -63,7 +65,7 @@ const streachingList: {head: string; img: string; key: string}[] = [
   {
     head: 'Forward Bend Stretch',
     key: 'Forward Bend Stretch',
-    img: 'ForwardNeckStretch.png',
+    img: 'ForwardBendStretch.png',
   },
   {
     head: 'Single Leg Forward Bend',
@@ -288,6 +290,72 @@ const suryaNamaskarList: IEGList[] = [
   },
 ];
 
+const activities = [
+  {
+    id: '1a2b3c4d-1234-5678-9abc-def012345678',
+    name: 'Cleaning/Mopping',
+    kcal: 210,
+  },
+  {
+    id: '2b3c4d5e-2345-6789-abcd-ef1234567890',
+    name: 'House, Moderate',
+    kcal: 207,
+  },
+  {id: '3c4d5e6f-3456-789a-bcde-f23456789012', name: 'Gardening', kcal: 300},
+  {id: '4d5e6f7g-4567-89ab-cdef-345678901234', name: 'Watching TV', kcal: 86},
+  {
+    id: '5e6f7g8h-5678-9abc-def0-456789012345',
+    name: 'Cycling 15 (Kilometer/Hour)',
+    kcal: 360,
+  },
+  {
+    id: '6f7g8h9i-6789-abcd-ef01-567890123456',
+    name: 'Running 12 (Kilometer/Hour)',
+    kcal: 750,
+  },
+  {
+    id: '7g8h9i0j-789a-bcde-f012-678901234567',
+    name: 'Running 10 (Kilometer/Hour)',
+    kcal: 655,
+  },
+  {
+    id: '8h9i0j1k-89ab-cdef-0123-789012345678',
+    name: 'Running 8 (Kilometer/Hour)',
+    kcal: 522,
+  },
+  {
+    id: '9i0j1k2l-9abc-def0-1234-890123456789',
+    name: 'Running 6 (Kilometer/Hour)',
+    kcal: 353,
+  },
+  {
+    id: '0j1k2l3m-0abc-def1-2345-901234567890',
+    name: 'Walking 4 (Kilometer/Hour)',
+    kcal: 160,
+  },
+  {
+    id: '1k2l3m4n-1bcd-ef12-3456-012345678901',
+    name: 'Jumping rope, moderate',
+    kcal: 413,
+  },
+  {
+    id: '2l3m4n5o-2cde-f123-4567-123456789012',
+    name: 'Jogging less than 10 minutes',
+    kcal: 180,
+  },
+  {id: '3m4n5o6p-3def-0123-5678-234567890123', name: 'Shuttle', kcal: 348},
+  {id: '4n5o6p7q-4ef0-1234-6789-345678901234', name: 'Table Tennis', kcal: 245},
+  {id: '5o6p7q8r-5f01-2345-7890-456789012345', name: 'Tennis', kcal: 392},
+  {id: '6p7q8r9s-6f12-3456-8901-567890123456', name: 'Volley Ball', kcal: 180},
+  {id: '7q8r9s0t-7f23-4567-9012-678901234567', name: 'Dancing', kcal: 372},
+  {id: '8r9s0t1u-8f34-5678-0123-789012345678', name: 'Fishing', kcal: 222},
+  {id: '9s0t1u2v-9f45-6789-1234-890123456789', name: 'Shopping', kcal: 204},
+  {id: '0t1u2v3w-0f56-7890-2345-901234567890', name: 'Typing', kcal: 108},
+  {id: '1u2v3w4x-1f67-8901-3456-012345678901', name: 'Sleeping', kcal: 57},
+  {id: '2v3w4x5y-2f78-9012-4567-123456789012', name: 'Standing', kcal: 132},
+  {id: '3w4x5y6z-3f89-0123-5678-234567890123', name: 'Sitting', kcal: 86},
+];
+
 const NoteComponent = () => (
   <View
     style={{
@@ -416,7 +484,7 @@ const ExcerciseGudie = () => {
           </View>
           <NoteComponent />
           <View style={{height: 20}} />
-          <YoutubeIframe height={250} videoId="OYeq-ZAbDco" />
+          <YoutubeIframe height={250} videoId="diT8RpEAWFk" />
           <DGHeading head="Yoga" />
           <Text style={{color: '#000'}}>
             Ancient wisdom meets modern medicine: Yoga, simple and accessible,
@@ -478,7 +546,7 @@ const ExcerciseGudie = () => {
             item={{
               bullet: false,
               head: 'Surya namaskar or Sun salutation',
-              desc: 'Practicing 30 minutes of suya namaskar helps powerful flow for metabolic balance & pre-diabetic support.',
+              desc: 'Practicing 30 minutes of surya namaskar helps powerful flow for metabolic balance & pre-diabetic support.',
             }}
           />
           <DGHeading head="Featured poses" />
@@ -570,6 +638,50 @@ const ExcerciseGudie = () => {
             src={R2_URL + 'strength.png'}
             style={[{width: '100%', height: 300, objectFit: 'fill'}]}
           />
+          <DGHeading head="Calorie Expenditure for Physical Activity" />
+          <View
+            style={{
+              height: height * 0.5,
+              borderWidth: 1,
+              borderColor: 'grey',
+
+              borderRadius: 10,
+            }}>
+            <View style={[styles.seperator, styles.line]}>
+              <Text style={[styles.fontBold]}>Exercise/Activity</Text>
+              <Text style={[styles.fontBold, styles.flexGrow]}>Kcal/hour</Text>
+            </View>
+            <ScrollView>
+              {activities.map((e, i) => {
+                return (
+                  <View
+                    key={e.id}
+                    style={[
+                      styles.seperator,
+                      i === activities.length - 1 ? {} : styles.line,
+                    ]}>
+                    <Text
+                      style={[
+                        styles.fontBold,
+                        styles.fontThin,
+                        styles.borderRight,
+                      ]}>
+                      {e.name}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.fontBold,
+                        styles.fontThin,
+                        styles.flexGrow,
+                      ]}>
+                      {e.kcal}
+                    </Text>
+                  </View>
+                );
+              })}
+            </ScrollView>
+          </View>
+          <NoteComp note="Reference Man-60 kg, Reference women-50 kg" />
           <DGHeading head="Importance of Exercise" />
         </View>
 
@@ -581,5 +693,39 @@ const ExcerciseGudie = () => {
 };
 
 export default ExcerciseGudie;
+const {height, width} = Dimensions.get('screen');
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  seperator: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
+
+  fontBold: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+
+    paddingVertical: 10,
+    width: '70%',
+    borderRightWidth: 1,
+  },
+  fontThin: {
+    fontWeight: 'normal',
+    textAlign: 'left',
+  },
+  line: {
+    borderBottomWidth: 1,
+  },
+
+  borderRight: {
+    width: '70%',
+    borderRightWidth: 1,
+  },
+  flexGrow: {
+    flexGrow: 1,
+    paddingLeft: 20,
+  },
+});

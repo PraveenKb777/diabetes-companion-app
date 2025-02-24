@@ -1,16 +1,16 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {CarouselItem} from '../components/Carousal';
+import {SafeAreaView, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import BackButtonHeader from '../components/BackButtonHeader';
+import {CarouselItem} from '../components/Carousal';
+import Loading from '../components/Loading';
 import ModyCard from '../components/ModyCard';
-import {DGHeading} from './DiabetesGuide';
 import {
   IBottomSheetContent,
   useBottomSheet,
 } from '../context/BottomSheetContext';
 import popUpContent from '../popUpContent';
-import Loading from '../components/Loading';
+import {DGHeading} from './DiabetesGuide';
 // dnamody.png
 
 // groupmody.png
@@ -30,7 +30,7 @@ const modyItems: CarouselItem[] = [
   },
   {
     head: 'Youth Onset',
-    desc: 'Typically diagnosed in before age 35.',
+    desc: 'Typically diagnosed in before age 30.',
     img: 'groupmody.png',
     id: '141gwcegewcw',
   },
@@ -58,7 +58,7 @@ const typesOfMody: CarouselItem[] = [
   {
     head: 'MODY 1',
     id: '-1301rmgwe942',
-    desc: '(HNF4/Hepatocyte nuclear factor 4)',
+    desc: '(HNF4α/Hepatocyte nuclear factor 4)',
   },
   {
     head: 'MODY 2',
@@ -68,7 +68,7 @@ const typesOfMody: CarouselItem[] = [
   {
     head: 'MODY 3',
     id: '-1we942',
-    desc: '(HNF1/Hepatocyte nuclear factor 1)',
+    desc: '(HNF1α/Hepatocyte nuclear factor 1)',
   },
   {
     head: 'MODY 4',
@@ -78,7 +78,7 @@ const typesOfMody: CarouselItem[] = [
   {
     head: 'MODY 5',
     id: '-1301rmgw--',
-    desc: '(HNF16/Hepatocyte nuclear factor 16)',
+    desc: '(HNF1β/Hepatocyte nuclear factor 16)',
   },
   {
     head: 'MODY 6',
@@ -253,7 +253,7 @@ const guideModyTest: CarouselItem[] = [
     head: 'Two Genetic test type:',
     id: '90-(34%83hjgkjn',
     img: 'guidemodydna.png',
-    desc: 'Targeted test: Focuses on known MODY genes.\n\nNGS(Next Generation Sequencing): \nChecks many MODY genes at once',
+    desc: 'Targeted test: Focuses on known MODY genes.\n\nNGS(Next Generation Sequencing): Checks many MODY genes at once',
   },
   {
     head: 'Manage complications associated with your MODY type.',
@@ -323,5 +323,3 @@ const Mody = () => {
 };
 
 export default Mody;
-
-const styles = StyleSheet.create({});

@@ -6,7 +6,7 @@ import BackButtonHeader from '../components/BackButtonHeader';
 import DownGradientBox from '../components/DownGradientBox';
 import {StackNavigation} from '../Stack';
 
-const NoteComp: FC<{note: string}> = ({note}) => {
+export const NoteComp: FC<{note: string}> = ({note}) => {
   return (
     <View
       style={{

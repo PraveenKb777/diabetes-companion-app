@@ -65,6 +65,7 @@ import whatyouprefer from '../assets/mythandfact/whatyouprefer.png';
 import yesrice from '../assets/mythandfact/yesrice.png';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
+import {DPItems} from './DietaryGuide';
 
 export const MythFactList: IMythAndFactItem[] = [
   {
@@ -87,7 +88,7 @@ export const MythFactList: IMythAndFactItem[] = [
     id: 'wite]wgs4twewvgw',
     number: '#3',
     myth: 'Overweight or obese will lead to diabetes.',
-    fact: 'Diabetes is manageable and preventable; in pre-diabetes, reversal is possible. However, an unhealthy lifestyle post-recovery may lead to diabetes recurrence.',
+    fact: 'Diabetes involves factors beyond obesity, such as heredity and lifestyle; many patients have normal or moderate weight.',
     mythImg: weightscale,
     factImg: whatyouprefer,
   },
@@ -111,7 +112,7 @@ export const MythFactList: IMythAndFactItem[] = [
     id: 'wite]wgsv%grwnm.avgw',
     number: '#6',
     myth: 'Diabetes patients should avoid Carbohydrates.',
-    fact: 'Carbs can be taken in right amount. Low Glycemic Index carbohydrates can be included with plenty of ehole grains, Legumes low starch vegetables such as spinach, broccoli and tomato.',
+    fact: 'Can eat starchy foods but the carbohydrate count should be counted. Include low-Glycemic Index foods such as whole grains, legumes and low-starch vegetables like spinach, broccoli and tomatoes.',
     mythImg: splitedbreads,
     factImg: vegetablenames,
   },
@@ -127,7 +128,7 @@ export const MythFactList: IMythAndFactItem[] = [
     id: 'wite]wgsvw24324gw',
     number: '#8',
     myth: '“Diabetes-friendly” and “sugar-free” food is good for diabetes.',
-    fact: 'Avoid "diabetes-friendly" and "sugar-free" products, as they often contain high calories, carbs, and fats..',
+    fact: 'Avoid "diabetes-friendly" and "sugar-free" products, as they often contain high calories, carbs, and fats.',
     mythImg: sugarfree,
     factImg: sugarfreechocklate,
   },
@@ -190,7 +191,7 @@ export const DMItems: CarouselItem[] = [
     id: '264njkwqegtweken',
     img: noappatite,
     head: 'Hidden Battle',
-    desc: 'Alarmingly, nearly half are unaware of their metabolic disorder.',
+    desc: 'Alarmingly, nearly half of the population are unaware of their metabolic disorder.',
   },
   {
     id: '264eqqetgqeg',
@@ -206,33 +207,33 @@ export const DMItems: CarouselItem[] = [
   },
 ];
 
-const DPItems: {id: string; img: any; head: string}[] = [
-  {
-    id: '0931ngagweggweg42',
-    img: vegetables,
-    head: 'LOW\nCARBOHYDRATES',
-  },
-  {
-    id: '0931ngageqfg42',
-    img: spinach,
-    head: 'LOW \nFAT',
-  },
-  {
-    id: '0931ngweggweg42',
-    img: cereals,
-    head: 'HIGH \n FIBER',
-  },
-  {
-    id: '093gweggweg42',
-    img: fruits,
-    head: 'LOW \nGLYCEMIC INDEX',
-  },
-  {
-    id: '0931ngggweg42',
-    img: periodicname,
-    head: 'ADEQUATE\nVITAMINS\nAND MINERALS ',
-  },
-];
+// const DPItems: {id: string; img: any; head: string}[] = [
+//   {
+//     id: '0931ngagweggweg42',
+//     img: vegetables,
+//     head: 'LOW\nCARBOHYDRATES',
+//   },
+//   {
+//     id: '0931ngageqfg42',
+//     img: spinach,
+//     head: 'LOW \nFAT',
+//   },
+//   {
+//     id: '0931ngweggweg42',
+//     img: cereals,
+//     head: 'HIGH \n FIBER',
+//   },
+//   {
+//     id: '093gweggweg42',
+//     img: fruits,
+//     head: 'LOW \nGLYCEMIC INDEX',
+//   },
+//   {
+//     id: '0931ngggweg42',
+//     img: periodicname,
+//     head: 'ADEQUATE\nVITAMINS\nAND MINERALS ',
+//   },
+// ];
 
 const Home = () => {
   const navigation = useNavigation<StackNavigation>();
@@ -408,6 +409,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontSize: 12,
     color: '#9D9D9D',
+    textDecorationLine: 'underline',
   },
   lastCont: {
     borderWidth: 1,

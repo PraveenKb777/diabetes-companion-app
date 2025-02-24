@@ -1,6 +1,6 @@
+import {R2_URL} from '@env';
 import React, {FC} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {R2_URL} from '@env';
 
 const DietPrincipalCard: FC<{item: {id: string; img: any; head: string}}> = ({
   item,
@@ -9,13 +9,10 @@ const DietPrincipalCard: FC<{item: {id: string; img: any; head: string}}> = ({
     typeof item.img === 'string'
       ? {src: R2_URL + item.img}
       : {source: item.img};
+
   return (
     <View style={[styles.itemContainer]}>
       <ImageBackground source={item.img} style={[styles.banner]} {...imgSource}>
-        {/* <Image
-          source={item.img}
-          style={{height: 152, width: '100%', objectFit: 'fill'}}
-        /> */}
         <View style={[styles.textCont]}>
           <Text style={[styles.itemText]}>{item.head}</Text>
           {/* <Text style={[styles.itemDesc]}>{item.desc}</Text> */}
@@ -47,7 +44,7 @@ const styles = StyleSheet.create({
   textCont: {
     backgroundColor: '#fff',
     // height: '30%',
-    height: 77,
+    height: 90,
     paddingVertical: 20,
     paddingTop: 10,
     justifyContent: 'center',

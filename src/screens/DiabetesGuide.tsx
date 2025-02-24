@@ -1,4 +1,3 @@
-import {R2_URL} from '@env';
 import {
   Image,
   SafeAreaView,
@@ -8,30 +7,28 @@ import {
   View,
 } from 'react-native';
 
-import React, {FC, useEffect, useState} from 'react';
-import BackButtonHeader from '../components/BackButtonHeader';
-import CauseOfDCard from '../components/CauseOfDCard';
-import DiabetesMellitusCard from '../components/DiabetesMellitusCard';
-import FlowChartCard from '../components/FlowChartDiabetesGuide';
-import {DMItems} from './Home';
-
 import {useNavigation} from '@react-navigation/native';
+import React, {FC, useEffect, useState} from 'react';
 import YoutubeIframe from 'react-native-youtube-iframe';
 import alcohol from '../assets/causeofdiabetics/alcohol.png';
 import bodyparts from '../assets/causeofdiabetics/bodyparts.png';
-import childwithmon from '../assets/causeofdiabetics/childwithmon.png';
-import family from '../assets/causeofdiabetics/family.png';
 import surgury from '../assets/causeofdiabetics/surgury.png';
 import tablets from '../assets/causeofdiabetics/tablets.png';
 import weight from '../assets/causeofdiabetics/weight.png';
+import bglindicator from '../assets/palm/image.png';
+import BackButtonHeader from '../components/BackButtonHeader';
 import BOMBGCard from '../components/BOMBGCard';
 import {CarouselItem} from '../components/Carousal';
+import CauseOfDCard from '../components/CauseOfDCard';
 import ComplicationsOfDCard from '../components/ComplicationsOfDCard';
+import DiabetesMellitusCard from '../components/DiabetesMellitusCard';
+import FlowChartCard from '../components/FlowChartDiabetesGuide';
+import Loading from '../components/Loading';
 import ModyCard from '../components/ModyCard';
 import SubCarousal from '../components/SubCarousal';
 import SympromesOfDiaCard from '../components/SymptomesOfDiaCard';
 import TestForDCard from '../components/TestForDCard';
-import Loading from '../components/Loading';
+import {DMItems} from './Home';
 
 interface ISymptomesOfDiaCard {
   head: string;
@@ -105,7 +102,7 @@ const causeOfDiabeticsList: ICauseofDiabetics[] = [
     color: '#0075FF',
   },
   {
-    head: 'Lifestyle practices-sedentary life style, irregular dining habits, junk & fast foods, alcohol, stress, etc',
+    head: 'Unhealthy lifestyle practices',
     key: 'Lifestyle Practices',
     img: alcohol,
     color: '#49CFAE',
@@ -117,7 +114,7 @@ const causeOfDiabeticsList: ICauseofDiabetics[] = [
     color: '#47D872',
   },
   {
-    head: 'Other comorbidities: High blood pressure, Thyroid problem, Heart disease, PCOS(Polycystic ovarian syndrome), Renal failure, etc.',
+    head: 'Other comorbidities',
     key: 'Other comorbidities',
     img: bodyparts,
     color: '#60E146',
@@ -393,8 +390,8 @@ const DiabetesGuide: FC = () => {
               <BOMBGCard img={e.img} label={e.head} key={e.head + i} />
             ))}
           </ScrollView>
-          <DGHeading head={'Signal to diabetes'} />
-          <Image src={R2_URL + 'signaltod.png'} style={styles.signalToD} />
+          <DGHeading head={'Blood Glucose Indicator Chart'} />
+          <Image source={bglindicator} style={styles.signalToD} />
           <DGHeading head={'Technology used to monitor\nBlood Glucose'} />
         </View>
         <SubCarousal />
@@ -444,6 +441,7 @@ const styles = StyleSheet.create({
   },
   signalToD: {
     height: 326,
+    maxWidth: '100%',
     objectFit: 'fill',
   },
 });

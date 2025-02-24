@@ -25,9 +25,6 @@ const RenderFDText: FC<{label?: string; val?: any; unit?: string}> = ({
   val,
   unit,
 }) => {
-  if (!val) {
-    return null;
-  }
   return (
     <View
       style={{
@@ -41,7 +38,7 @@ const RenderFDText: FC<{label?: string; val?: any; unit?: string}> = ({
         {label}
       </Text>
       <Text style={{fontSize: 12, fontStyle: 'italic'}}>
-        {val}
+        {!val ? `${val}` : val}
         {unit}
       </Text>
     </View>
@@ -62,6 +59,7 @@ const FoodDescCard: FC<{
   if (!item) {
     return null;
   }
+
   return (
     <View style={styles.foodDescCardMain}>
       <Image
@@ -71,11 +69,12 @@ const FoodDescCard: FC<{
           aspectRatio: 16 / 9,
           objectFit: 'fill',
           borderRadius: 10,
+          backgroundColor: '#fff',
         }}
       />
       <View style={{height: 10}} />
       <Text style={styles.fdcHead}>
-        {item?.Name} <Text style={styles.fdcmeasure}>{'(100)g'}</Text>
+        {item?.Name} <Text style={styles.fdcmeasure}>{'(100 gm)'}</Text>
       </Text>
       <View style={{height: 10}} />
       <RenderFDText label="Energy" val={item['Energy (Kcal)']} unit=" (Kcal)" />
@@ -155,7 +154,9 @@ const FoodsIncluded = () => {
               <FlatList
                 data={DChart[DChartHead[currItem]][e] || []}
                 horizontal
-                key={e + i + 2}
+                keyExtractor={item => {
+                  return e + i + 2 + JSON.stringify(item);
+                }}
                 nestedScrollEnabled
                 renderItem={({item}) => {
                   return <FoodDescCard item={item} />;

@@ -52,7 +52,7 @@ const SympromesOfDiaCard: FC<{
         <View style={[styles.infoCont]}>
           <Text
             style={{
-              color: '#fff',
+              color: 'grey',
               fontSize: 12,
               fontFamily: '700',
             }}>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#fFF',
+    borderColor: 'grey',
     borderRadius: 100,
     position: 'absolute',
     right: 30,

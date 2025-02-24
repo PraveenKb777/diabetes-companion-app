@@ -229,7 +229,7 @@ const Profile = () => {
           onPress={() => navigation.navigate('MyLogScreen')}
         />
         <ProfileButton
-          label="Importance & Disclaimer"
+          label="App Importance & Disclaimer"
           Svg={ImportantSvg}
           onPress={() =>
             navigation.navigate('AppicationDisclimarScreen' as never)

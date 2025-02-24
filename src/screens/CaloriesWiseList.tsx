@@ -317,7 +317,7 @@ const CaloriesWiseList = () => {
       }
       setCount(avilable);
     }
-    console.log('called for inhabit');
+    // console.log('called for inhabit');
   }, [MENU, selectedIndex, selectedItems]);
 
   const renderItem: ListRenderItem<(typeof MENU)[0]> = ({index, item}) => {
@@ -325,7 +325,7 @@ const CaloriesWiseList = () => {
 
     return (
       <View style={{width, padding: 16, height: '100%'}}>
-        {index === 3 ? (
+        {false ? (
           <LunchComponent
             currIndex={selectedIndex}
             item={item}

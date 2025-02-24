@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useMemo, useRef, useState} from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {resetLunchSelectedItem, setIsVariety} from '../redux/slice/cmpSlice';
@@ -36,7 +36,7 @@ const LunchComponent: FC<{
     () => selectedItems[3][0]?.id || undefined,
     [selectedItems],
   );
-  console.log('>>>', selectedItemId);
+  // console.log('>>>', selectedItemId);
 
   const newData = useMemo(() => [...item], [item]);
 
@@ -55,7 +55,7 @@ const LunchComponent: FC<{
       subCapableArray = [subCapableArray[3]];
     }
     setFoodList(subCapableArray);
-    console.log(isAvilableVariety);
+    // console.log(isAvilableVariety);
   }, [newData, selectedItemId, varaityRiceList]);
   //   console.log(newData);
 
@@ -76,9 +76,9 @@ const LunchComponent: FC<{
     selectedItems[3].forEach(e => {
       e && avilable++;
     });
-    console.log(total, avilable);
+    // console.log(total, avilable);
     if (total === avilable) {
-      console.log('got in');
+      // console.log('got in');
       changeNext(true);
     } else {
       changeNext(false);
@@ -214,5 +214,3 @@ const LunchComponent: FC<{
 };
 
 export default LunchComponent;
-
-const styles = StyleSheet.create({});
