@@ -1534,7 +1534,7 @@ export const menu1500 = [
     ],
     [
       {
-        name: 'Accompaniments',
+        name: 'Accompaniment',
         img: 'curd.jpeg',
         uuid: '46dc078b-c0c1-4844-b0f7-4ce78142da99',
         foods: [

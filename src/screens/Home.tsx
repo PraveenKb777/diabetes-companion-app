@@ -39,7 +39,7 @@ import MythsAndFactsCard, {
 } from '../components/MythsAndFactsCard';
 
 // myth and fact
-import blindperson from '../assets/mythandfact/blindperson.png';
+import blindperson from '../assets/mythandfact/blindperson.jpeg';
 import candonateblood from '../assets/mythandfact/candonateblood.png';
 import chocklate from '../assets/mythandfact/chocklate.png';
 import deadlift from '../assets/mythandfact/deadlift.png';
@@ -72,7 +72,7 @@ export const MythFactList: IMythAndFactItem[] = [
     id: 'wite]wgsvwgvgw',
     number: '#1',
     myth: 'Diabetes is not a big deal.',
-    fact: 'If left unchecked, diabetes can cause serious compilations and premature death.',
+    fact: 'If left unchecked, diabetes can cause serious complications and premature death.',
     mythImg: diavetessugarblock,
     factImg: doctoradvice,
   },
@@ -300,7 +300,7 @@ const Home = () => {
             id: 'wite]wgsvwgvgw',
             number: '#1',
             myth: 'Diabetes is not a big deal.',
-            fact: 'If left unchecked, diabetes can cause serious compilations and premature death.',
+            fact: 'If left unchecked, diabetes can cause serious complications and premature death.',
             mythImg: diavetessugarblock,
             factImg: doctoradvice,
           }}

@@ -95,7 +95,7 @@ const Items: ISubCarousal[] = [
   {
     videoId: 'z4JZzwgHImY',
     head: 'Continuous Glucose\nMonitoring ',
-    desc: 'Sensor on skin (arm/belly) measures interstitial glucose few minutes.\n\t -Wireless date transfer to monitor for continuous tracking.',
+    desc: 'Sensor on skin (arm/belly) measures interstitial glucose every few minutes.\n\t -Wireless data transfer to monitor for continuous tracking.',
     content: [
       {
         head: 'Advantages',
@@ -107,7 +107,7 @@ const Items: ISubCarousal[] = [
       },
       {
         head: 'Disadvantages',
-        desc: ['Interpreting large data sets can br challenging.'],
+        desc: ['Interpreting large data sets can be challenging.'],
         bullet: true,
       },
     ],
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     width: width,
-    height: 470,
+    height: 500,
     paddingHorizontal: 16,
   },
   itemText: {

@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {resetLunchSelectedItem, setIsVariety} from '../redux/slice/cmpSlice';
 import {FoodsRenderItems, MEALS_HEADING} from '../screens/CaloriesWiseList';
+import {NoteComp} from '../screens/CMP';
 const {height} = Dimensions.get('window');
 
 //  v - rice --
@@ -33,30 +34,49 @@ const LunchComponent: FC<{
   const [foodList, setFoodList] = useState<typeof item>();
   const headingItem = MEALS_HEADING[3];
   const selectedItemId = useMemo(
-    () => selectedItems[3][0]?.id || undefined,
+    () => selectedItems[3][1]?.id || undefined,
     [selectedItems],
   );
-  // console.log('>>>', selectedItemId);
 
   const newData = useMemo(() => [...item], [item]);
 
-  const mainCapableArray = useMemo(() => newData[0], [newData]);
+  const mainCapableArray = useMemo(() => newData[1], [newData]);
 
-  const varaityRiceList = useMemo(
+  const nonVegKulambuIds = useMemo(
     () => mainCapableArray[1].foods.map(e => e.id),
     [mainCapableArray],
   );
-
+  const vegKulambuIds = useMemo(
+    () => mainCapableArray[0].foods.map(e => e.id),
+    [mainCapableArray],
+  );
+  console.log('vlist,selected id', nonVegKulambuIds, selectedItemId);
   useEffect(() => {
-    const isAvilableVariety = varaityRiceList.includes(selectedItemId || '');
-    dispatch(setIsVariety(isAvilableVariety));
-    let subCapableArray = newData.slice(1);
-    if (isAvilableVariety) {
-      subCapableArray = [subCapableArray[3]];
+    const isNonveg = nonVegKulambuIds.includes(selectedItemId || '');
+    const isveg = vegKulambuIds.includes(selectedItemId || '');
+
+    let selector = isNonveg ? true : isveg ? false : undefined;
+    console.log('selector', selector);
+
+    dispatch(setIsVariety(selector));
+    let subCapableArray = newData.slice(4, 5);
+    // if (isAvilableVariety) {
+    //   setFoodList(undefined);
+    //   return;
+    // }
+
+    if (selector) {
+      setFoodList([[subCapableArray[0][1]]]);
+    } else if (selector === false) {
+      setFoodList([[subCapableArray[0][0]]]);
+    } else {
+      setFoodList(undefined);
     }
-    setFoodList(subCapableArray);
+
+    console.log('subCapableArray', subCapableArray);
+
     // console.log(isAvilableVariety);
-  }, [newData, selectedItemId, varaityRiceList]);
+  }, [newData, selectedItemId, nonVegKulambuIds]);
   //   console.log(newData);
 
   const firstRender = useRef(true);
@@ -66,13 +86,15 @@ const LunchComponent: FC<{
       firstRender.current = false;
       return;
     }
-    dispatch(resetLunchSelectedItem());
+    if (!(isVariety === undefined)) {
+      dispatch(resetLunchSelectedItem());
+    }
   }, [isVariety]);
   useEffect(() => {
-    let total = 1;
+    let total =
+      isVariety === false ? newData.length : isVariety ? newData.length - 1 : 0;
     let avilable = 0;
 
-    foodList?.forEach(e => e && total++);
     selectedItems[3].forEach(e => {
       e && avilable++;
     });
@@ -143,72 +165,93 @@ const LunchComponent: FC<{
               {headingItem.time}
             </Text>
           </View>
-          <FoodsRenderItems
-            item={mainCapableArray}
-            timingIndex={3}
-            itemIndex={0}
-          />
-          {foodList?.map((minlist, i) => (
+          {/* {newData?.slice(0, 3).map((e, i) => {
+            return <FoodsRenderItems item={e} timingIndex={3} itemIndex={i} />;
+          })} */}
+          <FoodsRenderItems item={newData[0]} timingIndex={3} itemIndex={0} />
+          <FoodsRenderItems item={newData[1]} timingIndex={3} itemIndex={1} />
+          <FoodsRenderItems item={newData[2]} timingIndex={3} itemIndex={2} />
+          {isVariety === undefined ? (
+            <>
+              <NoteComp note="Select Kulambu to unlock Side dish" />
+              <View style={{height: 10}} />
+            </>
+          ) : null}
+
+          {isVariety === false ? (
+            <FoodsRenderItems item={newData[3]} timingIndex={3} itemIndex={3} />
+          ) : null}
+          {foodList ? (
             <FoodsRenderItems
-              key={'' + i + i + i}
-              item={minlist}
+              item={foodList[0]}
               timingIndex={3}
-              itemIndex={i + 1}
+              itemIndex={4}
             />
-          ))}
+          ) : null}
+          <FoodsRenderItems item={newData[5]} timingIndex={3} itemIndex={5} />
         </View>
       </ScrollView>
 
-      <ScrollView
-        style={{
-          borderWidth: 1,
-          borderColor: 'rgba(0, 0, 0, 0.20)',
-          borderRadius: 5,
-          marginTop: 10,
-          maxHeight: (height * 30) / 100,
-          flexGrow: 0,
-        }}
-        contentContainerStyle={{padding: 16}}>
-        <View
+      {isVariety === undefined ? (
+        <NoteComp note="Select kulambu to unlock seleted items list" />
+      ) : (
+        <ScrollView
           style={{
-            width: 4,
-            height: '110%',
-            backgroundColor: '#0075FF',
-            position: 'absolute',
-            top: 16,
-            left: 5,
-            borderRadius: 100,
+            borderWidth: 1,
+            borderColor: 'rgba(0, 0, 0, 0.20)',
+            borderRadius: 5,
+            marginTop: 10,
+            maxHeight: (height * 30) / 100,
+            flexGrow: 0,
           }}
-        />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
-            Items selected ({count}/{foodList?.length + 1})
-          </Text>
-          <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
-            Qty
-          </Text>
-        </View>
-        {selectedItems[3].map(e =>
-          e ? (
-            <View
-              key={e.id + 'list items'}
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <Text
+          contentContainerStyle={{padding: 16}}>
+          <View
+            style={{
+              width: 4,
+              height: '110%',
+              backgroundColor: '#0075FF',
+              position: 'absolute',
+              top: 16,
+              left: 5,
+              borderRadius: 100,
+            }}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+              Items selected ({count}/
+              {isVariety === false
+                ? newData.length
+                : isVariety
+                ? newData.length - 1
+                : 0}
+              )
+            </Text>
+            <Text style={{color: '#000', fontSize: 16, fontWeight: 'bold'}}>
+              Qty
+            </Text>
+          </View>
+          {selectedItems[3].map(e =>
+            e ? (
+              <View
+                key={e.id + 'list items'}
                 style={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  maxWidth: '70%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
                 }}>
-                {e.name}
-              </Text>
-              <Text style={{fontSize: 16, fontWeight: 'bold'}}>{e.qty}</Text>
-            </View>
-          ) : null,
-        )}
-      </ScrollView>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    maxWidth: '70%',
+                  }}>
+                  {e.name}
+                </Text>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>{e.qty}</Text>
+              </View>
+            ) : null,
+          )}
+        </ScrollView>
+      )}
     </>
   );
 };

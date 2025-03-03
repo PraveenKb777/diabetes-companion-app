@@ -1525,7 +1525,7 @@ const MENU = [
     ],
     [
       {
-        name: 'Accompaniments',
+        name: 'Accompaniment',
         img: 'curd.jpeg',
         uuid: '6ff19b0a-536b-418f-b822-dbdd8e59b1a7',
         foods: [

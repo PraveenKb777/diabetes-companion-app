@@ -592,13 +592,13 @@ const popUpContent: IPopUpContents = {
     ],
   },
   PPG: {
-    head: 'Post-prandial Glucose Test (PPG)',
+    head: 'Post-Prandial Glucose Test (PPG)',
     desc: 'Assess blood sugar level two hours after a meal.',
     content: [
       {
         head: 'Normal Value',
         bullet: false,
-        desc: '< 5.7%',
+        desc: '<140 mg/dL',
       },
     ],
   },
@@ -609,7 +609,7 @@ const popUpContent: IPopUpContents = {
       {
         head: 'Normal Value',
         bullet: false,
-        desc: '<140 mg/dL',
+        desc: '< 5.7%',
       },
     ],
   },

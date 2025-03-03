@@ -23,6 +23,8 @@ import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
 import {resetState} from '../redux/slice/cmpSlice';
 import auth from '../utils/auth';
 import {IFood, MEALS_HEADING} from './CaloriesWiseList';
+import AudioPlayer from '../components/AudioPlayer';
+import {R2_AUDIO_URL} from '@env';
 type ParamList = {
   Details: {
     id?: string;
@@ -175,7 +177,17 @@ const YourCaloricMenu = () => {
             View and customize your menu based on your caloric value and
             preferences.
           </Text>
-          <CustomButton label="Save" onPress={onPressSave} load={load} />
+
+          <AudioPlayer
+            url={`${R2_AUDIO_URL}Disclaimerendendnotefor%20caloricmenuplanner.mp3`}
+          />
+          <View style={{width: 1}} />
+          <CustomButton
+            style={{alignSelf: 'stretch', marginVertical: 1}}
+            label="Save"
+            onPress={onPressSave}
+            load={load}
+          />
         </View>
       )}
       <ScrollView contentContainerStyle={{padding: 16}}>
@@ -322,7 +334,7 @@ const YourCaloricMenu = () => {
                             width: '30%',
                             textAlign: 'right',
                           }}>
-                          {foodItem.energy_kcal}
+                          {foodItem.energy_kcal.toFixed(2)}
                         </Text>
                       </View>
                     ) : null,
@@ -378,7 +390,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.energy_kcal} Kcal
+            {totals.energy_kcal.toFixed(2)} Kcal
           </Text>
         </View>
         <View
@@ -402,7 +414,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.carbohydrate_g} gm
+            {totals.carbohydrate_g.toFixed(2)} gm
           </Text>
         </View>
         <View
@@ -426,7 +438,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.protein_g} gm
+            {totals.protein_g.toFixed(2)} gm
           </Text>
         </View>
         <View
@@ -450,7 +462,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.fat_g} gm
+            {totals.fat_g.toFixed(2)} gm
           </Text>
         </View>
         <View
@@ -474,7 +486,7 @@ const YourCaloricMenu = () => {
 
               textAlign: 'right',
             }}>
-            {totals.fiber_g} gm
+            {totals.fiber_g.toFixed(2)} gm
           </Text>
         </View>
       </View>

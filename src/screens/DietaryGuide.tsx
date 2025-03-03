@@ -109,7 +109,7 @@ const HOME_REMADIES: CarouselItem[] = [
   {
     id: '788hsadfqyb',
     head: 'Curry leaves',
-    desc: 'Manage diabetes with 5-log powder twice/thrice daily.\nBenefits: Stimulates insulin production, reduces blood sugar.',
+    desc: 'Manage diabetes with 5-10g powder twice/thrice daily.\nBenefits: Stimulates insulin production, reduces blood sugar.',
     color: '#9BBB59',
     img: 'dItemsPicks/curryleaves.png',
     video: 'https://youtu.be/ZmVFG0ndIns',

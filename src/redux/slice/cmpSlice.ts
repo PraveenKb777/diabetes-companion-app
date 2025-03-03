@@ -4,7 +4,7 @@ import {IFood} from '../../screens/CaloriesWiseList';
 interface IinitialState {
   selectedCalories: string;
   selectedItems: {[key: number]: (IFood | undefined)[]};
-  isVariety: boolean;
+  isVariety: boolean | undefined;
 }
 const initialState: IinitialState = {
   selectedCalories: '',
@@ -59,13 +59,16 @@ const cmpSlice = createSlice({
       state.selectedItems = newSelectedItem;
       //console.log(state);
     },
-    setIsVariety: (state, action: PayloadAction<boolean>) => {
+    setIsVariety: (state, action: PayloadAction<boolean | undefined>) => {
       state.isVariety = action.payload;
     },
     resetLunchSelectedItem: state => {
       const newSelectedItem = {...state.selectedItems};
-      const remainingItem = newSelectedItem[3][0];
-      newSelectedItem[3] = [remainingItem];
+      console.log(newSelectedItem);
+
+      // const remainingItem = newSelectedItem[3][0];
+      newSelectedItem[3][3] = undefined;
+      newSelectedItem[3][4] = undefined;
       state.selectedItems = newSelectedItem;
     },
   },

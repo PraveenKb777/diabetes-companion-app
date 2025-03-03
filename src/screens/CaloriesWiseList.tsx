@@ -136,6 +136,9 @@ export const FoodsRenderItems: FC<{
   itemIndex?: number;
 }> = ({item, timingIndex = 0, itemIndex = 0}) => {
   const [foodList, setFoodList] = useState<(typeof item)[0]>();
+  useEffect(() => {
+    setFoodList(undefined);
+  }, [item]);
   return (
     <View>
       <ScrollView horizontal style={{marginVertical: 10}}>
@@ -325,7 +328,7 @@ const CaloriesWiseList = () => {
 
     return (
       <View style={{width, padding: 16, height: '100%'}}>
-        {false ? (
+        {index === 3 ? (
           <LunchComponent
             currIndex={selectedIndex}
             item={item}

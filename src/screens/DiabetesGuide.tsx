@@ -59,12 +59,12 @@ const symptomesofDiaList: ISymptomesOfDiaCard[] = [
   {
     head: 'Blurred vision',
     key: 'Blurred vision',
-    img: 'symptomesofdbluredvision.png',
+    img: 'symptomsofdiaeye.jpeg',
   },
   {
     head: 'Vaginal Infection',
     key: 'Vaginal infection',
-    img: 'vagina.jpg',
+    img: 'symptomesofdiavagina.jpeg',
   },
   {
     head: 'Itching',
@@ -216,7 +216,7 @@ const testsForDList: ITestForD[] = [
     img: 'ppg.png',
     testNo: 3,
     key: 'PPG',
-    desc: 'Post-prandial Glucose Test\n(2 hrs post-plasma glucose)',
+    desc: 'Post-Prandial Glucose Test\n(2 hrs post-plasma glucose)',
   },
   {
     head: 'HbA1C',
@@ -359,7 +359,7 @@ const DiabetesGuide: FC = () => {
           </ScrollView>
           <DGHeading head="Complication of Diabetes" />
           <Text style={{fontStyle: 'italic'}}>
-            Uncontrollable High Blood Glucose Level.
+            Uncontrollable high blood blucose level leads to,
           </Text>
           <View style={{height: 20}} />
           {complicationsList.map((e, i) => {

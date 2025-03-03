@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.20)',
     borderRadius: 14,
     overflow: 'hidden',
-    alignItems: 'center',
   },
   itemText: {
     fontSize: 14,

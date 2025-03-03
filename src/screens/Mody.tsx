@@ -78,7 +78,7 @@ const typesOfMody: CarouselItem[] = [
   {
     head: 'MODY 5',
     id: '-1301rmgw--',
-    desc: '(HNF1β/Hepatocyte nuclear factor 16)',
+    desc: '(HNF1β/Hepatocyte nuclear factor 1β)',
   },
   {
     head: 'MODY 6',

@@ -5,7 +5,8 @@ import {ScrollView} from 'react-native-gesture-handler';
 import BackButtonHeader from '../components/BackButtonHeader';
 import DownGradientBox from '../components/DownGradientBox';
 import {StackNavigation} from '../Stack';
-
+import AudioPlayer from '../components/AudioPlayer';
+import {R2_AUDIO_URL} from '@env';
 export const NoteComp: FC<{note: string}> = ({note}) => {
   return (
     <View
@@ -34,7 +35,9 @@ const CMP = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Caloric Menu Planner " />
+
       <ScrollView contentContainerStyle={{padding: 16}}>
+        <AudioPlayer url={`${R2_AUDIO_URL}IntroCaloricMenu%20Planner.mp3`} />
         <Text style={{fontStyle: 'italic'}}>
           Effective dietary management is essential for maintaining optimal
           health, particularly for individuals with diabetes.{'\n\n'} Our
@@ -70,7 +73,7 @@ const CMP = () => {
         </View>
         <NoteComp note="Restrict the usage of COCONUT in your meal" />
         <NoteComp note="1 Cup = 200ml" />
-        <NoteComp note="This caloric menu is mainly designed for diabetic patients." />
+        <NoteComp note="This menu is planned based on diabetic dietary guidelines, but these options can also be a healthy addition to the diet of the general population for overall wellness." />
       </ScrollView>
     </SafeAreaView>
   );

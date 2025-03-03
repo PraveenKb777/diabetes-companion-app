@@ -169,7 +169,7 @@ export const BottomSheetProvider: React.FC<{children: ReactNode}> = ({
   const openBottomSheet: opBottomSh = (content, maxHeight = false, h) => {
     setItems(content);
     h && setHeight(h);
-    setMaxH(true);
+    setMaxH(maxHeight);
     bottomSheetRef.current?.open();
   };
 

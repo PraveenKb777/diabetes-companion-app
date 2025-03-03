@@ -8,7 +8,7 @@ import {
   ToastAndroid,
   View,
 } from 'react-native';
-
+import {R2_AUDIO_URL} from '@env';
 import React, {FC, useCallback} from 'react';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {DGHeading} from './DiabetesGuide';
@@ -18,6 +18,7 @@ import {resetState, setSelectedCalories} from '../redux/slice/cmpSlice';
 import CustomButton from '../components/CustomButton';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
+import AudioPlayer from '../components/AudioPlayer';
 
 export const CALORIC_AMOUNTS = [
   {
@@ -66,6 +67,8 @@ const ChooseYourCaloricValue = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading="Choose your Caloric Value" />
       <ScrollView style={styles.scrollView}>
+        <AudioPlayer url={`${R2_AUDIO_URL}Remembercaloric%20menuplanner.mp3`} />
+        <View style={{height: 10}} />
         <Image src={`${R2_URL}cymv.jpeg`} style={styles.img} />
         <DGHeading head="Choose your caloric value to get your desired caloric menu planner" />
         <RadioButtons list={CALORIC_AMOUNTS} value={selectedCalories} />
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   img: {
-    height: (width * 90) / 100,
+    height: (width * 70) / 100,
     aspectRatio: 1,
     objectFit: 'cover',
     borderRadius: 10,
