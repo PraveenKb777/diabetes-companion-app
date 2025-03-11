@@ -92,7 +92,11 @@ const LunchComponent: FC<{
   }, [isVariety]);
   useEffect(() => {
     let total =
-      isVariety === false ? newData.length : isVariety ? newData.length - 1 : 0;
+      isVariety === false
+        ? newData.length
+        : isVariety
+        ? newData.length - 1
+        : -1;
     let avilable = 0;
 
     selectedItems[3].forEach(e => {

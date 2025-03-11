@@ -16,7 +16,7 @@ import {R2_URL} from '@env';
 const ApplicationDisclimar = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-      <BackButtonHeader heading="Application Importance and Disclaimer" />
+      <BackButtonHeader heading={'Application Importance \n and Disclaimer'} />
       <ScrollView style={{flex: 1}} contentContainerStyle={{padding: 16}}>
         <DGHeading head="Aim" />
         <Text style={styles.content}>

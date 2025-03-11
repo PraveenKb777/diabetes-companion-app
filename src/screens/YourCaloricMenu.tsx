@@ -163,7 +163,7 @@ const YourCaloricMenu = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader heading="Your caloric menu" />
-      {params?.id || params?.latest ? null : (
+      {
         <View
           style={{
             paddingHorizontal: 16,
@@ -181,15 +181,8 @@ const YourCaloricMenu = () => {
           <AudioPlayer
             url={`${R2_AUDIO_URL}Disclaimerendendnotefor%20caloricmenuplanner.mp3`}
           />
-          <View style={{width: 1}} />
-          <CustomButton
-            style={{alignSelf: 'stretch', marginVertical: 1}}
-            label="Save"
-            onPress={onPressSave}
-            load={load}
-          />
         </View>
-      )}
+      }
       <ScrollView contentContainerStyle={{padding: 16}}>
         {MEALS_HEADING.map((e, i) => {
           return (
@@ -489,6 +482,14 @@ const YourCaloricMenu = () => {
             {totals.fiber_g.toFixed(2)} gm
           </Text>
         </View>
+        {params?.id || params?.latest ? null : (
+          <CustomButton
+            style={{alignSelf: 'stretch', marginTop: 10}}
+            label="Save"
+            onPress={onPressSave}
+            load={load}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
