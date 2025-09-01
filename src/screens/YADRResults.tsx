@@ -1,3 +1,5 @@
+// YADRREsults
+
 import {R2_URL} from '@env';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
@@ -21,6 +23,8 @@ import {
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
 import AudioPlayer from '../components/AudioPlayer';
+// YADRREsults.tsx
+
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -29,27 +33,45 @@ const findBodyGrade = (val: number) => {
   let url: string =
     'https://pub-68f32a802c704337a2bc84aa92cc55a6.r2.dev/audio-files/';
 
-  if (val <= 30) {
-    color = '#1F8C0E';
-    cat = 'Low';
-    pos = '15%';
+  if (val <= 20) {
+    color = '#1F8C0E'; // green
+    cat = 'Low Risk';
+    pos = '10%';
     image = 'happy.png';
-    url += 'lowmodyrisk.mp3';
-  } else if (val >= 31 && val < 61) {
-    color = '#F47C0C';
-    cat = 'Moderate';
-    pos = '48%';
+    url += 'Lowdiabetesriskfinder-YADR.mp3';
+  } else if (val >= 21 && val <= 40) {
+    color = '#F47C0C'; // orange
+    cat = 'Moderate Risk';
+    pos = '35%';
     image = 'sad.png';
-    url += 'moderatemodyrisk.mp3';
-  } else {
-    color = '#EE3F3F';
-    cat = 'High';
-    pos = '82%';
+    url += 'ModerateDiabetesRisk-YADR.mp3';
+  } else if (val >= 41 && val <= 60) {
+    color = '#EE9C0E'; // dark orange
+    cat = 'High Risk';
+    pos = '65%';
     image = 'verySad.png';
-    url += 'highmodyrisk.mp3';
+    url += 'highdiabetesriskfinder-YADR.mp3';
+  } else {
+    color = '#EE3F3F'; // red
+    cat = 'Very High Risk';
+    pos = '90%';
+    image = 'verySad.png';
+    url += 'VeryHighdiabetesriskfinder-YADR.mp3';
   }
 
   return {color, cat, pos, image, url};
+};
+
+const getRecommendations = (score: number) => {
+  if (score <= 20) {
+    return 'Based on your answers, you are in the Low Risk category, with a score of less than or equal to 20. To maintain a healthy lifestyle, continue to monitor for any new symptoms. Continue regular health checkups.';
+  } else if (score <= 40) {
+    return 'Based on your answers, you are at the Moderate Risk category, with a score between 21 and 40. Schedule a health checkup and consult with a healthcare provider. Consider making lifestyle changes to manage your risk.';
+  } else if (score <= 60) {
+    return 'Based on your answers, you are at the High Risk category, with a score between 41 and 60. Seek immediate medical advice and undergo a comprehensive health assessment.';
+  } else {
+    return 'Based on your answers, you are in the Very High Risk category, with a score of 61 to 80. Seek immediate medical advice and undergo a comprehensive health assessment.';
+  }
 };
 
 type ParamList = {
@@ -60,21 +82,19 @@ type ParamList = {
 
 interface IDRFData {
   id: string;
-  mody_score: number;
+  yadr_score: number;
 }
 
-// whrFemale.png
 
-// whrMale.png
 
-const ModyResults = () => {
+const YADRREsults = () => {
   const [load, setLoad] = useState(true);
   const [drfData, setDrfData] = useState<IDRFData>();
   const {params} = useRoute<RouteProp<ParamList, 'Detail'>>();
   const getBmidata = useCallback(async () => {
     setLoad(true);
     try {
-      const res = await auth.get(`/mody/${params?.id || ''}`);
+      const res = await auth.get(`/yadr/${params?.id || ''}`);
       const {result} = await res.data;
       setDrfData(result);
     } catch (error: any) {
@@ -94,11 +114,14 @@ const ModyResults = () => {
   }
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader heading={'MODY Risk Finder Result'} />
+      <BackButtonHeader
+        heading={'Diabetes Risk Finder Result'}
+        subHeading="Young Adult Diabetes Risk Finder(YADRF)"
+      />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <AudioPlayer url={findBodyGrade(drfData?.mody_score!).url} />
+        <AudioPlayer url={findBodyGrade(drfData?.yadr_score!).url} />
         <Image
-          src={`${R2_URL}${findBodyGrade(drfData?.mody_score!).image}`}
+          src={`${R2_URL}${findBodyGrade(drfData?.yadr_score!).image}`}
           style={{width: '100%', aspectRatio: 1}}
         />
         <Text
@@ -109,8 +132,8 @@ const ModyResults = () => {
             textAlign: 'center',
           }}>
           You are at{' '}
-          <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
-            {findBodyGrade(drfData?.mody_score!).cat}
+          <Text style={{color: findBodyGrade(drfData?.yadr_score!).color}}>
+            {findBodyGrade(drfData?.yadr_score!).cat}
           </Text>{' '}
           Risk!
         </Text>
@@ -118,82 +141,55 @@ const ModyResults = () => {
         <View style={{height: 20}} />
         <View style={styles.resultCont}>
           <Text style={styles.resultText}>
-            MODY RF Score {'    '} :{'       '}
-            <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
-              {drfData?.mody_score!}
+            DRF Score {'    '} :{'       '}
+            <Text style={{color: findBodyGrade(drfData?.yadr_score!).color}}>
+              {drfData?.yadr_score!}
             </Text>
           </Text>
           <Text style={styles.resultText}>
             Risk Level {'     '} :{'       '}
-            <Text style={{color: findBodyGrade(drfData?.mody_score!).color}}>
-              {findBodyGrade(drfData?.mody_score!).cat}
+            <Text style={{color: findBodyGrade(drfData?.yadr_score!).color}}>
+              {findBodyGrade(drfData?.yadr_score!).cat}
             </Text>
           </Text>
           <View style={{height: 30}} />
           <DownArrowSvg
-            style={{left: findBodyGrade(drfData?.mody_score!).pos}}
+            style={{left: findBodyGrade(drfData?.yadr_score!).pos}}
           />
 
           <View style={styles.indicatorCont}>
             <View
-              style={{
-                width: '33.33%',
-                backgroundColor: '#1F8C0E',
-                height: '100%',
-              }}
+              style={{width: '25%', backgroundColor: '#1F8C0E', height: '100%'}}
             />
             <View
-              style={{
-                width: '33.33%',
-                backgroundColor: '#F47C0C',
-                height: '100%',
-              }}
+              style={{width: '25%', backgroundColor: '#F47C0C', height: '100%'}}
             />
             <View
-              style={{
-                width: '33.33%',
-                backgroundColor: '#EE3F3F',
-                height: '100%',
-              }}
+              style={{width: '25%', backgroundColor: '#EE9C0E', height: '100%'}}
+            />
+            <View
+              style={{width: '25%', backgroundColor: '#EE3F3F', height: '100%'}}
             />
           </View>
+
           <View style={[styles.indicatorCont, {height: 'auto'}]}>
-            <Text
-              style={{
-                width: '33.33%',
-                color: '#1F8C0E',
-                height: '100%',
-                textAlign: 'center',
-              }}>
-              Low Risk
+            <Text style={{width: '25%', color: '#1F8C0E', textAlign: 'center'}}>
+              Low
             </Text>
-            <Text
-              style={{
-                width: '33.33%',
-                color: '#F47C0C',
-                height: '100%',
-                textAlign: 'center',
-              }}>
+            <Text style={{width: '25%', color: '#F47C0C', textAlign: 'center'}}>
               Moderate
             </Text>
-            <Text
-              style={{
-                width: '33.33%',
-                color: '#EE3F3F',
-                height: '100%',
-                textAlign: 'center',
-              }}>
-              High Risk
+            <Text style={{width: '25%', color: '#EE9C0E', textAlign: 'center'}}>
+              High
+            </Text>
+            <Text style={{width: '25%', color: '#EE3F3F', textAlign: 'center'}}>
+              Very High
             </Text>
           </View>
         </View>
         <DGHeading head="Recommendations" />
         <Text style={{fontStyle: 'italic', color: '#000', fontSize: 16}}>
-          {drfData?.mody_score! < 30
-            ? 'Maintain a healthy lifestyle and monitor for any new symptoms.'
-            : drfData?.mody_score! <= 50
-            ? 'Schedule a health checkup and consult with a healthcare provider for further evaluation.'
-            : 'Seek immediate medical advice and undergo a comprehensive health assessment.'}
+          {getRecommendations(drfData?.yadr_score!)}
         </Text>
         <View style={{height: 20}} />
         <BottomSheetYesbullet
@@ -210,6 +206,8 @@ const ModyResults = () => {
             ],
           }}
         />
+
+
         <View
           style={{
             borderWidth: 1,
@@ -224,7 +222,7 @@ const ModyResults = () => {
           <BottomSheetNobullet
             item={{
               bullet: false,
-              desc: 'The MODY risk scoring was formulated based on various literatures (Aarthy et al., 2021; Bhat et al., 2022; Nair et al., 2013b; Naylor et al., 2018; University of Exeter, 2023) and underwent validation by diabetologists, incorporating their feedback to refine the scores.',
+              desc: 'The Young Adult Diabetes Risk Score was formulated based on various literatures and underwent validation by diabetologists, incorporating their feedback to refine the scores.(Ali, 2013; Anjana et al., 2011; Centers for Disease Control and Prevention, 2022; Chandrupatla et al., 2021; Dutta & Ghosh, 2019; Fichadiya et al., 2022; Gore et al., 2006; Hamilton et al., 2014; Harihar et al., 2025; Kekan et al., 2022; Mohan & Anbalagan, 2013; Parikh et al., 2025; RSSDI, 2022; Singh & Acharya, 2020; Susairaj et al., 2019; Swetha et al., 2023; Tiwari & Purohit, 2014; Unger et al., 2020; Wang et al., 2022; World Health Organisation, 2003)',
               head: 'Reference',
             }}
           />
@@ -234,7 +232,7 @@ const ModyResults = () => {
   );
 };
 
-export default ModyResults;
+export default YADRREsults;
 
 const styles = StyleSheet.create({
   safeArea: {

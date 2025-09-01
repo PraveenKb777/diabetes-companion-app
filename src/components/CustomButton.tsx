@@ -10,13 +10,17 @@ import {
 interface ICustomBtn extends TouchableOpacityProps {
   label: string;
   load?: boolean;
+  subLable?:string;
 }
 
-const CustomButton: FC<ICustomBtn> = ({label, load, style, ...props}) => {
+const CustomButton: FC<ICustomBtn> = ({label, subLable,load, style, ...props}) => {
   return (
     <TouchableOpacity style={[styles.mainStyle, style]} {...props}>
-      {!load ? (
+      {!load ? (<>
         <Text style={[styles.lable]}>{label}</Text>
+        {subLable? <Text style={[styles.lable,{fontSize:8}]}>{subLable}</Text> : null}
+      </>
+
       ) : (
         <ActivityIndicator color={'#FFFFFF'} size={'small'} />
       )}

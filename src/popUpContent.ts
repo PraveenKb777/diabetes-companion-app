@@ -115,7 +115,7 @@ const popUpContent: IPopUpContents = {
       {
         head: 'Age of diagnosis',
         bullet: false,
-        desc: 'Children ≤ 15 years ',
+        desc: 'Children ≤ 15 years;can present in young adults (18–35).',
       },
       {
         head: 'Body mass index:',
@@ -145,7 +145,7 @@ const popUpContent: IPopUpContents = {
       {
         head: 'HbA1C',
         bullet: false,
-        desc: '>6.5 percent',
+        desc: '≥6.5 percent',
       },
       {
         head: 'Serum Insulin level (Normal value- 0.7-9µIU/mL)',
@@ -172,6 +172,79 @@ const popUpContent: IPopUpContents = {
         bullet: false,
         desc: 'Oral Hypoglycemic Agent, Insulin treatment, Exercise  & Diet',
       },
+      {
+        head: 'Young-adult note (18–35)',
+        bullet: false,
+        desc: 'Onset can be sudden; seek urgent care for DKA symptoms (vomiting, deep breathing, drowsiness).',
+      },
+      {
+        head:"\nLatent Autoimmune Diabetes in Adults (LADA)",desc:"\n",bullet:false
+      },
+      {
+        head: 'Age of diagnosis',
+        bullet: false,
+        desc: 'Adults ≥18 years, commonly 30–50 years; overlaps with young adults (18–35).',
+      },
+      {
+        head: 'Body Mass Index',
+        bullet: false,
+        desc: 'Normal or Lean (unlike typical Type 2).',
+      },
+      {
+        head: 'Family Inheritance',
+        bullet: false,
+        desc: '<15 percent; autoimmune rather than strong familial clustering.',
+      },
+      {
+        head: 'Causes',
+        bullet: false,
+        desc: 'Autoimmune destruction of β-cells, Genetic susceptibility (HLA-Human Leukocyte Antigen Genes), Environmental triggers.',
+      },
+      {
+        head: 'Symptoms',
+        bullet: false,
+        desc: 'Similar to Type 1 and Type 2 — frequent urination, excessive thirst, weight loss, fatigue; initially milder and progressive.',
+      },
+      {
+        head: 'Complications',
+        bullet: false,
+        desc: 'Same as other forms of diabetes — Neuropathy, Nephropathy, Retinopathy, Cardiovascular disease; risk increases if diagnosis is delayed.',
+      },
+      {
+        head: 'HbA1C',
+        bullet: false,
+        desc: '≥6.5 percent.',
+      },
+      {
+        head: 'Serum Insulin level',
+        bullet: false,
+        desc: 'Initially near-normal or slightly low, progressively decreases. (Normal value 0.7–9 µIU/mL).',
+      },
+      {
+        head: 'Glutamic Acid Decarboxylase Antibodies (GAD)',
+        bullet: false,
+        desc: 'Present (most consistent marker).',
+      },
+      {
+        head: 'Insulin Autoantibodies',
+        bullet: false,
+        desc: 'May be present.',
+      },
+      {
+        head: 'C-peptide',
+        bullet: false,
+        desc: 'Normal or mildly reduced in early stage; progressively declines. (Normal value 0.9–1.8 ng/mL).',
+      },
+      {
+        head: 'Treatment',
+        bullet: false,
+        desc: 'Initially may respond to oral hypoglycemic agents, but insulin therapy becomes necessary within 6 months to 6 years. Early insulin initiation helps preserve β-cell function. Exercise and diet remain supportive.',
+      },
+      {
+        head: 'Young-adult note (18–35)',
+        bullet: false,
+        desc: 'Often misdiagnosed as Type 2 diabetes in this age group due to gradual onset. If a young adult with normal BMI and poor response to oral drugs is found, antibody testing (GAD) should be considered to detect LADA early.',
+      },
     ],
   },
   'Type 2 Diabetes Mellitus': {
@@ -180,7 +253,7 @@ const popUpContent: IPopUpContents = {
       {
         head: 'Age of diagnosis',
         bullet: false,
-        desc: 'Adult <40 years  ',
+        desc: 'Adult ≥40 years; early-onset T2D = <40 years (includes 18–35) ',
       },
       {
         head: 'Body mass index:',
@@ -236,6 +309,11 @@ const popUpContent: IPopUpContents = {
         head: 'Treatment',
         bullet: false,
         desc: 'Oral Hypoglycemic Agent, Insulin treatment, Exercise  & Diet',
+      },
+      {
+        head: 'Early-onset note (18–35)',
+        bullet: false,
+        desc: 'Often strong family history and central weight even at lower BMI—start management early to reduce long-term risk.',
       },
     ],
   },

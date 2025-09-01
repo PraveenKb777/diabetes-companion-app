@@ -21,6 +21,9 @@ const auth = axios.create({
 });
 
 auth.interceptors.request.use(async function (config) {
+
+  console.log(config.baseURL);
+  
   const token = await getToken();
   if (token) {
     config.headers.Authorization = token;
@@ -38,7 +41,7 @@ auth.interceptors.request.use(async function (config) {
 auth.interceptors.response.use(
   response => response,
   error => {
-    console.log(error);
+    console.log(error.response);
     if (error.response.status) {
       error.response.status === 401 &&
         navigator.reset({routes: [{name: 'LoginScreen'}]});

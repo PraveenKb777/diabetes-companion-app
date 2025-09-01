@@ -24,6 +24,9 @@ const SplashScreen = () => {
   }, []);
 
   const validate = async () => {
+   const res = await  auth.get("/")
+   console.log(( res).data);
+   
     // setLoad(true);
     try {
       const token = await AsyncStorage.getItem('token');
@@ -49,9 +52,13 @@ const SplashScreen = () => {
     <SafeAreaView style={styles.safeArea}>
       <Image source={img} style={styles.logo} />
       <ActivityIndicator color={'#0075FF'} style={[styles.loader]} />
+        
       <TouchableOpacity
         onPress={() => Linking.openURL(url)}
         style={[styles.loader, {bottom: 30}]}>
+          <Text style={{textAlign: 'center'}}>
+          App is for educational purpose only. {"\n"}For tests and treatment, follow your doctor’s advice.{' '}
+        </Text>
         <Text style={{textAlign: 'center'}}>
           Crafted and Created by MGTECH{' '}
         </Text>
@@ -80,6 +87,6 @@ const styles = StyleSheet.create({
   loader: {
     // alignSelf: 'flex-end',
     position: 'absolute',
-    bottom: 80,
+    bottom: 100,
   },
 });

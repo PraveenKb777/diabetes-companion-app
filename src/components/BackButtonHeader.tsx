@@ -6,7 +6,10 @@ import {NextArrow} from '../assets/Svg';
 
 const {width} = Dimensions.get('window');
 
-const BackButtonHeader: FC<{heading?: string}> = ({heading}) => {
+const BackButtonHeader: FC<{heading?: string; subHeading?: string}> = ({
+  heading,
+  subHeading,
+}) => {
   const navigation = useNavigation();
   const canGoBack = (navigation.getState()?.routes.length || 0) > 1;
   return (
@@ -35,10 +38,26 @@ const BackButtonHeader: FC<{heading?: string}> = ({heading}) => {
         ]}>
         {canGoBack ? <NextArrow height={24} width={24} /> : null}
       </TouchableOpacity>
-      <Text
-        style={{fontSize: 20, fontWeight: 700, color: '#000', marginLeft: 16}}>
-        {heading}
-      </Text>
+      <View>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 700,
+            color: '#000',
+            marginLeft: 16,
+          }}>
+          {heading}
+        </Text>
+        <Text
+          style={{
+            fontSize: 10,
+            fontWeight: 700,
+            color: '#000',
+            marginLeft: 16,
+          }}>
+          {subHeading}
+        </Text>
+      </View>
     </View>
   );
 };

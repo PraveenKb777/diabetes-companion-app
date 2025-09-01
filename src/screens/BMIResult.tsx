@@ -20,6 +20,7 @@ import {DGHeading} from './DiabetesGuide';
 import {R2_AUDIO_URL} from '@env';
 import AudioPlayer from '../components/AudioPlayer';
 import {StackNavigation} from '../Stack';
+import { NoteComp } from './CMP';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -29,11 +30,11 @@ const findBodyGrade = (val: number) => {
     color = '#F3BC51';
     cat = 'Underweight';
     pos = '10%';
-  } else if (val >= 18.5 && val <= 24.9) {
+  } else if (val >= 18.5 && val <= 22.9) {
     color = '#1F8C0E';
     cat = 'Normal';
     pos = '35%';
-  } else if (val >= 25 && val <= 29.9) {
+  } else if (val >= 23 && val <= 24.9) {
     color = '#F47C0C';
     cat = 'Pre-obesity';
     pos = '60%';
@@ -72,15 +73,14 @@ const BMIResult = () => {
       const res = await auth.get(`/bmi/${params?.id || ''}`);
       const {result} = await res.data;
       let audioFile = R2_AUDIO_URL;
-      if (result.bmi_score >= 40) {
-        audioFile = audioFile + 'obesityiiibmi.mp3';
-      } else if (result.bmi_score >= 35 && result.bmi_score <= 39.9) {
+      if (result.bmi_score >= 30) {
+    
         audioFile = audioFile + 'obesityiibmi.mp3';
-      } else if (result.bmi_score >= 30 && result.bmi_score <= 34.9) {
-        audioFile = audioFile + 'obesityibmi.mp3';
       } else if (result.bmi_score >= 25 && result.bmi_score <= 29.9) {
-        audioFile = audioFile + 'preobesitybmi.mp3';
-      } else if (result.bmi_score >= 18.5 && result.bmi_score <= 24.9) {
+        audioFile = audioFile + 'obesityibmi.mp3';
+      } else if (result.bmi_score >= 23 && result.bmi_score <= 24.9) {
+        audioFile = audioFile + 'OverweightBMI.mp3';
+      } else if (result.bmi_score >= 18.5 && result.bmi_score <= 22.9) {
         audioFile = audioFile + 'normalweightbmi.mp3';
       } else {
         audioFile = audioFile + 'underweightbmi.mp3';
@@ -198,7 +198,7 @@ const BMIResult = () => {
                 height: '100%',
                 textAlign: 'center',
               }}>
-              Pre-obesity
+              Overweight
             </Text>
             <Text
               style={{
@@ -213,7 +213,14 @@ const BMIResult = () => {
         </View>
 
         <DGHeading head="Obesity Pyramid" />
-        <Image src={`${R2_URL}bmipryamid.png`} style={styles.pryamid} />
+        <Image src={`${R2_URL}bmi_new.png`} style={styles.pryamid} />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            desc: 'WHO expert consultation. (2004). Appropriate body-mass index for Asian populations and its implications for policy and intervention strategies. The Lancet, 363(9403), 157–163. https://doi.org/https://doi.org/10.1016/S0140-6736(03)15268-3',
+            head: 'Source',
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );

@@ -255,6 +255,9 @@ const WHRResult = () => {
           }`}
           style={styles.pryamid}
         />
+        <BottomSheetNobullet item={{bullet:false,
+          head:"Source",desc:"World Health Organization. (2011). Waist circumference and waist-hip ratio: Report of a WHO expert consultation. World Health Organization (WHO)."
+        }} />
       </ScrollView>
     </SafeAreaView>
   );

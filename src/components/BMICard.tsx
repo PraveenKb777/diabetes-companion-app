@@ -3,261 +3,142 @@ import React, {FC} from 'react';
 import moment from 'moment';
 import {TimeCircleSVG} from '../assets/Svg';
 
-interface IBMICard {
-  name?: string;
-  bmiScore?: number;
-  height?: number;
-  weight?: number;
-  time?: string;
-  gender?: 'male' | 'female';
-  hip?: number;
-  waist?: number;
-  whrScore?: number;
-  age?: number;
-  drfScore?: number;
-  modyScore?: number;
-  carbohydrate_g: number;
-  energy_kcal: number;
-  fat_g: number;
-  fiber_g: number;
-  protein_g: number;
-  onPress?: () => void;
-}
-
-const fetchCategory = (val: number) => {
-  let cat;
-  if (val < 18.5) {
-    cat = 'Underweight';
-  } else if (val >= 18.5 && val <= 24.9) {
-    cat = 'Normal';
-  } else if (val >= 25 && val <= 29.9) {
-    cat = 'Pre-obesity';
-  } else {
-    cat = 'Obesity';
-  }
-
-  return cat;
+// ---------- Utility Functions ----------
+const fetchBMICategory = (val: number) => {
+  if (val < 18.5) return 'Underweight';
+  if (val >= 18.5 && val <= 24.9) return 'Normal';
+  if (val >= 25 && val <= 29.9) return 'Pre-obesity';
+  return 'Obesity';
 };
+
 const findDrfGrade = (val: number) => {
-  let cat: string;
-
-  if (val < 30) {
-    cat = 'Low';
-  } else if (val >= 30 && val < 50) {
-    cat = 'Moderate';
-  } else {
-    cat = 'High';
-  }
-
-  return cat;
+  if (val < 30) return 'Low';
+  if (val >= 30 && val < 50) return 'Moderate';
+  return 'High';
 };
+
 const findBodyGrade = (val: number, gender: string = 'male') => {
-  let cat: string;
-
   if (gender === 'male') {
-    if (val < 0.9) {
-      cat = 'Low';
-    } else if (val >= 0.9 && val < 0.95) {
-      cat = 'Moderate';
-    } else {
-      cat = 'High Risk';
-    }
+    if (val < 0.9) return 'Low';
+    if (val >= 0.9 && val < 0.95) return 'Moderate';
+    return 'High Risk';
   } else {
-    if (val < 0.8) {
-      cat = 'Low';
-    } else if (val > 0.8 && val < 0.85) {
-      cat = 'Moderate';
-    } else {
-      cat = 'High Risk';
-    }
+    if (val < 0.8) return 'Low';
+    if (val > 0.8 && val < 0.85) return 'Moderate';
+    return 'High Risk';
   }
-
-  return cat;
 };
 
 const findModyLevel = (val: number) => {
-  let cat: string;
-
-  if (val < 30) {
-    cat = 'Low';
-  } else if (val >= 31 && val < 61) {
-    cat = 'Moderate';
-  } else {
-    cat = 'High';
-  }
-
-  return cat;
+  if (val < 30) return 'Low';
+  if (val >= 31 && val < 61) return 'Moderate';
+  return 'High';
 };
 
-const RenderText: FC<{label?: string; text?: any; unit?: string}> = ({
+// ---------- Small Reusable Text Renderer ----------
+const RenderText: FC<{label: string; text?: any; unit?: string}> = ({
   label,
   text,
   unit,
 }) => {
-  if (!text) {
-    return null;
-  }
+  if (text === undefined || text === null || text === '') return null;
 
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: '60%',
-        justifyContent: 'space-between',
-      }}>
-      <Text
-        style={{
-          fontSize: 16,
-          color: '#000',
-          fontStyle: 'italic',
-          width: '40%',
-        }}>
-        {label}
-      </Text>
-      <Text
-        style={{
-          fontSize: 16,
-          fontWeight: '600',
-          color: '#000',
-        }}>
-        :
-      </Text>
-      <Text
-        style={{
-          fontSize: 16,
-          fontWeight: '600',
-          color: '#000',
-          width: '40%',
-          textTransform: 'capitalize',
-        }}>
+    <View style={styles.row}>
+      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.separator}>:</Text>
+      <Text style={styles.value}>
         {text}{' '}
-        {unit ? (
-          <Text
-            style={{
-              fontSize: 10,
-              color: '#9D9D9D',
-              fontStyle: 'italic',
-            }}>{`(${unit})`}</Text>
-        ) : null}
+        {unit ? <Text style={styles.unit}>{`(${unit})`}</Text> : null}
       </Text>
     </View>
   );
 };
 
-const BMICard: FC<IBMICard> = ({
-  bmiScore,
-  height,
-  name,
-  time,
-  weight,
-  whrScore,
-  gender,
-  hip,
-  waist,
-  age,
-  drfScore,
-  modyScore,
-  carbohydrate_g,
+// ---------- Generic Card ----------
+interface IResultCard {
+  data: any; // Accepts any of IBmiResult | IWHRResults | IYADRResults | IModyResults | ICMPResults
+  onPress?: () => void;
+}
 
-  energy_kcal,
-  fat_g,
-  fiber_g,
-  protein_g,
-  onPress,
-}) => {
+const ResultCard: FC<IResultCard> = ({data, onPress}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={onPress && onPress}
-      style={styles.bmiCardMain}>
-      <RenderText label="Name" text={name} />
-      <RenderText
-        label="BMI Score"
-        text={bmiScore !== undefined ? bmiScore + '' : undefined}
-      />
-      <RenderText
-        label="Category"
-        text={bmiScore !== undefined ? fetchCategory(bmiScore) : undefined}
-      />
-      <RenderText label="Height" text={height} unit="cm" />
-      <RenderText label="Weight" text={weight} unit="kg" />
-      <RenderText label="Gender" text={gender} />
-      <RenderText label="WHR Score" text={whrScore} />
-      <RenderText
-        label="Risk level"
-        text={whrScore && gender ? findBodyGrade(whrScore, gender) : undefined}
-      />
-      <RenderText label="Age" text={age} />
-      <RenderText label="Waist" text={waist} unit="inches" />
-      <RenderText label="Hip" text={hip} unit="inches" />
-      <RenderText
-        label="DRF Score"
-        text={drfScore !== undefined ? drfScore + '' : undefined}
-      />
-      <RenderText
-        label="MODY Score"
-        text={modyScore !== undefined ? modyScore + '' : undefined}
-      />
-      <RenderText
-        label="Risk Level"
-        text={drfScore !== undefined ? findDrfGrade(drfScore) : undefined}
-      />
-      <RenderText
-        label="Risk Level"
-        text={modyScore !== undefined ? findModyLevel(modyScore) : undefined}
-      />
-      <RenderText
-        label="Total Energy"
-        text={energy_kcal !== undefined ? energy_kcal + '' : undefined}
-        unit="Kcal"
-      />
-      <RenderText
-        label="Carbohydrate"
-        text={carbohydrate_g !== undefined ? carbohydrate_g + '' : undefined}
-        unit="gm"
-      />
-      <RenderText
-        label="Protein"
-        text={protein_g !== undefined ? protein_g + '' : undefined}
-        unit="(Kcal)"
-      />
-      <RenderText
-        label="Fat"
-        text={fat_g !== undefined ? fat_g + '' : undefined}
-        unit="gm"
-      />
-      <RenderText
-        label="Fiber"
-        text={fiber_g !== undefined ? fiber_g + '' : undefined}
-        unit="gm"
-      />
+      onPress={onPress}
+      style={styles.card}>
+      {/* Common fields */}
+      <RenderText label="Name" text={data.name} />
+      <RenderText label="Age" text={data.age} />
+      <RenderText label="Gender" text={data.gender} />
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          backgroundColor: 'rgba(0, 11, 33, 0.03)',
-          alignSelf: 'flex-end',
-          padding: 10,
-          borderRadius: 10,
-          borderWidth: 1,
-          borderColor: 'rgba(0, 11, 33, 0.20)',
-        }}>
-        <TimeCircleSVG />
-        <View style={{width: 10}} />
-        <Text style={{color: '#000', fontWeight: '500'}}>
-          {moment(time).format('h:mm a')}
-        </Text>
-      </View>
+      {/* BMI */}
+      <RenderText label="BMI Score" text={data.bmi_score ?? data.bmi} />
+      {data.bmi_score || data.bmi ? (
+        <RenderText
+          label="Category"
+          text={fetchBMICategory(data.bmi_score ?? data.bmi)}
+        />
+      ) : null}
+      <RenderText label="Height" text={data.height_cm} unit="cm" />
+      <RenderText label="Weight" text={data.weight_kg} unit="kg" />
+
+      {/* WHR */}
+      <RenderText label="WHR Score" text={data.whr_score ?? data.whr} />
+      {(data.whr_score || data.whr) && data.gender ? (
+        <RenderText
+          label="Risk level"
+          text={findBodyGrade(data.whr_score ?? data.whr, data.gender)}
+        />
+      ) : null}
+      <RenderText label="Waist" text={data.waist_cm} unit="cm" />
+      <RenderText label="Hip" text={data.hip_cm} unit="cm" />
+
+      {/* DRF */}
+      <RenderText label="DRF Score" text={data.drf_score} />
+      {data.drf_score !== undefined && (
+        <RenderText label="Risk Level" text={findDrfGrade(data.drf_score)} />
+      )}
+
+      {/* MODY */}
+      <RenderText label="MODY Score" text={data.mody_score} />
+      {data.mody_score !== undefined && (
+        <RenderText label="Risk Level" text={findModyLevel(data.mody_score)} />
+      )}
+      <RenderText label="HbA1c" text={data.hba1c} unit="%" />
+
+      {/* YADR Specific */}
+      <RenderText label="YADR Score" text={data.yadr_score} />
+      <RenderText label="Random Glucose" text={data.random_blood_glucose} unit="mg/dL" />
+      <RenderText label="BP Sys" text={data.bp_sys} unit="mmHg" />
+      <RenderText label="BP Dia" text={data.bp_dia} unit="mmHg" />
+
+      {/* CMP */}
+      <RenderText label="Total Energy" text={data.energy_kcal} unit="Kcal" />
+      <RenderText label="Carbohydrate" text={data.carbohydrate_g} unit="g" />
+      <RenderText label="Protein" text={data.protein_g} unit="g" />
+      <RenderText label="Fat" text={data.fat_g} unit="g" />
+      <RenderText label="Fiber" text={data.fiber_g} unit="g" />
+
+      {/* Created at */}
+      {data.created_at && (
+        <View style={styles.timeRow}>
+          <TimeCircleSVG />
+          <View style={{width: 10}} />
+          <Text style={styles.timeText}>
+            {moment(data.created_at).format('h:mm a')}
+          </Text>
+        </View>
+      )}
     </TouchableOpacity>
   );
 };
 
-export default BMICard;
+export default ResultCard;
 
+// ---------- Styles ----------
 const styles = StyleSheet.create({
-  bmiCardMain: {
+  card: {
     padding: 16,
     elevation: 5,
     backgroundColor: '#fff',
@@ -265,5 +146,48 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 11, 33, 0.20)',
     borderRadius: 5,
     marginBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '60%',
+    justifyContent: 'space-between',
+  },
+  label: {
+    fontSize: 16,
+    color: '#000',
+    fontStyle: 'italic',
+    width: '40%',
+  },
+  separator: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+  },
+  value: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+    width: '40%',
+    textTransform: 'capitalize',
+  },
+  unit: {
+    fontSize: 10,
+    color: '#9D9D9D',
+    fontStyle: 'italic',
+  },
+  timeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 11, 33, 0.03)',
+    alignSelf: 'flex-end',
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 11, 33, 0.20)',
+  },
+  timeText: {
+    color: '#000',
+    fontWeight: '500',
   },
 });

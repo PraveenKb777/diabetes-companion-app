@@ -185,7 +185,7 @@ export const DMItems: CarouselItem[] = [
     id: '264njkwkk ken',
     img: map,
     head: 'Statistical Snapshot',
-    desc: '1 in 10 adults (20-79 years) deals with diabetes, as per IDF Diabetes atlas (2021).',
+    desc: '1 in 10 adults (20-79 years) deals with diabetes, as per IDF Diabetes atlas (2021).Earlier risk in South Aisans.',
   },
   {
     id: '264njkwqegtweken',

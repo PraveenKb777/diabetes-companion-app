@@ -17,8 +17,8 @@ import NothingToShow from '../components/NothingToShow';
 import {ScreenNames, StackNavigation} from '../Stack';
 import {useNavigation} from '@react-navigation/native';
 
-const HEADING = ['BMI', 'WHR', 'DRF', 'MODY RF', 'CMP'];
-const URLS = ['/bmi', '/whr', '/drf', '/mody', '/cmp'];
+const HEADING = ['BMI', 'WHR', 'YADR', 'MODY RF', 'CMP'];
+const URLS = ['/bmi', '/whr', '/yadr', '/mody', '/cmp'];
 interface IBmiResult {
   bmi_score: number;
   created_at: string;
@@ -38,6 +38,22 @@ interface IDRFREsults {
   physical_activity: number;
   drf_score: number;
   waist_cm: number;
+}
+
+export interface IYADRResults {
+  id: string;
+  name: string;
+  age: number;
+  bmi: number; // Body Mass Index
+  whr: number; // Waist-Hip Ratio
+  generation_diabetes: number; // No family history / Either parent / Both parents
+  parent_diabetes: number; // Possibly binary (0/1) if a parent has diabetes
+  random_blood_glucose: number; // mg/dL
+  bp_sys: number; // Systolic BP
+  bp_dia: number; // Diastolic BP
+  physical_activity: number; // Coded from score table
+  yadr_score: number; // Final calculated score
+  created_at: string; // ISO date string
 }
 
 interface IWHRResults {
@@ -138,7 +154,7 @@ const MyLog = () => {
     }
 
     if (selectedItem === 2) {
-      navigationRoute = 'DRFResultsScreen';
+      navigationRoute = 'YADRResultsScreen';
     }
     if (selectedItem === 3) {
       navigationRoute = 'ModyResultsScreen';
@@ -195,24 +211,7 @@ const MyLog = () => {
         <ScrollView style={{flex: 1, padding: 16}}>
           {list?.map(e => (
             <BMICard
-              bmiScore={e.bmi_score}
-              height={e.height_cm}
-              key={e.id}
-              name={e.name}
-              weight={e.weight_kg}
-              waist={e.waist_cm}
-              hip={e.hip_cm}
-              gender={e.gender}
-              whrScore={e.whr_score}
-              age={e.age}
-              drfScore={e.drf_score}
-              time={e.created_at}
-              modyScore={e.mody_score}
-              carbohydrate_g={e.carbohydrate_g}
-              energy_kcal={e.energy_kcal}
-              fat_g={e.fat_g}
-              fiber_g={e.fiber_g}
-              protein_g={e.protein_g}
+              data={e}
               onPress={() => onPressCard(e.id)}
             />
           ))}

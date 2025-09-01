@@ -135,7 +135,7 @@ const DRFCalculator = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BackButtonHeader heading="Diabetes Risk Finder (DRF)" />
+      <BackButtonHeader subHeading="Young Adult Diabetes Risk Finder(YADRF)" heading="Diabetes Risk Finder (DRF)" />
       <ScrollView
         keyboardShouldPersistTaps="always"
         contentContainerStyle={styles.scrollContent}>

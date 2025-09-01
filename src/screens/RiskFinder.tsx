@@ -26,7 +26,8 @@ const RiskFinder = () => {
         />
         <View style={{height: 16}} />
         <CustomButton
-          label="Diabetes risk finder"
+          label="Diabetes risk finder(DRF)"
+          subLable="Young Adult Diabetes Risk Finder(YADRF)"
           onPress={() => navigation.navigate('DRFCalculatorScreen')}
         />
         <View style={{height: 16}} />

@@ -32,6 +32,8 @@ import WebViewComponent from './screens/WebView';
 import ChooseYourCaloricValue from './screens/ChooseYourCaloricValue';
 import CaloriesWiseList from './screens/CaloriesWiseList';
 import YourCaloricMenu from './screens/YourCaloricMenu';
+import YADRCalculator from './screens/YADRCalculator';
+import YADRREsults from './screens/YADRResults';
 
 export type ScreenNames = [
   'SplashScreen',
@@ -52,7 +54,7 @@ export type ScreenNames = [
   'FeedBackScreen',
   'MythsAndFactsScreen',
   'DRFCalculatorScreen',
-  'DRFResultsScreen',
+  'DRFResultsScreen',"YADRResultsScreen",
   'MODYCalculatorScreen',
   'ModyResultsScreen',
   'DietaryGuideScreen',
@@ -215,7 +217,7 @@ const StackNavigator = () => {
         options={{
           headerShown: false,
         }}
-        component={DRFCalculator}
+        component={YADRCalculator}
       />
       <Screen
         name="DRFResultsScreen"
@@ -224,6 +226,14 @@ const StackNavigator = () => {
         }}
         component={DRFResults}
       />
+      <Screen
+        name="YADRResultsScreen"
+        options={{
+          headerShown: false,
+        }}
+        component={YADRREsults}
+      />
+      
       <Screen
         name="MODYCalculatorScreen"
         options={{
