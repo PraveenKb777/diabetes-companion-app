@@ -98,7 +98,7 @@ const DRFResults = () => {
     <SafeAreaView style={styles.safeArea}>
       <BackButtonHeader heading={'Diabetes Risk Finder Result'} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <AudioPlayer url={findBodyGrade(drfData?.drf_score).url} />
+        <AudioPlayer url={findBodyGrade(drfData?.drf_score!).url} />
         <Image
           src={`${R2_URL}${findBodyGrade(drfData?.drf_score!).image}`}
           style={{width: '100%', aspectRatio: 1}}
