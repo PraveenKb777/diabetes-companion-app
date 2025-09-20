@@ -1,16 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import React, {FC, useEffect, useState} from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import BackButtonHeader from '../components/BackButtonHeader';
 import {CarouselItem} from '../components/Carousal';
 import Loading from '../components/Loading';
 import ModyCard from '../components/ModyCard';
 import {
+  BottomSheetYesbullet,
+  BulletTrue,
   IBottomSheetContent,
   useBottomSheet,
 } from '../context/BottomSheetContext';
 import popUpContent from '../popUpContent';
 import {DGHeading} from './DiabetesGuide';
+import {useAppSelector} from '../redux/hooks/hooks';
+import {CustomModyButton} from '../components/CustomButton';
 // dnamody.png
 
 // groupmody.png
@@ -145,35 +149,36 @@ const modyYoungList: CarouselItem[] = [
     id: '0(wq434wdg)23413134()',
     head: 'Age',
     img: 'youngmodypersonclipart.png',
-    desc: '(below 30 years)',
+    desc: '(usually before 30 years)',
   },
   {
     id: '0(wq434wdg)23413134(',
     head: 'Family History',
     img: 'youngmodyfamily.png',
-    desc: '(Continuous 2 or more generations with diabetes)',
+    desc: '(2 or more generations with diabetes)',
   },
   {
     id: '0(wq434wdg)23413134)',
     head: 'Clinical Examination and Physical Examination',
     img: 'youngmodyinsulinclipart.png',
-    desc: '(Mild, stable fasting hyperglycemia, non-obese, absence of autoantibodies, normal lipid level)',
+    desc: '(mild or stable blood sugar levels, non-obese, absence of autoantibodies)',
   },
 
   {
     id: '0(wq434wdg23413134()',
     head: 'Non insulin dependence',
     img: 'youngmodyveins.png',
-    desc: 'Endogenous insulin production more than 3 years post diagnosis with diabetes',
+    desc: 'insulin not required for many years after diagnosis',
   },
   {
     id: '0wq434wdg)23413134()',
-    head: 'Negative antibody and positive C-peptide more than 3 years post diagnosis with diabetes',
+    head: 'Autoantibody test was negative (no diabetes antibodies), and C-peptide was positive (body still makes insulin) even after 3 years',
     img: 'youngmodycpeptoidtest.png',
   },
   {
     id: '(wq434wdg)23413134()',
     head: 'Genetic Testing',
+    desc: '(to confirm MODY)',
     img: 'youngmodygenetictest.png',
   },
 ];
@@ -186,23 +191,22 @@ const modyYoungList: CarouselItem[] = [
 
 const reasonsOfMody: CarouselItem[] = [
   {
-    head: 'Stop misdiagnosing between type 1 and type 2 diabetes',
+    head: 'Don’t mistake MODY for Type 1 or Type 2 diabetes',
     id: '^^&624hrtb',
     img: 'reasonsmodyupset.png',
     color: '#4BACC6',
   },
   {
-    head: 'Proper Treatment',
+    head: 'Knowing MODY helps give the right treatment',
     id: '^&624hrtb',
-    desc: '(Mostly, it is treated with the cost effecting sulfonyl urea tablet)',
     img: 'reasonsmodytablets.png',
     color: '#60E146',
   },
   {
-    head: 'Digging out the family members with Maturity Onset Diabetes of the Young (MODY)',
+    head: 'Test family members to find MODY early',
     id: '^^&624hr',
     img: 'reasonsmodytwogirls.png',
-    desc: '(Predictive testing)',
+    // desc: '(Predictive testing)',
     color: '#F79646',
   },
 ];
@@ -225,51 +229,89 @@ const reasonsOfMody: CarouselItem[] = [
 
 const guideModyTest: CarouselItem[] = [
   {
-    head: 'Early diagnosis and intervention are key to living well with MODY.',
+    head: 'Early diagnosis and intervention help in living well with MODY.',
     id: '90-()34%83hjgkjn',
     img: 'guidetomodyclubtest.png',
   },
   {
-    head: 'Discuss with doctors and go for genetic testing.',
+    head: 'Discuss with doctors for genetic testing.',
     id: '-()34%83hjgkjn',
     img: 'guidemodydocclipart.png',
   },
   {
-    head: 'A blood or saliva test reveal the genetic code.',
+    head: 'A blood or saliva test can detect MODY.',
     id: '()34%83hjgkjn',
     img: 'guidemodytakebloodsample.png',
   },
   {
-    head: 'Motivate the family members for predictive genetic testing.',
+    head: 'Motivate family members to go for predictive testing.',
     id: '90-()3%83hjgkjn',
     img: 'guidemodyclaps.png',
   },
   {
-    head: 'Know your specific MODY type for precise treatment and management.',
+    head: 'Know your specific MODY type for the right treatment and management.',
     id: '90-()343hjgkjn',
     img: 'guidemodydnamicro.png',
   },
   {
-    head: 'Two Genetic test type:',
+    head: 'Genetic testing for MODY can be done in two ways:',
     id: '90-(34%83hjgkjn',
     img: 'guidemodydna.png',
-    desc: 'Targeted test: Focuses on known MODY genes.\n\nNGS(Next Generation Sequencing): Checks many MODY genes at once',
+    desc: 'a targeted test (checking specific known genes) or by NGS – Next Generation Sequencing (checking many genes at once).',
   },
   {
-    head: 'Manage complications associated with your MODY type.',
+    head: 'Manage complications based on your MODY type.',
     id: '90()34%83hjg',
     img: 'guidemodyorgans.png',
   },
   {
-    head: 'Knowledge and healthy habits empower you to thrive with MODY.',
+    head: 'Knowledge of MODY and healthy habits helps you live better with MODY.',
     id: '90-()34%83hjn',
     img: 'guidemodyhealthy.png',
   },
 ];
 
+const userTypesOfMody: BulletTrue[] = [
+  {
+    desc: [
+      'They differ in severity and how blood sugar is affected over time.',
+    ],
+    bullet: true,
+  },
+  {
+    desc: ['Some stay mild and steady; others may need medicine or insulin.'],
+    bullet: true,
+  },
+  {
+    desc: [
+      'In India, MODY 3 is the most common form, followed by MODY 1 and MODY 2.',
+    ],
+    bullet: true,
+  },
+  {
+    desc: ['Doctors use special tests to confirm the exact type.'],
+    bullet: true,
+  },
+  {
+    desc: [
+      'Correct type helps in choosing the right treatment and guiding family members.',
+    ],
+    bullet: true,
+  },
+];
+
+const ModyBullets: FC<{item: BulletTrue; index: number}> = ({item, index}) => {
+  return (
+    <Text key={item.desc[0] + index}>
+      {'\u25CF'}{' '}
+      <Text style={{fontSize: 16, color: '#9D9D9D'}}>{item.desc}</Text>
+    </Text>
+  );
+};
+
 const Mody = () => {
   const {openBottomSheet} = useBottomSheet();
-
+  const {isDoctor} = useAppSelector(e => e.userReducer);
   const onPress = (value: IBottomSheetContent) => {
     openBottomSheet(value);
   };
@@ -282,6 +324,7 @@ const Mody = () => {
   if (load) {
     return <Loading />;
   }
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <BackButtonHeader
@@ -296,14 +339,29 @@ const Mody = () => {
         <DGHeading
           head={'Types of Maturity Onset Diabetes of the\nYoung (MODY)'}
         />
-        {typesOfMody.map((e, i) => (
-          <ModyCard
-            key={e.id + i}
-            item={e}
-            info
-            onPress={() => onPress(popUpContent[e.head])}
-          />
-        ))}
+        {isDoctor ? (
+          typesOfMody.map((e, i) => (
+            <ModyCard
+              key={e.id + i}
+              item={e}
+              info
+              onPress={() => onPress(popUpContent[e.head])}
+            />
+          ))
+        ) : (
+          <>
+            <CustomModyButton
+              label="MODY has about 14 different forms"
+              onPress={() => {
+                openBottomSheet(popUpContent['14 different forms'], true);
+              }}
+            />
+            <View style={{height: 15}} />
+            {userTypesOfMody.map((e, i) => (
+              <ModyBullets item={e} index={i} key={e.desc[0]} />
+            ))}
+          </>
+        )}
         <DGHeading head="Ways to find Maturity Onset Diabetes of the young (MODY)" />
         {modyYoungList.map((e, i) => (
           <ModyCard item={e} key={e.id + i} />

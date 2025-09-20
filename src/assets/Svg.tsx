@@ -461,3 +461,23 @@ export const EditItemsSvg: FC<SvgProps> = props => (
     </G>
   </Svg>
 );
+
+export const ViewAllSVG: FC<SvgProps> = props => (
+  <Svg width={14} height={14} viewBox="0 0 14 14" fill="none" {...props}>
+    <Mask
+      id="mask0_1386_16888"
+      maskUnits="userSpaceOnUse"
+      x={0}
+      y={0}
+      width={14}
+      height={14}>
+      <Rect width={14} height={14} fill="#D9D9D9" />
+    </Mask>
+    <G mask="url(#mask0_1386_16888)">
+      <Path
+        d="M7.35033 7L4.66699 4.31667L5.48366 3.5L8.98366 7L5.48366 10.5L4.66699 9.68333L7.35033 7Z"
+        fill="#0075FF"
+      />
+    </G>
+  </Svg>
+);

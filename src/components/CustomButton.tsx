@@ -5,26 +5,85 @@ import {
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
+  View,
 } from 'react-native';
+import {ViewAllSVG} from '../assets/Svg';
 
 interface ICustomBtn extends TouchableOpacityProps {
   label: string;
   load?: boolean;
-  subLable?:string;
+  subLable?: string;
 }
 
-const CustomButton: FC<ICustomBtn> = ({label, subLable,load, style, ...props}) => {
+const CustomButton: FC<ICustomBtn> = ({
+  label,
+  subLable,
+  load,
+  style,
+  ...props
+}) => {
   return (
     <TouchableOpacity style={[styles.mainStyle, style]} {...props}>
-      {!load ? (<>
-        <Text style={[styles.lable]}>{label}</Text>
-        {subLable? <Text style={[styles.lable,{fontSize:8}]}>{subLable}</Text> : null}
-      </>
-
+      {!load ? (
+        <>
+          <Text style={[styles.lable]}>{label}</Text>
+          {subLable ? (
+            <Text style={[styles.lable, {fontSize: 8}]}>{subLable}</Text>
+          ) : null}
+        </>
       ) : (
         <ActivityIndicator color={'#FFFFFF'} size={'small'} />
       )}
     </TouchableOpacity>
+  );
+};
+export const CustomModyButton: FC<ICustomBtn> = ({
+  label,
+  subLable,
+  load,
+  style,
+  ...props
+}) => {
+  return (
+    <View
+      style={[
+        styles.mainStyle,
+        {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 20,
+        },
+        style,
+      ]}>
+      <Text
+        style={[
+          styles.lable,
+          {
+            width: '50%',
+            textAlign: 'left',
+            fontSize: 14,
+            textTransform: 'none',
+          },
+        ]}>
+        {label}
+      </Text>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#FFF',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 10,
+          borderRadius: 5,
+          paddingHorizontal: 20,
+        }}
+        {...props}>
+        <Text style={{color: '#0075FF', fontWeight: '500', fontSize: 12}}>
+          {'View All'}
+        </Text>
+        <ViewAllSVG />
+      </TouchableOpacity>
+    </View>
   );
 };
 

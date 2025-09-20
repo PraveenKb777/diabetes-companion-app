@@ -18,6 +18,7 @@ import {BottomSheetNobullet} from '../context/BottomSheetContext';
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
 import AudioPlayer from '../components/AudioPlayer';
+import ResultGuide from '../components/ResultGuide';
 
 const findBodyGrade = (val: number, gender: string = 'male') => {
   let color: string;
@@ -255,9 +256,14 @@ const WHRResult = () => {
           }`}
           style={styles.pryamid}
         />
-        <BottomSheetNobullet item={{bullet:false,
-          head:"Source",desc:"World Health Organization. (2011). Waist circumference and waist-hip ratio: Report of a WHO expert consultation. World Health Organization (WHO)."
-        }} />
+        <BottomSheetNobullet
+          item={{
+            bullet: false,
+            head: 'Source',
+            desc: 'World Health Organization. (2011). Waist circumference and waist-hip ratio: Report of a WHO expert consultation. World Health Organization (WHO).',
+          }}
+        />
+        <ResultGuide />
       </ScrollView>
     </SafeAreaView>
   );

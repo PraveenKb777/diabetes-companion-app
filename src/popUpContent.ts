@@ -178,7 +178,9 @@ const popUpContent: IPopUpContents = {
         desc: 'Onset can be sudden; seek urgent care for DKA symptoms (vomiting, deep breathing, drowsiness).',
       },
       {
-        head:"\nLatent Autoimmune Diabetes in Adults (LADA)",desc:"\n",bullet:false
+        head: '\nLatent Autoimmune Diabetes in Adults (LADA)',
+        desc: '\n',
+        bullet: false,
       },
       {
         head: 'Age of diagnosis',
@@ -1550,6 +1552,83 @@ const popUpContent: IPopUpContents = {
         bullet: false,
         desc: 'Stimulates digestive organs and pancreas, potentially improving insulin sensitivity and blood sugar control.',
         head: 'Benefits',
+      },
+    ],
+  },
+
+  '14 different forms': {
+    head: 'Types of MODY',
+    bullet: true,
+    content: [
+      {
+        head: 'MODY 1',
+        desc: 'Can cause diabetes in youth; may need tablets for control.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 2',
+        desc: 'A mild type, often stable for life, usually managed with diet alone.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 3',
+        desc: 'A common type that often responds well to tablets instead of insulin.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 4',
+        desc: 'A rare type that may require tablets or insulin if blood sugar rises.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 5',
+        desc: 'Can affect both diabetes and kidney/urinary health.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 6',
+        desc: 'Very rare; may include nerve-related problems along with diabetes.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 7',
+        desc: 'Looks similar to Type 2 diabetes but starts earlier in life.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 8',
+        desc: 'Can affect both diabetes and digestion, as it involves the pancreas.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 9',
+        desc: 'Rare type that may lead to more severe sugar problems if untreated.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 10',
+        desc: 'Caused by changes in the insulin-making process; can start at any age.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 11',
+        desc: 'Sometimes linked with being overweight and lower insulin production.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 12',
+        desc: 'Rare type; can show diabetes from early life in some families.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 13',
+        desc: 'May appear in babies or young children; often needs medicine for sugar control.',
+        bullet: false,
+      },
+      {
+        head: 'MODY 14',
+        desc: 'A very rare type; usually appears in childhood or adulthood with high sugar.',
+        bullet: false,
       },
     ],
   },

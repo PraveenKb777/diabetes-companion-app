@@ -1,14 +1,19 @@
 import {R2_URL} from '@env';
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import CustomButton from '../components/CustomButton';
 import {StackNavigation} from '../Stack';
 import AudioPlayer from '../components/AudioPlayer';
+import {User} from '../types/User';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useAppSelector} from '../redux/hooks/hooks';
 
 const RiskFinder = () => {
   const navigation = useNavigation<StackNavigation>();
+  const {user} = useAppSelector(e => e.userReducer);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={[styles.scrollContent]}>
@@ -30,11 +35,16 @@ const RiskFinder = () => {
           subLable="Young Adult Diabetes Risk Finder(YADRF)"
           onPress={() => navigation.navigate('DRFCalculatorScreen')}
         />
-        <View style={{height: 16}} />
-        <CustomButton
-          label={'Maturity Onset Diabetes\nof the Young (MODY) Risk finder'}
-          onPress={() => navigation.navigate('MODYCalculatorScreen')}
-        />
+        {user && user.userType === 'doctor' ? (
+          <>
+            <View style={{height: 16}} />
+
+            <CustomButton
+              label={'Maturity Onset Diabetes\nof the Young (MODY) Risk finder'}
+              onPress={() => navigation.navigate('MODYCalculatorScreen')}
+            />
+          </>
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );

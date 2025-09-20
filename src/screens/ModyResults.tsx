@@ -21,6 +21,7 @@ import {
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
 import AudioPlayer from '../components/AudioPlayer';
+import ResultGuide from '../components/ResultGuide';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -229,6 +230,7 @@ const ModyResults = () => {
             }}
           />
         </View>
+        <ResultGuide />
       </ScrollView>
     </SafeAreaView>
   );

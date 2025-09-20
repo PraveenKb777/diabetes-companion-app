@@ -21,12 +21,14 @@ import DropdownComponent from '../components/CustomDropDown';
 import auth from '../utils/auth';
 import {
   Gender,
+  UserType,
   validateAge,
   validateConfirmPassword,
   validateEmail,
   validateGender,
   validateName,
   validatePassword,
+  validateUserType,
 } from '../utils/validations';
 import {ErrorInputComp} from './Login';
 
@@ -35,12 +37,26 @@ const data = [
   {label: 'Female', value: 'female'},
   {label: 'Others', value: 'other'},
 ];
+
+const userTypeData = [
+  {
+    label:
+      'Health Professional (Doctor / Dietitian / Diabetes Educator / Nurse)',
+    value: 'doctor',
+  },
+  {
+    label: 'General User (Person with Diabetes / Family Member / Public)',
+    value: 'doctor',
+  },
+];
 export type TGender = 'male' | 'female' | 'other';
+export type TUserType = 'User' | 'doctor';
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [gender, setGender] = useState<TGender>();
+  const [userType, setUserType] = useState<TUserType>();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passVis, setPassVis] = useState(true);
@@ -52,6 +68,7 @@ const SignUp = () => {
     confirmPassError: '',
     ageError: '',
     genderError: '',
+    userTypeError: '',
   });
   // const [check, setCheck] = useState(false);
   const isErrors = () => {
@@ -61,6 +78,7 @@ const SignUp = () => {
     const confirmPassError = validateConfirmPassword(password, confirmPassword);
     const ageError = validateAge(Number(age));
     const genderError = validateGender(gender as Gender);
+    const userTypeError = validateUserType(userType as UserType);
     setErrors({
       ageError,
       confirmPassError,
@@ -68,6 +86,7 @@ const SignUp = () => {
       genderError,
       nameError,
       passError,
+      userTypeError,
     });
     if (
       nameError === '' &&
@@ -75,7 +94,8 @@ const SignUp = () => {
       passError === '' &&
       ageError === '' &&
       confirmPassError === '' &&
-      genderError === ''
+      genderError === '' &&
+      userTypeError === ''
     ) {
       return false;
     }
@@ -111,6 +131,7 @@ const SignUp = () => {
         password: password,
         confirmPassword: confirmPassword,
         secret: 'yyy',
+        userType,
       };
       // const datas = {email, name, password, confirmPassword, age, gender};
       // //console.log({email, name, password, confirmPassword, age, gender});
@@ -165,6 +186,18 @@ const SignUp = () => {
           maxLength={2}
         />
         <ErrorInputComp label={errors.ageError} />
+        <DropdownComponent
+          data={userTypeData}
+          labelField={'label' as never}
+          onChange={(e: {label: string; value: TUserType}) =>
+            setUserType(e.value)
+          }
+          valueField={'value' as never}
+          additionalDropDownStyle={[styles.inputStyle]}
+          value={userType}
+          placeholder="Who are you?"
+        />
+        <ErrorInputComp label={errors.userTypeError} />
         <DropdownComponent
           data={data}
           labelField={'label' as never}

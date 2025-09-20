@@ -3,6 +3,11 @@ export enum Gender {
   Female = 'female',
   Other = 'other',
 }
+
+export enum UserType {
+  User = 'User',
+  Doctor = 'doctor',
+}
 //console.log(Object.values(Gender));
 export function validateEmail(email: string): string {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -90,6 +95,14 @@ export function validateGender(gender: Gender): string {
   if (!Object.values(Gender).includes(gender)) {
     return "Invalid gender. Must be one of 'male', 'female', or 'other'.";
   }
+  return '';
+}
+
+export function validateUserType(userType: UserType): string {
+  if (!Object.values(UserType).includes(userType)) {
+    return 'Select who are you? to get more personalised experience.';
+  }
+
   return '';
 }
 

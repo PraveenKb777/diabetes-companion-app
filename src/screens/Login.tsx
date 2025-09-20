@@ -72,6 +72,7 @@ const Login = () => {
       //console.log(user);
       ToastAndroid.show(message, ToastAndroid.SHORT);
       await AsyncStorage.setItem('token', token);
+
       await AsyncStorage.setItem('user', JSON.stringify(user));
       //console.log(user, '>>user');
       navigation.dispatch(StackActions.replace('HomeScreen'));

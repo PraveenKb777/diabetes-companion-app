@@ -16,8 +16,8 @@ import {NextArrow} from '../assets/Svg';
 import NothingToShow from '../components/NothingToShow';
 import {ScreenNames, StackNavigation} from '../Stack';
 import {useNavigation} from '@react-navigation/native';
+import {useAppSelector} from '../redux/hooks/hooks';
 
-const HEADING = ['BMI', 'WHR', 'YADR', 'MODY RF', 'CMP'];
 const URLS = ['/bmi', '/whr', '/yadr', '/mody', '/cmp'];
 interface IBmiResult {
   bmi_score: number;
@@ -93,6 +93,7 @@ interface ICMPResults {
 }
 
 const LIMIT = 3;
+const HEADING = ['BMI', 'WHR', 'YADR', 'MODY RF', 'CMP'];
 
 export type ALL = IBmiResult &
   IDRFREsults &
@@ -112,6 +113,9 @@ const MyLog = () => {
     prevPage: number | null;
     totalPages: number;
   }>({currentPage: 1, nextPage: null, prevPage: null, totalPages: 1});
+
+  const {isDoctor} = useAppSelector(e => e.userReducer);
+
   const getItems = useCallback(async () => {
     setLoad(true);
     try {
@@ -176,31 +180,37 @@ const MyLog = () => {
           <DatePicker onChange={setDate} value={date} />
         </View>
         <View style={{flexDirection: 'row', width: '100%', marginTop: 20}}>
-          {HEADING.map((e, i) => {
-            return (
-              <TouchableOpacity
-                style={[
-                  styles.headingItems,
-                  {width: `${100 / HEADING.length}%`},
-                  selectedItem === i ? {backgroundColor: '#0075FF'} : {},
-                ]}
-                key={e + i}
-                onPress={() => {
-                  setSelectedItem(i);
-                  setCurrPage(1);
-                }}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: selectedItem === i ? '#fff' : '#000',
-                    fontSize: 16,
-                    fontWeight: '600',
+          {(isDoctor ? HEADING : HEADING.filter(e => e !== 'MODY RF')).map(
+            (e, i) => {
+              return (
+                <TouchableOpacity
+                  style={[
+                    styles.headingItems,
+                    {
+                      width: `${
+                        100 / (isDoctor ? HEADING.length : HEADING.length - 1)
+                      }%`,
+                    },
+                    selectedItem === i ? {backgroundColor: '#0075FF'} : {},
+                  ]}
+                  key={e + i}
+                  onPress={() => {
+                    setSelectedItem(i);
+                    setCurrPage(1);
                   }}>
-                  {e}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
+                  <Text
+                    style={{
+                      textAlign: 'center',
+                      color: selectedItem === i ? '#fff' : '#000',
+                      fontSize: 16,
+                      fontWeight: '600',
+                    }}>
+                    {e}
+                  </Text>
+                </TouchableOpacity>
+              );
+            },
+          )}
         </View>
       </View>
       {load ? (
@@ -210,10 +220,7 @@ const MyLog = () => {
       ) : (
         <ScrollView style={{flex: 1, padding: 16}}>
           {list?.map(e => (
-            <BMICard
-              data={e}
-              onPress={() => onPressCard(e.id)}
-            />
+            <BMICard data={e} onPress={() => onPressCard(e.id)} />
           ))}
           <View style={{height: 30}} />
         </ScrollView>

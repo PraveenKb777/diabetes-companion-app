@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -66,6 +66,9 @@ import yesrice from '../assets/mythandfact/yesrice.png';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigation} from '../Stack';
 import {DPItems} from './DietaryGuide';
+import {useAppDispatch, useAppSelector} from '../redux/hooks/hooks';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {setUser} from '../redux/slice/userSlice';
 
 export const MythFactList: IMythAndFactItem[] = [
   {
@@ -237,6 +240,15 @@ export const DMItems: CarouselItem[] = [
 
 const Home = () => {
   const navigation = useNavigation<StackNavigation>();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const fetchUser = async () => {
+      dispatch(setUser(JSON.parse((await AsyncStorage.getItem('user')) || '')));
+    };
+    fetchUser();
+  }, []);
+  console.log(useAppSelector(e => e.userReducer.user));
+
   return (
     <SafeAreaView style={[styles.safeArea]}>
       <ScrollView style={[styles.scrolView]}>

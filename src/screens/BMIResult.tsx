@@ -20,7 +20,8 @@ import {DGHeading} from './DiabetesGuide';
 import {R2_AUDIO_URL} from '@env';
 import AudioPlayer from '../components/AudioPlayer';
 import {StackNavigation} from '../Stack';
-import { NoteComp } from './CMP';
+import {NoteComp} from './CMP';
+import ResultGuide from '../components/ResultGuide';
 const findBodyGrade = (val: number) => {
   let color: string;
   let cat: string;
@@ -74,7 +75,6 @@ const BMIResult = () => {
       const {result} = await res.data;
       let audioFile = R2_AUDIO_URL;
       if (result.bmi_score >= 30) {
-    
         audioFile = audioFile + 'obesityiibmi.mp3';
       } else if (result.bmi_score >= 25 && result.bmi_score <= 29.9) {
         audioFile = audioFile + 'obesityibmi.mp3';
@@ -221,6 +221,8 @@ const BMIResult = () => {
             head: 'Source',
           }}
         />
+        <ResultGuide />
+        <View style={{height: 30}} />
       </ScrollView>
     </SafeAreaView>
   );

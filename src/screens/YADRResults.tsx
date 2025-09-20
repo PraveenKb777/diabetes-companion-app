@@ -23,6 +23,7 @@ import {
 import auth from '../utils/auth';
 import {DGHeading} from './DiabetesGuide';
 import AudioPlayer from '../components/AudioPlayer';
+import ResultGuide from '../components/ResultGuide';
 // YADRREsults.tsx
 
 const findBodyGrade = (val: number) => {
@@ -84,8 +85,6 @@ interface IDRFData {
   id: string;
   yadr_score: number;
 }
-
-
 
 const YADRREsults = () => {
   const [load, setLoad] = useState(true);
@@ -207,7 +206,6 @@ const YADRREsults = () => {
           }}
         />
 
-
         <View
           style={{
             borderWidth: 1,
@@ -227,6 +225,7 @@ const YADRREsults = () => {
             }}
           />
         </View>
+        <ResultGuide />
       </ScrollView>
     </SafeAreaView>
   );
